@@ -19,6 +19,8 @@ User testing prototypes for Fee Remission staff application.
 
 Ensure you have at least [Ruby](https://www.ruby-lang.org/en/) 2.1.0 and [Node.js](http://nodejs.org/) 0.10.x installed and [Bower](http://bower.io/) installed globally (`npm install -g bower`).
 
+Note: Because of OpenSSL incompatibilites on my machine with Ruby 2.1.0, I use ruby 2.1.5 and it appears to work fine.
+
 1. Install ruby dependencies
   ```
   bundle install

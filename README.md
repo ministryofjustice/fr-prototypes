@@ -62,3 +62,6 @@ To deploy manually:
   middleman deploy
   ```
 
+The changes will be deployes to http://ministryofjustice.github.io/fr-prototypes/
+
+

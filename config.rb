@@ -11,7 +11,7 @@ activate :autoprefixer
 # Page options, layouts, aliases and proxies
 ###
 
-set :layout, :article
+set :layout, :layout
 page "/", :layout => :homepage
 page "/index.html", :layout => :homepage
 page "/foundation.html", :layout => :layout

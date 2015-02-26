@@ -40,6 +40,7 @@ form
         input name='claim_number' type='text'
   
   .row
+    .small-12.medium-6.large-5.columns
       label for='claim_number'
         | Fee
   <div class="row collapse">
@@ -50,6 +51,19 @@ form
       <input type="text">
     </div>
   </div>
+
+  .row
+    .small-12.medium-6.large-5.columns
+      label for='claim_number'
+        | Fee
+    <div class="row collapse">
+      <div class="small-1 medium-1 large-1 columns">
+        <span class="prefix">£</span>
+      </div>
+      <div class="small-11 medium-5 large-4 columns">
+        <input type="text">
+      </div>
+    </div>
 
   h3 Personal details
   .row
@@ -71,11 +85,11 @@ form
     .small-12.medium-3.large-3.columns
       label for='date_signed' Date of birth
   .row
-    .small-3.medium-3.large-1.columns
+    .small-3.medium-2.large-1.columns
       input#signed-day type='text'
-    .small-3.medium-3.large-1.columns
+    .small-3.medium-2.large-1.columns
        input#signed-month type='text'
-    .small-6.medium-6.large-2.columns
+    .small-6.medium-2.large-2.columns
       input#signed-year type='text'
 
   .h2 Savings and investments

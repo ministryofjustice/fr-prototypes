@@ -9,16 +9,37 @@ form
   .row
     .small-4.columns
       label for='claim_type'
-        | Claim Type/Form Number
+        | Case, claim or notice to pay number
         input name='claim_type' type='text' autofocus=""
     .small-4.columns
       label for='case_number'
         | Case Number
         input name='case_number' type='text'
+
+.h2 Personal details
+  br
+  .row
+    .small-2.columns
+      label.right Name
+    .small-2.columns
+      input#title type='text' placeholder='Title'
     .small-4.columns
-      label for='fee'
-        | Fee
-        input name='fee' type='text'
+      input#first_name type='text' placeholder='First names'
+    .small-4.columns
+      input#last_name type='text' placeholder='Last name'
+  .row
+    .small-2.columns
+      label.right for='date_signed' Date of birth
+    .small-8.columns
+      .row
+        .small-1.columns
+          input#signed-day type='text' placeholder='dd'
+        .small-1.columns
+          input#signed-month type='text' placeholder='mm'
+        .small-2.columns
+          input#signed-year type='text' placeholder='yyyy'
+        .small-4.columns
+    .small-2.columns
 
   .h2 Disposable Capital check
   br
@@ -89,31 +110,6 @@ form
         input#not_eligible name='income_check' type='radio' value='not_eligible'
         label for='not_eligible'
           | <strong>Not eligible</strong> for remission given monthly income
-
-  .h2 Personal details
-  br
-  .row
-    .small-2.columns
-      label.right Name
-    .small-2.columns
-      input#title type='text' placeholder='Title'
-    .small-4.columns
-      input#first_name type='text' placeholder='First names'
-    .small-4.columns
-      input#last_name type='text' placeholder='Last name'
-  .row
-    .small-2.columns
-      label.right for='date_signed' Date signed
-    .small-8.columns
-      .row
-        .small-1.columns
-          input#signed-day type='text' placeholder='dd'
-        .small-1.columns
-          input#signed-month type='text' placeholder='mm'
-        .small-2.columns
-          input#signed-year type='text' placeholder='yyyy'
-        .small-4.columns
-    .small-2.columns
 
   br
   .h2 Outcome

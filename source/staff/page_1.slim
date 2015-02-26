@@ -72,76 +72,10 @@ form
     .small-6.medium-2.large-2.columns
       input#signed-year type='text'
 
-  .h2 Savings and investments
-  br
   .row
-    .small-4.columns
-      ul.button-group.round
-        li
-          a.button.secondary href="#"  Pass
-        li
-          a.button.secondary href="#"  Fail
-    .small-8.columns
-      .row Fee £410
-      .row Under 61 Yes
-      .row Must have under £3,000
-       
-  .h2 Income check
-  br
-  .row
-    .small-4.columns
-      ul.button-group.round
-        li
-          a.button.secondary href="#"  Passed
-        li
-          a.button.secondary href="#"  Failed
-    .small-8.columns
-      .row
-        input#receiving_benefits name='income_check' type='radio' value='receiving_benefits'
-        label.block-label for='receiving_benefits' data-target='dob_ni'
-          | Receives applicable benefit
-      .row#dob_ni.js-hidden
-        .small-2.columns
-          label.right for='dob' Date of birth
-        .small-1.columns
-          input#dob-day type='text' placeholder='dd'
-        .small-1.columns
-          input#dob-month type='text' placeholder='mm'
-        .small-2.columns
-          input#dob-year type='text' placeholder='yyyy'
-        .small-4.columns
-          label.right for='ni' National Insurance number
-        .small-2.columns
-          input#ni type='text'
+    .small-12.medium-3.large-3.columns
+     .button Button test
 
-      .row
-        input#eligible_full name='income_check' type='radio' value='eligible_full'
-        label for='eligible_full'
-          | Eligible for <strong>full remission</strong> given monthly income
 
-      .row
-        input#eligible_partial name='income_check' type='radio' value='eligible_partial'
-        label for='eligible_partial'
-          | Eligible for <strong>partial remission</strong> given monthly income
 
-      .row
-        input#not_eligible name='income_check' type='radio' value='not_eligible'
-        label for='not_eligible'
-          | <strong>Not eligible</strong> for remission given monthly income
-
-  br
-  .h2 Outcome
-  br
-  .row
-    .small-8.columns
-      ul.button-group.round
-        li
-          a.button.secondary href="#"  Full remission
-        li
-          a.button.secondary href="#"  Partial remission
-        li
-          a.button.secondary href="#"  Rejected
-        li
-          a.button.secondary href="#"  Ineligible
-    .small-4.columns
 

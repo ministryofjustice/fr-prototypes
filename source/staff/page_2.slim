@@ -49,13 +49,15 @@ form
   .row
     .small-12.medium-12.large-12.columns
       h4 Income
-  .row
-    .small-12.medium-2.large-2.columns
-      label for='title'
-        | Title
-        input name='title' type='text'
   .row      
     .small-12.medium-6.large-5.columns
+      label for='benefits'
+        | Benefits
+        input type="radio" name="pokemon" value="Benefits" id="pokemonRed" 
+        label for="pokemonRed">Benefits
+        input type="radio" name="pokemon" value="Income" id="pokemonBlue"  
+        label for="pokemonBlue">Income
+        
       label for='first_name'
         | First names
         input name='first_name' type='text'

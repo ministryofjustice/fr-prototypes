@@ -5,15 +5,31 @@ title: Record an application for Fee Remission
 br
 
 form
+ .row
+    .small-12.medium-8.large-5.columns
+      label for='jurisdiction'
+        | Jurisdiction
+        <select>
+          <option value="husker">Husker</option>
+          <option value="starbuck">Starbuck</option>
+          <option value="hotdog">Hot Dog</option>
+          <option value="apollo">Apollo</option>
+        </select>
   .row
     .small-12.medium-8.large-5.columns
       label for='reference_number'
         | Reference number
         input name='reference_number' type='text' autofocus=""
+  .row
     .small-12.medium-8.large-5.columns
       label for='claim_number'
         | Case, claim or notice to pay number
-        input name='claim_number' type='text' autofocus=""
+        input name='claim_number' type='text'
+  .row
+    .small-12.medium-8.large-5.columns
+      label for='claim_number'
+        | Fee
+        input name='claim_number' type='text'
 
   br
   .row

@@ -1,5 +1,5 @@
 ---
-title: Help with fees: process applications
+title: Help with fees: process applications 
 ---
 
 form
@@ -9,45 +9,67 @@ form
     .small-12.medium-12.large-12.columns
       h4 Savings and investments
   .row
-    .small-4.columns
-      ul.button-group.round
-        li
-          a.button.secondary href="#"  Pass
-        li
-          a.button.secondary href="#"  Fail
-    .small-8.columns
-      .row
-        <strong>Fee</strong>£50
-        <strong>Age</strong>35
-      .row
-        input#under_older_min name='capital_check' type='radio' value='under_older_min'
-        label for='under_older_min'
-          | Disposable capital <strong>under £16,000</strong> and applicant or partner <strong>over 61 years old</strong>
-      .row
-        input#under_threshold name='capital_check' type='radio' value='under_threshold'
-        label for='under_threshold'
-          | Disposable capital <strong>under threshold</strong> for applicable fee
-      .row
-        input#over_threshold name='capital_check' type='radio' value='over_threshold'
-        label for='over_threshold'
-          | Disposable capital <strong>over threshold</strong> for applicable fee
+    .small-12.medium-6.large-5.columns
+      label for='jurisdiction'
+        | Jurisdiction
+        select
+          option value="county-court" County court
+          option value="high-court" High court
+          option value="insolvency" Insolvency
+          option value="family" Single Family Court
+          option value="county-court" Probate
+          option value="high-court" Magistrates court (civil)
+          option value="insolvency" Gambling
+          option value="family" Employment
+          option value="county-court" Gender
+          option value="high-court" Land & PC
+          option value="insolvency" Immigration and Asylum Chamber (IAC)
+          option value="family" Upper Tribunal Immigration and Asylum Chamber (UTIAC)
 
-.row
+  <div class="row">
+    <div class="small-12 medium-3 large-3 columns">
+      label for='claim_number'
+        | Fee
+      <div class="small-2 medium-2 large-3 columns" style="padding:0px;">
+        <span class="prefix">£</span>
+      </div>
+      <div class="small-10 medium-10 large-9 columns" style="padding:0px;">
+        <input type="text" autofocus="">
+      </div>
+    </div>
+  </div>
+  
+  .row
+    .small-12.medium-6.large-5.columns
+      label for='claim_number'
+        | Case, claim or 'notice to pay' number
+        input name='claim_number' type='text'  
+
+  br
+  .row
     .small-12.medium-12.large-12.columns
       h4 Income
   .row
-    .small-8.columns
-      .row
-        input#receiving_benefits name='income_check' type='radio' value='receiving_benefits'
-        label.block-label for='receiving_benefits' data-target='dob_ni'
-          | Benefits
-      .row
-        input#eligible_full name='income_check' type='radio' value='eligible_full'
-        label for='eligible_full'
-          | Income
+    .small-12.medium-2.large-2.columns
+      label for='title'
+        | Title
+        input name='title' type='text'
+  .row      
+    .small-12.medium-6.large-5.columns
+      label for='first_name'
+        | First names
+        input name='first_name' type='text'
+  .row
+    .small-12.medium-6.large-5.columns
+      label for='last_name'
+        | Last name
+        input name='last_name' type='text'
+  br
+  .row
+    .small-12.medium-3.large-3.columns
+      a href='page_2.html'
+        .button Next 
 
 
- .small-4.columns
-          label.right for='ni' National Insurance number
-        .small-2.columns
-          input#ni type='text'
+
+

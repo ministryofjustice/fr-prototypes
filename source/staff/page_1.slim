@@ -3,26 +3,38 @@ title: Record an application for Fee Remission
 ---
 
 br
-h1 Record an application for Fee Remission
 
 form
   .row
     .small-12.medium-8.large-5.columns
-      label for='claim_type'
+      label for='claim_number'
         | Case, claim or notice to pay number
-        input name='claim_type' type='text' autofocus=""
+        input name='claim_number' type='text' autofocus=""
 
   .h2 Personal details
   br
   .row
-    .small-2.columns
-      label.right Name
-    .small-2.columns
-      input#title type='text' placeholder='Title'
-    .small-4.columns
-      input#first_name type='text' placeholder='First names'
-    .small-4.columns
-      input#last_name type='text' placeholder='Last name'
+    .small-12.medium-4.large-3.columns
+      label for='title'
+        | Title
+        input name='title' type='text'
+    .small-12.medium-8.large-5.columns
+      label for='first_name'
+        | First names
+        input name='first_name' type='text'
+    .small-12.medium-8.large-5.columns
+      label for='last_name'
+        | Last name
+        input name='last_name' type='text'
+    .small-12.columns
+      label.right for='date_signed' Date of birth
+    .small-12.medium-4.large-1.columns
+      input#signed-day type='text'
+    .small-12.medium-4.large-1.columns
+       input#signed-month type='text'
+    .small-12.medium-6.large-2.columns
+      input#signed-year type='text'
+
   .row
     .small-2.columns
       label.right for='date_signed' Date of birth

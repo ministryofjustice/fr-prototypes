@@ -48,16 +48,19 @@ form
   br
   .row
     .small-12.medium-12.large-12.columns
-      h4 Income
+      h4 Receiving benefits
+      ul
+        li test
+        li test
   .row      
     .small-12.medium-6.large-5.columns
-      label for='benefits'
-        | Benefits
         input type="radio" name="pokemon" value="Benefits" id="pokemonRed" 
-        label for="pokemonRed">Benefits
+        label for="pokemonRed"Yes
+  .row      
+    .small-12.medium-6.large-5.columns    
         input type="radio" name="pokemon" value="Income" id="pokemonBlue"  
-        label for="pokemonBlue">Income
-        
+        label for="pokemonBlue"No, based on low income
+
       label for='first_name'
         | First names
         input name='first_name' type='text'
@@ -69,8 +72,7 @@ form
   br
   .row
     .small-12.medium-3.large-3.columns
-      a href='page_2.html'
-        .button Next 
+      .button Next 
 
 
 

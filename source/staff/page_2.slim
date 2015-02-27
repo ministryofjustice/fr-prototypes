@@ -34,10 +34,12 @@ form
     .small-12.medium-6.large-6.columns
       ul.button-group.round
         li
-          a.button.primary href="#savings-investments" Under threshold
+          input#under-threshold name='threshold' type='radio' style='display:none;'
+            label.button.primary for='under-threshold' style='margin-left:0; margin-right:0;' Under threshold
         li
-          a.button.primary href="#savings-investments" Above threshold
-  br 
+          input#above-threshold name='threshold' type='radio' style='display:none;'
+            label.button.primary for='above-threshold' style='margin-left:0; margin-right:0;' Above threshold
+  br
   br
   .row
     .small-12.medium-12.large-12.columns
@@ -59,9 +61,11 @@ form
     .small-12.medium-6.large-6.columns
       ul.button-group.round
         li
-          a.button.primary href="#receiving-benefits"  Yes
+          input#benefits-yes name='benefits' type='radio' style='display:none;'
+            label.button.primary for='benefits-yes' style='margin-left:0; margin-right:0;' Yes
         li
-          a.button.primary href="#receiving-benefits"  No
+          input#benefits-no name='benefits' type='radio' style='display:none;'
+            label.button.primary for='benefits-no' style='margin-left:0; margin-right:0;' No
   br
   br
   .row
@@ -123,3 +127,9 @@ form
 
 
 
+javascript:
+  $(document).ready( function() {
+    $('input[type="radio"]').on('click', function() {
+      alert('hi');
+    });
+  });

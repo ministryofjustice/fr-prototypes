@@ -14,7 +14,5 @@ html
         = partial 'partials/layout/footer'
         p
         = link_to '', '/'
-    = javascript_include_tag 'libs', 'app', 'showhide'
+    = javascript_include_tag 'libs', 'app', 'details.polyfill'
     = include_javascripts(current_page.data.javascripts || current_page.data.javascripts)
-
-

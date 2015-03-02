@@ -1,11 +1,13 @@
 doctype html
-html
+html ng-app="app"
   head
     meta charset='utf-8'
     title = current_page.data.title || yield_content(:page_title) || 'Ministry of Justice'
     meta name='viewport' content='width=device-width'
-    = stylesheet_link_tag 'styles'
+
     = include_stylesheets(current_page.data.stylesheets || current_page.data.stylesheet)
+    = stylesheet_link_tag 'styles', 'r2calc'
+
   body class="#{yield_content(:body_class)}"
     = partial 'partials/layout/nav'
     .row

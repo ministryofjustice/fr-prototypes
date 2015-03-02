@@ -1,0 +1,166 @@
+= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.js'
+javascript:
+  var app = angular.module('app', []);
+
+  app.controller('Prototype', ['$scope', function ($scope) {
+
+    // $scope.children = 0
+    $scope.fee = 410;
+    $scope.resultShown = false;
+
+    $scope.thresholds = function () {
+      var couple = $scope.couple;
+
+      var lowThreshold = 1085 + (245 * $scope.children)
+      if (couple) {
+        lowThreshold = lowThreshold + 160;
+      }
+
+      var highThreshold = lowThreshold + Math.min(4000, $scope.fee * 2)
+
+      var thresholds = {
+        low: lowThreshold,
+        high: highThreshold
+      }
+
+      return thresholds;
+    }
+
+    $scope.incr = function (number) {
+      $scope.children = $scope.children + number;
+      if ($scope.children < 0) {
+        $scope.children = 0;
+      }
+    }
+
+    $scope.fullRemission = function () {
+      return ($scope.monthlyIncome < $scope.thresholds().low);
+    }
+
+    $scope.partialRemission = function () {
+      return ($scope.monthlyIncome >= $scope.thresholds().low && $scope.monthlyIncome < $scope.thresholds().high);
+    }
+
+    $scope.coupleName = function () {
+      if ($scope.couple) {
+        return "person who is part of a couple";
+      } else {
+        return "single person";
+      }
+    }
+
+    $scope.feePayable = function () {
+      if (this.fullRemission()) {
+        return 0;
+      } else if (this.partialRemission()) {
+        var incomeAboveThreshold = $scope.monthlyIncome - this.thresholds().low;
+        return Math.min(incomeAboveThreshold / 2, $scope.fee);
+      } else {
+        return $scope.fee;
+      }
+    }
+
+    $scope.feeRemitted = function () {
+      return $scope.fee - this.feePayable();
+    }
+
+    $scope.showResult = function () {
+      if ($scope.monthlyIncome) {
+        $scope.resultShown = true;
+      } else {
+        $scope.resultShown = false;
+      }
+
+    }
+
+  }]);
+
+#canvas ng-controller="Prototype"
+  .row
+    .small-12.medium-12.large-12.columns
+      h3 R2 Calculator
+
+  .row style="color: #ccc"
+    s.small-6.columns
+      .small-6.columns
+        label.inline for='fee' Fee
+      .small-6.columns
+        .row.columns
+          .row.collapse.prefix-radius
+            .small-3.columns
+              span.prefix £
+            .small-9.columns
+              input type="number" ng-model="fee"
+  hr
+
+  .row
+    .columns.small-12
+      h3 Process application based on income:
+
+  .row
+    .columns.small-12.medium-6
+      .row
+        .columns.small-6
+          label.inline for='couple' Part of a couple?
+        .columns.small-6
+          .switch.radius
+            input id="couple" type="checkbox" name="couple" ng-model="couple"
+            label for='couple' Part of a couple?
+
+      .row
+        .columns.small-6
+          label.inline for='couple' Number of children
+        .columns.small-6 ng-init="children = 0"
+          a class="button secondary tiny no_selection" ng-click="incr(-1)" -
+          strong style="padding: 0 10px;" {{ children }}
+          a class="button secondary tiny no_selection" ng-click="incr(1)" +
+
+      .row
+        .columns.small-6
+          label.inline for='couple' Gross monthly income
+        .columns.small-6
+          .row.columns
+            .row.collapse.prefix-radius
+              .columns.small-3
+                span.prefix £
+              .columns.small-6
+                input type='number' ng-model="monthlyIncome" ng-blur="showResult()"
+              .columns.small-3
+                span.postfix
+                  a Next
+
+    .columns.small-12.medium-6.calc
+      ul
+        li.full ng-class="{selected: fullRemission() }"
+          span.result Full remission
+          |&nbsp;if income is below&nbsp;
+          strong £{{ thresholds().low }}
+          |.
+        li.partial ng-class="{selected: partialRemission() }"
+          span.result Part remission
+          |&nbsp;if income is between&nbsp;
+          strong £{{ thresholds().low }}
+          |&nbsp;and&nbsp;
+          strong £{{ thresholds().high }}
+          |.
+        li.none ng-class="{selected: monthlyIncome >= thresholds().high }"
+          span.result No remission
+          |&nbsp;if income is above&nbsp;
+          strong £{{ thresholds().high }}
+          |.
+
+  .row
+    .columns.small-12 ng-show='resultShown'
+      p
+        |Calculation for
+        strong
+          |&nbsp;{{ coupleName() }}
+        |, with&nbsp;
+        strong
+          |{{ children }} children
+        |, and gross&nbsp;
+        strong monthly income of £{{ monthlyIncome }}
+        |:
+      ul
+        li Fee remitted: {{ feeRemitted() | currency:"£" }}
+        li Fee payable: {{ feePayable() | currency:"£" }}

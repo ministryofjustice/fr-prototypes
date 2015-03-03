@@ -76,18 +76,6 @@ javascript:
   }]);
 
 #canvas ng-controller="Prototype"
-  .row style="color: #ccc"
-    s.small-6.columns
-      .small-6.columns
-        label.inline for='fee' Fee
-      .small-6.columns
-        .row.columns
-          .row.collapse.prefix-radius
-            .small-3.columns
-              span.prefix £
-            .small-9.columns
-              input type="number" ng-model="fee"
-
   .row
     .small-12.medium-3.large-3.columns
       label for='claim_number'
@@ -95,7 +83,7 @@ javascript:
       .small-2.medium-2.large-3.columns style="padding:0px;"
         span.prefix£
       .small-10.medium-10.large-9.columns style="padding:0px;"
-        input type="text"
+        input type="number" ng-model="fee"
   .row
     .columns.small-12.medium-6
       .row

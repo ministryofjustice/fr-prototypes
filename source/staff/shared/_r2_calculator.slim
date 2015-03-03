@@ -115,7 +115,35 @@ javascript:
             span.postfix
               a Next
 
-  .columns.small-12.medium-6.large-5.calc
+  .row
+    .small-12.medium-3.large-3.columns
+      label for='couple'
+        | Gross monthly income
+      .small-2.medium-2.large-3.columns style="padding:0px;"
+        span.prefix £
+      .small-9.medium-9.large-8.columns style="padding:0px;"
+        input type="number" ng-model="monthlyIncome" ng-blur="showResult()"
+      .small-1.medium-1.large-1.columns style="padding:0px;"
+        span.postfix
+          a Next
+
+  .row
+    .columns.small-12.medium-12.large-12 ng-show='resultShown'
+      p
+        |Calculation for
+        strong
+          |&nbsp;{{ coupleName() }}
+        |, with&nbsp;
+        strong
+          |{{ children }} children
+        |, and gross&nbsp;
+        strong monthly income of £{{ monthlyIncome }}
+        |:
+      ul
+        li Fee remitted: {{ feeRemitted() | currency:"£" }}
+        li Fee payable: {{ feePayable() | currency:"£" }}
+
+  .columns.small-12.medium-12.large-12.calc
     ul
       li.full ng-class="{selected: fullRemission() }"
         span.result Full remission
@@ -134,19 +162,3 @@ javascript:
         |&nbsp;if income is above&nbsp;
         strong £{{ thresholds().high }}
         |.
-
-  .row
-    .columns.small-12.medium-6.large-5 ng-show='resultShown'
-      p
-        |Calculation for
-        strong
-          |&nbsp;{{ coupleName() }}
-        |, with&nbsp;
-        strong
-          |{{ children }} children
-        |, and gross&nbsp;
-        strong monthly income of £{{ monthlyIncome }}
-        |:
-      ul
-        li Fee remitted: {{ feeRemitted() | currency:"£" }}
-        li Fee payable: {{ feePayable() | currency:"£" }}

@@ -78,7 +78,7 @@ form
       .small-12.medium-12.large-12.columns
         h4 Remission 2 calculator
         = partial 'shared/r2_calculator'
-  br
+#end-of-calc
 .row
     .small-12.medium-6.large-6.columns
       ul.button-group.round.even-2
@@ -90,7 +90,27 @@ form
 
 
 
+
 javascript:
+  var isOnScreen = function(control) {
+
+    var win = $(window);
+
+    var viewport = {
+      top: win.scrollTop(),
+      left: win.scrollLeft()
+    };
+    viewport.right = viewport.left + win.width();
+    viewport.bottom = viewport.top + win.height();
+
+    var $this = $(control)
+    var bounds = $this.offset();
+    bounds.right = bounds.left + $this.outerWidth();
+    bounds.bottom = bounds.top + $this.outerHeight();
+
+    return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+
+  };
   $(document).ready( function() {
     $('input[type="radio"][name="benefits"]').click( function() {
       var show_id = $(this).attr('id');
@@ -101,6 +121,11 @@ javascript:
       } else {
         $('#benefits-yes-show').hide();
         $('#benefits-no-show').show();
+      }
+      if (isOnScreen('#end-of-calc') == false) {
+        $('body').animate({
+          scrollTop: $("#end-of-calc").offset().top
+        }, 2000);
       }
     });
   });

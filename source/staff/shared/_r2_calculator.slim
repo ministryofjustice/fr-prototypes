@@ -113,7 +113,5 @@ javascript:
   .row
     .small-12.medium-7.large-7.columns ng-show='resultShown'
       .panel.callout
-        p Amount remitted: 
-          strong {{ feeRemitted() | currency:"£" }}
-        p Amount to pay:
-          strong {{ feePayable() | currency:"£" }}
+        p Amount remitted: {{ feeRemitted() | currency:"£" }}
+        p Amount to pay: {{ feePayable() | currency:"£" }}

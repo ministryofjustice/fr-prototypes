@@ -112,16 +112,6 @@ javascript:
 
   .row
     .columns.small-12.medium-12.large-12 ng-show='resultShown'
-      p
-        |Calculation for
-        strong
-          |&nbsp;{{ coupleName() }}
-        |, with&nbsp;
-        strong
-          |{{ children }} children
-        |, and gross&nbsp;
-        strong monthly income of £{{ monthlyIncome }}
-        |:
       ul
         li Fee remitted: {{ feeRemitted() | currency:"£" }}
         li Fee payable: {{ feePayable() | currency:"£" }}

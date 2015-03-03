@@ -96,7 +96,7 @@ javascript:
   .row
     .small-12.medium-6.large-5.columns
       label.inline for='couple' Number of children
-    .columns.small-6 ng-init="children = 0"
+    .small-12.medium-6.large-5.columns ng-init="children = 0"
       a class="button secondary tiny no_selection" ng-click="incr(-1)" -
       strong style="padding: 0 10px;" {{ children }}
       a class="button secondary tiny no_selection" ng-click="incr(1)" +
@@ -128,23 +128,3 @@ javascript:
       ul
         li Fee remitted: {{ feeRemitted() | currency:"£" }}
         li Fee payable: {{ feePayable() | currency:"£" }}
-
-  .columns.small-12.medium-12.large-12.calc
-    ul
-      li.full ng-class="{selected: fullRemission() }"
-        span.result Full remission
-        |&nbsp;if income is below&nbsp;
-        strong £{{ thresholds().low }}
-        |.
-      li.partial ng-class="{selected: partialRemission() }"
-        span.result Part remission
-        |&nbsp;if income is between&nbsp;
-        strong £{{ thresholds().low }}
-        |&nbsp;and&nbsp;
-        strong £{{ thresholds().high }}
-        |.
-      li.none ng-class="{selected: monthlyIncome >= thresholds().high }"
-        span.result No remission
-        |&nbsp;if income is above&nbsp;
-        strong £{{ thresholds().high }}
-        |.

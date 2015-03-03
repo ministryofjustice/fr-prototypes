@@ -109,9 +109,8 @@ javascript:
         span.prefix £
       .small-10.medium-10.large-9.columns style="padding:0px;"
         input type="number" ng-model="monthlyIncome" ng-blur="showResult()"
-
   .row
-    .columns.small-12.medium-12.large-12 ng-show='resultShown'
-      ul
-        li Fee remitted: {{ feeRemitted() | currency:"£" }}
-        li Fee payable: {{ feePayable() | currency:"£" }}
+    .small-12.medium-7.large-7.columns ng-show='resultShown'
+      .panel.callout
+        p Fee remitted: {{ feeRemitted() | currency:"£" }}
+        p Fee payable: {{ feePayable() | currency:"£" }}

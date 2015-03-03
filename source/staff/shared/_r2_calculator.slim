@@ -94,7 +94,7 @@ javascript:
             label for='couple' Part of a couple?
 
   .row
-    .columns.small-6
+    .small-12.medium-6.large-5.columns
       label.inline for='couple' Number of children
     .columns.small-6 ng-init="children = 0"
       a class="button secondary tiny no_selection" ng-click="incr(-1)" -
@@ -102,7 +102,7 @@ javascript:
       a class="button secondary tiny no_selection" ng-click="incr(1)" +
 
   .row
-    .columns.small-6
+    .small-12.medium-6.large-5.columns
       label.inline for='couple' Gross monthly income
     .columns.small-6
       .row.columns
@@ -115,28 +115,28 @@ javascript:
             span.postfix
               a Next
 
-    .columns.small-12.medium-6.calc
-      ul
-        li.full ng-class="{selected: fullRemission() }"
-          span.result Full remission
-          |&nbsp;if income is below&nbsp;
-          strong £{{ thresholds().low }}
-          |.
-        li.partial ng-class="{selected: partialRemission() }"
-          span.result Part remission
-          |&nbsp;if income is between&nbsp;
-          strong £{{ thresholds().low }}
-          |&nbsp;and&nbsp;
-          strong £{{ thresholds().high }}
-          |.
-        li.none ng-class="{selected: monthlyIncome >= thresholds().high }"
-          span.result No remission
-          |&nbsp;if income is above&nbsp;
-          strong £{{ thresholds().high }}
-          |.
+  .columns.small-12.medium-6.large-5.calc
+    ul
+      li.full ng-class="{selected: fullRemission() }"
+        span.result Full remission
+        |&nbsp;if income is below&nbsp;
+        strong £{{ thresholds().low }}
+        |.
+      li.partial ng-class="{selected: partialRemission() }"
+        span.result Part remission
+        |&nbsp;if income is between&nbsp;
+        strong £{{ thresholds().low }}
+        |&nbsp;and&nbsp;
+        strong £{{ thresholds().high }}
+        |.
+      li.none ng-class="{selected: monthlyIncome >= thresholds().high }"
+        span.result No remission
+        |&nbsp;if income is above&nbsp;
+        strong £{{ thresholds().high }}
+        |.
 
   .row
-    .columns.small-12 ng-show='resultShown'
+    .columns.small-12.medium-6.large-5 ng-show='resultShown'
       p
         |Calculation for
         strong

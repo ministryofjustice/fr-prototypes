@@ -15,7 +15,8 @@
   }
 
   &.callout-passed{
-    background-color: #43AC6A;;
+    background-color: #43AC6A;
+    color; #fff;
   }
   &.callout-failed {
     background-color: #f2f2f2;
@@ -25,7 +26,7 @@
     margin:0;
   }
   .number{
-    font-size: 500;
+    font-size: 24px;
   }
 }
 #dwp_data {

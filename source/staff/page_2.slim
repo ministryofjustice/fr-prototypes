@@ -19,13 +19,10 @@ form
 
 
 
-  <div class="row">
-    <div class="small-12 medium-6 large-5 columns">
-      label for='claim_number'
-        | Age
-        <span class="prefix" style="padding-left: 10px; text-align:left;">47</span>
-    </div>
-  </div>
+  .row
+    .columns.small-12.medium-6.large-5
+      label for='age' Age
+      input type='number' disabled='true' value='47'
 
   br
   .row
@@ -70,16 +67,16 @@ form
             label.button.primary for='benefits-no' style='margin-left:0; margin-right:0;' No
   br
   br
-  #benefits-yes-show.hide
-    .row
-      .small-12.medium-7.large-7.columns
-        h4 Benefits check
-        = partial 'shared/dwp_form'
-  #benefits-no-show.hide
-    .row
-      .small-12.medium-7.large-7.columns
-        h4 Income check
-        = partial 'shared/r2_calculator'
+#benefits-yes-show.hide
+  .row
+    .small-12.medium-7.large-7.columns
+      h4 Benefits check
+  = partial 'shared/dwp_form'
+#benefits-no-show.hide
+  .row
+    .small-12.medium-7.large-7.columns
+      h4 Income check
+  = partial 'shared/r2_calculator'
 br
 .row#end-of-calc
     .small-12.medium-6.large-6.columns
@@ -88,10 +85,6 @@ br
           a.button.success href="page_3.html" Accept application
         li 
           a.button.alert href="page_3.html" Reject application
-
-
-
-
 
 javascript:
   var isOnScreen = function(control) {

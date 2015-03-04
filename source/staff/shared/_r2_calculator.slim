@@ -78,13 +78,13 @@ javascript:
 #canvas ng-controller="Prototype"
   .row
     .small-12.medium-3.large-3.columns
-      label for='claim_number'
-        | Fee
-      .small-2.medium-2.large-3.columns style="padding:0px;"
-        span.prefix£
-      .small-10.medium-10.large-9.columns style="padding:0px;"
-        input type="number" ng-model="fee"
- 
+      label for='r2_fee' Fee
+      .row.collapse.prefix-radius
+        .small-2.medium-2.large-3.columns
+          span.prefix
+            label.inline for='r2_fee' £
+        .small-10.medium-10.large-9.columns style="padding:0px;"
+          input id="r2_fee" name="r2_fee" type="number" ng-model="fee"
   .row
     .small-12.medium-6.large-5.columns
       label for='couple'
@@ -92,24 +92,23 @@ javascript:
         .switch.radius
             input id="couple" type="checkbox" name="couple" ng-model="couple"
             label for='couple' Part of a couple?
-
   .row
     .small-12.medium-6.large-5.columns ng-init="children = 0"
-      label.inline for='couple' 
+      label.inline
         | Number of children
-        a class="button secondary tiny no_selection" ng-click="incr(-1)" -
-        strong style="padding: 0 10px;" {{ children }}
-        a class="button secondary tiny no_selection" ng-click="incr(1)" +
-
+        .row
+          .columns.small-12
+            a class="button secondary tiny no_selection" ng-click="incr(-1)" -
+            strong style="padding: 0 10px;" {{ children }}
+            a class="button secondary tiny no_selection" ng-click="incr(1)" +
   .row
     .small-12.medium-3.large-3.columns
-      label for='couple'
+      label for='r2_income'
         | Gross monthly income
       .small-2.medium-2.large-3.columns style="padding:0px;"
         span.prefix £
       .small-10.medium-10.large-9.columns style="padding:0px;"
-        input type="number" ng-model="monthlyIncome" ng-blur="showResult()"
-  br
+        input name="r2_income" id="r2_income" type="number" ng-model="monthlyIncome" ng-blur="showResult()"
   .row
     .small-12.medium-7.large-7.columns ng-show='resultShown'
       .panel.callout

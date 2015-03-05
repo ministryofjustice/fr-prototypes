@@ -77,7 +77,7 @@ javascript:
 
 #canvas ng-controller="Prototype"
   .row
-    .small-12.medium-12.large-12.columns
+    .small-12.medium-3.large-3.columns
       label for='r2_fee' Fee
       .row.collapse.prefix-radius
         .small-2.medium-2.large-3.columns
@@ -98,11 +98,11 @@ javascript:
         | Number of children
         .row
           .columns.small-12
-            a class="button secondary tiny no_selection" ng-click="incr(-1)" -
+            a class="button tiny no_selection" ng-click="incr(-1)" -
             strong style="padding: 0 10px;" {{ children }}
-            a class="button secondary tiny no_selection" ng-click="incr(1)" +
+            a class="button tiny no_selection" ng-click="incr(1)" +
   .row
-    .small-12.medium-12.large-12.columns
+    .small-12.medium-3.large-3.columns
       label for='r2_income'
         | Gross monthly income
       .small-2.medium-2.large-3.columns style="padding:0px;"

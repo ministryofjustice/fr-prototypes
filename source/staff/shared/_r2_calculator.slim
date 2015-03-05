@@ -108,7 +108,12 @@ javascript:
       .small-2.medium-2.large-3.columns style="padding:0px;"
         span.prefix £
       .small-10.medium-10.large-9.columns style="padding:0px;"
-        input name="r2_income" id="r2_income" type="number" ng-model="monthlyIncome" ng-blur="showResult()"
+        input name="r2_income" id="r2_income" type="number" ng-model="monthlyIncome" 
+  .row
+    .small-12.medium-8.large-5.columns
+      .form-group
+        a.button.small.success.no_selection ng-click="showResult()" Check
+
   .row
     .small-12.medium-7.large-7.columns ng-show='resultShown'
       .panel.callout

@@ -1,8 +1,13 @@
 ---
-title: Help with fees
-nav_title: 'Help with fees: R1 Calculator'
+title: 'Help with fees'
+nav_title: 'Help with fees'
 ---
 h2 Check benefits status
-= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'
 
 = partial 'shared/dwp_form'
+
+
+javascript:
+  $(document).ready( function() {
+    $('#dwp-check').addClass('active')
+  });

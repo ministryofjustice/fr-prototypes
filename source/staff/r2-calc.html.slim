@@ -1,8 +1,13 @@
 ---
 title: 'R2 Calculator'
-nav_title: 'Help with fees: R2 calculator'
+nav_title: 'Help with fees'
 ---
 .row
   .small-12.medium-12.large-12.columns
     h3 R2 Calculator
 = partial 'shared/r2_calculator'
+
+javascript:
+  $(document).ready( function() {
+    $('#r2-calc').addClass('active')
+  });

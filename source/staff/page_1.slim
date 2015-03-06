@@ -10,13 +10,6 @@ form
   .row
     .small-12.medium-6.large-5.columns
       label for='claim_number'
-        | Application reference number
-      span.subheader 
-        | (optional)
-        input name='claim_number' id='claim_number' type='text'
-  .row
-    .small-12.medium-6.large-5.columns
-      label for='claim_number'
         | Case, claim or 'notice to pay' number
         span.subhead 
           | (optional)
@@ -38,7 +31,6 @@ form
           option value="high-court" Land & PC
           option value="insolvency" Immigration and Asylum Chamber (IAC)
           option value="family" Upper Tribunal Immigration and Asylum Chamber (UTIAC)
-
   .row
     .small-12.medium-3.large-3.columns
       label for='fee' Fee
@@ -47,21 +39,6 @@ form
           label.inline for='fee' £
       .small-10.medium-10.large-9.columns style="padding:0px;"
         input id='fee' type="number"
-  .row
-    .small-12.medium-4.large-3.columns
-      label for='dob_day' Date the fee was paid
-      .small-4.medium-4.large-4.columns style="padding-left: 0px;"
-        label for='dob_day' Day
-      .small-4.medium-4.large-4.columns style="padding-left: 0px;"
-        label for='dob_month' Month
-      .small-4.medium-4.large-4.columns style="padding: 0px;"
-        label for='dob_year' Year
-      .small-4.medium-4.large-4.columns style="padding-left: 0px;"
-        input id='dob_day' type='number'
-      .small-4.medium-4.large-4.columns style="padding-left: 0px;"
-        input id='dob_month' type='number'
-      .small-4.medium-4.large-4.columns style="padding: 0px;"
-        input id='dob_year' type='number'
   br
   .row
     .small-12.medium-12.large-12.columns

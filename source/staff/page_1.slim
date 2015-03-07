@@ -9,11 +9,6 @@ form
       h4 Case details 
   .row
     .small-12.medium-6.large-5.columns
-      label for='claim_number'
-        | Case, claim or 'notice to pay' number
-        input name='claim_number' id='claim_number' type='text'
-  .row
-    .small-12.medium-6.large-5.columns
       label for='jurisdiction'
         | Jurisdiction
         select id='jurisdiction' name='jurisdiction'
@@ -29,6 +24,11 @@ form
           option value="high-court" Land & PC
           option value="insolvency" Immigration and Asylum Chamber (IAC)
           option value="family" Upper Tribunal Immigration and Asylum Chamber (UTIAC)
+  .row
+    .small-12.medium-6.large-5.columns
+      label for='claim_number'
+        | Case, claim or 'notice to pay' number
+        input name='claim_number' id='claim_number' type='text'
   .row
     .small-12.medium-3.large-3.columns
       label for='fee' Fee

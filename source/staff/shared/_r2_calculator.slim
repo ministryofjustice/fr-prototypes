@@ -85,16 +85,14 @@ javascript:
           input id="r2_fee" name="r2_fee" type="number" ng-model="fee"
   .row
     .small-12.medium-6.large-5.columns
-      label
-        |Part of a couple?
-        .row
-          .small-12.columns
-            label for='couple-yes' style="font-size: 1.5rem;"
-              input id='couple-yes' name="couple" type="radio" value='true' ng-model="couple"
-              |  Yes
-            label for='couple-no' style="font-size: 1.5rem;"
-              input id='couple-no' name="couple" type="radio" value='false' ng-model="couple"
-              |  No
+      .row
+        .small-12.columns
+          label for='couple-no'
+            input id='couple-no' name="couple" type="radio" value='false' ng-model="couple"
+            |  Single
+          label for='couple-yes'
+            input id='couple-yes' name="couple" type="radio" value='true' ng-model="couple"
+            |  Part of a couple
 
   .row
     .small-12.medium-6.large-5.columns ng-init="children = 0"

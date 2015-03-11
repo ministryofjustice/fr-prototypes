@@ -9,7 +9,7 @@ javascript:
     $scope.resultShown = false;
 
     $scope.thresholds = function () {
-      var couple = $scope.couple;
+      var couple = ($scope.couple=='true');
 
       var lowThreshold = 1085 + (245 * $scope.children)
       if (couple) {
@@ -42,7 +42,7 @@ javascript:
     }
 
     $scope.coupleName = function () {
-      if ($scope.couple) {
+      if ($scope.couple=='true') {
         return "person who is part of a couple";
       } else {
         return "single person";
@@ -85,11 +85,18 @@ javascript:
           input id="r2_fee" name="r2_fee" type="number" ng-model="fee"
   .row
     .small-12.medium-6.large-5.columns
-      label for='couple'
-        | Part of a couple?
+      label
+        |Part of a couple?
         .row
           .small-12.columns
-        input id="couple" type="checkbox" name="couple" ng-model="couple"
+            /input id="couple" type="checkbox" name="couple" ng-model="couple"
+            input id='couple-no' name="couple" type="radio" value='false' ng-model="couple"
+              label.inline for='couple-no'
+                |No
+            input id='couple-yes' name="couple" type="radio" value='true' ng-model="couple"
+              label for='couple-yes'
+                |Yes
+
   .row
     .small-12.medium-6.large-5.columns ng-init="children = 0"
       label.inline

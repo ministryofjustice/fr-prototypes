@@ -83,6 +83,7 @@ javascript:
             label.inline for='r2_fee' £
         .small-10.medium-10.large-9.columns style="padding:0px;"
           input id="r2_fee" name="r2_fee" type="number" ng-model="fee"
+  br
   .row
     .small-12.medium-6.large-5.columns
       .row
@@ -93,6 +94,7 @@ javascript:
           label for='couple-yes'
             input id='couple-yes' name="couple" type="radio" value='true' ng-model="couple"
             |  Part of a couple
+  br
 
   .row
     .small-12.medium-6.large-5.columns ng-init="children = 0"
@@ -104,7 +106,7 @@ javascript:
   .row
     .small-12.medium-3.large-3.columns
       label for='r2_income'
-        | Income total
+        | Total monthly income
       .small-2.medium-2.large-3.columns style="padding:0px;"
         span.prefix £
       .small-10.medium-10.large-9.columns style="padding:0px;"
@@ -112,7 +114,7 @@ javascript:
   .row
     .small-12.medium-8.large-5.columns
       .form-group
-        a.button.small.success.no_selection ng-click="showResult()" Check
+        a.button.small.no_selection ng-click="showResult()" Check
 
   .row
     .small-12.medium-7.large-7.columns ng-show='resultShown'

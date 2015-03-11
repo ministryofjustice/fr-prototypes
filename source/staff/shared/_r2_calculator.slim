@@ -65,7 +65,7 @@ javascript:
     }
 
     $scope.showResult = function () {
-      if ($scope.monthlyIncome) {
+      if ($scope.monthlyIncome && $scope.coupleName()!='' ) {
         $scope.resultShown = true;
       } else {
         $scope.resultShown = false;

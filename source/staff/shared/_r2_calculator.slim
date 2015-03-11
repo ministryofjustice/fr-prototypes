@@ -44,8 +44,10 @@ javascript:
     $scope.coupleName = function () {
       if ($scope.couple=='true') {
         return "person who is part of a couple";
-      } else {
+      } else if ($scope.couple=='false') {
         return "single person";
+      } else {
+        return '';
       }
     }
 

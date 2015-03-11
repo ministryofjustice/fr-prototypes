@@ -70,9 +70,7 @@ javascript:
       } else {
         $scope.resultShown = false;
       }
-
     }
-
   }]);
 
 #canvas ng-controller="Prototype"
@@ -97,10 +95,8 @@ javascript:
       label.inline
         | Number of children
         .row
-          .columns.small-12
-            a class="button tiny no_selection" ng-click="incr(-1)" -
-            strong style="padding: 0 10px;" {{ children }}
-            a class="button tiny no_selection" ng-click="incr(1)" +
+          .columns.small-3
+            input type="number" ng-model="children" min=0
   .row
     .small-12.medium-3.large-3.columns
       label for='r2_income'

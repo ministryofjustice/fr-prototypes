@@ -1,11 +1,14 @@
 = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.js'
 javascript:
   var app = angular.module('app', []);
-
-  app.controller('Prototype', ['$scope', function ($scope) {
-
+  app.config(['$locationProvider', function appConfig($locationProvider) {
+    // enable html5Mode for pushstate ('#'-less URLs)
+    $locationProvider.html5Mode(true);
+  }]);
+  app.controller('Prototype', function ($scope, $location) {
     // $scope.children = 0
-    $scope.fee = 410;
+
+    $scope.fee = parseInt($location.search().fee,10);
     $scope.resultShown = false;
 
     $scope.thresholds = function () {

@@ -117,7 +117,6 @@ javascript:
   $(document).ready( function() {
     $('#proccess-application').addClass('active');
     $('#fee').bind('change', function () {
-      console.log($(this).val());
-    $("#next-url").attr("href", 'page_2.html?fee=' + $(this).val());
+      $("#next-url").attr("href", 'page_2.html?fee=' + $(this).val());
     });
   });

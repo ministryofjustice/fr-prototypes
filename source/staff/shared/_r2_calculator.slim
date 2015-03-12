@@ -3,12 +3,12 @@ javascript:
   var app = angular.module('app', []);
   app.config(['$locationProvider', function appConfig($locationProvider) {
     // enable html5Mode for pushstate ('#'-less URLs)
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
   }]);
   app.controller('Prototype', function ($scope, $location) {
     // $scope.children = 0
 
-    $scope.fee = parseInt($location.search().fee,10);
+    //$scope.fee = parseInt($location.search().fee,10);
     $scope.resultShown = false;
 
     $scope.thresholds = function () {

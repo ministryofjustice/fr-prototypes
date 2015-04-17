@@ -46,8 +46,11 @@ form
         | Case number
         input name='claim_number' id='claim_number' type='text'
   .row
+    .small-12.medium-12.large-12.columns
+      h4 Refund cases
+  .row
     .small-12.medium-4.large-3.columns
-      label for='dob_day' Date fee paid (if already paid) 
+      label for='dob_day' Date fee paid
       .small-4.medium-4.large-4.columns style="padding-left: 0px;"
         label for='dob_day' Day
       .small-4.medium-4.large-4.columns style="padding-left: 0px;"
@@ -60,6 +63,11 @@ form
         input id='dob_month' type='number'
       .small-4.medium-4.large-4.columns style="padding: 0px;"
         input id='dob_year' type='number'
+  .row      
+    .small-12.medium-6.large-5.columns
+      label for='first_name'
+        | Refund reference number
+        input name='first_name' type='text'      
   br
   .row
     .small-12.medium-3.large-3.columns

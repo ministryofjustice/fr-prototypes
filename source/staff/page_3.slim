@@ -147,7 +147,14 @@ javascript:
   .row
     .small-12.medium-6.large-5.columns ng-show='resultShown'
       .panel.callout
-        p Amount remitted: {{ feeRemitted() | currency:"£" }}
-        p Amount to pay: {{ feePayable() | currency:"£" }}
+        .row
+          .small-12.medium-6.large-5.columns
+            | Amount remitted:
+          .small-12.medium-6.large-7.columns
+            {{ feeRemitted() | currency:"£" }}
+          .small-12.medium-6.large-5.columns
+            | Amount to pay:
+          .small-12.medium-6.large-7.columns
+            {{ feePayable() | currency:"£" }}  
         a href='page_4.html'
           .button Next - Review and submit

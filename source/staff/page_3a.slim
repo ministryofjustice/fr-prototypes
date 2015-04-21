@@ -14,14 +14,7 @@ form
   .row
     .small-12.medium-6.large-6.columns
       .panel
-        a.button#check-dwp Check benefits
-    .small-12.medium-6.large-6.columns
-      .panel
-        a#next-url href='page_2.html'
-          .button Calculate fee
-        label for='benefits-no'
-        input#benefits-no name='benefits' type='radio' 
-        |  No
+        a.button.small.success#check-dwp Check benefits
 
   #dwp-result.callout.hide
     span.number placeholder
@@ -31,32 +24,13 @@ form
       .small-12.medium-7.large-7.columns
         h4 Benefits check
     = partial 'shared/dwp_form'
-  #benefits-no-show.hide
-    .row
-      .small-12.medium-7.large-7.columns
-        h4 Income check
-    = partial 'shared/r2_calculator'
+  br
+  .row
+    .small-12.medium-7.large-7.columns
+      a href='page_4a.html'
+        .button Next - Review and submit
   
-  br
-  .row      
-    .small-12.medium-6.large-5.columns
-      label for='claim_number'
-        | Comments
-        input name='claim_number' id='claim_number' type='text'
-  br
-  .row#end-of-calc
-    .small-12.medium-6.columns
-      .row
-        .small-12.medium-6.columns
-          a href='page_3.html'
-            .button.success Accept application
 
-  .row#end-of-calc
-    .small-12.medium-6.columns
-      .row
-        .small-12.medium-6.columns
-          a href='page_3.html'
-            .button.alert Reject application
 
 javascript:
   var isOnScreen = function(control) {

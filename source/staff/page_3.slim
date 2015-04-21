@@ -144,6 +144,7 @@ javascript:
     .small-12.medium-8.large-5.columns
       .form-group
         a.button.small.success.no_selection ng-click="showResult()" Check
+  br
   .row
     .small-12.medium-6.large-5.columns ng-show='resultShown'
       .panel.callout
@@ -156,5 +157,5 @@ javascript:
             | Amount to pay:
           .small-12.medium-6.large-7.columns
             {{ feePayable() | currency:"£" }}  
-        a href='page_4.html'
-          .button Next - Review and submit
+      a href='page_4.html'
+        .button Next - Review and submit

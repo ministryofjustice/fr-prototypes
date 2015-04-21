@@ -6,7 +6,7 @@ form
   br
   .row
     .small-12.medium-12.large-12.columns
-      h2 Process application 17:56
+      h2 Process application
   br
   .row
     .small-12.medium-12.large-12.columns
@@ -14,9 +14,9 @@ form
 
   .row
     .small-12.medium-6.large-6.columns
-      a.button.small.success#check-dwp Check
+      a.small.#check-dwp Check (to be removed)
 
-  #dwp-result.callout
+  #dwp-result.callout.hide
     span.number
   br
     a href='page_4a.html'
@@ -66,6 +66,8 @@ javascript:
 
 javascript:
   $(document).ready(function () {
+    $('#check-dwp').on('click', function() {
+      $('#dwp-result').show().removeClass('hide');
       var result = !!Math.floor(Math.random() * 2)
       if (result) {
         $('div#dwp-result').addClass('callout-passed').removeClass('callout-failed');

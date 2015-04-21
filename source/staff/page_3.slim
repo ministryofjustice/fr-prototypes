@@ -11,7 +11,7 @@ form
   .row
     .small-12.medium-12.large-12.columns
       h4 Income assessment
-      
+
 = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.js'
 javascript:
   function getUrlParameter(sParam) {
@@ -154,66 +154,6 @@ javascript:
         p Amount remitted: {{ feeRemitted() | currency:"£" }}
         p Amount to pay: {{ feePayable() | currency:"£" }}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  .row
-    .small-12.medium-6.large-6.columns
-      .panel
-        a.button#check-dwp Check benefits
-    .small-12.medium-6.large-6.columns
-      .panel
-        a#next-url href='page_2.html'
-          .button Calculate fee
-        label for='benefits-no'
-        input#benefits-no name='benefits' type='radio' 
-        |  No
-
-  #dwp-result.callout.hide
-    span.number placeholder
-
-  #benefits-yes-show.hide
-    .row
-      .small-12.medium-7.large-7.columns
-        h4 Benefits check
-    = partial 'shared/dwp_form'
-  #benefits-no-show.hide
-    .row
-      .small-12.medium-7.large-7.columns
-        h4 Income check
-    = partial 'shared/r2_calculator'
-  
   br
   .row      
     .small-12.medium-6.large-5.columns
@@ -221,19 +161,12 @@ javascript:
         | Comments
         input name='claim_number' id='claim_number' type='text'
   br
-  .row#end-of-calc
-    .small-12.medium-6.columns
+  .row
+    .small-12.columns
       .row
         .small-12.medium-6.columns
-          a href='page_3.html'
-            .button.success Accept application
-
-  .row#end-of-calc
-    .small-12.medium-6.columns
-      .row
-        .small-12.medium-6.columns
-          a href='page_3.html'
-            .button.alert Reject application
+          a href='page_4.html'
+            .button Next - Review and submit
 
 javascript:
   var isOnScreen = function(control) {

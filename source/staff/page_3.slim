@@ -6,7 +6,7 @@ form
   br
   .row
     .small-12.medium-12.large-12.columns
-      h2 Process application 14:00
+      h2 Process application
   br
   .row
     .small-12.medium-12.large-12.columns
@@ -130,7 +130,7 @@ javascript:
       label
         | Number of children
         .row
-          .columns.small-3
+          .columns.small-4.medium-2.large.2
             input type="number" ng-model="children" min=0
   .row
     .small-12.medium-3.large-3.columns
@@ -149,4 +149,6 @@ javascript:
     .small-12.medium-7.large-7.columns ng-show='resultShown'
       .panel.callout
         p Amount remitted: {{ feeRemitted() | currency:"£" }}
-        p Amount to pay: {{ feePayable() | currency:"£" }}
+        p Amount to pay: {{ feePayable() | currency:"£" }} 
+      a href='page_4.html'
+        .button Next - Review and submit

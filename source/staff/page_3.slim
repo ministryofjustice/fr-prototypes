@@ -20,6 +20,14 @@ form
           input#benefits-no name='benefits' type='radio' 
           |  No
 
+  .row
+    .small-12.medium-8.large-5.columns
+      .form-group
+        a.button.small#check-dwp Check
+
+  #dwp-result.callout.hide
+    span.number placeholder
+
   #benefits-yes-show.hide
     .row
       .small-12.medium-7.large-7.columns
@@ -89,6 +97,21 @@ javascript:
         $('body').animate({
           scrollTop: $("#end-of-calc").offset().top
         }, 2000);
+      }
+    });
+  });
+
+javascript:
+  $(document).ready(function () {
+    $('#check-dwp').on('click', function() {
+      $('#dwp-result').show().removeClass('hide');
+      var result = !!Math.floor(Math.random() * 2)
+      if (result) {
+        $('div#dwp-result').addClass('callout-passed').removeClass('callout-failed');
+        $('span.number').text('\u2714 Correct benefits received');
+      } else {
+        $('div#dwp-result').addClass('callout-failed').removeClass('callout-passed');
+        $('span.number').text('Benefits not received');
       }
     });
   });

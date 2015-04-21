@@ -9,28 +9,19 @@ form
       h2 Process application
   .row
     .small-12.medium-12.large-12.columns
-      h4 Check benefits
+      h4 Benefits check
 
   .row
     .small-12.medium-6.large-6.columns
-      .panel
-        a.button.small.success#check-dwp Check benefits
+      a.button.small.success#check-dwp Check
 
   #dwp-result.callout.hide
     span.number placeholder
-
-  #benefits-yes-show.hide
-    .row
-      .small-12.medium-7.large-7.columns
-        h4 Benefits check
-    = partial 'shared/dwp_form'
   br
-  .row
     .small-12.medium-7.large-7.columns
       a href='page_4a.html'
         .button Next - Review and submit
   
-
 
 javascript:
   var isOnScreen = function(control) {

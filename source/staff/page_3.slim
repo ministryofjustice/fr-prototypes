@@ -5,13 +5,17 @@ nav_title: 'Help with fees'
 form
   br
   .row
+    .small-12.medium-12.large-12.columns
+      h2 Process application
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      h4 Income assessment
+
+  .row
     .small-12.medium-6.large-6.columns
       .panel
-          a#next-url href='page_2.html'
-            .button Check benefits
-          label for='benefits-yes'
-          input#benefits-yes name='benefits' type='radio' 
-          |  Yes
+          a.button.#check-dwp Check benefits
     .small-12.medium-6.large-6.columns
       .panel
           a#next-url href='page_2.html'
@@ -19,11 +23,6 @@ form
           label for='benefits-no'
           input#benefits-no name='benefits' type='radio' 
           |  No
-
-  .row
-    .small-12.medium-8.large-5.columns
-      .form-group
-        a.button.small#check-dwp Check
 
   #dwp-result.callout.hide
     span.number placeholder

@@ -115,7 +115,6 @@ javascript:
             label.inline for='r2_fee' £
         .small-10.medium-10.large-9.columns style="padding:0px;"
           input id="r2_fee" name="r2_fee" type="number" ng-model="fee"
-  br
   .row
     .small-12.medium-6.large-5.columns
       .row
@@ -126,8 +125,6 @@ javascript:
           label for='couple-yes'
             input id='couple-yes' name="couple" type="radio" value='true' ng-model="couple"
             |  Part of a couple
-  br
-
   .row
     .small-12.medium-6.large-5.columns ng-init="children = 0"
       label.inline
@@ -146,20 +143,12 @@ javascript:
   .row
     .small-12.medium-8.large-5.columns
       .form-group
-        a.button.small.no_selection ng-click="showResult()" Check
-
+        a.button.small.success.no_selection ng-click="showResult()" Check
   .row
-    .small-12.medium-7.large-7.columns ng-show='resultShown'
+    .small-12.medium-6.large-5.columns ng-show='resultShown'
       .panel.callout
         p Amount remitted: {{ feeRemitted() | currency:"£" }}
         p Amount to pay: {{ feePayable() | currency:"£" }}
-
-  br
-  .row      
-    .small-12.medium-6.large-5.columns
-      label for='claim_number'
-        | Comments
-        input name='claim_number' id='claim_number' type='text'
   br
   .row
     .small-12.columns
@@ -167,59 +156,3 @@ javascript:
         .small-12.medium-6.columns
           a href='page_4.html'
             .button Next - Review and submit
-
-javascript:
-  var isOnScreen = function(control) {
-
-    var win = $(window);
-
-    var viewport = {
-      top: win.scrollTop(),
-      left: win.scrollLeft()
-    };
-    viewport.right = viewport.left + win.width();
-    viewport.bottom = viewport.top + win.height();
-
-    var $this = $(control)
-    var bounds = $this.offset();
-    bounds.right = bounds.left + $this.outerWidth();
-    bounds.bottom = bounds.top + $this.outerHeight();
-
-    return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
-
-  };
-
-  $(document).ready(function () {
-    $('#proccess-application').addClass('active');
-    $('input[type="radio"][name="benefits"]').click( function() {
-      var show_id = $(this).attr('id');
-      if (show_id == 'benefits-yes') {
-        $('#benefits-yes-show').show();
-        $('#dwp-result').hide();
-        $('#benefits-no-show').hide();
-      } else {
-        $('#benefits-yes-show').hide();
-        $('#benefits-no-show').show();
-      }
-      if (isOnScreen('#end-of-calc') == false) {
-        $('body').animate({
-          scrollTop: $("#end-of-calc").offset().top
-        }, 2000);
-      }
-    });
-  });
-
-javascript:
-  $(document).ready(function () {
-    $('#check-dwp').on('click', function() {
-      $('#dwp-result').show().removeClass('hide');
-      var result = !!Math.floor(Math.random() * 2)
-      if (result) {
-        $('div#dwp-result').addClass('callout-passed').removeClass('callout-failed');
-        $('span.number').text('\u2714 Correct benefits received');
-      } else {
-        $('div#dwp-result').addClass('callout-failed').removeClass('callout-passed');
-        $('span.number').text('Benefits not received');
-      }
-    });
-  });

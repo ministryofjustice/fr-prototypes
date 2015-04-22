@@ -85,8 +85,9 @@ javascript:
       if (this.fullRemission()) {
         return 0;
       } else if (this.partialRemission()) {
-        var incomeAboveThreshold = $scope.monthlyIncome - this.thresholds().low;
-        return Math.min(incomeAboveThreshold / 2, $scope.fee);
+  			var incomeAboveThreshold = $scope.monthlyIncome - this.thresholds().low;
+  			var roundedIncomeAbove = incomeAboveThreshold - (incomeAboveThreshold % 10);
+  			return Math.min(roundedIncomeAbove / 2, $scope.fee);
       } else {
         return $scope.fee;
       }

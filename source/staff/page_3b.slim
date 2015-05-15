@@ -10,7 +10,7 @@ form
   br
   .row
     .small-12.medium-12.large-12.columns
-      h4 Income assessment
+      h4 Income calculator
 
 = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.js'
 javascript:
@@ -152,4 +152,4 @@ javascript:
         p Amount remitted: {{ feeRemitted() | currency:"£" }}
         p Amount to pay: {{ feePayable() | currency:"£" }} 
       a href='page_4b.html'
-        .button.success Next - Checklist
+        .button.success Next - Contact details

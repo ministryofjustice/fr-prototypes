@@ -11,7 +11,7 @@ form
   .row
     .small-12.medium-5.large-2.columns 
       strong
-        | Reference number 
+        | Reference 
     .small-12.medium-5.large-2.columns 
       strong
         | Date processed
@@ -21,7 +21,7 @@ form
     .small-12.medium-5.large-2.columns 
       strong
         | Name
-    .small-12.medium-7.large-2.columns 
+    .small-12.medium-7.large-1.columns 
       strong
         | Fee
     .small-12.medium-7.large-2.columns 
@@ -33,17 +33,36 @@ form
       a href='page_8.html'
         | FEE-048X-4RB9 
     .small-12.medium-5.large-2.columns 
-      | 14 May 2015 
+      | 
     .small-12.medium-5.large-2.columns 
       | EVI00859200
     .small-12.medium-5.large-2.columns 
       | Mr John Smith
-    .small-12.medium-7.large-2.columns 
+    .small-12.medium-7.large-1.columns 
       | £50
     .small-12.medium-7.large-2.columns 
       | Approved full fee
   hr
 
+  .row
+    .small-12.medium-12.large-12.columns
+      table
+        thead
+          tr
+            th Reference
+            th Date processed
+            th Case number
+            th Full name
+            th Fee
+            th Outcome
+        tbody
+          tr
+            td FEE-048X-4RB9
+            td 14 May 2015 
+            td EVI00859200
+            td Mr John Smith
+            td £50
+            td Approved full fee
 
 javascript:
   $(document).ready( function() {

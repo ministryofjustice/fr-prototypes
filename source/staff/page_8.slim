@@ -1,0 +1,48 @@
+---
+title: 'Help with fees'
+nav_title: 'Help with fees'
+---
+form
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      h2 Search results
+      hr
+      p 4 results found for 'Smith'
+  
+  .row
+    .small-12.medium-12.large-12.columns
+      table
+        thead
+          tr
+            th Reference
+            th Date processed
+            th Case number
+            th Full name
+            th Fee
+            th Outcome
+        tbody
+          tr
+            td 
+              a href='page_8.html'
+                |FEE-048X-4RB9
+            td 14 May 2015 
+            td EVI00859200
+            td Mr John Smith
+            td £50
+            td Approved full fee
+          tr
+            td 
+              a href='page_8.html'
+                |FEE-9F72-WP82
+            td 21 Ma4 2013 
+            td DIV69823509
+            td Mrs Vanessa Smith
+            td £410
+            td Approved full fee
+
+
+javascript:
+  $(document).ready( function() {
+    $('#proccess-application').addClass('active')
+  });

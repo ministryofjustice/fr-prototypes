@@ -12,70 +12,21 @@ form
     .small-12.medium-12.large-12.columns
       h4 Check benefits
 
-  .row
-    .small-12.medium-6.large-6.columns
-      a.button.small.success#check-dwp Check benefits
-
-  #dwp-result.callout.hide
-    span.number placeholder
+  #dwp-result.callout
+    span.number benefits
     br
-    br
-    a href='page_4a.html'
-      .button Next - Contact details
-  
 
-javascript:
-  var isOnScreen = function(control) {
-
-    var win = $(window);
-
-    var viewport = {
-      top: win.scrollTop(),
-      left: win.scrollLeft()
-    };
-    viewport.right = viewport.left + win.width();
-    viewport.bottom = viewport.top + win.height();
-
-    var $this = $(control)
-    var bounds = $this.offset();
-    bounds.right = bounds.left + $this.outerWidth();
-    bounds.bottom = bounds.top + $this.outerHeight();
-
-    return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
-
-  };
-
-  $(document).ready(function () {
-    $('#proccess-application').addClass('active');
-    $('input[type="radio"][name="benefits"]').click( function() {
-      var show_id = $(this).attr('id');
-      if (show_id == 'benefits-yes') {
-        $('#benefits-yes-show').show();
-        $('#dwp-result').hide();
-        $('#benefits-no-show').hide();
-      } else {
-        $('#benefits-yes-show').hide();
-        $('#benefits-no-show').show();
-      }
-      if (isOnScreen('#end-of-calc') == false) {
-        $('body').animate({
-          scrollTop: $("#end-of-calc").offset().top
-        }, 2000);
-      }
-    });
-  });
+a href='page_4a.html'
+  .button Next - Contact details
 
 javascript:
   $(document).ready(function () {
-    $('#check-dwp').on('click', function() {
-      $('#dwp-result').show().removeClass('hide');
-      var result = !!Math.floor(Math.random() * 2)
-      if (result) {
-        $('div#dwp-result').addClass('callout-passed').removeClass('callout-failed');
-        $('span.number').text('\u2714 Correct benefits received');
-      } else {
-        $('div#dwp-result').addClass('callout-failed').removeClass('callout-passed');
-        $('span.number').text('Benefits not received');
-      }
-    });
+    var result = !!Math.floor(Math.random() * 2)
+    if (result) {
+      $('div#dwp-result').addClass('callout-passed').removeClass('callout-failed');
+      $('span.number').text('\u2714 Correct benefits received');
+    } else {
+      $('div#dwp-result').addClass('callout-failed').removeClass('callout-passed');
+      $('span.number').text('Benefits not received');
+    }
   });

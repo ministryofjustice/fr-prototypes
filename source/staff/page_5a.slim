@@ -2,7 +2,6 @@
 title: 'Help with fees'
 nav_title: 'Help with fees'
 ---
-
 form
   br
   .row
@@ -10,26 +9,147 @@ form
       h2 Process application
   br
   .row
-    .small-12.medium-6.large-5.columns    
-      input id="checkbox1" type="checkbox"
-        label for="checkbox1" 
-        | Statement of truth signed
+    .small-12.medium-7.large-9.columns
+      h4 Personal details
+    .small-12.medium-5.large-3.columns
+      .text-right
+        a href='#'
+          | Change personal details
+  .row
+    .small-12.medium-5.large-3.columns 
+      .subheader Full name
+    .small-12.medium-7.large-9.columns 
+      | Mr John Smith
+  .row
+    .small-12.medium-5.large-3.columns 
+      .subheader Date of birth
+    .small-12.medium-7.large-9.columns 
+      | 10 Jan 1976
+  .row
+    .small-12.medium-5.large-3.columns 
+      .subheader National Insurance number
+    .small-12.medium-7.large-9.columns 
+      | SG 75 17 16 C
+    .small-12.columns
+  hr
+
+  .row
+    .small-12.medium-7.large-9.columns
+      h4 Application details
+    .small-12.medium-5.large-3.columns
+      .text-right
+        a href='#'
+          | Change application details
+  .row
+    .small-12.medium-5.large-3.columns 
+      .subheader Fee
+    .small-12.medium-7.large-9.columns 
+      | £50
+  .row
+    .small-12.medium-5.large-3.columns 
+      .subheader Date of application
+    .small-12.medium-7.large-9.columns 
+      | 22 Apr 2015
+  .row
+    .small-12.medium-5.large-3.columns 
+      .subheader Form name or number
+    .small-12.medium-7.large-9.columns 
+      | N244
+  .row
+    .small-12.medium-5.large-3.columns 
+      .subheader Case number
+    .small-12.medium-7.large-9.columns 
+      | 20151234EV
+    .small-12.columns  
+  hr
+
+  .row
+    .small-12.medium-7.large-9.columns
+      h4 Contact details
+    .small-12.medium-5.large-3.columns
+      .text-right
+        a href='#'
+          | Change contact details
+  .row
+    .small-12.medium-5.large-3.columns 
+      .subheader Address
+    .small-12.medium-7.large-9.columns 
+      | 10 Downing Street
+      br
+      | London
+      br
+      | SW1A 2AA
+  .row
+    .small-12.medium-5.large-3.columns 
+      .subheader Email
+    .small-12.medium-7.large-9.columns 
+      | johnsmith@onlineemail.com
+  .row
+    .small-12.medium-5.large-3.columns 
+      .subheader Phone
+    .small-12.medium-7.large-9.columns 
+      | 0207 123 4567
+    .small-12.columns  
+  hr
+
+  .row
+    .small-12.medium-7.large-9.columns
+      h4 Other details
+    .small-12.medium-5.large-3.columns
+      .text-right
+        a href='#'
+          | Change other details
+  .row
+    .small-12.medium-5.large-3.columns 
+      .subheader Statement of truth signed
+    .small-12.medium-7.large-9.columns 
+      | Yes
+  .row
+    .small-12.medium-5.large-3.columns 
+      .subheader Comments
+    .small-12.medium-7.large-9.columns 
+      | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet porttitor ipsum. Mauris eget lectus ornare, condimentum arcu sed, ornare nulla. Etiam efficitur arcu a neque facilisis hendrerit. Aliquam varius, justo id aliquet elementum, arcu eros dignissim dolor, nec vulputate nunc sapien a elit. Vivamus nulla odio, hendrerit at vehicula ut, faucibus vitae purus. Quisque pulvinar dolor nec urna varius, pulvinar accumsan diam malesuada. Donec at felis quis justo porttitor molestie vel eu lectus.
+    .small-12.columns  
+  hr
+
+  .row
+    .small-12.medium-7.large-9.columns
+      h4 Benefits check
+    .small-12.medium-5.large-3.columns
+      .text-right
+        a href='#'
+          | Review benefits check
+  .row
+    .small-12.medium-5.large-3.columns 
+      .subheader Benefits check
+    .small-12.medium-7.large-9.columns 
+      | Receiving correct benefits
+  hr
   br
-  .row      
-    .small-12.medium-8.large-5.columns
-      label for='first_name'
-        | Comments
-        textarea rows="3" cols="30"
+  .small-12
+    .panel.callout
+      .row
+        .small-12.medium-7.large-9.columns
+          h4 Result
+      .row
+        .small-12.medium-5.large-3.columns 
+          .subheader Amount remitted
+        .small-12.medium-7.large-9.columns 
+          | £50
+      .row
+        .small-12.medium-5.large-3.columns 
+          .subheader Amount to pay
+        .small-12.medium-7.large-9.columns 
+          | £0
   br
   .row
-    .small-12.medium-6.large-5.columns
-      a#next-url href='page_6a.html'
-        .button.success Next - Review application
+    .small-12.medium-7.large-6.columns
+      .row
+        .small-12.medium-6.large-6.columns
+          a#next-url href='page_6a.html'
+            .button.success Submit application 
 
 javascript:
   $(document).ready( function() {
-    $('#proccess-application').addClass('active');
-    $('#fee').bind('change', function () {
-      $("#next-url").attr("href", 'page_2.html?fee=' + $(this).val());
-    });
+    $('#proccess-application').addClass('active')
   });

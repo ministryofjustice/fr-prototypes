@@ -32,8 +32,20 @@ form
   br
   .row
     .small-12.medium-6.large-5.columns
+      input id="checkbox1" type="checkbox"
+        label for="checkbox1" 
+        | Statement of truth signed
+  br
+  .row      
+    .small-12.medium-8.large-5.columns
+      label for='first_name'
+        | Comments
+        textarea rows="3" cols="30"
+  br
+  .row
+    .small-12.medium-6.large-5.columns
       a#next-url href='page_5b.html'
-        .button.success Next - Other details
+        .button.success Next - Review application
 
 javascript:
   $(document).ready( function() {

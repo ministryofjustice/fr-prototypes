@@ -92,9 +92,9 @@ javascript:
       $page = 'page_3' + getPage();
       $("#next-url").attr("href", $page+'.html?fee=' + $(this).val());
     });
-    $('#refund').on('change', function() {
-      console.log('clicked refund cb');
-      $('#date-fee-paid').toggle($('#refund').is(':checked'));
+    $('#savings').on('change', function() {
+      console.log('clicked savings cb');
+      $('#savings-more').toggle($('#savings').is(':checked'));
       $(this).parent().toggleClass('selected',$(this).is(':checked'));
     });
     $("input[name='ben-type']").on('change', function () {

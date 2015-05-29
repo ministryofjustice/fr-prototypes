@@ -25,13 +25,13 @@ form
     .small-12.medium-6.large-3.columns
       label for='doa_day' Date application received
       .small-4.medium-4.large-4.columns style='padding-left: 0px;'
-        label for='doa_day' 
+        label for='doa_day'
           small Day
       .small-4.medium-4.large-4.columns style='padding-left: 0px;'
-        label for='doa_month' 
+        label for='doa_month'
           small Month
       .small-4.medium-4.large-4.columns style='padding: 0px;'
-        label for='doa_year' 
+        label for='doa_year'
           small Year
       .small-4.medium-4.large-4.columns style='padding-left: 0px;'
         input id='doa_day' type='number'
@@ -50,28 +50,30 @@ form
         | Case number
         input name='claim_number' id='claim_number' type='text' style="text-transform:uppercase;"
   .row
-    .small-12.medium-6.large-5.columns    
-      input id="refund" type="checkbox"
-        label for="refund"
-        | This is a refund case
+    .small-12.medium-6.large-5.columns
+      .options.radio
+        .option
+          label for="refund"
+            input id="refund" type="checkbox" name="refund"
+            | This is a refund case
   #date-fee-paid.row.hide
-    .small-12.medium-6.large-3.columns
-      label for='dfp_day' Date fee paid
-      .small-4.medium-4.large-4.columns style='padding-left: 0px;'
-        label for='dfp_day'
-          small Day
-      .small-4.medium-4.large-4.columns style='padding-left: 0px;'
-        label for='dfp_month'
-          small Month
-      .small-4.medium-4.large-4.columns style='padding: 0px;'
-        label for='dfp_year'
-          small Year
-      .small-4.medium-4.large-4.columns style='padding-left: 0px;'
-        input id='dfp_day' type='number'
-      .small-4.medium-4.large-4.columns style='padding-left: 0px;'
-        input id='dfp_month' type='number'
-      .small-4.medium-4.large-4.columns style='padding: 0px;'
-        input id='dfp_year' type='number'
+      .small-12.medium-6.large-3.columns
+        label for='dfp_day' Date fee paid
+        .small-4.medium-4.large-4.columns style='padding-left: 0px;'
+          label for='dfp_day'
+            small Day
+        .small-4.medium-4.large-4.columns style='padding-left: 0px;'
+          label for='dfp_month'
+            small Month
+        .small-4.medium-4.large-4.columns style='padding: 0px;'
+          label for='dfp_year'
+            small Year
+        .small-4.medium-4.large-4.columns style='padding-left: 0px;'
+          input id='dfp_day' type='number'
+        .small-4.medium-4.large-4.columns style='padding-left: 0px;'
+          input id='dfp_month' type='number'
+        .small-4.medium-4.large-4.columns style='padding: 0px;'
+          input id='dfp_year' type='number'
 
 
   br
@@ -79,18 +81,50 @@ form
     .small-12.medium-6.large-5.columns    
       p
         | Do they receive any of the applicable benefits?
-      input id="refund" type="radio"
-        label for="refund"
-        | Yes
-      br
-      input id="refund" type="radio"
-        label for="refund"
-        | No
+      .options.radio
+        .option
+          label for="receive-yes"
+            input id="receive-yes" type="radio" name="ben-type" value="a"
+            | Yes
+        .option
+          label for="receive-no"
+            input id="receive-no" type="radio" name="ben-type" value="b"
+            | No
   br
   .row
     .small-12.medium-7.large-7.columns
-      a#next-url href='#.html'
-        | ► What benefits are applicable?
+      details
+        summary What benefits are applicable?
+        .panel-indent
+          div If the applicant is receiving one of the benefits listed below, they don't have to pay.
+          ul.pad-top-fifteen-px
+            li
+              span Income-based Jobseeker's Allowance
+              span.hint
+                |&nbsp;(JSA)
+
+            li
+              span Income-related Employment and Support Allowance
+              span.hint
+                |&nbsp;(ESA)
+
+            li
+              span Income Support
+
+            li
+              span Universal Credit
+              span.hint
+                |&nbsp;(and you’re earning less than £6,000)
+
+            li
+              span State Pension
+              span.hint
+                |&nbsp;(Guarantee Credit)
+
+            li
+              span Scottish Civil Legal Aid
+              span.hint
+                |&nbsp;(not Advice and Assistance or Advice by Way of Representation)
   br
   br
   .row
@@ -102,12 +136,31 @@ form
 
 javascript:
   $(document).ready( function() {
+
+    $('input[type=radio]').on('change', function () {
+      $("[name='" + $(this).attr('name') + "']").parent().removeClass("selected");
+      $(this).parent().addClass('selected');
+    });
+
     $('#proccess-application').addClass('active');
     $('#fee').bind('change', function () {
-      $("#next-url").attr("href", 'page_2.html?fee=' + $(this).val());
+      $page = 'page_3' + getPage();
+      $("#next-url").attr("href", $page+'.html?fee=' + $(this).val());
     });
     $('#refund').on('change', function() {
       console.log('clicked refund cb');
       $('#date-fee-paid').toggle($('#refund').is(':checked'));
+      $(this).parent().toggleClass('selected',$(this).is(':checked'));
+    });
+    $("input[name='ben-type']").on('change', function () {
+      $was = $("#next-url").attr("href");
+      $should_be = $was.substring(0,6) + getPage() + $was.substring(7);
+      $("#next-url").attr("href", $should_be);
     });
   });
+
+  function getPage() {
+    $possible = $("input[name='ben-type']:checked").val();
+    $result = $possible != 'b' ? 'a' : 'b';
+    return $result;
+  }

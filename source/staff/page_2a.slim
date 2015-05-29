@@ -13,19 +13,6 @@ form
       h4 Savings
 
   .row
-    .small-12.medium-6.large-5.columns
-      .options.radio
-        .option
-          label for="savings"
-            input id="savings" type="checkbox" name="savings"
-            | Do they have more than £3,000
-  #savings-more.row.hide
-      .small-12.medium-6.large-3.columns
-        | Test opened section
-        
-
-
-  .row
     .small-12.medium-6.large-5.columns    
       p
         | Do they have more than £3,000 in savings and investments?
@@ -33,26 +20,50 @@ form
       .options.radio
         .option
           label for="savings-no"
-            input id="savings-no" type="radio" name="ben-type" value="b"
+            input id="savings-no" type="radio" name="savings" value="false"
             | No
         .option
           label for="savings-yes"
-            input id="savings-yes" type="radio" name="ben-type" value="a"
+            input id="savings-yes" type="radio" name="savings" value="true"
             | Yes
-
+  #savings-more.row.hide
+      .small-12.medium-6.large-3.columns
+        .panel-indent
+          | Test opened section
   br
   .row
     .small-12.medium-7.large-7.columns
       details
         summary How is savings worked out?
         .panel-indent
-          div 
-          strong If the applicant has less than £3,000 in savings
-          | , they'll be able to get help with their fees, as long as they receive certain benefits or are on a low income.
-          strong If they have more than £3,000 in savings
-          | , xxxxxxxx
-          strong If they're 61 or over
-          | and have £16,000 or less in savings, they may be able to get help with their fees.
+          .row
+            .columns-12.small
+              strong If the applicant has less than £3,000 in savings
+              | , they'll be able to get help with their fees, as long as they receive certain benefits or are on a low income.
+              strong If they have more than £3,000 in savings
+              | , xxxxxxxx
+              strong If they're 61 or over
+              | and have £16,000 or less in savings, they may be able to get help with their fees.
+          .row.savings-data
+            .columns.small-12
+              .row.hide-top
+                .columns.small-6.highlight Your court or tribunal fee is:
+                .columns.small-6.highlight You must have less than this amount in savings and investments:
+              .row
+                .columns.small-6.table-label Up to £1000
+                .columns.small-6 £3,000
+              .row
+                .columns.small-6.table-label Up to £1000
+                .columns.small-6 £3,000
+              .row
+                .columns.small-6.table-label Up to £1000
+                .columns.small-6 £3,000
+              .row
+                .columns.small-6.table-label Up to £1000
+                .columns.small-6 £3,000
+              .row
+                .columns.small-6.table-label Up to £1000
+                .columns.small-6 £3,000
 
   br
   br
@@ -72,19 +83,14 @@ javascript:
     });
 
     $('#proccess-application').addClass('active');
+
     $('#fee').bind('change', function () {
       $page = 'page_3' + getPage();
-      $("#next-url").attr("href", $page+'.html?fee=' + $(this).val());
+      $("#next-url").attr("href", $page + '.html?fee=' + $(this).val());
     });
-    $('#savings').on('change', function() {
-      console.log('clicked savings cb');
-      $('#savings-more').toggle($('#savings').is(':checked'));
-      $(this).parent().toggleClass('selected',$(this).is(':checked'));
-    });
-    $("input[name='ben-type']").on('change', function () {
-      $was = $("#next-url").attr("href");
-      $should_be = $was.substring(0,6) + getPage() + $was.substring(7);
-      $("#next-url").attr("href", $should_be);
+
+    $("input[name='savings']").on('change', function () {
+      $('#savings-more').toggleClass('hide', $("input[name='savings']:checked").val()=="false");
     });
   });
 

@@ -1,0 +1,76 @@
+---
+title: 'Help with fees'
+nav_title: 'Help with fees'
+---
+form
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      h2 Process application
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      h4 Savings
+
+
+  .row
+    .small-12.medium-6.large-5.columns    
+      p
+        | Do they have more than £3,000 in savings and investments?
+
+      .options.radio
+        .option
+          label for="receive-no"
+            input id="receive-no" type="radio" name="ben-type" value="b"
+            | No
+        .option
+          label for="receive-yes"
+            input id="receive-yes" type="radio" name="ben-type" value="a"
+            | Yes
+
+  br
+  .row
+    .small-12.medium-7.large-7.columns
+      details
+        summary How is savings worked out?
+        .panel-indent
+          div If the applicant has less than 
+  br
+  br
+  .row
+    .small-12.medium-7.large-7.columns
+      .row
+        .small-12.medium-6.large-5.columns
+          a#next-url href='page_3a.html'
+            .button.success Next - Assess income
+
+javascript:
+  $(document).ready( function() {
+
+    $('input[type=radio]').on('change', function () {
+      $("[name='" + $(this).attr('name') + "']").parent().removeClass("selected");
+      $(this).parent().addClass('selected');
+    });
+
+    $('#proccess-application').addClass('active');
+    $('#fee').bind('change', function () {
+      $page = 'page_3' + getPage();
+      $("#next-url").attr("href", $page+'.html?fee=' + $(this).val());
+    });
+    $('#refund').on('change', function() {
+      console.log('clicked refund cb');
+      $('#date-fee-paid').toggle($('#refund').is(':checked'));
+      $(this).parent().toggleClass('selected',$(this).is(':checked'));
+    });
+    $("input[name='ben-type']").on('change', function () {
+      $was = $("#next-url").attr("href");
+      $should_be = $was.substring(0,6) + getPage() + $was.substring(7);
+      $("#next-url").attr("href", $should_be);
+    });
+  });
+
+  function getPage() {
+    $possible = $("input[name='ben-type']:checked").val();
+    $result = $possible != 'b' ? 'a' : 'b';
+    return $result;
+  }

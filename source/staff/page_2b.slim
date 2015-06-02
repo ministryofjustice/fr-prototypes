@@ -1,0 +1,119 @@
+---
+title: 'Help with fees'
+nav_title: 'Help with fees'
+---
+form
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      h2 Process application
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      h4 Results so far
+
+  .row
+    .small-12.columns
+      br
+      .row
+        .small-12.medium-7.large-7.columns
+          details
+            summary.button.primary.round#ben-ok Benefits received
+            .panel-indent
+              div If the applicant is receiving one of the benefits listed below, they don't have to pay.
+              ul.pad-top-fifteen-px
+                li
+                  span Income-based Jobseeker's Allowance
+                  span.hint
+                    |&nbsp;(JSA)
+
+                li
+                  span Income-related Employment and Support Allowance
+                  span.hint
+                    |&nbsp;(ESA)
+
+                li
+                  span Income Support
+
+                li
+                  span Universal Credit
+                  span.hint
+                    |&nbsp;(and you’re earning less than £6,000)
+
+                li
+                  span State Pension
+                  span.hint
+                    |&nbsp;(Guarantee Credit)
+
+                li
+                  span Scottish Civil Legal Aid
+                  span.hint
+                    |&nbsp;(not Advice and Assistance or Advice by Way of Representation)
+
+  .row
+    .small-12.columns
+      .row
+        .small-12.medium-7.large-7.columns
+          details
+            summary.button.alert.round#sav-ok Savings threshold exceeded
+            .panel-indent
+              .row
+                .columns-12.small
+                  strong If the applicant has less than £3,000 in savings
+                  | , they'll be able to get help with their fees, as long as they receive certain benefits or are on a low income.
+                  br
+                  br
+                  strong If they have more than £3,000 in savings:
+              .row.savings-data
+                .columns.small-12
+                  .row.hide-top
+                    .columns.small-5.highlight Your court or tribunal fee is:
+                    .columns.small-7.highlight You must have less than this amount in savings and investments:
+                  .row
+                    .columns.small-5.table-label Up to £1000
+                    .columns.small-7 £3,000
+                  .row
+                    .columns.small-5.table-label Between £1,001 - £1,335
+                    .columns.small-7 £4,000
+                  .row
+                    .columns.small-5.table-label Between £1,336 - £1,665
+                    .columns.small-7 £5,000
+                  .row
+                    .columns.small-5.table-label Between £1,666 - £2,000
+                    .columns.small-7 £6,000
+                  .row
+                    .columns.small-5.table-label Between £2,001 - £2,330
+                    .columns.small-7 £7,000
+              br
+              .row
+                .columns-12.small
+                  strong If they're 61 or over
+                  | and have £16,000 or less in savings, they may be able to get help with their fees.
+
+
+
+  .row
+    .small-12.columns
+      |If both are green, or saving threshold is red, proceed button points at contacts (page 4a)
+    .small-12.columns
+      |If benefit check fails, point at income calc, page 3b
+
+  .row
+    .small-12.columns
+      a href="" id="proceed"
+        .button.success Next -
+
+
+javascript:
+  $(document).ready(function () {
+    var result = !!Math.floor(Math.random() * 2)
+    if (result) {
+      $('#ben-ok').addClass('success').removeClass('alert').text('Correct benefits received');
+      $('#proceed').attr("href",'page_4a.html');
+      $('#proceed div').text('Next - Contact details ');
+    } else {
+      $('#ben-ok').addClass('alert').removeClass('success').text('Benefits not received');
+      $('#proceed').attr("href",'page_3b.html');
+      $('#proceed div').text('Next - Income calculator');
+    }
+  });

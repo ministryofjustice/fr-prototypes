@@ -18,7 +18,7 @@ form
       .row
         .small-12.medium-7.large-7.columns
           details
-            summary.button.primary.round#ben-ok Benefits received
+            summary.button.primary.round#ben-ok Benefits
             .panel-indent
               div If the applicant is receiving one of the benefits listed below, they don't have to pay.
               ul.pad-top-fifteen-px
@@ -55,7 +55,7 @@ form
       .row
         .small-12.medium-7.large-7.columns
           details
-            summary.button.alert.round#sav-ok Savings threshold exceeded
+            summary.button.primary.round#sav-ok Savings threshold
             .panel-indent
               .row
                 .columns-12.small
@@ -106,7 +106,7 @@ form
 
 javascript:
   $(document).ready(function () {
-    setPassFail($('#sav-ok'),'Savings threshold okay','Savings threshold exceeded')
+    setPassFail($('#sav-ok'),'Savings threshold met','Savings threshold exceeded')
     var result = setPassFail($('#ben-ok'), 'Correct benefits received', 'Benefits not received')
     if (result) {
       $('#proceed').attr("href", 'page_4a.html');

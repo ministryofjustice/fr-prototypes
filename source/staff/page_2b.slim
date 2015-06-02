@@ -106,14 +106,24 @@ form
 
 javascript:
   $(document).ready(function () {
-    var result = !!Math.floor(Math.random() * 2)
+    setPassFail($('#sav-ok'),'Savings threshold okay','Savings threshold exceeded')
+    var result = setPassFail($('#ben-ok'), 'Correct benefits received', 'Benefits not received')
     if (result) {
-      $('#ben-ok').addClass('success').removeClass('alert').text('Correct benefits received');
-      $('#proceed').attr("href",'page_4a.html');
+      $('#proceed').attr("href", 'page_4a.html');
       $('#proceed div').text('Next - Contact details ');
     } else {
-      $('#ben-ok').addClass('alert').removeClass('success').text('Benefits not received');
-      $('#proceed').attr("href",'page_3b.html');
+      $('#proceed').attr("href", 'page_3b.html');
       $('#proceed div').text('Next - Income calculator');
     }
   });
+
+  function setPassFail(ctrl, pass, fail) {
+    var result = false;
+    result = !!Math.floor(Math.random() * 2);
+    if (result) {
+      $(ctrl).addClass('success').removeClass('alert').text(pass);
+    } else {
+      $(ctrl).addClass('alert').removeClass('success').text(fail);
+    }
+    return result;
+  }

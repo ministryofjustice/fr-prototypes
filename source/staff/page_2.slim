@@ -77,63 +77,12 @@ form
 
 
   br
-  .row
-    .small-12.medium-6.large-5.columns    
-      p
-        | Do they receive any of the applicable benefits?
-        
-      .options.radio
-        .option
-          label for="receive-no"
-            input id="receive-no" type="radio" name="ben-type" value="b"
-            | No
-        .option
-          label for="receive-yes"
-            input id="receive-yes" type="radio" name="ben-type" value="a"
-            | Yes
-
-  br
-  .row
-    .small-12.medium-7.large-7.columns
-      details
-        summary What benefits are applicable?
-        .panel-indent
-          div If the applicant is receiving one of the benefits listed below, they don't have to pay.
-          ul.pad-top-fifteen-px
-            li
-              span Income-based Jobseeker's Allowance
-              span.hint
-                |&nbsp;(JSA)
-
-            li
-              span Income-related Employment and Support Allowance
-              span.hint
-                |&nbsp;(ESA)
-
-            li
-              span Income Support
-
-            li
-              span Universal Credit
-              span.hint
-                |&nbsp;(and you’re earning less than £6,000)
-
-            li
-              span State Pension
-              span.hint
-                |&nbsp;(Guarantee Credit)
-
-            li
-              span Scottish Civil Legal Aid
-              span.hint
-                |&nbsp;(not Advice and Assistance or Advice by Way of Representation)
-  br
   br
   .row
     .small-12.medium-7.large-7.columns
       .row
         .small-12.medium-6.large-5.columns
-          a#next-url href='page_3a.html'
+          a#next-url href='page_2a.html'
             .button.success Next - Assess income
 
 javascript:
@@ -154,11 +103,6 @@ javascript:
       $('#date-fee-paid').toggle($('#refund').is(':checked'));
       $(this).parent().toggleClass('selected',$(this).is(':checked'));
     });
-    $("input[name='ben-type']").on('change', function () {
-      $was = $("#next-url").attr("href");
-      $should_be = $was.substring(0,6) + getPage() + $was.substring(7);
-      $("#next-url").attr("href", $should_be);
-    });
   });
 
   function getPage() {
@@ -166,3 +110,4 @@ javascript:
     $result = $possible != 'b' ? 'a' : 'b';
     return $result;
   }
+

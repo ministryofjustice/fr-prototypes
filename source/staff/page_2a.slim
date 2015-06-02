@@ -29,7 +29,23 @@ form
   #savings-more.row.hide
       .small-12.medium-6.large-3.columns
         .panel-indent
-          | Test opened section
+          p
+            | If they are under 61
+          label for='claim_number'
+            | Amount of savings and investments (or do we take the fee from the last page and figure it out?)
+            input name='claim_number' id='claim_number' type='text' style="text-transform:uppercase;"
+          p
+            | If they are 61 or over, do they have more than £16,000 in savings and investments?
+            .options.radio
+        .option
+          label for="savings-no"
+            input id="savings-no" type="radio" name="savings" value="false"
+            | No
+        .option
+          label for="savings-yes"
+            input id="savings-yes" type="radio" name="savings" value="true"
+            | Yes
+
   br
   .row
     .small-12.medium-7.large-7.columns

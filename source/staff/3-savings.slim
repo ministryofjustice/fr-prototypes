@@ -27,31 +27,26 @@ form
             input id="savings-yes" type="radio" name="savings" value="true"
             | Yes
   #savings-more.row.hide
-      .small-12.medium-6.large-5.columns
-        .panel-indent
-          p
-            | If they (or their partner) are not 61 or over
-          p | Based on the fee of:
-            strong
-              | £200
-          p
-            | The maximum they can have in savings and investments is:
-            strong
-              | £3,000
-          p
-            | If they (or their partner) are 61 or over
-
-            do The maximum they can have in savings and investments is £16,000
-          .options.radio
-            | Do they have more than they are allowed in savings and investments?
-            .option
-              label for="under-61-no"
-                input id="under-61-no" type="radio" name="under-61" value="false"
-                | No
-            .option
-              label for="under-61-yes"
-                input id="under-61-yes" type="radio" name="under-61" value="true"
-                | Yes
+    .small-12.medium-6.large-5.columns
+      .panel-indent
+        p If they (or their partner) are not 61 or over
+        p
+          |Based on the fee of:&nbsp;
+          strong £200
+        p
+          |The maximum they can have in savings and investments is:&nbsp;
+          strong £3,000
+        p If they (or their partner) are 61 or over the maximum they can have in savings and investments is £16,000
+        .options.radio
+          | Do they have more than they are allowed in savings and investments?
+          .option
+            label for="under-61-no"
+              input id="under-61-no" type="radio" name="under-61" value="false"
+              | No
+          .option
+            label for="under-61-yes"
+              input id="under-61-yes" type="radio" name="under-61" value="true"
+              | Yes
 
   br
   .row

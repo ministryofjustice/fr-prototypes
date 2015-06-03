@@ -32,7 +32,10 @@ form
       h4 Next steps
       ul
         li Add the reference number to CaseMan/Family Man
-
+        -if request.params[:spotcheck]=='true'
+          li You need to send a letter requesting evidence
+        -elsif request.params[:benefits]!='none'
+          li style="border:1px red solid;" This application has been chosen for a random evidence spot check, you will need to send a letter
   br
   .row
     .small-12.medium-6.large-5.columns

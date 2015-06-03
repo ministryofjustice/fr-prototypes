@@ -30,7 +30,7 @@ form
     
     .panel-indent
       .row
-        .columns.small-5
+        .columns.small-12-medium-6.large-5
           .row
             .columns.small-4.highlight 
             .columns.small-4.highlight Max savings
@@ -41,23 +41,24 @@ form
           .row
             .columns.small-4.table-label 61 or over
             .columns.small-4 £16,000
-
-      .row.pad-top-thirty-pix
-        .columns.small-12
+      br
+      .row
+        .columns.small-12.medium-6.large-5
           details
             summary How is this worked out?
-     
-
-      .options.radio
-        | Do they have more than the maximum amount of savings and investments?
-        .option
-          label for="under-61-no"
-            input id="under-61-no" type="radio" name="under-61" value="false"
-            | No
-        .option
-          label for="under-61-yes"
-            input id="under-61-yes" type="radio" name="under-61" value="true"
-              | Yes
+     .row
+        .columns.small-12.medium-6.large-5
+          br
+          .options.radio
+            | Do they have more than the maximum amount of savings and investments?
+            .option
+              label for="under-61-no"
+                input id="under-61-no" type="radio" name="under-61" value="false"
+                | No
+            .option
+              label for="under-61-yes"
+                input id="under-61-yes" type="radio" name="under-61" value="true"
+                  | Yes
 
   br
   .row

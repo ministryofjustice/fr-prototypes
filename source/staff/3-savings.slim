@@ -26,10 +26,9 @@ form
           label for="savings-yes"
             input id="savings-yes" type="radio" name="savings" value="true"
             | Yes
-  #savings-more.row.hide
-    
+  #savings-more.row.hide.collapse
     .panel-indent
-      .row
+      .row.savings-data
         .columns.small-12-medium-6.large-5
           .row
             .columns.small-4.highlight 
@@ -46,19 +45,17 @@ form
         .columns.small-12.medium-6.large-5
           details
             summary How is this worked out?
-     .row
-        .columns.small-12.medium-6.large-5
-          br
-          .options.radio
-            | Do they have more than the maximum amount of savings and investments?
-            .option
-              label for="under-61-no"
-                input id="under-61-no" type="radio" name="under-61" value="false"
-                | No
-            .option
-              label for="under-61-yes"
-                input id="under-61-yes" type="radio" name="under-61" value="true"
-                  | Yes
+            br
+            .options.radio
+              | Do they have more than the maximum amount of savings and investments?
+              .option
+                label for="under-61-no"
+                  input id="under-61-no" type="radio" name="under-61" value="false"
+                  | No
+              .option
+                label for="under-61-yes"
+                  input id="under-61-yes" type="radio" name="under-61" value="true"
+                    | Yes
 
   br
   .row

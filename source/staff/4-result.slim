@@ -99,11 +99,11 @@ form
 javascript:
   $(document).ready(function () {
     if (getUrlParameter('savings-exceeded')=='false') {
-      $('#sav-ok').addClass('success').removeClass('alert').text('Savings threshold met');
+      $('#sav-ok').addClass('success').removeClass('alert').text('Savings threshold met (click for details)');
     } else {
-      $('#sav-ok').addClass('alert').removeClass('success').text('Savings threshold exceeded');
+      $('#sav-ok').addClass('alert').removeClass('success').text('Savings threshold exceeded (click for details)');
     }
-    var result = setPassFail($('#ben-ok'), 'Correct benefits received', 'Benefits not received')
+    var result = setPassFail($('#ben-ok'), 'Correct benefits received (click for details)', 'Benefits not received (click for details)')
     if (result) {
       buildNextUrl('6-contact.html');
       $('#next-url div').text('Next - Contact details ');

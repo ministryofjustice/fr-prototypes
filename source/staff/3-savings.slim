@@ -31,7 +31,7 @@ form
       .row.savings-data
         .columns.small-12-medium-6.large-5
           .row
-            .columns.small-4.highlight 
+            .columns.small-4.highlight
             .columns.small-4.highlight Max savings
   
           .row
@@ -43,19 +43,16 @@ form
       br
       .row
         .columns.small-12.medium-6.large-5
-          details
-            summary How is this worked out?
-            br
-            .options.radio
-              | Do they have more than the maximum amount of savings and investments?
-              .option
-                label for="under-61-no"
-                  input id="under-61-no" type="radio" name="under-61" value="false"
-                  | No
-              .option
-                label for="under-61-yes"
-                  input id="under-61-yes" type="radio" name="under-61" value="true"
-                    | Yes
+          .options.radio
+            | Do they have more than the maximum amount of savings and investments?
+            .option
+              label for="under-61-no"
+                input id="under-61-no" type="radio" name="under-61" value="false"
+                | No
+            .option
+              label for="under-61-yes"
+                input id="under-61-yes" type="radio" name="under-61" value="true"
+                  | Yes
 
   br
   .row
@@ -65,8 +62,16 @@ form
 
 javascript:
   $(document).ready( function() {
+
+    $('input[name="savings"]').on('change', function () {
+    });
+
     $("input[name='savings']").on('change', function () {
       $('#savings-more').toggleClass('hide', $("input[name='savings']:checked").val()=="false");
+      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='savings']:checked").val()));
+    });
+    $("input[name='under-61']").on('change', function () {
+      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='under-61']:checked").val()));
     });
     buildNextUrl('4-result.html');
   });

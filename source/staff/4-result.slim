@@ -106,7 +106,11 @@ form
 
 javascript:
   $(document).ready(function () {
-    var savings = setPassFail($('#sav-ok'),'Savings threshold met','Savings threshold exceeded')
+    if (getUrlParameter('savings-exceeded')=='false') {
+      $('#sav-ok').addClass('success').removeClass('alert').text('Savings threshold met');
+    } else {
+      $('#sav-ok').addClass('alert').removeClass('success').text('Savings threshold exceeded');
+    }
     var result = setPassFail($('#ben-ok'), 'Correct benefits received', 'Benefits not received')
     if (result) {
       buildNextUrl('6-contact.html');
@@ -116,7 +120,6 @@ javascript:
       $('#next-url div').text('Next - Income calculator');
     }
     $("#next-url").attr("href", updateQueryStringParameter('benefits', result));
-    $("#next-url").attr("href", updateQueryStringParameter('savings', savings));
   });
 
   function setPassFail(ctrl, pass, fail) {

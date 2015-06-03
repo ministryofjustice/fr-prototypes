@@ -168,5 +168,7 @@ form
 
 javascript:
   $(document).ready( function() {
-    $('#proccess-application').addClass('active')
+    $('#benefits').toggle(getUrlParameter('benefits')=='true');
+    $('#savings').toggle(getUrlParameter('savings')=='true');
+    buildNextUrl('8-confirmation.html')
   });

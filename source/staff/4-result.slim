@@ -106,15 +106,18 @@ form
 
 javascript:
   $(document).ready(function () {
-    setPassFail($('#sav-ok'),'Savings threshold met','Savings threshold exceeded')
+    var savings = setPassFail($('#sav-ok'),'Savings threshold met','Savings threshold exceeded')
     var result = setPassFail($('#ben-ok'), 'Correct benefits received', 'Benefits not received')
     if (result) {
-      $('#proceed').attr("href", '6a-contact.html');
-      $('#proceed div').text('Next - Contact details ');
+      buildNextUrl('6a-contact.html');
+      $('#next-url div').text('Next - Contact details ');
     } else {
-      $('#proceed').attr("href", '5-income.html');
-      $('#proceed div').text('Next - Income calculator');
+      buildNextUrl('5-income.html');
+      $('#next-url div').text('Next - Income calculator');
     }
+    $("#next-url").attr("href", updateQueryStringParameter('benefits', result));
+    $("#next-url").attr("href", updateQueryStringParameter('savings', savings));
+
   });
 
   function setPassFail(ctrl, pass, fail) {

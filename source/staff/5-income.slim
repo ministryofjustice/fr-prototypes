@@ -60,24 +60,15 @@ form
         p Amount to pay: {{ feePayable() | currency:"£" }}
   .row
     .small-12.columns
-      a#next-url href="'6b-contact.html'"
+      a#next-url href="6-contact.html"
         .button.success Next - Contact details
 
 javascript:
-  function getUrlParameter(sParam) {
-    var sPageURL = window.location.search.substring(1);
-    var sURLVariables = sPageURL.split('&');
-    for (var i = 0; i < sURLVariables.length; i++) {
-      var sParameterName = sURLVariables[i].split('=');
-      if (sParameterName[0] == sParam) {
-        return sParameterName[1];
-      }
-    }
-  }
   $(document).ready(function () {
     var fee = getUrlParameter('fee');
-    console.log(fee);
     $('#r2_fee').val(fee);
+
+    buildNextUrl('6-contact.html');
   });
 
   var app = angular.module('app', []);

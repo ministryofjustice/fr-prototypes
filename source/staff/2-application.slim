@@ -85,17 +85,8 @@ form
 
 javascript:
   $(document).ready( function() {
-
-    $('input[type=radio]').on('change', function () {
-      $("[name='" + $(this).attr('name') + "']").parent().removeClass("selected");
-      $(this).parent().addClass('selected');
-    });
-
-    $('#proccess-application').addClass('active');
-
     $('#fee').bind('change', function () {
-      $page = '3-savings'; //'page_3' + getPage();
-      $("#next-url").attr("href", $page+'.html?fee=' + $(this).val());
+      $("#next-url").attr("href", updateQueryStringParameter('fee', $(this).val()));
     });
 
     $('#refund').on('change', function() {

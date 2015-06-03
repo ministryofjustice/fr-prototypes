@@ -27,12 +27,15 @@ form
     .small-12.medium-6.large-5.columns
       .row
         .small-12.columns
-          label for='couple-no'
-            input id='couple-no' name="couple" type="radio" value='false' ng-model="couple"
-            |  Single
-          label for='couple-yes'
-            input id='couple-yes' name="couple" type="radio" value='true' ng-model="couple"
-            |  Part of a couple
+          .options.radio
+            .option
+              label for='couple-no'
+                input id='couple-no' name="couple" type="radio" value='false' ng-model="couple"
+                |  Single
+            .option
+              label for='couple-yes'
+                input id='couple-yes' name="couple" type="radio" value='true' ng-model="couple"
+                |  Part of a couple
   .row
     .small-12.medium-6.large-5.columns
       label
@@ -69,6 +72,7 @@ javascript:
     $('#r2_fee').val(fee);
 
     buildNextUrl('6-contact.html');
+    $("#next-url").attr("href", updateQueryStringParameter('calculator', 'true'));
   });
 
   var app = angular.module('app', []);

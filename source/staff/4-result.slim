@@ -109,7 +109,7 @@ javascript:
     var savings = setPassFail($('#sav-ok'),'Savings threshold met','Savings threshold exceeded')
     var result = setPassFail($('#ben-ok'), 'Correct benefits received', 'Benefits not received')
     if (result) {
-      buildNextUrl('6a-contact.html');
+      buildNextUrl('6-contact.html');
       $('#next-url div').text('Next - Contact details ');
     } else {
       buildNextUrl('5-income.html');
@@ -117,7 +117,6 @@ javascript:
     }
     $("#next-url").attr("href", updateQueryStringParameter('benefits', result));
     $("#next-url").attr("href", updateQueryStringParameter('savings', savings));
-
   });
 
   function setPassFail(ctrl, pass, fail) {

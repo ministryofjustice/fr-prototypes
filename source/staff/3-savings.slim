@@ -30,13 +30,20 @@ form
       .small-12.medium-6.large-5.columns
         .panel-indent
           p
-            | If they are under 61
-          label for='claim_number'
-            | Amount of savings and investments (or do we take the fee from the last page and figure it out?)
-            input name='claim_number' id='claim_number' type='text' style="text-transform:uppercase;"
+            | If they (or their partner) are not 61 or over
+          p | Based on the fee of:
+            strong
+              £200
           p
-            | If they are 61 or over, do they have more than £16,000 in savings and investments?
+            | The maximum they can have in savings and investments is:
+            strong
+              £3,000
+          p
+            | If they (or their partner) are 61 or over
+
+            do The maximum they can have in savings and investments is £16,000
           .options.radio
+            | Do they have more than they are allowed in savings and investments?
             .option
               label for="under-61-no"
                 input id="under-61-no" type="radio" name="under-61" value="false"

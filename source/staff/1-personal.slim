@@ -58,7 +58,6 @@ form
 
 javascript:
   $(document).ready( function() {
-    $('#proccess-application').addClass('active');
     $('#fee').bind('change', function () {
       $("#next-url").attr("href", '2-application.html?fee=' + $(this).val());
     });

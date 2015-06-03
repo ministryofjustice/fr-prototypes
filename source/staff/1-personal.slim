@@ -53,13 +53,13 @@ form
   br
   .row
     .small-12.medium-6.large-5.columns
-      a#next-url href='page_2.html'
+      a#next-url href='2-application.html'
         .button.success Next - Application details
 
 javascript:
   $(document).ready( function() {
     $('#proccess-application').addClass('active');
     $('#fee').bind('change', function () {
-      $("#next-url").attr("href", 'page_2.html?fee=' + $(this).val());
+      $("#next-url").attr("href", '2-application.html?fee=' + $(this).val());
     });
   });

@@ -105,20 +105,19 @@ form
     .small-12.medium-7.large-9.columns 
       | Yes
     .small-12.columns
-  #benefits
-    hr
-    .row
-      .small-12.medium-7.large-9.columns
-        h4 Benefits check
-      .small-12.medium-5.large-3.columns
-        .text-right
-          a href='#'
-            | Review benefits check
-    .row
-      .small-12.medium-5.large-3.columns
-        .subheader Benefits check
-      .small-12.medium-7.large-9.columns
-        | Receiving correct benefits
+
+  hr
+  .row
+    .small-12.medium-7.large-9.columns
+      h4 Benefits check
+    .small-12.medium-5.large-3.columns
+      .text-right
+        a href='#'
+          | Review benefits check
+  .row
+    .small-12.medium-5.large-3.columns
+      .subheader Benefits check
+    .small-12.medium-7.large-9.columns#benefits Receiving correct benefits
   #calculator
     hr
     .row
@@ -160,6 +159,47 @@ form
           .subheader Amount to pay
         .small-12.medium-7.large-9.columns 
           | £0
+
+  hr
+  .row
+    .small-12.medium-5.large-3.columns
+      h4 Recommendation
+      .panel.callout.success Full remission
+
+  .row.options.radio
+    .small-12.columns
+      h4 Decision
+      .row
+        .columns.small-4
+          .option
+            label for="decision-full"
+              input id="decision-full" type="radio" name="decision" value="full"
+              | Full remission
+        .columns.small-4
+          .option
+            label for="decision-part"
+              input id="decision-part" type="radio" name="decision" value="part"
+              | Part remission
+        .columns.small-4
+          .option
+            label for="decision-none"
+              input id="decision-none" type="radio" name="decision" value="none"
+              | No remission
+  .row.collapse.hide#spot-check-manual
+    .small-12.columns style="border:1px #DD0000 solid;padding:10px;"
+      span Would you like to recommend this application for an evidence spot check?
+      .row.options.radio
+        .columns.small-4
+          .option
+            label for="spot-check-no"
+              input id="spot-check-no" type="radio" name="spot-check" value="false"
+              | No
+        .columns.small-4.end
+          .option
+            label for="spot-check-yes"
+              input id="spot-check-yes" type="radio" name="spot-check" value="true"
+              | Yes
+  hr
   br
   .row
     .small-12.medium-7.large-6.columns
@@ -168,7 +208,15 @@ form
 
 javascript:
   $(document).ready( function() {
-    $('#benefits').toggle(getUrlParameter('benefits')=='true');
+    $('#benefits').text(getUrlParameter('benefits')=='true' ? 'Receiving correct benefits' : 'Benefits not received');
     $('#calculator').toggle(getUrlParameter('calculator')=='true');
-    buildNextUrl('8-confirmation.html')
+    buildNextUrl('8-confirmation.html');
+
+    $('input[name="decision"]').on('change', function () {
+      $('#spot-check-manual').toggle($('input[name="decision"]:checked').val()!="none")
+      $("#next-url").attr("href", updateQueryStringParameter('decision', $('input[name="decision"]:checked').val()));
+    });
+    $('input[name="spot-check"]').on('change', function () {
+      $("#next-url").attr("href", updateQueryStringParameter('spotcheck', $('input[name="spot-check"]:checked').val()));
+    });
   });

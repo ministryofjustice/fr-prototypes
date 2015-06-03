@@ -10,12 +10,13 @@ html ng-app="app"
     = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'
   body class="#{yield_content(:body_class)}"
     = partial 'partials/layout/nav'
-    = partial 'partials/layout/sub_nav'
     .row
-      .large-12.columns
+      .large-10.columns
         = yield
         = partial 'partials/layout/footer'
         p
         = link_to '', '/'
+      .large-2.columns
+        = partial 'partials/layout/sub_nav'
     = javascript_include_tag 'libs', 'app', 'details.polyfill'
     = include_javascripts(current_page.data.javascripts || current_page.data.javascripts)

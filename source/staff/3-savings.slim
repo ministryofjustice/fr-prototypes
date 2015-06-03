@@ -27,17 +27,31 @@ form
             input id="savings-yes" type="radio" name="savings" value="true"
             | Yes
   #savings-more.row.hide
+    
+    .panel-indent
+        div If the applicant's income is less than the amount in table 1, they don't have to pay.
+        .row.calculator-data.pad-left-fifteen-px
+          .columns.small-12.show-for-medium-up
+            .row.hide-top
+              .columns.small-4.highlight X
+              .columns.small-4.highlight Max savings
+    
+            .row
+              .columns.small-4.table-label Under 61
+              .columns.small-4 £3,000
+   
+
     .small-12.medium-6.large-5.columns
       .panel-indent
         h4 Are they (or their partner) 61 or over?
         p
           strong No
-          |Maximum they can have in savings and investments is:&nbsp;
+          |. The maximum they can have in savings is:&nbsp;
         h4    
           strong £3,000
         p
           strong Yes
-          |Maximum they can have in savings and investments is:&nbsp;
+          |. The maximum they can have in savings is:&nbsp;
         h4    
           strong £16,000
         br

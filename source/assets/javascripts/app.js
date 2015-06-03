@@ -9,14 +9,14 @@ $(document).ready( function() {
 
 function buildNextUrl(page) {
     var query = location.href.substring((location.href.indexOf('?') + 1), location.href.length);
-    page = page + '?' + query
+    if (location.href.indexOf('?') > 0) {
+        page = page + '?' + query;
+    }
     $('#next-url').attr("href", page);
 }
 
 function updateQueryStringParameter(key, value) {
-    console.log('updateQueryStringParameter');
     var uri = $('#next-url').attr('href');
-    console.log('uri='+uri);
     var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
     var separator = uri.indexOf('?') !== -1 ? "&" : "?";
     if (uri.match(re)) {

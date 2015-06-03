@@ -61,26 +61,8 @@ form
 
 javascript:
   $(document).ready( function() {
-
-    $('input[type=radio]').on('change', function () {
-      $("[name='" + $(this).attr('name') + "']").parent().removeClass("selected");
-      $(this).parent().addClass('selected');
-    });
-
-    $('#proccess-application').addClass('active');
-
-    $('#fee').bind('change', function () {
-      $page = 'page_3' + getPage();
-      $("#next-url").attr("href", $page + '.html?fee=' + $(this).val());
-    });
-
     $("input[name='savings']").on('change', function () {
       $('#savings-more').toggleClass('hide', $("input[name='savings']:checked").val()=="false");
     });
+    buildNextUrl('4-result.html');
   });
-
-  function getPage() {
-    $possible = $("input[name='ben-type']:checked").val();
-    $result = $possible != 'b' ? 'a' : 'b';
-    return $result;
-  }

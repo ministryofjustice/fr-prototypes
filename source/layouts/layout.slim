@@ -6,7 +6,7 @@ html ng-app="app"
     meta name='viewport' content='width=device-width'
 
     = include_stylesheets(current_page.data.stylesheets || current_page.data.stylesheet)
-    = stylesheet_link_tag 'styles', 'r2calc', 'r1calc'
+    = stylesheet_link_tag 'styles', 'r2_calculator', 'r1calc'
     = javascript_include_tag 'jquery.min.js'
   body class="#{yield_content(:body_class)}"
     = partial 'partials/layout/nav'

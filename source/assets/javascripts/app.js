@@ -4,7 +4,9 @@ $(document).ready( function() {
         $("[name='" + $(this).attr('name') + "']").parent().removeClass("selected");
         $(this).parent().addClass('selected');
     });
-
+    $('input[type="checkbox"]').on('change', function () {
+        $(this).parent().toggleClass('selected', $(this).is(':checked'));
+    });
 });
 
 function buildNextUrl(page) {

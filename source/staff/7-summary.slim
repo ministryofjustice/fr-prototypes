@@ -148,7 +148,7 @@ form
     .panel.callout
       .row
         .small-12.medium-7.large-9.columns
-          h4 Result
+          h4 Decision
       .row
         .small-12.medium-5.large-3.columns 
           .subheader Amount remitted
@@ -159,46 +159,41 @@ form
           .subheader Amount to pay
         .small-12.medium-7.large-9.columns 
           | £0
-
-  hr
   .row
-    .small-12.medium-5.large-3.columns
-      h4 Recommendation
-      .panel.callout.success Full remission
-
-  .row.options.radio
+    .small-12.medium-6.large-5.columns
+      .options.radio
+        .option
+          label for="challenge"
+            input id="challenge" type="checkbox" name="challenge"
+            | Change this decision?
+  #override-decision.row.hide
     .small-12.columns
-      h4 Decision
-      .row
-        .columns.small-4
-          .option
-            label for="decision-full"
-              input id="decision-full" type="radio" name="decision" value="full"
-              | Full remission
-        .columns.small-4
-          .option
-            label for="decision-part"
-              input id="decision-part" type="radio" name="decision" value="part"
-              | Part remission
-        .columns.small-4
-          .option
-            label for="decision-none"
-              input id="decision-none" type="radio" name="decision" value="none"
-              | No remission
-  .row.collapse.hide#spot-check-manual
-    .small-12.columns style="border:1px #DD0000 solid;padding:10px;"
-      span Would you like to recommend this application for an evidence spot check?
       .row.options.radio
-        .columns.small-4
-          .option
-            label for="spot-check-no"
-              input id="spot-check-no" type="radio" name="spot-check" value="false"
-              | No
-        .columns.small-4.end
-          .option
-            label for="spot-check-yes"
-              input id="spot-check-yes" type="radio" name="spot-check" value="true"
-              | Yes
+        .small-12.columns
+          h4 Decision
+          .row
+            .columns.small-4
+              .option
+                label for="decision-part"
+                  input id="decision-part" type="radio" name="decision" value="part"
+                  | Part remission
+            .columns.small-4.end
+              .option
+                label for="decision-none"
+                  input id="decision-none" type="radio" name="decision" value="none"
+                  | No remission
+
+    .small-12.columns
+      label for='comments' Comments
+      textarea id="comments" rows=3
+  .row
+    .small-12.medium-6.large-5.columns
+      .options.radio
+        .option
+          label for="spot-check"
+            input id="spot-check" type="checkbox" name="spot-check"
+            | Request further evidence
+
   hr
   br
   .row
@@ -217,6 +212,10 @@ javascript:
       $("#next-url").attr("href", updateQueryStringParameter('decision', $('input[name="decision"]:checked').val()));
     });
     $('input[name="spot-check"]').on('change', function () {
-      $("#next-url").attr("href", updateQueryStringParameter('spotcheck', $('input[name="spot-check"]:checked').val()));
+      $("#next-url").attr("href", updateQueryStringParameter('spotcheck', $('input[name="spot-check"]').is(':checked')));
+    });
+    $('#challenge').on('change', function () {
+      $('#override-decision').toggle($('#challenge').is(':checked'));
+      $(this).parent().toggleClass('selected', $(this).is(':checked'));
     });
   });

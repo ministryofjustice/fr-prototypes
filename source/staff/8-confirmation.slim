@@ -7,35 +7,24 @@ form
   .row
     .small-12.medium-12.large-12.columns
       h2 Application processed
-  br
+      .round.alert.label
+        | Awaiting evidence
   .row
     .small-12.medium-12.large-12.columns
-      h4 Status: Approved
-  br
-  .row
-    .small-12.medium-12.large-12.columns
-      h4 Application reference number
-
-  .row
-    .small-12.medium-12.large-12.columns
-      .panel.callout
-        .row
-          .small-12.medium-7.large-8.columns
-            h3 FEE-AD08-BK56
-          .small-12.medium-5.large-4.columns
-            a href='#'
-              .button.success Copy reference number
-            #copied.label.inline style="opacity:0;" Reference number copied
+      p This application is on hold
 
   .row
     .small-12.medium-12.large-12.columns
       h4 Next steps
       ul
-        li Add the reference number to CaseMan/Family Man
-        -if request.params[:spotcheck]=='true'
-          li You need to send a letter requesting evidence
-        -elsif request.params[:benefits]!='none'
-          li style="border:1px red solid;" This application has been chosen for a random evidence spot check, you will need to send a letter
+      -if request.params[:spotcheck]=='true'
+        li#spot-check-true You need to send a letter requesting evidence
+      -else
+        li#spot-check-rand This application has been chosen for a random evidence spot check, you will need to send a letter
+
+  .row
+    .small-12.medium-6.large-5.columns
+      a href='staff/Pending-list.html' View pending applications
   br
   .row
     .small-12.medium-6.large-5.columns
@@ -44,6 +33,12 @@ form
 
 javascript:
   $(document).ready( function() {
+    //$('#spot-check-true').toggle((getUrlParameter('spotcheck'))=='true');
+
+    //if ((getUrlParameter('spotcheck')=='false' && getUrlParameter('spotcheck')=='false')) {
+      //var show = !!Math.floor(Math.random() * 2);
+      //$('#spot-check-rand').toggle(!!Math.floor(Math.random() * 2));
+    //}
     $('a div.button.success').on('click', function() {
       $('#copied').fadeTo(1,1).fadeTo(2000, 0);
     });

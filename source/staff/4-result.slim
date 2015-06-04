@@ -95,21 +95,28 @@ form
       a#next-url href=""
         .button.success Next -
 
+// Benefits | Savings exceeded | Target
+// ------------------------------------
+//   Yes    |   No             | 6-contact
+//   Yes    |   Yes (ignore)   | 6-contact
+//   No     |   No             | 5-income
+//   No     |   Yes            | 6-contact
 
 javascript:
   $(document).ready(function () {
-    if (getUrlParameter('savings-exceeded')=='false') {
+    var savings = getUrlParameter('savings-exceeded');
+    if (savings=='false') {
       $('#sav-ok').addClass('success').removeClass('alert').text('Savings threshold met (click for details)');
     } else {
       $('#sav-ok').addClass('alert').removeClass('success').text('Savings threshold exceeded (click for details)');
     }
     var result = setPassFail($('#ben-ok'), 'Correct benefits received (click for details)', 'Benefits not received (click for details)')
-    if (result) {
-      buildNextUrl('6-contact.html');
-      $('#next-url div').text('Next - Contact details ');
-    } else {
+    if (result==false && savings=='false') {
       buildNextUrl('5-income.html');
       $('#next-url div').text('Next - Income calculator');
+    } else {
+      buildNextUrl('6-contact.html');
+      $('#next-url div').text('Next - Contact details ');
     }
     $("#next-url").attr("href", updateQueryStringParameter('benefits', result));
   });

@@ -2,152 +2,102 @@
 title: 'Help with fees'
 nav_title: 'Help with fees'
 ---
-= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.js'
-form
-  br
-  .row
-    .small-12.medium-12.large-12.columns
-      h2 Process application
-  br
-  .row
-    .small-12.medium-12.large-12.columns
-      h4 Income calculator
+= javascript_include_tag 'income_calculator'
 
-#canvas ng-controller="Prototype"
+br
+.row
+  .small-12.medium-12.large-12.columns
+    h2 Process application
+br
+.row
+  .small-12.medium-12.large-12.columns
+    h4 Income calculator
+
+#r2_calculator_income
   .row
-    .small-12.medium-3.large-3.columns
-      label for='r2_fee' Fee
-      .row.collapse.prefix-radius
-        .small-2.medium-2.large-3.columns
-          span.prefix
-            label.inline for='r2_fee' £
-        .small-10.medium-10.large-9.columns style="padding:0px;"
-          input id="r2_fee" name="r2_fee" type="number" ng-model="fee"
+    .small-12.medium-3.large-5.columns.form-group
+      #fee-block
+        label.error data-check-error='fee' for='fee' Please enter a fee value
+        label for='fee' Fee
+        .row.collapse.prefix-radius
+          .small-2.medium-2.large-3.columns
+            span.prefix
+              label.inline for='fee' £
+          .small-10.medium-10.large-9.columns style="padding:0px;"
+            input data-check='fee' id="fee" name="fee" type="number"
   .row
-    .small-12.medium-6.large-5.columns
-      .row
-        .small-12.columns
-          .options.radio
-            .option
-              label for='couple-no'
-                input id='couple-no' name="couple" type="radio" value='false' ng-model="couple"
-                |  Single
-            .option
-              label for='couple-yes'
-                input id='couple-yes' name="couple" type="radio" value='true' ng-model="couple"
-                |  Part of a couple
-  .row
-    .small-12.medium-6.large-5.columns
-      label
-        | Number of dependent children
+    .small-12.medium-3.large-5.columns.form-group
+      #status-block
+        label.error data-check-error='couple' Please select a marital status
         .row
-          .columns.small-4.medium-4.large-4
-            input type="number" ng-model="children"
+          .columns.small-12
+            label Status
+            .options.radio
+              .option
+                label for='couple-no'
+                  input data-check='couple' id='couple-no' name="couple" type="radio" value='false'
+                  |Single
+              .option
+                label for='couple-yes'
+                  input data-check='couple' id='couple-yes' name="couple" type="radio" value='true'
+                  |Part of a couple
+
   .row
-    .small-12.medium-3.large-3.columns
-      label for='r2_income'
-        | Total monthly income
-      .small-2.medium-2.large-3.columns style="padding:0px;"
-        span.prefix £
-      .small-10.medium-10.large-9.columns style="padding:0px;"
-        input name="r2_income" id="r2_income" type="number" ng-model="monthlyIncome" 
+    .small-12.medium-6.large-5.columns.form-group
+      #child-block
+        label.error data-check-error='children' for='children' Please select a number of children
+        label for='children' No of children
+        .row
+          .columns.small-3
+            input data-check='children' id='children' type="number" min=0 value=""
+
   .row
-    .small-12.medium-8.large-5.columns
-      .form-group
-        a.button.small.success.no_selection ng-click="showResult()" Calculate
-  br
-  #result ng-show='resultShown'
-    .row
-      .small-12.medium-7.large-7.columns
-        .panel.callout
-          p Amount remitted: {{ feeRemitted() | currency:"£" }}
-          p Amount to pay: {{ feePayable() | currency:"£" }}
-    .row
-      .small-12.columns
-        a#next-url href="6-contact.html"
-          .button.success Next - Contact details
+    .small-12.medium-3.large-5.columns.form-group
+      #income-block
+        label.error data-check-error='income' for='income' Please enter an income
+        label for='income' Total monthly income
+        .row.collapse.prefix-radius
+          .small-2.medium-2.large-3.columns
+            span.prefix
+              label.inline for='income' £
+          .small-10.medium-10.large-9.columns
+            input data-check='income' name="income" id="income" type="number"
+
+.row
+  .small-12.medium-8.large-5.columns
+    button.button.primary#check_btn Check
+
+#r2_calculator_result
+  .row
+    .columns.small-12.medium-10.large-8
+      #calculator.callout
+        h3.bold#fee-remit
+  .row
+    .columns.small-12.medium-10.large-8
+      .calculator-data
+        .row.first
+          .columns.large-4.medium-5.small-6.table-label Fee
+          .columns.large-8.medium-7.small-6#confirm_fee
+        .row
+          .columns.large-4.medium-5.small-6.table-label Status
+          .columns.large-8.medium-7.small-6#confirm_status
+        .row
+          .columns.large-4.medium-5.small-6.table-label No of children
+          .columns.large-8.medium-7.small-6#confirm_children
+        .row
+          .columns.large-4.medium-5.small-6.table-label Total monthly income
+          .columns.large-8.medium-7.small-6#confirm_income
+br
+.row
+  .small-12.columns
+    a#next-url href="6-contact.html"
+      .button.success Next - Contact details
 
 javascript:
   $(document).ready(function () {
     var fee = getUrlParameter('fee');
-    $('#r2_fee').val(fee);
+    $('#fee').val(fee);
 
     buildNextUrl('6-contact.html');
-    $("#next-url").attr("href", updateQueryStringParameter('calculator', 'true'));
-  });
-
-  var app = angular.module('app', []);
-
-  app.controller('Prototype', function ($scope) {
-    // $scope.children = 0
-
-    $scope.fee = 0; //parseInt($location.search().fee,10);
-    $scope.resultShown = false;
-
-    $scope.thresholds = function () {
-      var couple = ($scope.couple == 'true');
-
-      var lowThreshold = 1085 + (245 * $scope.children)
-      if (couple) {
-        lowThreshold = lowThreshold + 160;
-      }
-
-      var highThreshold = lowThreshold + Math.min(4000, $scope.fee * 2)
-
-      var thresholds = {
-        low: lowThreshold,
-        high: highThreshold
-      }
-
-      return thresholds;
-    }
-
-    $scope.incr = function (number) {
-      $scope.children = $scope.children + number;
-      if ($scope.children < 0) {
-        $scope.children = 0;
-      }
-    }
-
-    $scope.fullRemission = function () {
-      return ($scope.monthlyIncome < $scope.thresholds().low);
-    }
-
-    $scope.partialRemission = function () {
-      return ($scope.monthlyIncome >= $scope.thresholds().low && $scope.monthlyIncome < $scope.thresholds().high);
-    }
-
-    $scope.coupleName = function () {
-      if ($scope.couple == 'true') {
-        return "person who is part of a couple";
-      } else if ($scope.couple == 'false') {
-        return "single person";
-      } else {
-        return '';
-      }
-    }
-
-    $scope.feePayable = function () {
-      if (this.fullRemission()) {
-        return 0;
-      } else if (this.partialRemission()) {
-        var incomeAboveThreshold = $scope.monthlyIncome - this.thresholds().low;
-        var roundedIncomeAbove = incomeAboveThreshold - (incomeAboveThreshold % 10);
-        return Math.min(roundedIncomeAbove / 2, $scope.fee);
-      } else {
-        return $scope.fee;
-      }
-    }
-
-    $scope.feeRemitted = function () {
-      return $scope.fee - this.feePayable();
-    }
-
-    $scope.showResult = function () {
-      if ($scope.monthlyIncome && $scope.coupleName() != '') {
-        $scope.resultShown = true;
-      } else {
-        $scope.resultShown = false;
-      }
-    }
+    $("#next-url").attr("href", updateQueryStringParameter('calculator', 'true')).hide();
   });

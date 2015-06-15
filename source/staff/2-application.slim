@@ -52,7 +52,7 @@ form
           label for="probate"
             input id="probate" type="checkbox" name="probate"
             | This is a probate case
-  #date-fee-paid.row.hide
+  #name-date-deceased.row.hide
       .row
         .small-12.medium-8.large-5.columns
           label for='name-deceased'
@@ -121,6 +121,13 @@ javascript:
     $('#refund').on('change', function() {
       console.log('clicked refund cb');
       $('#date-fee-paid').toggle($('#refund').is(':checked'));
+      $(this).parent().toggleClass('selected',$(this).is(':checked'));
+    });
+  });
+
+    $('#probate').on('change', function() {
+      console.log('clicked probate cb');
+      $('#name-date-deceased').toggle($('#probate').is(':checked'));
       $(this).parent().toggleClass('selected',$(this).is(':checked'));
     });
   });

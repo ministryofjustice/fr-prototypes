@@ -112,6 +112,25 @@ span.hint {
 }
 
 
+.panel.callout {
+  padding:30px 15px;
+  margin-bottom: 2em;
+  color:#ffffff  ;
+  h3 {
+    color: $page-colour;
+    margin: 0;
+  }
+  &.not-received {
+    background-color: $error-colour;
+  }
+  &.received{
+    background-color: $turquoise;
+  }
+  p
+  {
+    margin:0;
+  }
+}
 
 
 .status-font {

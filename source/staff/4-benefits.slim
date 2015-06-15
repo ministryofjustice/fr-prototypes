@@ -1,6 +1,7 @@
 ---
 title: 'Help with fees'
 nav_title: 'Help with fees'
+section_title: 'Process Application'
 ---
 form
   br
@@ -16,18 +17,18 @@ form
     .small-12.medium-6.large-5.columns 
       .options.radio
         .option
-          label for="savings-no"
-            input id="savings-no" type="radio" name="savings" value="false"
+          label for="benefits-no"
+            input id="benefits-no" type="radio" name="benefits" value="false"
             | No
         .option
-          label for="savings-yes"
-            input id="savings-yes" type="radio" name="savings" value="true"
+          label for="benefits-yes"
+            input id="benefits-yes" type="radio" name="benefits" value="true"
             | Yes
 
   br
   .row
     .small-12.medium-7.large-7.columns
-      a href='5-benefits-result.html'
+      a#next-url href='5-benefits-result.html'
         .button.success Next
 
   .row
@@ -36,7 +37,7 @@ form
       .row
         .small-12.columns
           details
-            summary.primary.round#ben-ok What benefits are applicable?
+            summary.primary.round#ben-ok See the full list of benefits
             .panel-indent
               div 
               ul.pad-top-fifteen-px
@@ -78,21 +79,14 @@ form
 
 javascript:
   $(document).ready(function () {
-    var savings = getUrlParameter('savings-exceeded');
-    if (savings=='false') {
-      $('#sav-ok').addClass('success').removeClass('alert').text('Savings threshold met (click for details)');
-    } else {
-      $('#sav-ok').addClass('alert').removeClass('success').text('Savings threshold exceeded (click for details)');
-    }
-    var result = setPassFail($('#ben-ok'), 'Correct benefits received (click for details)', 'Benefits not received (click for details)')
-    if (result==false && savings=='false') {
-      buildNextUrl('5-income.html');
-      $('#next-url div').text('Next - Income calculator');
-    } else {
-      buildNextUrl('6-contact.html');
-      $('#next-url div').text('Next - Contact details ');
-    }
-    $("#next-url").attr("href", updateQueryStringParameter('benefits', result));
+
+    $("input[name='benefits']").on('change', function () {
+      if ($("input[name='benefits']:checked").val()=="false") {
+        buildNextUrl('6-income.html');
+      } else {
+        buildNextUrl('5-benefits-result.html');
+      }
+    });
   });
 
   function setPassFail(ctrl, pass, fail) {

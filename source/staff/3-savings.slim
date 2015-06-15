@@ -31,11 +31,12 @@ form
             | More than this amount
   #savings-more.row.hide.collapse
       .row
-        .options.radio
-          .option
-            label for="refund"
-              input id="refund" type="checkbox" name="refund"
-              | The applicant's partner is 61 or over
+        .small-12.medium-6.large-7.columns
+          .options.radio
+            .option
+              label for="refund"
+                input id="refund" type="checkbox" name="refund"
+                | The applicant's partner is 61 or over
 
   
   br
@@ -63,10 +64,9 @@ form
                   .row
                     .columns.small-4.table-label Fee
                     .columns.small-8 £410
-                br
-                br
-                a#next-url href='#'
-                  | See more detail about maximum savings and investments allowed
+              br
+              a#next-url href='#'
+                | See more detail about maximum savings and investments allowed
 
 javascript:
   $(document).ready( function() {

@@ -3,62 +3,61 @@ title: 'Help with fees'
 nav_title: 'Help with fees'
 ---
 form
+ 
   br
   .row
     .small-12.medium-12.large-12.columns
-      h2 Process application
-  br
-  .row
-    .small-12.medium-12.large-12.columns
-      h4 Savings
+      h2 About savings and investments
 
   .row
     .small-12.medium-6.large-5.columns    
       p
-        | Do they have more than £3,000 in savings and investments?
+        | Maximum amount of savings and investments allowed:
 
+      .panel.callout
+        .row
+          .small-12.medium-6.large-5.columns
+            h3 £3,000
+
+      p The applicant and their partner has
       .options.radio
         .option
           label for="savings-no"
             input id="savings-no" type="radio" name="savings" value="false"
-            | No
+            | Less than this amount
         .option
           label for="savings-yes"
             input id="savings-yes" type="radio" name="savings" value="true"
-            | Yes
+            | More than this amount
   #savings-more.row.hide.collapse
-    .panel-indent
-      .row.savings-data
-        .columns.small-12-medium-6.large-7
-          .row
-            .columns.small-6.highlight Age of applicant and partner (if they have one)
-            .columns.small-6.highlight Maximum amount of savings and investments
-  
-          .row
-            .columns.small-6.table-label Under 61
-            .columns.small-6 £3,000
-          .row
-            .columns.small-6.table-label 61 or over
-            .columns.small-6 £16,000
-      br
       .row
-        .columns.small-12.medium-6.large-7
+        .small-12.medium-6.large-5.columns
           .options.radio
-            | Do they have more than the maximum amount of savings and investments?
             .option
-              label for="under-61-no"
-                input id="under-61-no" type="radio" name="under-61" value="false"
-                | No
-            .option
-              label for="under-61-yes"
-                input id="under-61-yes" type="radio" name="under-61" value="true"
-                  | Yes
+              label for="refund"
+                input id="refund" type="checkbox" name="refund"
+                | The applicant's partner is 61 or over
+
+  .row
+      .small-12.columns
+        br
+        .row
+          .small-12.medium-7.large-7.columns
+            details
+              summary.primary#ben-ok Our calcuation is based on this amount
+              .panel-indent
+                div Test
+                ul.pad-top-fifteen-px
+                  li
+                    span Test
+                    span.hint
+                      |&nbsp;Test
 
   br
   .row
     .small-12.medium-7.large-7.columns
       a#next-url href='4-result.html'
-        .button.success Next - Assess income
+        .button.success Next
 
 javascript:
   $(document).ready( function() {

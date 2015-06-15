@@ -87,7 +87,7 @@ $gutter-two-thirds: $gutter - $gutter-one-third;
   clear: both;
   border-left: 4px solid #bfc1c3;
   padding: 10px 0 10px 15px;
-  margin: 30px 15px 45px 0;
+  margin: 10px 15px 45px 0;
 }
 span.hint {
   color: $secondary-text-colour;
@@ -130,6 +130,10 @@ span.hint {
   {
     margin:0;
   }
+}
+
+ul {
+  margin-bottom: 0;
 }
 
 

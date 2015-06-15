@@ -7,11 +7,7 @@ form
   br
   .row
     .small-12.medium-12.large-12.columns
-      h2 Process application
-  br
-  .row
-    .small-12.medium-12.large-12.columns
-      h4 Personal details
+      h2 Personal details
   .row
     .small-4.medium-4.large-2.columns
       label for='title'
@@ -50,11 +46,29 @@ form
       label for='claim_number'
         | National Insurance number
         input name='claim_number' id='claim_number' type='text'
+
+  .row
+    .small-12.medium-3.large-5.columns.form-group
+      #status-block
+        label.error data-check-error='couple' Please select a marital status
+        .row
+          .columns.small-12
+            label Status
+            .options.radio
+              .option
+                label for='couple-no'
+                  input data-check='couple' id='couple-no' name="couple" type="radio" value='false'
+                  |Single
+              .option
+                label for='couple-yes'
+                  input data-check='couple' id='couple-yes' name="couple" type="radio" value='true'
+                  |Married or living with someone and sharing an income
+
   br
   .row
     .small-12.medium-6.large-5.columns
       a#next-url href='2-application.html'
-        .button.success Next - Application details
+        .button.success Next
 
 javascript:
   $(document).ready( function() {

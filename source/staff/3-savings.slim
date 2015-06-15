@@ -33,11 +33,16 @@ form
       .row
         .small-12.medium-6.large-7.columns
           .panel-indent
+            p Is the applicant's partner is 61 or over?
             .options.radio
               .option
-                label for="refund"
-                  input id="refund" type="checkbox" name="refund"
-                  | The applicant's partner is 61 or over
+                label for="age-no"
+                  input id="age-no" type="radio" name="age" value="false"
+                  | No
+              .option
+                label for="age-yes"
+                  input id="age-yes" type="radio" name="age" value="true"
+                  | Yes
 
   
   br

@@ -1,0 +1,49 @@
+---
+title: 'Help with fees'
+nav_title: 'Help with fees'
+---
+form
+ 
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      h2 Benefits check results
+
+  .row
+    .small-12.medium-6.large-7.columns    
+
+      .panel.callout.received
+        .row
+          .small-12.medium-6.large-7.columns
+            h3 The applicant is receiving benefits and is eligible for help
+  br
+  .row
+    .small-12.medium-7.large-7.columns
+      a#next-url href='6-income.html'
+        .button.success Next
+
+  .row
+      .small-12.columns
+        br
+        .row
+          .small-12.medium-8.large-8.columns
+            details
+              summary.primary#ben-ok How is this worked out?
+              br
+              | The applicant's name, date of birth and National Insurance number has been checked by the Department of Work and Pensions.
+
+javascript:
+  $(document).ready( function() {
+
+    $('input[name="savings"]').on('change', function () {
+    });
+
+    $("input[name='savings']").on('change', function () {
+      $('#savings-more').toggleClass('hide', $("input[name='savings']:checked").val()=="false");
+      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='savings']:checked").val()));
+    });
+    $("input[name='under-61']").on('change', function () {
+      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='under-61']:checked").val()));
+    });
+    buildNextUrl('4-benefits.html');
+  });

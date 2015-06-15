@@ -10,13 +10,13 @@ form
       h2 About savings and investments
 
   .row
-    .small-12.medium-6.large-5.columns    
+    .small-12.medium-6.large-7.columns    
       p
         | Maximum amount of savings and investments allowed:
 
       .panel.callout.received
         .row
-          .small-12.medium-6.large-5.columns
+          .small-12.medium-6.large-7.columns
             h3 £3,000
 
       p The applicant and their partner has
@@ -31,7 +31,7 @@ form
             | More than this amount
   #savings-more.row.hide.collapse
       .row
-        .small-12.medium-6.large-5.columns
+        .small-12.medium-6.large-7.columns
           .options.radio
             .option
               label for="refund"
@@ -45,13 +45,19 @@ form
           .small-12.medium-7.large-7.columns
             details
               summary.primary#ben-ok Our calcuation is based on this amount
-              .panel-indent
-                div Test
-                ul.pad-top-fifteen-px
-                  li
-                    span Test
-                    span.hint
-                      |&nbsp;Test
+              .row.savings-data
+                .columns.small-12
+                  .row
+                    .columns.small-5.table-label Age
+                    .columns.small-7 45 years old
+                  .row
+                    .columns.small-5.table-label Status
+                    .columns.small-7 Single
+                  .row
+                    .columns.small-5.table-label Fee
+                    .columns.small-7 £410
+              a#next-url href='#'
+                | See more detail about maximum savings and investments allowed
 
   br
   .row

@@ -72,7 +72,7 @@ form
 
 javascript:
   $(document).ready( function() {
-    $('#fee').bind('change', function () {
-      $("#next-url").attr("href", '2-application.html?fee=' + $(this).val());
+    $("input[name='couple']").on('change', function () {
+      $("#next-url").attr("href", updateQueryStringParameter('couple', $("input[name='couple']:checked").val()));
     });
   });

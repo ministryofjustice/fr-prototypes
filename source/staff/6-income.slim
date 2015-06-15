@@ -15,18 +15,8 @@ br
     h4 Income calculator
 
 #r2_calculator_income
-  .row
-    .small-12.medium-3.large-5.columns.form-group
-      #fee-block
-        label.error data-check-error='fee' for='fee' Please enter a fee value
-        label for='fee' Fee
-        .row.collapse.prefix-radius
-          .small-2.medium-2.large-3.columns
-            span.prefix
-              label.inline for='fee' £
-          .small-10.medium-10.large-9.columns style="padding:0px;"
-            input data-check='fee' id="fee" name="fee" type="number"
-  .row
+  input data-check='fee' id="fee" name="fee" type="hidden"
+  .row.hide
     .small-12.medium-3.large-5.columns.form-group
       #status-block
         label.error data-check-error='couple' Please select a marital status
@@ -96,9 +86,8 @@ br
 
 javascript:
   $(document).ready(function () {
-    var fee = getUrlParameter('fee');
-    $('#fee').val(fee);
-
+    $('#fee').val(getUrlParameter('fee'));
+    $("input[name='couple'][value='" + getUrlParameter('couple') + "']").prop("checked", true)
     buildNextUrl('6-contact.html');
     $("#next-url").attr("href", updateQueryStringParameter('calculator', 'true')).hide();
   });

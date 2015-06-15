@@ -116,6 +116,7 @@ form
 
 javascript:
   $(document).ready( function() {
+    buildNextUrl('3-savings.html');
     $('#fee').bind('change', function () {
       $("#next-url").attr("href", updateQueryStringParameter('fee', $(this).val()));
     });

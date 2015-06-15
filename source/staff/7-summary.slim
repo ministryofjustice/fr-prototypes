@@ -32,6 +32,12 @@ form
     .small-12.medium-7.large-9.columns 
       | SG 75 17 16 C
     .small-12.columns
+  .row
+    .small-12.medium-5.large-3.columns 
+      .subheader Status
+    .small-12.medium-7.large-9.columns 
+      | Single
+    .small-12.columns
   hr
 
   .row
@@ -63,144 +69,31 @@ form
       | 20151234EV
     .small-12.columns  
   hr
-
   .row
     .small-12.medium-7.large-9.columns
-      h4 Contact details
-    .small-12.medium-5.large-3.columns
-      .text-right
-        a href='#'
-          | Change contact details
+      h4 About savings and investments
   .row
-    .small-12.medium-5.large-3.columns 
-      .subheader Address
-    .small-12.medium-7.large-9.columns 
-      | 10 Downing Street
-      br
-      | London
-      br
-      | SW1A 2AA
-  .row
-    .small-12.medium-5.large-3.columns 
-      .subheader Email
-    .small-12.medium-7.large-9.columns 
-      | johnsmith@onlineemail.com
-  .row
-    .small-12.medium-5.large-3.columns 
-      .subheader Phone
-    .small-12.medium-7.large-9.columns 
-      | 0207 123 4567
-    .small-12.columns  
-  hr
-
-  .row
+    .small-12.medium-12.large-12.columns    
+      .panel.callout.received
+        h3 Less than £3,000
+    .row
     .small-12.medium-7.large-9.columns
-      h4 Other details
-    .small-12.medium-5.large-3.columns
-      .text-right
-        a href='#'
-          | Change other details
+      h4 Benefits check results
   .row
-    .small-12.medium-5.large-3.columns 
-      .subheader Statement of truth signed
-    .small-12.medium-7.large-9.columns 
-      | Yes
-    .small-12.columns
+    .small-12.medium-12.large-12.columns    
+      .panel.callout.received
+        h3 The applicant is receiving benefits and is eligible for help
 
-  hr
-  .row
-    .small-12.medium-7.large-9.columns
-      h4 Benefits check
-    .small-12.medium-5.large-3.columns
-      .text-right
-        a href='#'
-          | Review benefits check
-  .row
-    .small-12.medium-5.large-3.columns
-      .subheader Benefits check
-    .small-12.medium-7.large-9.columns#benefits Receiving correct benefits
-  #calculator
-    hr
-    .row
-      .small-12.medium-7.large-9.columns
-        h4 Income assessment
-      .small-12.medium-5.large-3.columns
-        .text-right
-          a href='#'
-            | Review income assessment
-    .row
-      .small-12.medium-5.large-3.columns
-        .subheader Status
-      .small-12.medium-7.large-9.columns
-        | Single
-    .row
-      .small-12.medium-5.large-3.columns
-        .subheader Number of children
-      .small-12.medium-7.large-9.columns
-        | None
-    .row
-      .small-12.medium-5.large-3.columns
-        .subheader Total monthly income
-      .small-12.medium-7.large-9.columns
-        | £1000
-  hr
-  br
-  .small-12
-    .panel.callout
-      .row
-        .small-12.medium-7.large-9.columns
-          h4 Decision
-      .row
-        .small-12.medium-5.large-3.columns 
-          .subheader Amount remitted
-        .small-12.medium-7.large-9.columns 
-          | £410
-      .row
-        .small-12.medium-5.large-3.columns 
-          .subheader Amount to pay
-        .small-12.medium-7.large-9.columns 
-          | £0
-  .row
-    .small-12.medium-6.large-5.columns
-      .options.radio
-        .option
-          label for="challenge"
-            input id="challenge" type="checkbox" name="challenge"
-            | Change this decision?
-  #override-decision.row.hide
-    .small-12.columns
-      .row.options.radio
-        .small-12.columns
-          h4 Decision
-          .row
-            .columns.small-4
-              .option
-                label for="decision-part"
-                  input id="decision-part" type="radio" name="decision" value="part"
-                  | Part remission
-            .columns.small-4.end
-              .option
-                label for="decision-none"
-                  input id="decision-none" type="radio" name="decision" value="none"
-                  | No remission
-
-    .small-12.columns
-      label for='comments' Comments
-      textarea id="comments" rows=3
-  .row
-    .small-12.medium-6.large-5.columns
-      .options.radio
-        .option
-          label for="spot-check"
-            input id="spot-check" type="checkbox" name="spot-check"
-            | Request further evidence
-
-  hr
   br
   .row
     .small-12.medium-7.large-6.columns
       a#next-url href='8-confirmation.html'
-        .button.success Submit application
+        .button.success Complete processing
+  .row
+    .small-12.medium-7.large-6.columns
+      a#next-url href='8-confirmation.html'
+        | Flag to manager
+
 
 javascript:
   $(document).ready( function() {

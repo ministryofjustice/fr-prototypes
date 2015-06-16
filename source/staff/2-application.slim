@@ -42,6 +42,23 @@ form
       label for='claim_number'
         | Form name or number related to this application
         input name='claim_number' id='claim_number' type='text'
+
+  .row
+    .small-12.medium-8.large-5.columns.form-group
+      #status-block
+        .row
+          .columns.small-12
+            label Jurisdiction
+            .options.radio
+              .option
+                label for='couple-no'
+                  input data-check='couple' id='couple-no' name="couple" type="radio" value='false'
+                  |County Court
+              .option
+                label for='couple-yes'
+                  input data-check='couple' id='couple-yes' name="couple" type="radio" value='true'
+                  |Family SFC
+
   .row
     .small-12.medium-8.large-5.columns
       label for='claim_number'

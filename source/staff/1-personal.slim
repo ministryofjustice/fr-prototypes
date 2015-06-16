@@ -71,12 +71,31 @@ form
         .button.success Next
 
 javascript:
+
+  var monthNames = [
+    "Jan", "Feb", "Mar",
+    "Apr", "May", "Jun", "Jul",
+    "Aug", "Sep", "Oct",
+    "Nov", "Dec"
+  ];
+
+  var date = new Date();
+  var day = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+
   $(document).ready( function() {
     $("input[name='couple']").on('change', function () {
       $("#next-url").attr("href", updateQueryStringParameter('couple', $("input[name='couple']:checked").val()));
     });
     $("input[type='number']").on('change', function () {
-      var d = new Date($('#doa_year').val(), $('#doa_month').val()-1, $('#doa_day').val())
+      var day =  $('#doa_day').val();
+      var month = $('#doa_month').val()-1;
+      var year = $('#doa_year').val();
+
+      var d = new Date(year, month, day);
+      var dob = day + ' ' + monthNames[month] + ' ' + year;
+      $("#next-url").attr("href", updateQueryStringParameter('dob',  dob));
       $("#next-url").attr("href", updateQueryStringParameter('age',  _calculateAge(d)));
     });
   });
@@ -86,3 +105,4 @@ javascript:
     var ageDate = new Date(ageDifMs); // miliseconds from epoch
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
+

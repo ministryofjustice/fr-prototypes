@@ -24,8 +24,7 @@ form
   .row
     .small-12.medium-5.large-4.columns 
       .subheader Date of birth
-    .small-12.medium-7.large-8.columns 
-      | 10 Jan 1976
+    .small-12.medium-7.large-8.columns#dob
   .row
     .small-12.medium-5.large-4.columns 
       .subheader National Insurance number
@@ -35,8 +34,7 @@ form
   .row
     .small-12.medium-5.large-4.columns 
       .subheader Status
-    .small-12.medium-7.large-8.columns 
-      | Single
+    .small-12.medium-7.large-8.columns#status
     .small-12.columns
   hr
 
@@ -112,6 +110,9 @@ javascript:
   $(document).ready( function() {
     $('#benefits').text(getUrlParameter('benefits')=='true' ? 'Receiving correct benefits' : 'Benefits not received');
     $('#calculator').toggle(getUrlParameter('calculator')=='true');
+    $('#dob').text(unescape(getUrlParameter('dob')));
+    $('#status').text(getUrlParameter('couple') == true ? 'Single' : 'Married or living with someone and sharing an income');
+    
     buildNextUrl('8-confirmation.html');
 
     $('input[name="decision"]').on('change', function () {

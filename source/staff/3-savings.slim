@@ -63,7 +63,7 @@ form
               .columns.small-12
                 .row
                   .columns.small-4.table-label Age
-                  .columns.small-8 45 years old
+                  .columns.small-8#age years old
                 .row
                   .columns.small-4.table-label Status
                   .columns.small-8#status
@@ -77,6 +77,7 @@ form
 javascript:
   $(document).ready( function() {
     $('#fee').text('£'+getUrlParameter('fee'));
+    $('#age').text(getUrlParameter('age') + ' years old');
     $('#status').text(getUrlParameter('couple')==true?'Single':'Married or living with someone and sharing an income');
     $('input[name="savings"]').on('change', function () {
     });

@@ -59,24 +59,25 @@ form
           details
             summary.primary#ben-ok Our calculation is based on this information
             br
-            .row.savings-data
+            .row.savings-data.collapse
               .columns.small-12
                 .row
                   .columns.small-4.table-label Age
                   .columns.small-8 45 years old
                 .row
                   .columns.small-4.table-label Status
-                  .columns.small-8 Single
+                  .columns.small-8#status
                 .row
                   .columns.small-4.table-label Fee
-                  .columns.small-8 £410
+                  .columns.small-8#fee
               br
               a href='#'
                 | See more detail about maximum savings and investments allowed
 
 javascript:
   $(document).ready( function() {
-
+    $('#fee').text('£'+getUrlParameter('fee'));
+    $('#status').text(getUrlParameter('couple')==true?'Single':'Married or living with someone and sharing an income');
     $('input[name="savings"]').on('change', function () {
     });
 

@@ -39,7 +39,7 @@ br
         label.error data-check-error='children' for='children' Please select a number of children
         label for='children' No of children
         .row
-          .columns.small-3
+          .columns.small-4.medium-4.large-2
             input data-check='children' id='children' type="number" min=0 value=""
 
   .row
@@ -48,10 +48,10 @@ br
         label.error data-check-error='income' for='income' Please enter an income
         label for='income' Total monthly income
         .row.collapse.prefix-radius
-          .small-2.medium-2.large-3.columns
+          .small-2.medium-4.large-3.columns
             span.prefix
               label.inline for='income' £
-          .small-10.medium-10.large-9.columns
+          .small-10.medium-9.large-9.columns
             input data-check='income' name="income" id="income" type="number"
 
 .row
@@ -63,26 +63,35 @@ br
     .columns.small-12.medium-10.large-8
       #calculator.callout
         h3.bold#fee-remit
-  .row
-    .columns.small-12.medium-10.large-8
-      .calculator-data
-        .row.first
-          .columns.large-4.medium-5.small-6.table-label Fee
-          .columns.large-8.medium-7.small-6#confirm_fee
-        .row
-          .columns.large-4.medium-5.small-6.table-label Status
-          .columns.large-8.medium-7.small-6#confirm_status
-        .row
-          .columns.large-4.medium-5.small-6.table-label No of children
-          .columns.large-8.medium-7.small-6#confirm_children
-        .row
-          .columns.large-4.medium-5.small-6.table-label Total monthly income
-          .columns.large-8.medium-7.small-6#confirm_income
+
 br
 .row
   .small-12.columns
     a#next-url href="6-contact.html"
-      .button.success Next - Contact details
+      .button.success Next
+
+
+.row
+  .small-12.columns
+    br
+    .row
+      .columns.small-12.medium-10.large-8
+        .calculator-data
+          .row.first
+            .columns.large-4.medium-5.small-6.table-label Fee
+            .columns.large-8.medium-7.small-6#confirm_fee
+          .row
+            .columns.large-4.medium-5.small-6.table-label Status
+            .columns.large-8.medium-7.small-6#confirm_status
+          .row
+            .columns.large-4.medium-5.small-6.table-label No of children
+            .columns.large-8.medium-7.small-6#confirm_children
+          .row
+            .columns.large-4.medium-5.small-6.table-label Total monthly income
+            .columns.large-8.medium-7.small-6#confirm_income
+      br
+      a href='#'
+        | See more detail about maximum total monthly income allowed
 
 javascript:
   $(document).ready(function () {

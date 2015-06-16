@@ -17,9 +17,10 @@ form
       .panel.callout.received
         .row
           .small-12.medium-8.large-7.columns
-            h3 £3,000
+            h3#max-savings £3,000
 
-      p The applicant and their partner has
+      p
+        span#status-describe The applicant has
       .options.radio
         .option
           label for="savings-no"
@@ -78,16 +79,31 @@ javascript:
   $(document).ready( function() {
     $('#fee').text('£'+getUrlParameter('fee'));
     $('#age').text(getUrlParameter('age') + ' years old');
-    $('#status').text(getUrlParameter('couple')==true?'Single':'Married or living with someone and sharing an income');
+    $('#status').text(getUrlParameter('couple')=='false'?'Single':'Married or living with someone and sharing an income');
+    $('#status-describe').text(getUrlParameter('couple')=='false' ? 'The applicant has' : 'The applicant and their partner have');
+    $('#max-savings').text(getUrlParameter('age')>60?'£16,000': '£3,000');
+    buildNextUrl('4-benefits.html');
     $('input[name="savings"]').on('change', function () {
     });
 
     $("input[name='savings']").on('change', function () {
-      $('#savings-more').toggleClass('hide', $("input[name='savings']:checked").val()=="false");
+      if(getUrlParameter('couple')=='true' && getUrlParameter('age')<61) {
+        $('#savings-more').toggleClass('hide', $("input[name='savings']:checked").val() == "false");
+      }
       $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='savings']:checked").val()));
+      setNextPage();
     });
-    $("input[name='under-61']").on('change', function () {
-      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='under-61']:checked").val()));
+    $("input[name='age']").on('change', function () {
+      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='age']:checked").val()));
+      setNextPage();
     });
-    buildNextUrl('4-benefits.html');
   });
+  function setNextPage() {
+    var jumpToSummary = false;
+    if (getUrlParameter('couple') == 'true') {
+      jumpToSummary = ($("input[name='savings']:checked").val() == 'true' && $("input[name='age']:checked").val() == 'false');
+    } else {
+      jumpToSummary = $("input[name='savings']:checked").val() == 'true';
+    }
+    buildNextUrl(jumpToSummary ? '7-summary.html' : '4-benefits.html');
+  }

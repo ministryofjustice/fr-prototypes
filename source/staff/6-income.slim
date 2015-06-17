@@ -103,4 +103,10 @@ javascript:
     $("input[name='couple'][value='" + getUrlParameter('couple') + "']").prop("checked", true)
     buildNextUrl('7-summary.html');
     $("#next-url").attr("href", updateQueryStringParameter('calculator', 'true')).hide();
+
+    $('#children, #income').on('change', function() {
+      var key = $(this).attr('id') ;
+      var value =  $(this).val();
+      $("#next-url").attr("href", updateQueryStringParameter(key, value));
+    });
   });

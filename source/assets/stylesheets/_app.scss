@@ -115,7 +115,7 @@ span.hint {
 .panel.callout {
   padding:30px 15px;
   margin-bottom: 2em;
-  color:#ffffff  ;
+  color:#ffffff;
   h3 {
     color: $page-colour;
     margin: 0;
@@ -125,6 +125,15 @@ span.hint {
   }
   &.received{
     background-color: $turquoise;
+  }
+  &.callout-none {
+    background-color: $error-colour;
+  }
+  &.callout-full {
+    background: $turquoise;
+  }
+  &.callout-part {
+    background: $orange;
   }
   p
   {

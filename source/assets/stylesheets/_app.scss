@@ -180,3 +180,7 @@ ul {
   color: $error-colour;
   font-weight: bold;
 }
+
+.button.pending {
+  background: $orange;
+}

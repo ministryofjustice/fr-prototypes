@@ -71,12 +71,12 @@ form
     .small-12.medium-7.large-8.columns
       h4 Savings and investments
   .row
-    .small-12.medium-5.large-4.columns 
+    .small-12.medium-5.large-4.columns
       .subheader Maximum savings allowed
-    .small-12.medium-7.large-8.columns 
+    .small-12.medium-7.large-8.columns
       .summary-result-success
         | &#10003; Passed. Less than £3,000
-    .small-12.columns  
+    .small-12.columns
   hr
   .row
     .small-12.medium-7.large-8.columns
@@ -94,7 +94,7 @@ form
       h4 Application result
   .row
     .small-12.medium-12.large-12.columns    
-      .panel.callout.received
+      .panel.callout#remission-type
         h3 Full remission
 
   br
@@ -114,8 +114,16 @@ javascript:
     $('#calculator').toggle(getUrlParameter('calculator')=='true');
     $('#dob').text(unescape(getUrlParameter('dob')));
     $('#status').text(getUrlParameter('couple') == true ? 'Single' : 'Married or living with someone and sharing an income');
-    
-    buildNextUrl('8-confirmation-evidence.html');
+
+    if(getUrlParameter('benefits')=='true') {
+      $('#remission-type').addClass('callout-full');
+      buildNextUrl('8-confirmation-success.html');
+    } else if(getUrlParameter('calculator')=='true') {
+      $('#remission-type').addClass('callout-part');
+      $('#remission-type h3').text('Awaiting evidence');
+      buildNextUrl('8-confirmation-evidence.html');
+    }
+
 
     $('input[name="decision"]').on('change', function () {
       $('#spot-check-manual').toggle($('input[name="decision"]:checked').val()!="none")

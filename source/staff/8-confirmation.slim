@@ -14,21 +14,42 @@ form
   br
   .row
     .small-12.medium-12.large-12.columns
-      h4 Next steps
-      ul
-      -if request.params[:spotcheck]=='true'
-        li#spot-check-true You need to send a letter requesting evidence
-      -else
-        li#spot-check-rand This application has been chosen for a random evidence spot check, you will need to send a letter
+      h4 Application reference number
+
+  .row
+    .small-12.medium-12.large-12.columns
+      .panel.callout
+        .row
+          .small-12.medium-7.large-8.columns
+            h3 FEE-AD08-BK56
+
+  .row
+    .small-12.medium-12.large-12.columns
+      p You need to contact the applicant and ask them to send evidence. Copy and paste the letter below:
+
+  .row
+    .small-12.medium-12.large-12.columns
+      .panel
+
+        p Case number: XXXX
+        p Help with court fees application reference: FEE-0345-XX
+        p Dear [Applicant name] 
+        p We’ve received your application for financial help with court fees and need to see the following: 
+        ul
+          li 3 months of bank statements 
+          li last 3 payslips 
+        p Please send these documents within 7 working days of receiving this letter to: 
+        [Court name and address here]   
 
   .row
     .small-12.medium-6.large-5.columns
-      a href='Pending-list.html' View pending applications
+      a href='Pending-list.html' 
+        .button View all pending applications
   br
   .row
     .small-12.medium-6.large-5.columns
       a href='../index.html'
-        | Home
+        .button.success Go back to start
 
 javascript:
   $(document).ready( function() {

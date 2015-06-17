@@ -113,7 +113,7 @@ javascript:
     $('#dob').text(unescape(getUrlParameter('dob')));
     $('#status').text(getUrlParameter('couple') == true ? 'Single' : 'Married or living with someone and sharing an income');
     
-    buildNextUrl('8-confirmation.html');
+    buildNextUrl('8-confirmation-evidence.html');
 
     $('input[name="decision"]').on('change', function () {
       $('#spot-check-manual').toggle($('input[name="decision"]:checked').val()!="none")

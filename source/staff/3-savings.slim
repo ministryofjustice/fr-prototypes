@@ -93,7 +93,7 @@ javascript:
     });
     $("input[name='age']").on('change', function () {
       setNextPage();
-      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='age']:checked").val()));
+      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='age']:checked").val()=='false'));
     });
   });
   function setNextPage() {

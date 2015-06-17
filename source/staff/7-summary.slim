@@ -73,8 +73,7 @@ form
     .small-12.medium-5.large-4.columns
       .subheader Maximum savings allowed
     .small-12.medium-7.large-8.columns
-      .summary-result-success
-        | &#10003; Passed. Less than £3,000
+      #income-result-display.summary-result-success &#10003; Passed. Less than £3,000
   #results-benefits
     hr
     .row
@@ -102,6 +101,11 @@ form
         .subheader Total monthly income
       .small-12.medium-7.large-8.columns#income
         | £1000
+    .row
+      .small-12.medium-5.large-4.columns
+        .subheader Outcome
+      .small-12.medium-7.large-8.columns.summary-result-success
+        | &#10003; Passed. The applicant has £0 to pay
   hr
   .row
     .small-12.medium-7.large-8.columns
@@ -129,7 +133,9 @@ javascript:
     $('#results-income').toggle(getUrlParameter('calculator')=='true');
     $('#dob').text(unescape(getUrlParameter('dob')));
     $('#status').text(getUrlParameter('couple') == true ? 'Single' : 'Married or living with someone and sharing an income');
-
+    if(getUrlParameter('savings-exceeded')=='true') {
+      $('#income-result-display').addClass('summary-result-failure').text('Failed. Savings over the threshold');
+    }
     if (getUrlParameter('children')!='') {
       $('#children').text(getUrlParameter('children'));
     }

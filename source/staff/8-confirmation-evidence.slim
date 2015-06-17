@@ -1,0 +1,65 @@
+---
+title: 'Help with fees'
+nav_title: 'Help with fees'
+section_title: 'Process Application'
+---
+form
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      h2
+        |Application pending
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      .panel.callout.received
+        .row
+          .small-12.medium-7.large-8.columns
+            p Reference
+            h3 FEE-AD08-BK56
+
+  .row
+    .small-12.medium-12.large-12.columns
+      h4 Next steps
+      p You need to contact the applicant and ask them to send evidence.
+      p Copy and paste the letter below:
+
+  .row
+    .small-12.medium-12.large-12.columns
+      .panel
+
+        p Case number: 20151234EV
+        p Fee number: FEE-AD08-BK56
+        br
+        p Dear Mr John Smith
+        p We’ve received your application for financial help with court fees and need to see the following: 
+        ul
+          li 3 months of bank statements 
+          li 1 month of payslips 
+        br
+        p Please send these documents within 7 working days of receiving this letter to: 
+        p 
+          |[Court name and address]  
+
+  br
+  .row
+    center
+      .small-12.medium-6.large-6.columns
+        .panel
+          a.button.success href='index.html' Go back to start
+      .small-12.medium-6.large-6.columns.end
+        .panel
+          a.button href='Pending-list.html' View all pending applications
+
+javascript:
+  $(document).ready( function() {
+    //$('#spot-check-true').toggle((getUrlParameter('spotcheck'))=='true');
+
+    //if ((getUrlParameter('spotcheck')=='false' && getUrlParameter('spotcheck')=='false')) {
+      //var show = !!Math.floor(Math.random() * 2);
+      //$('#spot-check-rand').toggle(!!Math.floor(Math.random() * 2));
+    //}
+    $('a div.button.success').on('click', function() {
+      $('#copied').fadeTo(1,1).fadeTo(2000, 0);
+    });
+  });

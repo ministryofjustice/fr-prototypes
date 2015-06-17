@@ -86,6 +86,7 @@ javascript:
       } else {
         buildNextUrl('5-benefits-result.html');
       }
+      $("#next-url").attr("href", updateQueryStringParameter('benefits', $("input[name='benefits']:checked").val()));
     });
   });
 

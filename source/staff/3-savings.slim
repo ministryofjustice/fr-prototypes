@@ -83,8 +83,6 @@ javascript:
     $('#status-describe').text(getUrlParameter('couple')=='false' ? 'The applicant has' : 'The applicant and their partner have');
     $('#max-savings').text(getUrlParameter('age')>60?'£16,000': '£3,000');
     buildNextUrl('4-benefits.html');
-    $('input[name="savings"]').on('change', function () {
-    });
 
     $("input[name='savings']").on('change', function () {
       if(getUrlParameter('couple')=='true' && getUrlParameter('age')<61) {
@@ -95,12 +93,12 @@ javascript:
     });
     $("input[name='age']").on('change', function () {
       setNextPage();
-      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='age']:checked").val()));
+      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='age']:checked").val()=='false'));
     });
   });
   function setNextPage() {
     var jumpToSummary = false;
-    if (getUrlParameter('couple') == 'true') {
+    if (getUrlParameter('couple') == 'true' && getUrlParameter('age')<61) {
       jumpToSummary = ($("input[name='savings']:checked").val() == 'true' && $("input[name='age']:checked").val() == 'false');
     } else {
       jumpToSummary = $("input[name='savings']:checked").val() == 'true';

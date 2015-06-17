@@ -79,6 +79,7 @@ form
 
 javascript:
   $(document).ready(function () {
+    buildNextUrl('5-benefits-result.html');
 
     $("input[name='benefits']").on('change', function () {
       if ($("input[name='benefits']:checked").val()=="false") {
@@ -86,6 +87,7 @@ javascript:
       } else {
         buildNextUrl('5-benefits-result.html');
       }
+      $("#next-url").attr("href", updateQueryStringParameter('benefits', $("input[name='benefits']:checked").val()));
     });
   });
 

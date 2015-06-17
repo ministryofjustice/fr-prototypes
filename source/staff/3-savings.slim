@@ -90,12 +90,12 @@ javascript:
       if(getUrlParameter('couple')=='true' && getUrlParameter('age')<61) {
         $('#savings-more').toggleClass('hide', $("input[name='savings']:checked").val() == "false");
       }
-      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='savings']:checked").val()));
       setNextPage();
+      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='savings']:checked").val()));
     });
     $("input[name='age']").on('change', function () {
-      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='age']:checked").val()));
       setNextPage();
+      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='age']:checked").val()));
     });
   });
   function setNextPage() {

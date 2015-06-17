@@ -65,7 +65,6 @@ form
       .subheader Case number
     .small-12.medium-7.large-8.columns 
       | 20151234DIV
-    .small-12.columns  
   hr
   .row
     .small-12.medium-7.large-8.columns
@@ -76,25 +75,40 @@ form
     .small-12.medium-7.large-8.columns
       .summary-result-success
         | &#10003; Passed. Less than £3,000
-    .small-12.columns
-  hr
-  .row
-    .small-12.medium-7.large-8.columns
-      h4 Benefits
-  .row
-    .small-12.medium-5.large-4.columns 
-      .subheader Receiving benefits
-    .small-12.medium-7.large-8.columns 
-      .summary-result-success
-        | &#10003; Passed. Receiving benefits
-    .small-12.columns  
+  #results-benefits
+    hr
+    .row
+      .small-12.medium-7.large-8.columns
+        h4 Benefits
+    .row
+      .small-12.medium-5.large-4.columns
+        .subheader Receiving benefits
+      .small-12.medium-7.large-8.columns
+        .summary-result-success
+          | &#10003; Passed. Receiving benefits
+  #results-income
+    hr
+    .row
+      .small-12.medium-7.large-8.columns
+        h4 Income assessment
+
+    .row
+      .small-12.medium-5.large-4.columns
+        .subheader Number of children
+      .small-12.medium-7.large-8.columns#children
+        | None
+    .row
+      .small-12.medium-5.large-4.columns
+        .subheader Total monthly income
+      .small-12.medium-7.large-8.columns#income
+        | £1000
   hr
   .row
     .small-12.medium-7.large-8.columns
       h4 Application result
   .row
     .small-12.medium-12.large-12.columns    
-      .panel.callout#remission-type
+      .panel.callout.callout-full#remission-type
         h3 Full remission
 
   br
@@ -111,9 +125,18 @@ form
 javascript:
   $(document).ready( function() {
     $('#benefits').text(getUrlParameter('benefits')=='true' ? 'Receiving correct benefits' : 'Benefits not received');
-    $('#calculator').toggle(getUrlParameter('calculator')=='true');
+    $('#results-benefits').toggle(getUrlParameter('benefits')=='true');
+    $('#results-income').toggle(getUrlParameter('calculator')=='true');
     $('#dob').text(unescape(getUrlParameter('dob')));
     $('#status').text(getUrlParameter('couple') == true ? 'Single' : 'Married or living with someone and sharing an income');
+
+    if (getUrlParameter('children')!='') {
+      $('#children').text(getUrlParameter('children'));
+    }
+    if (getUrlParameter('income')!='') {
+      $('#income').text('£' + getUrlParameter('income'));
+    }
+
 
     if(getUrlParameter('benefits')=='true') {
       $('#remission-type').addClass('callout-full');

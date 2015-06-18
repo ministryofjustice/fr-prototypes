@@ -48,7 +48,7 @@ form
   .row
     .small-12.medium-5.large-4.columns 
       .subheader Fee
-    .small-12.medium-7.large-8.columns 
+    .small-12.medium-7.large-8.columns#fee
       | £410
   .row
     .small-12.medium-5.large-4.columns 
@@ -132,6 +132,7 @@ javascript:
     $('#results-benefits').toggle(getUrlParameter('benefits')=='true');
     $('#results-income').toggle(getUrlParameter('calculator')=='true');
     $('#dob').text(unescape(getUrlParameter('dob')));
+    $('#fee').text(unescape('£' + getUrlParameter('fee')));
     $('#status').text(getUrlParameter('couple') == true ? 'Single' : 'Married or living with someone and sharing an income');
 
 

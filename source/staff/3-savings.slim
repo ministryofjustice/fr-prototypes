@@ -34,7 +34,7 @@ form
       .row
         .small-12.medium-8.large-7.columns
           .panel-indent
-            p Is the applicant's partner is 61 or over?
+            p Is the applicant's partner 61 or over?
             .options.radio
               .option
                 label for="age-no"
@@ -94,6 +94,7 @@ javascript:
     $("input[name='age']").on('change', function () {
       setNextPage();
       $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='age']:checked").val()=='false'));
+      $("#next-url").attr("href", updateQueryStringParameter('over-61', $("input[name='age']:checked").val()=='true'));
     });
   });
   function setNextPage() {

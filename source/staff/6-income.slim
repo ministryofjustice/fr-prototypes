@@ -44,7 +44,7 @@ br
             |Yes
 
   .row.collapse.hide#child-block
-    .small-12.medium-6.large-5.columns.form-group.panel-indent
+    .small-12.medium-6.large-5.columns.form-group.panel-indent style="margin-bottom:0px; padding-bottom:0px;"
       .row
         .columns.small-12
           label.error data-check-error='children' for='children' Please select a number of children
@@ -53,17 +53,18 @@ br
             .columns.small-4.medium-4.large-4
               input data-check='children' id='children' type="number" min=0 value=""
 
-  .row
-    .small-12.medium-3.large-5.columns.form-group
-      #income-block
-        label.error data-check-error='income' for='income' Please enter an income
-        label for='income' Total monthly income
-        .row.collapse.prefix-radius
-          .small-2.medium-4.large-3.columns
-            span.prefix
-              label.inline for='income' £
-          .small-10.medium-9.large-9.columns
-            input data-check='income' name="income" id="income" type="number"
+  .row.collapse.hide#income-block
+    .small-12.medium-3.large-5.columns.form-group.panel-indent
+      .row
+        .columns.small-12
+          label.error data-check-error='income' for='income' Please enter an income
+          label for='income' Total monthly income
+          .row.collapse.prefix-radius
+            .small-2.medium-4.large-3.columns
+              span.prefix
+                label.inline for='income' £
+            .small-10.medium-9.large-9.columns
+              input data-check='income' name="income" id="income" type="number"
 
 .row
   .small-12.medium-8.large-5.columns
@@ -120,10 +121,14 @@ javascript:
       $("#next-url").attr("href", updateQueryStringParameter('to_pay', to_pay));
     });
     $("input[name='any-kids']").on('change', function () {
+      $('#income-block').show();
       $('#child-block').toggleClass('hide', $("input[name='any-kids']:checked").val() == "false");
-      var newVal= ($("input[name='any-kids']:checked").val() == "false") ? '0' : '';
-      console.log('val=' + newVal)
-      $('#children').val(newVal);
+      if( $("input[name='any-kids']:checked").val() == "true") {
+        $('#income-block > div.panel-indent').css("margin-top", "0px").css("padding-top","0px");
+      } else {
+        $('#income-block > div.panel-indent').css("margin-top", "10px").css("padding-top","10px");
+      }
+      $('#children').val(($("input[name='any-kids']:checked").val() == "false") ? '0' : '');
     });
     $('#children, #income').on('change', function() {
       var key = $(this).attr('id') ;

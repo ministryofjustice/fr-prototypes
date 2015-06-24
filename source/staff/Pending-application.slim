@@ -6,7 +6,7 @@ form
   br
   .row
     .small-12.medium-12.large-12.columns
-      h2 Pending application
+      h2 Application waiting for evidence
 
   .row
     .small-12.medium-12.large-12.columns    
@@ -103,17 +103,22 @@ form
         h3 Awaiting evidence
 
   .row
+    .small-12.medium-12.large-12.columns    
+      .panel.callout.callout-part
+        h3 This application has been chosen to have supporting evidence checked 
+
+  .row
     .small-12.medium-6.large-5.columns
       .options.radio
         .option
           label for="evidence-approved"
             input id="evidence-approved" type="radio" name="evidence" value="true"
-            | Evidence approved
+            | Correct evidence supplied
       .options.radio
         .option
           label for="evidence-refused"
             input id="evidence-refused" type="radio" name="evidence" value="false"
-            | Evidence refused
+            | Incorrect evidence supplied
   br
   .row
     .small-12.medium-7.large-6.columns

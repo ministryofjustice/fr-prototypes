@@ -198,9 +198,18 @@ ul {
 }
 
 .panel.success {
-  background-color: #85994B;
+  background-color: #a4b378;
 }
 
 .panel.unsuccess {
-  background-color:#DF3034;
+  background-color:#ef9799;
+  text-decoration: none;
 }
+
+.panel.waiting {
+  background-color:#f47738;
+  text-decoration: none;
+}
+
+
+

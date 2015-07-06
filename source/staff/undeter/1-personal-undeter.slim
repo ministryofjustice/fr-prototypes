@@ -13,17 +13,17 @@ form
     .small-4.medium-4.large-2.columns
       label for='title'
         | Title
-        input id='title' type='text'
+        input id='title' type='text' placeholder='Mr'
   .row      
     .small-12.medium-8.large-5.columns
       label for='first_name'
         | First name
-        input name='first_name' type='text'
+        input name='first_name' type='text' placeholder='John'
   .row
     .small-12.medium-8.large-5.columns
       label for='last_name'
         | Last name
-        input id='last_name' type='text'
+        input id='last_name' type='text' placeholder='Smyth'
   .row
     .small-12.medium-6.large-4.columns
       label for='doa_day' Date of birth
@@ -37,16 +37,16 @@ form
         label for='doa_year' 
           small Year
       .small-4.medium-4.large-4.columns style='padding-left: 0px;'
-        input id='doa_day' type='number'
+        input id='doa_day' type='number' placeholder='20'
       .small-4.medium-4.large-4.columns style='padding-left: 0px;'
-        input id='doa_month' type='number'
+        input id='doa_month' type='number' placeholder='11'
       .small-4.medium-4.large-4.columns style='padding: 0px;'
-        input id='doa_year' type='number'
+        input id='doa_year' type='number' placeholder='1976'
   .row
     .small-12.medium-8.large-5.columns
       label for='claim_number'
         | National Insurance number
-        input name='claim_number' id='claim_number' type='text'
+        input name='claim_number' id='claim_number' type='text' placeholder='AB 12 34 56 C'
 
   .row
     .small-12.medium-8.large-5.columns.form-group
@@ -57,7 +57,7 @@ form
             .options.radio
               .option
                 label for='couple-no'
-                  input data-check='couple' id='couple-no' name="couple" type="radio" value='false'
+                  input data-check='couple' id='couple-no' name="couple" type="radio" value='false' checked='checked'
                   |Single
               .option
                 label for='couple-yes'

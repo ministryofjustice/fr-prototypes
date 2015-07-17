@@ -68,29 +68,27 @@ form
   hr
   .row
     .small-12.medium-7.large-8.columns
-      h4 Savings and investments
+      h4 Assessment
   .row
     .small-12.medium-5.large-4.columns
-      .subheader Maximum savings allowed
+      .subheader Savings and assessments
     .small-12.medium-7.large-8.columns
-      #income-result-display.summary-result-success &#10003; Passed. Less than £3,000
+      #income-result-display.summary-result-success &#10003; Passed
   #results-benefits
     hr
     .row
-      .small-12.medium-7.large-8.columns
-        h4 Benefits
-    .row
       .small-12.medium-5.large-4.columns
-        .subheader Receiving benefits
+        .subheader Benefits
       .small-12.medium-7.large-8.columns
         .summary-result-success
-          | &#10003; The applicant is receiving correct benefits
+          | &#10003; Passed
   #results-income
     hr
     .row
-      .small-12.medium-7.large-8.columns
-        h4 Income assessment
-
+      .small-12.medium-5.large-4.columns
+        .subheader Income
+      .small-12.medium-7.large-8.columns.summary-result-success#outcome
+        | &#10003; Passed
     .row
       .small-12.medium-5.large-4.columns
         .subheader Number of children
@@ -102,29 +100,14 @@ form
       .small-12.medium-7.large-8.columns#income
         | £1000
     .row
-      .small-12.medium-5.large-4.columns
-        .subheader Outcome
-      .small-12.medium-7.large-8.columns.summary-result-success#outcome
-        | &#10003; The applicant doesn’t have to pay the fee 
-  hr
-  .row
-    .small-12.medium-7.large-8.columns
-      h4 Application result
-  .row
-    .small-12.medium-12.large-12.columns    
-      .panel.callout.callout-full#remission-type
-        h3 The applicant doesn’t have to pay the fee
-
+      .small-12.medium-12.large-12.columns    
+        .panel.callout.callout-full#remission-type
+          h3 The applicant doesn’t have to pay the fee
   br
   .row
     .small-12.medium-7.large-6.columns
       a#next-url href='8-confirmation-evidence.html'
         .button.success Continue
-  .row
-    .small-12.medium-7.large-6.columns
-      a href='#'
-        | Flag to manager
-
 
 javascript:
   $(document).ready( function() {

@@ -1,43 +1,18 @@
+br
+br
+br
+br
+br
+br
+
 form
   br
   .row      
     .small-12.medium-8.large-5.columns
         input name='first_name' type='text'
- 
-
-javascript:
-
-  var monthNames = [
-    "Jan", "Feb", "Mar",
-    "Apr", "May", "Jun", "Jul",
-    "Aug", "Sep", "Oct",
-    "Nov", "Dec"
-  ];
-
-  var date = new Date();
-  var day = date.getDate();
-  var monthIndex = date.getMonth();
-  var year = date.getFullYear();
-
-  $(document).ready( function() {
-    $("input[name='couple']").on('change', function () {
-      $("#next-url").attr("href", updateQueryStringParameter('couple', $("input[name='couple']:checked").val()));
-    });
-    $("input[type='number']").on('change', function () {
-      var day =  $('#doa_day').val();
-      var month = $('#doa_month').val()-1;
-      var year = $('#doa_year').val();
-
-      var d = new Date(year, month, day);
-      var dob = day + ' ' + monthNames[month] + ' ' + year;
-      $("#next-url").attr("href", updateQueryStringParameter('dob',  dob));
-      $("#next-url").attr("href", updateQueryStringParameter('age',  _calculateAge(d)));
-    });
-  });
-
-  function _calculateAge(birthday) { // birthday is a date
-    var ageDifMs = Date.now() - birthday.getTime();
-    var ageDate = new Date(ageDifMs); // miliseconds from epoch
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
-  }
-
+br
+br
+br
+br
+br
+br

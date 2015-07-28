@@ -30,29 +30,6 @@ br
                   input data-check='couple' id='couple-yes' name="couple" type="radio" value='true'
                   |Married or living with someone and sharing an income
 
-  .row
-    .columns.small-12.medium-12.large-12
-      label Does the applicant have any financially dependent children?
-    .columns.small-12.medium-6.large-5.end
-      .options.radio
-        .option
-          label for='any-kids-no'
-            input data-check='any-kids' id='any-kids-no' name="any-kids" type="radio" value='false'
-            |No
-        .option
-          label for='any-kids-yes'
-            input data-check='any-kids' id='any-kids-yes' name="any-kids" type="radio" value='true'
-            |Yes
-
-  .row.collapse.hide#child-block
-    .small-12.medium-6.large-5.columns.form-group.panel-indent style="margin-bottom:0px; padding-bottom:0px;"
-      .row
-        .columns.small-12
-          label.error data-check-error='children' for='children' Please select a number of children
-          label for='children' Number of children
-          .row.collapse
-            .columns.small-4.medium-4.large-4
-              input data-check='children' id='children' type="number" min=0 value=""
 
   .row.collapse.hide#income-block
     .small-12.medium-3.large-5.columns.form-group.panel-indent

@@ -13,6 +13,7 @@ br
 
 #r2_calculator_income
   input data-check='fee' id="fee" name="fee" type="hidden"
+  input data-check='children' id='children' type="hidden"
   .row.hide
     .small-12.medium-3.large-5.columns.form-group
       #status-block
@@ -56,7 +57,7 @@ br
 
   .row
     .small-12.columns
-      a#next-url href="7-summary.html"
+      a#next-url href="8-confirmation-success.html"
         .button.success Next
 
 
@@ -87,28 +88,8 @@ br
 
 javascript:
   $(document).ready(function () {
-    $('#fee').val(getUrlParameter('fee'));
-    $("input[name='couple'][value='" + getUrlParameter('couple') + "']").prop("checked", true)
-    buildNextUrl('7-summary.html');
-    $("#next-url").attr("href", updateQueryStringParameter('calculator', 'true')).hide();
-
-    $('#next-url').on('click', function () {
-      var to_pay = escape($('#fee-remit').text());
-      $("#next-url").attr("href", updateQueryStringParameter('to_pay', to_pay));
-    });
-    $("input[name='any-kids']").on('change', function () {
-      $('#income-block').show();
-      $('#child-block').toggleClass('hide', $("input[name='any-kids']:checked").val() == "false");
-      if( $("input[name='any-kids']:checked").val() == "true") {
-        $('#income-block > div.panel-indent').css("margin-top", "0px").css("padding-top","0px");
-      } else {
-        $('#income-block > div.panel-indent').css("margin-top", "10px").css("padding-top","10px");
-      }
-      $('#children').val(($("input[name='any-kids']:checked").val() == "false") ? '0' : '');
-    });
-    $('#children, #income').on('change', function() {
-      var key = $(this).attr('id') ;
-      var value =  $(this).val();
-      $("#next-url").attr("href", updateQueryStringParameter(key, value));
-    });
+    $('#fee').val('410');
+    $('#children').val('1');
+    $("input[name='couple'][value='false']").prop("checked", true)
+    buildNextUrl('8-confirmation-success.html');
   });

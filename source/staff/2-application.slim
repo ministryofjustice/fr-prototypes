@@ -128,10 +128,10 @@ form
     .small-12.medium-8.large-5.columns
       .options.radio
         .option
-          label for="refund"
-            input id="refund" type="checkbox" name="refund"
+          label for="emergency"
+            input id="emergency" type="checkbox" name="emergency"
             | This is an emergency case
-  #date-fee-paid.row.hide
+  #list-emergency.row.hide
     .small-12.medium-6.large-4.columns
       p Be sure that the case is one of the following
       ul
@@ -163,6 +163,12 @@ javascript:
     $('#probate').on('change', function() {
       console.log('clicked probate cb');
       $('#name-date-deceased').toggle($('#probate').is(':checked'));
+      $(this).parent().toggleClass('selected',$(this).is(':checked'));
+    });
+
+    $('#emergency').on('change', function() {
+      console.log('clicked emergency cb');
+      $('#list-emergency').toggle($('#emergency').is(':checked'));
       $(this).parent().toggleClass('selected',$(this).is(':checked'));
     });
   });

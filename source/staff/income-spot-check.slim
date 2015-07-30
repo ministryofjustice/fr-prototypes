@@ -33,12 +33,12 @@ br
 
 
   .row.collapse#income-block
-    .small-12.medium-3.large-5.columns.form-group
+    .small-12.medium-12.large-12.columns.form-group
       .row
         .columns.small-12
-          p 
+          label 
             | To calculate total monthly income, add up all the money in from the applicant's bank statements and payslips.
-          p
+          label
             | Some benefits shouldn't be included - eg Carer's Allowance, Housing Benefit or childcare element of Working Tax Credit. See full list below.
           label.error data-check-error='income' for='income' Please enter an income
           label for='income' Total monthly income
@@ -52,6 +52,21 @@ br
 .row
   .small-12.medium-8.large-5.columns
     button.button.primary.success#check_btn Next
+
+.row
+  .small-12.columns
+    br
+    .row
+      .small-12.medium-8.large-7.columns
+        details
+          summary.primary#ben-ok What benefits should be excluded from total monthly income?
+          br
+          .row.savings-data.collapse
+            .columns.small-12
+              ul
+                li 1
+                li 2
+                li 3
 
 #r2_calculator_result
   .row

@@ -30,16 +30,18 @@ br
                 label for='couple-yes'
                   input data-check='couple' id='couple-yes' name="couple" type="radio" value='true'
                   |Married or living with someone and sharing an income
-
+  
+  .row
+     .columns.small-12     
+        label 
+          | To calculate total monthly income, add up all the money in from the applicant's bank statements and payslips.
+        label
+          | Some benefits shouldn't be included - eg Carer's Allowance, Housing Benefit or childcare element of Working Tax Credit. See full list below.
 
   .row.collapse#income-block
-    .small-12.medium-12.large-12.columns.form-group
+    .small-12.medium-3.large-5.columns.form-group
       .row
         .columns.small-12
-          label 
-            | To calculate total monthly income, add up all the money in from the applicant's bank statements and payslips.
-          label
-            | Some benefits shouldn't be included - eg Carer's Allowance, Housing Benefit or childcare element of Working Tax Credit. See full list below.
           label.error data-check-error='income' for='income' Please enter an income
           label for='income' Total monthly income
           .row.collapse.prefix-radius
@@ -57,16 +59,44 @@ br
   .small-12.columns
     br
     .row
-      .small-12.medium-8.large-7.columns
+      .small-12.medium-12.large-12.columns
         details
           summary.primary#ben-ok What benefits should be excluded from total monthly income?
           br
           .row.savings-data.collapse
             .columns.small-12
               ul
-                li 1
-                li 2
-                li 3
+                li Armed Forces Independence Payment (AFIP)
+                li Attendance Allowance
+                li Back to Work Bonus
+                li Bereavement Allowance
+                li Budgeting Advances paid under Universal Credit
+                li Budgeting Loan
+                li Carer’s Allowance
+                li Carer Element of Universal Credit
+                li Childcare Element of Working Tax Credit
+                li Childcare Element of Universal Credit
+                li Cold Weather Payment
+                li Constant Attendance Allowance
+                li Direct payments made under Community Care, Services for Carer and Children’s Services
+                li Disability Living Allowance (DLA)
+                li Disabled and Severely Disabled elements of Child Tax Credit
+                li Disabled and Severely Disabled Child elements of Working Tax Credit
+                li Disabled and Severely Disabled Child elements of Universal Credit
+                li Exceptionally Severe Disablement Allowance 
+                li Financial support under an agreement for the foster care of a child
+                li Funeral Payment
+                li Housing Benefit
+                li Housing Credit Element of Pension Credit
+                li Housing Element of Universal Credit
+                li Industrial Injuries Disablement Benefit
+                li Independent Living Fund payments
+                li Limited Capability for Work Element of Universal Credit
+                li Personal Independence Payment (PIP)
+                li Any pension paid under the Naval, Military and Air forces etc (Disablement and Death) service Pension Order 2006
+                li Severe Disablement Allowance
+                li Short Term Benefit Advances (STBAs ) • Universal Credit Advances
+                li Widowed Parents Allowance
 
 #r2_calculator_result
   .row

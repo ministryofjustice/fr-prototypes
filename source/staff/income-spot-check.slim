@@ -37,8 +37,8 @@ br
           | To calculate total monthly income, add up all the money in from the applicant's bank statements and payslips.
         label
           | Some benefits shouldn't be included - eg Carer's Allowance, Housing Benefit or childcare element of Working Tax Credit. See full list below.
-
-  .row.collapse#income-block
+  br
+  .row.#income-block
     .small-12.medium-3.large-5.columns.form-group
       .row
         .columns.small-12
@@ -50,7 +50,7 @@ br
                 label.inline for='income' £
             .small-10.medium-9.large-9.columns
               input data-check='income' name="income" id="income" type="number"
-br
+
 .row
   .small-12.medium-8.large-5.columns
     button.button.primary.success#check_btn Next
@@ -63,7 +63,7 @@ br
         details
           summary.primary#ben-ok What benefits should be excluded from total monthly income?
           br
-          .row.savings-data.collapse
+          .row.savings-data
             .columns.small-12
               ul
                 li Armed Forces Independence Payment (AFIP)

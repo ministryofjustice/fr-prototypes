@@ -1,0 +1,66 @@
+---
+title: 'Help with fees'
+nav_title: 'Help with fees'
+section_title: 'Process Application'
+---
+
+form
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      h2 Initial check
+
+  .row
+    .small-12.medium-8.large-5.columns
+      .options.radio
+        .option
+          label for="sot"
+            input id="sot" type="checkbox" name="sot"
+            | Statement of truth is signed
+
+  .row
+    .small-12.medium-8.large-5.columns
+      .options.radio
+        .option
+          label for="sot"
+            input id="sot" type="checkbox" name="sot"
+            | National Insurance number is provided
+
+  br
+  .row
+    .small-12.medium-7.large-7.columns
+      a#next-url href='1-personal.html'
+        .button.success Next
+
+javascript:
+  $(document).ready( function() {
+    buildNextUrl('3-savings.html');
+    $('#fee').bind('change', function () {
+      $("#next-url").attr("href", updateQueryStringParameter('fee', $(this).val()));
+    });
+
+    $('#refund').on('change', function () {
+      console.log('clicked refund cb');
+      $('#date-fee-paid').toggle($('#refund').is(':checked'));
+      $(this).parent().toggleClass('selected', $(this).is(':checked'));
+    });
+
+    $('#probate').on('change', function() {
+      console.log('clicked probate cb');
+      $('#name-date-deceased').toggle($('#probate').is(':checked'));
+      $(this).parent().toggleClass('selected',$(this).is(':checked'));
+    });
+
+    $('#emergency').on('change', function() {
+      console.log('clicked emergency cb');
+      $('#list-emergency').toggle($('#emergency').is(':checked'));
+      $(this).parent().toggleClass('selected',$(this).is(':checked'));
+    });
+  });
+
+  function getPage() {
+    $possible = $("input[name='ben-type']:checked").val();
+    $result = $possible != 'b' ? 'a' : 'b';
+    return $result;
+  }
+

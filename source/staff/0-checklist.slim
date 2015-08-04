@@ -22,8 +22,8 @@ form
     .small-12.medium-8.large-5.columns
       .options.radio
         .option
-          label for="sot"
-            input id="sot" type="checkbox" name="sot"
+          label for="nin"
+            input id="nin" type="checkbox" name="nin"
             | National Insurance number is provided
 
   br
@@ -38,24 +38,7 @@ javascript:
     $('#fee').bind('change', function () {
       $("#next-url").attr("href", updateQueryStringParameter('fee', $(this).val()));
     });
-
-    $('#refund').on('change', function () {
-      console.log('clicked refund cb');
-      $('#date-fee-paid').toggle($('#refund').is(':checked'));
-      $(this).parent().toggleClass('selected', $(this).is(':checked'));
-    });
-
-    $('#probate').on('change', function() {
-      console.log('clicked probate cb');
-      $('#name-date-deceased').toggle($('#probate').is(':checked'));
-      $(this).parent().toggleClass('selected',$(this).is(':checked'));
-    });
-
-    $('#emergency').on('change', function() {
-      console.log('clicked emergency cb');
-      $('#list-emergency').toggle($('#emergency').is(':checked'));
-      $(this).parent().toggleClass('selected',$(this).is(':checked'));
-    });
+    
   });
 
   function getPage() {

@@ -44,7 +44,7 @@ form
               label for="age-yes"
                 input id="age-yes" type="radio" name="age" value="true"
                 | Yes
-          #sixteen.row
+          #sixteen.row.hide
             .small-12.medium-12.large-12.columns
               .panel-indent
                 label The applicant and their partner have
@@ -98,17 +98,12 @@ javascript:
     buildNextUrl('4-benefits.html');
 
     $("input[name='savings']").on('change', function () {
-      if(getUrlParameter('couple')=='true' && getUrlParameter('age')<61) {
+      if (getUrlParameter('couple') == 'true' && getUrlParameter('age') < 61) {
         $('#savings-more').toggleClass('hide', $("input[name='savings']:checked").val() == "false");
       }
-    $("input[name='age']").on('change', function () {
-      if(getUrlParameter('couple')=='true' && getUrlParameter('age')<61) {
-        $('#sixteen').toggleClass('hide', $("input[name='age']:checked").val() == "false");
-      }
-      setNextPage();
-      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='savings']:checked").val()));
     });
     $("input[name='age']").on('change', function () {
+      $('#sixteen').toggleClass('hide', $("input[name='age']:checked").val() == "false");
       setNextPage();
       $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='age']:checked").val()=='false'));
       $("#next-url").attr("href", updateQueryStringParameter('over-61', $("input[name='age']:checked").val()=='true'));

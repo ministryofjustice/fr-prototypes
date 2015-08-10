@@ -34,13 +34,16 @@ form
       .row
         .small-12.medium-8.large-7.columns
           .panel-indent
-            .row
-              .small-12.columns
-                .options.radio
-                  .option
-                    label for="61orover"
-                      input id="61orover" type="checkbox" name="61orover"
-                      | The applicant's partner is 61 or over
+            label Is the applicant's partner 61 or over?
+            .options.radio
+              .option
+                label for="age-no"
+                  input id="age-no" type="radio" name="age" value="false"
+                  | No
+              .option
+                label for="age-yes"
+                  input id="age-yes" type="radio" name="age" value="true"
+                  | Yes
             #list-61orover.row.hide
               .small-12.medium-12.large-12.columns
                 .panel-indent

@@ -1,0 +1,55 @@
+---
+title: 'Help with fees'
+nav_title: 'Help with fees'
+section_title: 'Process Application'
+---
+form
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      h2
+        |Application expired
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      .panel.callout.pending
+        .row
+          .small-12.medium-7.large-8.columns
+            h3 FEE-AD08-BK56
+
+  .row
+    .small-12.medium-12.large-12.columns
+      h4 Next steps
+      p You need to write to the applicant and send all their documents back 
+      p You can copy and paste the letter below: 
+
+  .row
+    .small-12.medium-12.large-12.columns
+      .panel
+
+        p Reference: FO39-TE34
+        br
+        p Dear Mrs Elizabeth Sloe
+        p We’ve received your application for financial help with court or tribunal fees.
+        p We wrote to you saying that you must be £55 towards the fee, by sending a cheque payable to 'HM Courts & Tribunal Service'.
+        p We have not received your cheque, so unfortunately we have to reject our application.
+        p |[Court name and address]  
+
+  br
+  .row
+    center
+      .small-12.medium-6.large-6.columns
+        a.button.success href='../index.html' Back to start
+
+javascript:
+  $(document).ready( function() {
+    //$('#spot-check-true').toggle((getUrlParameter('spotcheck'))=='true');
+
+    //if ((getUrlParameter('spotcheck')=='false' && getUrlParameter('spotcheck')=='false')) {
+      //var show = !!Math.floor(Math.random() * 2);
+      //$('#spot-check-rand').toggle(!!Math.floor(Math.random() * 2));
+    //}
+    $('a div.button.success').on('click', function() {
+      $('#copied').fadeTo(1,1).fadeTo(2000, 0);
+    });
+  });

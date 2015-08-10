@@ -31,32 +31,32 @@ form
             input id="savings-yes" type="radio" name="savings" value="true"
             | More than this amount
   #savings-more.row.hide.collapse
-      .row
-        .small-12.medium-8.large-7.columns
-          .panel-indent
-            label Is the applicant's partner 61 or over?
-            .options.radio
-              .option
-                label for="age-no"
-                  input id="age-no" type="radio" name="age" value="false"
-                  | No
-              .option
-                label for="age-yes"
-                  input id="age-yes" type="radio" name="age" value="true"
-                  | Yes
-            #list-61orover.row.hide
-              .small-12.medium-12.large-12.columns
-                .panel-indent
-                  label The applicant and their partner have
-                  .options.radio
-                    .option
-                      label for="age-no"
-                        input id="age-no" type="radio" name="age" value="false"
-                        | Less than £16,000
-                    .option
-                      label for="age-yes"
-                        input id="age-yes" type="radio" name="age" value="true"
-                        | More than £16,000
+    .row
+      .small-12.medium-8.large-7.columns
+        .panel-indent
+          label Is the applicant's partner 61 or over?
+          .options.radio
+            .option
+              label for="age-no"
+                input id="age-no" type="radio" name="age" value="false"
+                | No
+            .option
+              label for="age-yes"
+                input id="age-yes" type="radio" name="age" value="true"
+                | Yes
+          #sixteen.row
+            .small-12.medium-12.large-12.columns
+              .panel-indent
+                label The applicant and their partner have
+                .options.radio
+                  .option
+                    label for="sixteen-no"
+                      input id="sixteen-no" type="radio" name="sixteen" value="false"
+                      | Less than £16,000
+                  .option
+                    label for="sixteen-yes"
+                      input id="sixteen-yes" type="radio" name="sixteen" value="true"
+                      | More than £16,000
 
   
   br
@@ -101,6 +101,10 @@ javascript:
       if(getUrlParameter('couple')=='true' && getUrlParameter('age')<61) {
         $('#savings-more').toggleClass('hide', $("input[name='savings']:checked").val() == "false");
       }
+    $("input[name='age']").on('change', function () {
+      if(getUrlParameter('couple')=='true' && getUrlParameter('age')<61) {
+        $('#sixteen').toggleClass('hide', $("input[name='age']:checked").val() == "false");
+      }
       setNextPage();
       $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='savings']:checked").val()));
     });
@@ -109,11 +113,7 @@ javascript:
       $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='age']:checked").val()=='false'));
       $("#next-url").attr("href", updateQueryStringParameter('over-61', $("input[name='age']:checked").val()=='true'));
     });
-    $('#61orover').on('change', function() {
-      console.log('clicked 61orover cb');
-      $('#list-61orover').toggle($('#61orover').is(':checked'));
-      $(this).parent().toggleClass('selected',$(this).is(':checked'));
-    });
+
   });
   function setNextPage() {
     var jumpToSummary = false;

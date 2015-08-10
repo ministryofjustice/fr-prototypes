@@ -34,16 +34,26 @@ form
       .row
         .small-12.medium-8.large-7.columns
           .panel-indent
-            p Is the applicant's partner 61 or over?
-            .options.radio
-              .option
-                label for="age-no"
-                  input id="age-no" type="radio" name="age" value="false"
-                  | No
-              .option
-                label for="age-yes"
-                  input id="age-yes" type="radio" name="age" value="true"
-                  | Yes
+            .row
+              .small-12.medium-8.large-5.columns
+                .options.radio
+                  .option
+                    label for="61orover"
+                      input id="61orover" type="checkbox" name="61orover"
+                      | The applicant's partner is 61 or over
+            #list-61orover.row.hide
+              .small-12.medium-12.large-12.columns
+                .panel-indent
+                  label The applicant and their partner have
+                  .options.radio
+                    .option
+                      label for="age-no"
+                        input id="age-no" type="radio" name="age" value="false"
+                        | Less than £16,000
+                    .option
+                      label for="age-yes"
+                        input id="age-yes" type="radio" name="age" value="true"
+                        | More than £16,000
 
   
   br
@@ -95,6 +105,11 @@ javascript:
       setNextPage();
       $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='age']:checked").val()=='false'));
       $("#next-url").attr("href", updateQueryStringParameter('over-61', $("input[name='age']:checked").val()=='true'));
+    });
+    $('#61orover').on('change', function() {
+      console.log('clicked 61orover cb');
+      $('#list-61orover').toggle($('#61orover').is(':checked'));
+      $(this).parent().toggleClass('selected',$(this).is(':checked'));
     });
   });
   function setNextPage() {

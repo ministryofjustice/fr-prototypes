@@ -125,7 +125,7 @@ javascript:
     }
     var to_pay = unescape(getUrlParameter('to_pay'));
     if (to_pay!='') {
-      $('#outcome').text(to_pay);
+      //$('#outcome').text(to_pay);
       console.log(to_pay.indexOf("£"));
       console.log(to_pay.indexOf("£0"));
       if ((to_pay.indexOf("£") >= 0) && (to_pay.indexOf("£0") == -1)) {

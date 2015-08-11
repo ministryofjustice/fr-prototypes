@@ -140,8 +140,13 @@ javascript:
       $('#next-url div').text('Complete processing');
     } else if(getUrlParameter('calculator')=='true') {
       $('#remission-type').addClass('callout-part');
-      $('#remission-type h3').text('This application has been chosen for investigation. You’ll need to ask for supporting evidence. ');
-      buildNextUrl('8-confirmation-evidence.html');
+      if(to_pay=='The applicant has £0 to pay') {
+        $('#remission-type h3').text('This application has been chosen for investigation. You’ll need to ask for supporting evidence. ');
+        buildNextUrl('8-confirmation-evidence.html');
+      } else {
+        $('#remission-type h3').text(to_pay);
+        buildNextUrl('8-confirmation-part-remission.html');
+      }
     }
     if (getUrlParameter('savings-exceeded') == 'true') {
       $('#income-result-display').addClass('summary-result-failure').text('Failed. Savings over the threshold');

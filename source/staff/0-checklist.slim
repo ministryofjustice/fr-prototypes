@@ -11,21 +11,32 @@ form
       h2 Initial check
 
   .row
-    .small-12.medium-8.large-6.columns
+    .small-12.medium-12.large-12.columns    
+      label Is the National Insurance number provided in question 1?
+    .small-12.medium-6.large-5.columns.end   
       .options.radio
         .option
-          label for="sot"
-            input id="sot" type="checkbox" name="sot"
-            | Statement of truth is signed
+          label for="nin-no"
+            input id="nin-no" type="radio" name="nin" value="false"
+            | No
+        .option
+          label for="nin-yes"
+            input id="nin-yes" type="radio" name="nin" value="true"
+            | Yes
 
   .row
-    .small-12.medium-8.large-6.columns
+    .small-12.medium-12.large-12.columns    
+      label Is the statement of truth signed in question 13?
+    .small-12.medium-6.large-5.columns.end   
       .options.radio
         .option
-          label for="nin"
-            input id="nin" type="checkbox" name="nin"
-            | National Insurance number is provided
-
+          label for="sot-no"
+            input id="sot-no" type="radio" name="sot" value="false"
+            | No
+        .option
+          label for="sot-yes"
+            input id="sot-yes" type="radio" name="sot" value="true"
+            | Yes
   br
   .row
     .small-12.medium-7.large-7.columns

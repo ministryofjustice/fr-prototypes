@@ -11,12 +11,12 @@ html ng-app="app"
   body class="#{yield_content(:body_class)}"
     = partial 'partials/layout/nav'
     .row
-      .large-10.columns
+      .large-8.columns
         = yield
         = partial 'partials/layout/footer'
         p
         = link_to '', '/'
-      .large-2.columns
+      .large-4.columns
         h1
         = partial 'partials/layout/sub_nav' unless current_page.path=='staff/7-summary.html'
     = javascript_include_tag 'libs', 'app', 'details.polyfill'

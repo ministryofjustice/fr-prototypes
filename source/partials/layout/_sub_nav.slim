@@ -1,12 +1,19 @@
 br
 .row
+  .columns.small-12.collapse
+	h2 &nbsp;
 	.row.sidebar.collapse
-		.columns.small-12
-		  	h4 Get Help
-		    p
-		      a href='#.html'
-		        | Staff guide
-		    h4 Actions
-		    p
-		      a href='#.html'
-		        | Give feedback
+	  .columns.small-12
+        -@guide_file = '/' + current_page.path.gsub('staff/', 'staff/guide/')
+        -if @guide_file.rindex('/') > 0
+		  -if sitemap.find_resource_by_path(current_page.path.gsub('staff/', 'staff/guide/'))
+	  		=partial("#{current_page.path.gsub('staff/', 'staff/guide/')}")
+
+	  	p
+		  a href='#.html' Full staff guide
+		p
+		  a href='#.html' Give feedback
+		p
+		  details
+            summary Technical help
+		  	div =lorem.sentences 4

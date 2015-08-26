@@ -4,45 +4,48 @@ nav_title: 'Help with fees'
 ---
 form
   br
-  .row
-    .small-12.medium-12.large-12.columns
-      a#next-url href='../index.html'
-        | Home
-  br
-  .row
-    .small-12.medium-12.large-12.columns
-      h2 AT001-15-1
 
-  br
+  h2 Application awaiting evidence
+
   .row
-    .small-12.medium-12.large-12.columns    
-      label Is the evidence received correct?
-    .small-12.medium-8.large-7.columns.end   
-      .options.radio
-        .option
-          label for="payment-no"
-            input id="payment-no" type="radio" name="payment" value="false"
-            | No
-        .option
-          label for="payment-yes"
-            input id="payment-yes" type="radio" name="payment" value="true"
-            | Yes
+    .small-12
+      h5 Actions
+      .panel
+      
+        br
+        .row
+          .small-12.medium-12.large-12.columns    
+            label Is the evidence received correct?
+          .small-12.medium-8.large-7.columns.end   
+            .options.radio
+              .option
+                label for="payment-no"
+                  input id="payment-no" type="radio" name="payment" value="false"
+                  | No
+              .option
+                label for="payment-yes"
+                  input id="payment-yes" type="radio" name="payment" value="true"
+                  | Yes
+        .row
+          .small-12.medium-12.large-12.columns
+            a#next-url href='income-spot-check.html'
+              .button.success Continue
+       
+        .row
+          .small-12.medium-12.large-12.columns
+            details
+              summary What if the applicant paid the fee?
+              div 
+                br
+                | If the applicant no longer needs help with their fee you can delete this application
+                br
+                br
+                a#next-url href='#.html'
+                  .button.alert.small Delete application
   .row
     .small-12.medium-12.large-12.columns
-      a#next-url href='income-spot-check.html'
-        .button.success Continue
- 
-  .row
-    .small-12.medium-12.large-12.columns
-      details
-        summary What if the applicant has paid the fee?
-        div 
-          br
-          | If the applicant no longer needs help with their fee you can delete this application
-          br
-          br
-          a#next-url href='#.html'
-            .button.alert.small Delete application
+      h5 Reference
+      h2 AT001-15-1
   br
   .row
     .small-12.columns
@@ -62,7 +65,7 @@ form
       | 2 December 1979
   .row
     .small-12.medium-4.large-4.columns 
-      .subheader National Insurance number
+      .subheader NI number
     .small-12.medium-8.large-8.columns 
       | PW 55 63 56 A
   .row
@@ -125,26 +128,6 @@ form
     .small-12.medium-12.large-12.columns    
       .panel.callout.received
         h3 The applicant doesn't have to pay the fee
-    .small-12.columns
-  hr
-  .row
-    .small-12.medium-8.large-8.columns
-      h4 Status
-  .row
-    .small-12.medium-4.large-4.columns 
-      .subheader Status
-    .small-12.medium-8.large-8.columns 
-      | Waiting for evidence
-  .row
-    .small-12.medium-4.large-4.columns 
-      .subheader Expires
-    .small-12.medium-8.large-8.columns 
-      | 4 days
-  .row
-    .small-12.medium-4.large-4.columns 
-      .subheader Processed by
-    .small-12.medium-8.large-8.columns 
-      | Juliana Richardson
 
 javascript:
   $(document).ready( function() {

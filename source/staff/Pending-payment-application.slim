@@ -11,14 +11,26 @@ form
   br
   .row
     .small-12.medium-12.large-12.columns
-      h2 AT001-AD08-BK56
+      h2 AT001-15-3
 
   br
   .row
+    .small-12.medium-12.large-12.columns    
+      label Is the payment received correct?
+    .small-12.medium-8.large-7.columns.end   
+      .options.radio
+        .option
+          label for="payment-no"
+            input id="payment-no" type="radio" name="payment" value="false"
+            | No
+        .option
+          label for="payment-yes"
+            input id="payment-yes" type="radio" name="payment" value="true"
+            | Yes
+  .row
     .small-12.medium-12.large-12.columns
       a#next-url href='8-confirmation-success.html'
-        .button.success Payment received
-  
+        .button.success Continue
   .row
     .small-12.medium-12.large-12.columns    
       .panel.callout.callout-part

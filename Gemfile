@@ -8,7 +8,7 @@ gem 'slim'
 gem 'haml'
 gem 'middleman-autoprefixer', '~>2.1.2'
 gem 'middleman-deploy', '~> 1.0'
-gem 'rest_client'
+gem 'rest-client'
 gem 'oj'
 
 # Live-reloading plugin

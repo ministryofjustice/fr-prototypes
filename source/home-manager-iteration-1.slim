@@ -40,22 +40,22 @@ br
 br
 .row
   .columns.small-12.collapse
-  h2 &nbsp;
-  .row.sidebar.collapse
-    .columns.small-12
+    h2 &nbsp;
+    .row.sidebar.collapse
+      .columns.small-12
         -@guide_file = '/' + current_page.path.gsub('staff/', 'staff/guide/')
         -if @guide_file.rindex('/') > 0
-      -if sitemap.find_resource_by_path(current_page.path.gsub('staff/', 'staff/guide/'))
-        =partial("#{current_page.path.gsub('staff/', 'staff/guide/')}")
+          -if sitemap.find_resource_by_path(current_page.path.gsub('staff/', 'staff/guide/'))
+            =partial("#{current_page.path.gsub('staff/', 'staff/guide/')}")
 
-      h5 Get help
-      p
-      a href='#.html' Full staff guide
-    p
-      a href='#.html' Give feedback
-    p
-      details
+        h5 Get help
+        p
+          a href='#.html' Full staff guide
+        p
+          a href='#.html' Give feedback
+        p
+          details
             summary Contact support
-        div 
-          p To get help send an email to this address and we will get back to you.
-          a href='mailto:helpwithfees.support@digital.justice.gov.uk' helpwithfees.support@digital.justice.gov.uk
+            div 
+              p To get help send an email to this address and we will get back to you.
+              a href='mailto:helpwithfees.support@digital.justice.gov.uk' helpwithfees.support@digital.justice.gov.uk

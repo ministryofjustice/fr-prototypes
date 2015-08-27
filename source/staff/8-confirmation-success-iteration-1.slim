@@ -1,0 +1,36 @@
+---
+title: 'Help with fees'
+nav_title: 'Help with fees'
+section_title: 'Process Application'
+---
+form
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      h2
+        |Application processed
+  .row
+    .small-12.medium-12.large-12.columns
+      h4 Next steps
+      ul
+        li Complete the remission register with the application details
+        li Write the reference number form the remission register on the top right corner of the paper for
+        li Copy this reference number into the case management system
+
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      a.button.success href='../index.html' Back to start
+
+javascript:
+  $(document).ready( function() {
+    //$('#spot-check-true').toggle((getUrlParameter('spotcheck'))=='true');
+
+    //if ((getUrlParameter('spotcheck')=='false' && getUrlParameter('spotcheck')=='false')) {
+      //var show = !!Math.floor(Math.random() * 2);
+      //$('#spot-check-rand').toggle(!!Math.floor(Math.random() * 2));
+    //}
+    $('a div.button.success').on('click', function() {
+      $('#copied').fadeTo(1,1).fadeTo(2000, 0);
+    });
+  });

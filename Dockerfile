@@ -1,4 +1,7 @@
 FROM ministryofjustice/ruby:2-webapp-onbuild
-RUN bundle exec middleman build --verbose
-RUN bundle exec middleman deploy
+# npm installed by moj webapp
+RUN npm install -g bower
+RUN bower install --allow-root
+RUN middleman build --verbose
+RUN middleman deploy
 CMD ["echo", "done"]

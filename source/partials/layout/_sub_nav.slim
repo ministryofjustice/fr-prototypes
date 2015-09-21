@@ -9,14 +9,6 @@ br
 		  -if sitemap.find_resource_by_path(current_page.path.gsub('staff/', 'staff/guide/'))
 	  		=partial("#{current_page.path.gsub('staff/', 'staff/guide/')}")
 
-	  	h5 Get help
-		p
-		  a href='#.html' Give feedback
-		p
-		  details
-            summary Contact us
-		  	div
-		  	br 
-		  		p 
-		  			|Email &nbsp;
-		  			a href='mailto:helpwithfees.support@digital.justice.gov.uk' helpwithfees.support@digital.justice.gov.uk
+			span
+				strong
+					a href='/staff/guide-landing.html' target='_blank' See the guides

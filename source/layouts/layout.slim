@@ -14,17 +14,16 @@ html ng-app="app"
       -if current_page.path == 'index.html' || current_page.path == 'home-staff-iteration-1.html' || current_page.path == 'home-manager-iteration-1.html'|| current_page.path == 'staff/guide-processing.html' || current_page.path == 'staff/guide-fraud.html'|| current_page.path == 'staff/guide-appeals.html'|| current_page.path == 'staff/guide-part-payments.html'|| current_page.path == 'staff/guide-evidence.html' || current_page.path == 'staff/guide-landing.html'
         .large-12.columns
           = yield
-          = partial 'partials/layout/footer'
-          p
-          = link_to '', '/'
       -else
         .large-7.columns
           = yield
-          = partial 'partials/layout/footer'
-          p
-          = link_to '', '/'
         .large-5.columns
           h1
           = partial 'partials/layout/sub_nav' unless current_page.path=='staff/7-summary.html'
+    .row
+      .small-12.columns
+        = partial 'partials/layout/footer'
+        p
+        = link_to '', '/'
     = javascript_include_tag 'libs', 'app', 'details.polyfill'
     = include_javascripts(current_page.data.javascripts || current_page.data.javascripts)

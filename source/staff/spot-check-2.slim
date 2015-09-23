@@ -41,8 +41,6 @@ javascript:
   $(document).ready( function() {
   });
 
-  $('#evidence').on('change', function () {
-    console.log('clicked evidence cb');
-    $('#evidence-comment').toggle($('#evidence').is(':checked'));
-    $(this).parent().toggleClass('selected', $(this).is(':checked'));
+  $("input[name='evidence-correct']").on('change', function () {
+      $('#evidence-comment').toggleClass('hide', $("input[name='evidence-correct']:checked").val() == "true");
   });

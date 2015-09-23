@@ -15,13 +15,21 @@ form
     .small-12.medium-8.large-7.columns.end   
       .options.radio
         .option
-          label for="evidence-name-no"
-            input id="evidence-name-no" type="radio" name="evidence-name" value="false"
+          label for="evidence-correct-no"
+            input id="evidence-correct-no" type="radio" name="evidence-correct" value="false"
             | No
         .option
-          label for="evidence-name-yes"
-            input id="evidence-name-yes" type="radio" name="evidence-name" value="true"
+          label for="evidence-correct-yes"
+            input id="evidence-correct-yes" type="radio" name="evidence-correct" value="true"
             | Yes
+  
+  #evidence-comment.hide
+    .row
+      .small-12.medium-9.large-8.columns
+        .panel-indent
+          label for='evidence-comment'
+            | What is incorrect about the evidence?
+            textarea rows="2" cols="50"
   br
   .row
     .small-12.medium-12.large-12.columns
@@ -31,4 +39,10 @@ form
 
 javascript:
   $(document).ready( function() {
+  });
+
+  $('#evidence').on('change', function () {
+    console.log('clicked evidence cb');
+    $('#evidence-comment').toggle($('#evidence').is(':checked'));
+    $(this).parent().toggleClass('selected', $(this).is(':checked'));
   });

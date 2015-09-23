@@ -137,12 +137,14 @@ form
           label for="emerg"
             input id="emerg" type="checkbox" name="emerg"
             | This is an emergency case
+  
   #emerg-comment.hide
     .row
       .small-12.medium-9.large-8.columns
-        label for='e-comment'
-          | Reason for emergency
-          textarea rows="2" cols="50"
+        .panel-indent
+          label for='e-comment'
+            | Reason for emergency
+            textarea rows="2" cols="50"
 
   br
   .row

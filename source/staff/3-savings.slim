@@ -6,38 +6,49 @@ section_title: 'Process Application'
 form
   br
   .row
-    .small-12.medium-12.large-12.columns
+    .small-12.columns
       h2 Savings and investments
-
+  br
+  .row
+    .small-12.columns
       label
-        span#status-describe The applicant has
+        span#status-describe How much do they have in savings and investments?
+  .row
+    .small-12.medium-9.large-8.columns
       .options.radio
         .option
           label for="savings-no"
             input id="savings-no" type="radio" name="savings" value="false"
-            | Less than this amount
+            | Less than £3,000
         .option
           label for="savings-yes"
             input id="savings-yes" type="radio" name="savings" value="true"
-            | More than this amount
+            | More than £3,000
   #savings-more.row.hide.collapse
     .row
-      .small-12.medium-8.large-7.columns
+      .small-12.columns
         .panel-indent
-          label Is the applicant or their partner 61 or over?
-          .options.radio
-            .option
-              label for="age-no"
-                input id="age-no" type="radio" name="age" value="false"
-                | No
-            .option
-              label for="age-yes"
-                input id="age-yes" type="radio" name="age" value="true"
-                | Yes
+          .row
+            .small-12.columns
+              label Is the applicant (or their partner) 61 or over?
+          .row
+            .small-12.medium-9.large-8.columns
+              .options.radio
+                .option
+                  label for="age-no"
+                    input id="age-no" type="radio" name="age" value="false"
+                    | No
+                .option
+                  label for="age-yes"
+                    input id="age-yes" type="radio" name="age" value="true"
+                    | Yes
           #sixteen.row.hide
-            .small-12.medium-12.large-12.columns
-              .panel-indent
-                label The applicant and their partner have
+            br
+            .row
+              .small-12.columns
+                label How much do they have in savings and investments?
+            .row
+              .small-12.medium-9.large-8.columns
                 .options.radio
                   .option
                     label for="sixteen-no"
@@ -61,7 +72,7 @@ javascript:
     $('#fee').text('£'+getUrlParameter('fee'));
     $('#age').text(getUrlParameter('age') + ' years old');
     $('#status').text(getUrlParameter('couple')=='false'?'Single':'Married or living with someone and sharing an income');
-    $('#status-describe').text(getUrlParameter('couple')=='false' ? 'The applicant has' : 'The applicant and their partner have');
+    $('#status-describe').text(getUrlParameter('couple')=='false' ? 'How much do they have in savings and investments?' : 'How much do they have in savings and investments?');
     $('#max-savings').text(getUrlParameter('age')>60?'£16,000': '£3,000');
     buildNextUrl('4-benefits.html');
 

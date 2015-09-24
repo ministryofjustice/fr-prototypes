@@ -5,24 +5,46 @@ nav_title: 'Help with fees'
 form
   br
 
-  h2 Application awaiting payment
-
+  h2 Waiting for payment
+  br
   .row
-    .small-12
-      h5 Actions
+    .small-12.medium-6.columns
+      
       .panel
+        .row
+          .small-12.columns
+            h4 Process payment
+            p You'll need the applicant's payment.
+            a#next-url href='payment-2.html'
+              .button.success Start now
 
-        br
         .row
           .small-12.medium-12.large-12.columns
-            a#next-url href='8-confirmation-expired.html'
-              .button.success Write letter to applicant
-  br
+            details
+              summary What if the applicant hasn't provided payment?
+              div 
+                br
+                | Select 'Start now' and continue to process, you will be able to provide information and will be given a letter template to send to the applicant along with all their documents.
+   br
   .row
-    .small-12.medium-12.large-12.columns
-      h5 Reference
-      h2 AT001-15-2
-  br
+    .small-12.medium-8.large-8.columns
+      h4 Processing details
+  .row
+    .small-12.medium-4.large-4.columns 
+      .subheader Reference
+    .small-12.medium-8.large-8.columns 
+      | AT001-15-2
+  .row
+    .small-12.medium-4.large-4.columns 
+      .subheader Processed by
+    .small-12.medium-8.large-8.columns 
+      | Juliana Richardson
+  .row
+    .small-12.medium-4.large-4.columns 
+      .subheader Expires
+    .small-12.medium-8.large-8.columns 
+      | Expired
+
   .row
     .small-12.columns
   hr

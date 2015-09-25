@@ -42,5 +42,6 @@ javascript:
   });
 
   $("input[name='evidence-correct']").on('change', function () {
-      $('#evidence-comment').toggleClass('hide', $("input[name='evidence-correct']:checked").val() == "true");
+    $('#evidence-comment').toggleClass('hide', $("input[name='evidence-correct']:checked").val() == "true");
+    buildNextUrl($("input[name='evidence-correct']:checked").val() == "true" ? 'spot-check-3.html' : 'spot-check-5.html');
   });

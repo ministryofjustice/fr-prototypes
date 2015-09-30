@@ -11,7 +11,7 @@ html ng-app="app"
   body class="#{yield_content(:body_class)}"
     = partial 'partials/layout/nav'
     .row
-      -if current_page.path == 'index.html' || current_page.path == 'home-staff-iteration-1.html' || current_page.path == 'home-manager-iteration-1.html'|| current_page.path == 'staff/guide-processing.html' || current_page.path == 'staff/guide-fraud.html'|| current_page.path == 'staff/guide-appeals.html'|| current_page.path == 'staff/guide-part-payments.html'|| current_page.path == 'staff/guide-evidence.html' || current_page.path == 'staff/guide-landing.html' || current_page.path == 'staff/spot-check-1.html' || current_page.path == 'staff/7-summary.html' || current_page.path == 'staff/payment-1.html'
+      -if current_page.path == 'index.html' || current_page.path == 'home-staff-iteration-1.html' || current_page.path == 'home-manager-iteration-1.html'|| current_page.path == 'staff/guide-processing.html' || current_page.path == 'staff/guide-fraud.html'|| current_page.path == 'staff/guide-appeals.html'|| current_page.path == 'staff/guide-part-payments.html'|| current_page.path == 'staff/guide-evidence.html' || current_page.path == 'staff/guide-landing.html' || current_page.path == 'staff/evidence-check-1.html' || current_page.path == 'staff/7-summary.html' || current_page.path == 'staff/payment-1.html'
         .large-12.columns
           = yield
       -else

@@ -33,7 +33,7 @@ form
   br
   .row
     .small-12.medium-12.large-12.columns
-      a#next-url href='spot-check-3.html'
+      a#next-url href='evidence-check-3.html'
         .button.success Next
  
 
@@ -43,5 +43,5 @@ javascript:
 
   $("input[name='evidence-correct']").on('change', function () {
     $('#evidence-comment').toggleClass('hide', $("input[name='evidence-correct']:checked").val() == "true");
-    buildNextUrl($("input[name='evidence-correct']:checked").val() == "true" ? 'spot-check-3.html' : 'spot-check-5.html');
+    buildNextUrl($("input[name='evidence-correct']:checked").val() == "true" ? 'evidence-check-3.html' : 'evidence-check-5.html');
   });

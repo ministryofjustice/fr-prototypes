@@ -58,6 +58,8 @@ form
 
       h3 id="intro" Introduction
 
+      p Help with fees makes it possible for people who aren't able to pay their court or tribunal fee to get financial help. Applicants are assessed on the basis of their financial situation.  
+
       p As you process an application for help with fees, you'll see prompts and explanations on the right hand side of the screen. You can also return to this page if you need more help.  
 
       p The service has a link to the Department for Work and Pensions and can check whether applicants are receiving benefits. 
@@ -79,36 +81,70 @@ form
       h5 Check the statement of truth has been signed
       p Unsigned forms must be returned to the applicant. 
       
-      h5 Check the applicant is not receiving Legal Aid 
+      h5 Legal Aid 
+      br If the applicant is getting Legal Aid, check if they're eligible to apply for help with fees.
+      br    
+      table
+        thead
+          tr
+            th width="50%" Type of Legal Aid received
+            th width="25%" Jurisdiction
+            th width="25%" Eligible to apply for help with fees 
+        tbody
+          tr
+            td Legal representation or family help (Higher) 
+            td All courts & tribunals 
+            td No 
+          tr 
+            td Family help (Lower)
+            td Family Court
+            td Yes; except for Consent Order fees
+          tr
+            td Help at court 
+            td All courts & tribunals 
+            td Yes
+          tr
+            td Legal help 
+            td All courts & tribunals
+            td Yes 
+          tr 
+            td Legal representation under a no-win, no-fee agreement or legal expenses insurance scheme
+            td All courts & tribunals 
+            td Yes
+          tr 
+            td Scottish Legal Aid (all types) 
+            td Employment Tribunal and Employment Appeal Tribunal
+            td Yes
+          tr 
+            td Scottish Legal Aid (all types)
+            td UK Supreme Court 
+            td No 
+          tr 
+            td Northern Ireland Legal Aid (All types)
+            td All courts & tribunals 
+            td No 
+      br
+      h5 Check the applicant is not a company, charity or not for profit organisation 
+      P Help with fees is generally only available to individuals; the scheme does not apply to other types of business, companies or charities. There are some exceptions:
       ul
-        li applicants with legal representation under a no-win, no-fee agreement or legal expenses scheme are eligible to apply 
-        li applicants receiving 'help at court' and 'legal help' are eligible to apply 
-        li applicants receiving Scottish Legal Aid are only eligible to apply for help with their fees if they're applying to the Employment Tribunal and Employment Appeal Tribunal
-        li applicants who have legal representation or 'family help' (Higher) are not eligible to apply for help with fees. The representing solicitor will pay the fee and apply for a refund from the Legal Aid Agency. 
-        li applicants applying for a Consent Order who are receiving advice under 'family help' (Lower) are not eligible to apply for help with fees. The representing solicitor will pay the fee and apply for a refund from the Legal Aid Agency
-        li applicants receiving Northern Irish Legal Aid are not eligible to apply 
-      
+        li sole traders; this is someone trading as an individual  
+        li companies applying to the Gambling Appeals Tribunal; companies applying to this tribunal should use separate forms and guidance for help with fees
+        li charities and not for profit organisations making a case to the UK Supreme Court
       br
       h5 Check the applicant is not one of the following: 
       ul
-        
         li on the list of #{link_to 'vexatious litigants', 'http://www.gov.uk/guidance/vexatious-litigants', target: '_blank'} banned from starting court proceedings without permission
 
         li bound by a <a href="http://www.gov.uk/guidance/general-civil-restraint-orders-in-force" target="_blank"> general civil restraint order (CRO)</a> to stop them from bringing certain cases to court
         li bound by an <a href="http://www.gov.uk/guidance/extended-civil-restraint-orders-in-force" target="_blank"> extended civil restraint order (CRO)</a> to stop them making applications in certain courts or make further court claims
         li bound by a <a href="#">restrictions of proceedings order (RPO)</a></li> that limits the cases that can be brought by the applicant 
-      
+        li someone other than the person who must pay the fee; third parties may not apply for help with fees unless they're acting as a litigation friend, parent or guardian   
       br
-      h5 Check the applicant is not a company, charity or not for profit organisation 
+
+      h5 Check the fee:   
       ul
-        li except for companies applying to the Gambling Appeals Tribunal) see more about <a href="#">exceptions for companies </a>
-        li except for charities and not for profit organisations making a case to the UK Supreme Court) see more about <a href="#">exceptions for charities and non-profit organisations</a> 
-      
-      br
-      h5 Check the case or claim is not one of these:  
-      ul
-        li a money claim online (MCOL) or possession claim online (PCOL) (including refunds)
-        li a request for duplicate documents or search fees (unless the applicant did not receive the originals or had no fixed address when an order was made)
+        li was not processed through the money claim online (MCOL) or possession claim online (PCOL) services
+        li is not for a search or request for duplicate documents (unless the applicant did not receive the originals or had no fixed address when an order was made)
       
       br
       br
@@ -131,20 +167,19 @@ form
       br
       br
       h3 id="status" Status
-      h5 Single 
-      p Applicants should be considered 'single' if they have a partner with a contrary interest in the case for which they're seeking help with their fee. Contrary interests can include: 
+      p There are some exceptions to the standard definition of 'single' for someone without a partner who relies on their own income, for example when the case involves:  
       ul
         li divorce, dissolution or annulment*
         li gender recognition applications
         li domestic violence
-        li forced marriages 
-        li where a couple are both part of a 'multiple fee' group.
+        li forced marriage 
+        li where a couple are both part of a 'multiple fee' group
       br
       p * If an applicant is involved in a divorce, dissolution or annulment case they should be considered to be part of a couple if they've formed a new relationship where they're living together and sharing a joint income. 
 
       p 
-      h5 Married or living with someone and sharing an income
-      p Applicants should be considered to be married or living with someone and sharing an income even if they're not currently living at the same address. For example if one or both are: 
+      h5 Married or living with someone and sharing an income 
+      p Applicants should still be considered to be married or living with someone and sharing an income even if they're not currently living at the same address. For example if one or both are: 
       ul 
         li serving in the Armed forces
         li are in prison
@@ -153,10 +188,10 @@ form
       br
       br 
       h3 id="refunds" Refunds 
-      h5 For refunds check the: 
+      p Check the refund:  
       ul
-        li fee was paid within the last 3 months on the fee sheet 
-        li case management system to ensure the payment hasn’t already been refunded
+        li is for a fee paid less than 3 months ago  
+        li hasn't already been refunded 
         br
       p If the fee was paid more than 3 months ago, your delivery manager may be able to extend the period of 3 months if they think there's good reason to do so.  
       br 
@@ -171,8 +206,9 @@ form
         li injunctions
         li ‘out of hours’ provisions at the Royal Courts of Justice
         br
-      p If an application can't be processed before the emergency application is heard, the applicant or their legal representative will need to give an undertaking to file an EX160 or pay the relevant fee within 7 days.  
-      
+      p In some situations there's no time for the applicant to complete a help with fees form before their emergency case is heard.
+      p The delivery manager can ask the applicant (or their legal representative) for an 'undertaking' to apply for help with fees or pay the fee within 7 days. 
+      p Applicants providing an undertaking must complete <a href="http://hmctsformfinder.justice.gov.uk/HMCTS/GetLeaflet.do?court_leaflets_id=2834" target="_blank"> form EX160B </a>      
       br
       h3 id="savings" Savings and investments
 

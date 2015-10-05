@@ -3,66 +3,46 @@ title: 'Help with fees'
 nav_title: 'Help with fees'
 section_title: 'Process evidence'
 ---
-= javascript_include_tag 'income_calculator'
-br
-.row
-  .small-12.medium-12.large-12.columns
-    h2 Income
-
-#r2_calculator_income
-  input data-check='fee' id="fee" name="fee" type="hidden"
-  input data-check='children' id='children' type="hidden"
-  .row.hide
-    .small-12.medium-3.large-5.columns.form-group
-      #status-block
-        label.error data-check-error='couple' Please select a marital status
-        .row
-          .columns.small-12
-            label Status
-            .options.radio
-              .option
-                label for='couple-no'
-                  input data-check='couple' id='couple-no' name="couple" type="radio" value='false'
-                  |Single
-              .option
-                label for='couple-yes'
-                  input data-check='couple' id='couple-yes' name="couple" type="radio" value='true'
-                  |Married or living with someone and sharing an income
+form
   br
-  .row#income-block
-    .small-12.columns
-      .row
-        .small-12.columns
-          label.error data-check-error='income' for='income' Please enter an income
-          label for='income' Total monthly income from evidence
-      .row
-        .small-12.medium-5.large-5.columns
-          .row.collapse.prefix-radius
-            .small-2.medium-3.large-3.columns
-              span.prefix
-                label.inline for='income' £
-            .small-10.medium-9.large-9.columns
-              input data-check='income' name="income" id="income" type="number"
+
+  h2 Evidence
+
+
   br
   .row
-    .small-12.medium-8.large-5.columns
-      button.button.primary.success#check_btn Next
-
-#r2_calculator_result
+    .small-12.medium-12.large-12.columns    
+      label Is the evidence correct?
+    .small-12.medium-9.large-8.columns.end   
+      .options.radio
+        .option
+          label for="evidence-correct-no"
+            input id="evidence-correct-no" type="radio" name="evidence-correct" value="false"
+            | No
+        .option
+          label for="evidence-correct-yes"
+            input id="evidence-correct-yes" type="radio" name="evidence-correct" value="true"
+            | Yes
+  
+  #evidence-comment.hide
+    .row
+      .small-12.medium-9.large-8.columns
+        .panel-indent
+          label for='evidence-comment'
+            | What is incorrect about the evidence?
+            textarea rows="2" cols="50"
+  br
   .row
-    .columns.small-12.medium-12.large-11
-      #calculator.callout
-        h3.bold#fee-remit
-
-  .row
-    .small-12.columns
-      a#next-url href="evidence-check-4.html"
+    .small-12.medium-12.large-12.columns
+      a#next-url href='evidence-check-4.html'
         .button.success Next
+ 
 
 javascript:
-  $(document).ready(function () {
-    $('#fee').val('410');
-    $('#children').val('1');
-    $("input[name='couple'][value='false']").prop("checked", true)
-    buildNextUrl('evidence-check-4.html');
+  $(document).ready( function() {
+  });
+
+  $("input[name='evidence-correct']").on('change', function () {
+    $('#evidence-comment').toggleClass('hide', $("input[name='evidence-correct']:checked").val() == "true");
+    buildNextUrl($("input[name='evidence-correct']:checked").val() == "true" ? 'evidence-check-4.html' : 'evidence-check-7b.html');
   });

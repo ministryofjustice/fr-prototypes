@@ -1,48 +1,120 @@
 ---
 title: 'Help with fees'
 nav_title: 'Help with fees'
-section_title: 'Process evidence'
 ---
 form
   br
 
-  h2 Evidence
+  h2 Waiting for evidence
+  br
+  .row
+    .small-12.medium-6.columns
+    
+      .panel  
+        h4 Process evidence
+        a.button.success href='evidence-check-3.html' Start now
+  br
+  .row
+    .small-12.medium-8.large-8.columns
+      h4 Processing details
+  .row
+    .small-12.medium-4.large-4.columns 
+      .subheader Reference
+    .small-12.medium-8.large-8.columns 
+      | AT001-15-1
+  .row
+    .small-12.medium-4.large-4.columns 
+      .subheader Processed by
+    .small-12.medium-8.large-8.columns 
+      | Juliana Richardson
+  .row
+    .small-12.medium-4.large-4.columns 
+      .subheader Expires
+    .small-12.medium-8.large-8.columns 
+      | 5 days
 
-
+  .row
+    .small-12.columns
+  hr
+  .row
+    .small-12.medium-8.large-8.columns
+      h4 Personal details
+  .row
+    .small-12.medium-4.large-4.columns 
+      .subheader Full name
+    .small-12.medium-8.large-8.columns 
+      | Mr Mark Morgan
+  .row
+    .small-12.medium-4.large-4.columns 
+      .subheader Date of birth
+    .small-12.medium-8.large-8.columns 
+      | 2 December 1979
+  .row
+    .small-12.medium-4.large-4.columns 
+      .subheader NI number
+    .small-12.medium-8.large-8.columns 
+      | PW 55 63 56 A
+  .row
+    .small-12.medium-4.large-4.columns 
+      .subheader Status
+    .small-12.medium-8.large-8.columns 
+      | Single
+    .small-12.columns
+  hr
+  .row
+    .small-12.medium-8.large-8.columns
+      h4 Application details
+  .row
+    .small-12.medium-4.large-4.columns 
+      .subheader Fee
+    .small-12.medium-8.large-8.columns 
+      | £215
+  .row
+    .small-12.medium-4.large-4.columns 
+      .subheader Jurisdiction
+    .small-12.medium-8.large-8.columns 
+      | Family court
+  .row
+    .small-12.medium-4.large-4.columns 
+      .subheader Date application received
+    .small-12.medium-8.large-8.columns 
+      | 7 August 2015
+  .row
+    .small-12.medium-4.large-4.columns 
+      .subheader Form name or number
+    .small-12.medium-8.large-8.columns 
+      | C100
+    .small-12.columns  
+  hr
+  .row
+    .small-12.medium-8.large-8.columns
+      h4 Assessment
+  .row
+    .small-12.medium-4.large-4.columns
+      .subheader Savings and investments
+    .small-12.medium-8.large-8.columns
+      #income-result-display.summary-result-success &#10003; Passed
+  .row
+    .small-12.medium-4.large-4.columns
+      .subheader Income
+    .small-12.medium-8.large-8.columns
+      #income-result-display.summary-result-success &#10003; Passed
+  .row
+    .small-12.medium-4.large-4.columns 
+      .subheader Number of children
+    .small-12.medium-8.large-8.columns 
+      | 1
+  .row
+    .small-12.medium-4.large-4.columns 
+      .subheader Total monthly income
+    .small-12.medium-8.large-8.columns 
+      | £765
   br
   .row
     .small-12.medium-12.large-12.columns    
-      label Is the evidence correct?
-    .small-12.medium-9.large-8.columns.end   
-      .options.radio
-        .option
-          label for="evidence-correct-no"
-            input id="evidence-correct-no" type="radio" name="evidence-correct" value="false"
-            | No
-        .option
-          label for="evidence-correct-yes"
-            input id="evidence-correct-yes" type="radio" name="evidence-correct" value="true"
-            | Yes
-  
-  #evidence-comment.hide
-    .row
-      .small-12.medium-9.large-8.columns
-        .panel-indent
-          label for='evidence-comment'
-            | What is incorrect about the evidence?
-            textarea rows="2" cols="50"
-  br
-  .row
-    .small-12.medium-12.large-12.columns
-      a#next-url href='evidence-check-3.html'
-        .button.success Next
- 
+      .panel.callout.received
+        h3 The applicant doesn't have to pay the fee
 
 javascript:
   $(document).ready( function() {
-  });
-
-  $("input[name='evidence-correct']").on('change', function () {
-    $('#evidence-comment').toggleClass('hide', $("input[name='evidence-correct']:checked").val() == "true");
-    buildNextUrl($("input[name='evidence-correct']:checked").val() == "true" ? 'evidence-check-3.html' : 'evidence-check-5.html');
   });

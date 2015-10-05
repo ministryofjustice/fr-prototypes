@@ -3,33 +3,66 @@ title: 'Help with fees'
 nav_title: 'Help with fees'
 section_title: 'Process evidence'
 ---
-form
-  br
-  .row
-    .small-12.columns
-      h2
-        |Processing complete
-  br
-  .row
-    .small-11.columns
-      .panel.callout.received
+= javascript_include_tag 'income_calculator'
+br
+.row
+  .small-12.medium-12.large-12.columns
+    h2 Income
+
+#r2_calculator_income
+  input data-check='fee' id="fee" name="fee" type="hidden"
+  input data-check='children' id='children' type="hidden"
+  .row.hide
+    .small-12.medium-3.large-5.columns.form-group
+      #status-block
+        label.error data-check-error='couple' Please select a marital status
         .row
-          .small-12.medium-9.large-11.columns
-            h3 AT001-15-4
+          .columns.small-12
+            label Status
+            .options.radio
+              .option
+                label for='couple-no'
+                  input data-check='couple' id='couple-no' name="couple" type="radio" value='false'
+                  |Single
+              .option
+                label for='couple-yes'
+                  input data-check='couple' id='couple-yes' name="couple" type="radio" value='true'
+                  |Married or living with someone and sharing an income
+  br
+  .row#income-block
+    .small-12.columns
+      .row
+        .small-12.columns
+          label.error data-check-error='income' for='income' Please enter an income
+          label for='income' Total monthly income from evidence
+      .row
+        .small-12.medium-5.large-5.columns
+          .row.collapse.prefix-radius
+            .small-2.medium-3.large-3.columns
+              span.prefix
+                label.inline for='income' £
+            .small-10.medium-9.large-9.columns
+              input data-check='income' name="income" id="income" type="number"
+  br
+  .row
+    .small-12.medium-8.large-5.columns
+      button.button.primary.success#check_btn Next
+
+#r2_calculator_result
+  .row
+    .columns.small-12.medium-12.large-11
+      #calculator.callout
+        h3.bold#fee-remit
 
   .row
     .small-12.columns
-      a.button.success href='../index.html' Back to start
+      a#next-url href="evidence-check-6.html"
+        .button.success Next
 
 javascript:
-  $(document).ready( function() {
-    //$('#spot-check-true').toggle((getUrlParameter('spotcheck'))=='true');
-
-    //if ((getUrlParameter('spotcheck')=='false' && getUrlParameter('spotcheck')=='false')) {
-      //var show = !!Math.floor(Math.random() * 2);
-      //$('#spot-check-rand').toggle(!!Math.floor(Math.random() * 2));
-    //}
-    $('a div.button.success').on('click', function() {
-      $('#copied').fadeTo(1,1).fadeTo(2000, 0);
-    });
+  $(document).ready(function () {
+    $('#fee').val('410');
+    $('#children').val('1');
+    $("input[name='couple'][value='false']").prop("checked", true)
+    buildNextUrl('evidence-check-6.html');
   });

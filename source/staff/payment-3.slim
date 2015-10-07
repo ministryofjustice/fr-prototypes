@@ -1,0 +1,47 @@
+---
+title: 'Help with fees'
+nav_title: 'Help with fees'
+---
+form
+  br
+
+  h2 Payment details
+
+
+  br
+  .row
+    .small-12.medium-12.large-12.columns    
+      label Is the payment correct?
+    .small-12.medium-9.large-8.columns.end   
+      .options.radio
+        .option
+          label for="payment-correct-no"
+            input id="payment-correct-no" type="radio" name="payment-correct" value="false"
+            | No
+        .option
+          label for="payment-correct-yes"
+            input id="payment-correct-yes" type="radio" name="payment-correct" value="true"
+            | Yes
+  
+  #payment-comment.hide
+    .row
+      .small-12.medium-9.large-8.columns
+        .panel-indent
+          label for='payment-comment'
+            | What is incorrect about the payment?
+            textarea rows="2" cols="50"
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      a#next-url href='8-confirmation-expired.html'
+        .button.success Next
+ 
+
+javascript:
+  $(document).ready( function() {
+  });
+
+  $("input[name='payment-correct']").on('change', function () {
+    $('#payment-comment').toggleClass('hide', $("input[name='payment-correct']:checked").val() == "true");
+    buildNextUrl($("input[name='payment-correct']:checked").val() == "true" ? 'payment-check-4a.html' : 'payment-check-4b.html');
+  });

@@ -1,12 +1,13 @@
 ---
 title: 'Help with fees'
 nav_title: 'Help with fees'
-section_title: 'Process payment'
+section_title: 'Process evidence'
 ---
 form
   br
 
   h2 Check details
+
   br
   .row
     .small-12.medium-8.large-8.columns
@@ -15,17 +16,17 @@ form
     .small-12.medium-4.large-4.columns 
       .subheader Full name
     .small-12.medium-8.large-8.columns 
-      | Mrs Elizabeth Snoe
+      | Mr Mark Morgan
   .row
     .small-12.medium-4.large-4.columns 
       .subheader Date of birth
     .small-12.medium-8.large-8.columns 
-      | 19 July 1979
+      | 2 December 1979
   .row
     .small-12.medium-4.large-4.columns 
       .subheader NI number
     .small-12.medium-8.large-8.columns 
-      | SG 75 17 16 C
+      | PW 55 63 56 A
   .row
     .small-12.medium-4.large-4.columns 
       .subheader Status
@@ -35,12 +36,7 @@ form
     .small-12.medium-4.large-4.columns 
       .subheader Number of children
     .small-12.medium-8.large-8.columns 
-      | None
-  .row
-    .small-12.medium-4.large-4.columns 
-      .subheader Total monthly income
-    .small-12.medium-8.large-8.columns 
-      | £1700
+      | 1
     .small-12.columns
   hr
   .row
@@ -50,7 +46,7 @@ form
     .small-12.medium-4.large-4.columns 
       .subheader Fee
     .small-12.medium-8.large-8.columns 
-      | £410
+      | £215
   .row
     .small-12.medium-4.large-4.columns 
       .subheader Jurisdiction
@@ -60,26 +56,37 @@ form
     .small-12.medium-4.large-4.columns 
       .subheader Date application received
     .small-12.medium-8.large-8.columns 
-      | 28 Jun 2015
+      | 7 August 2015
   .row
     .small-12.medium-4.large-4.columns 
       .subheader Form name or number
     .small-12.medium-8.large-8.columns 
-      | D8
-      .small-12.columns  
+      | C100
+    .small-12.columns  
   hr
+  
   .row
     .small-12.medium-8.large-8.columns
-      h4 Payment check
+      h4 Evidence check
     .small-12.medium-5.large-4.columns
       .text-right
         a href='#'
-          | Change payment check
+          | Change evidence check
   .row
     .small-12.medium-4.large-4.columns 
-      .subheader Payment
+      .subheader Evidence
     .small-12.medium-8.large-8.columns 
-      #income-result-display.summary-result-success &#10003; Passed
+      #income-result-display.summary-result-failure &#10007; Failed
+  .row
+    .small-12.medium-4.large-4.columns 
+      .subheader Reason
+    .small-12.medium-8.large-8.columns 
+      | The name on the evidence doesn't match the name on the application form.
+  .row
+    .small-12.medium-4.large-4.columns 
+      .subheader Total monthly income
+    .small-12.medium-8.large-8.columns 
+      #income-result-display.summary-result-failure &#10007; Unable to determine
     .small-12.columns  
   hr
   .row
@@ -94,17 +101,17 @@ form
     .small-12.medium-4.large-4.columns
       .subheader Income
     .small-12.medium-8.large-8.columns
-      #income-result-display.summary-result-success &#10003; Passed
+      #income-result-display.summary-result-failure &#10007; Failed
   br
   .row
     .small-12.medium-12.large-12.columns    
-      .panel.callout.callout-full
-        h3 The applicant has paid £305 towards the fee
+      .panel.callout.callout-none
+        h3 The applicant must pay the full fee
 
   br
   .row
     .small-12.medium-12.large-12.columns
-      a#next-url href='payment-5a.html'
+      a#next-url href='evidence-check-7b.html'
         .button.success Complete processing
 
 javascript:

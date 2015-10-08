@@ -12,7 +12,7 @@ form
   .row
     .small-12.columns
       label
-        span#status-describe How much do they have in savings and investments in question 7?
+        span#status-describe In question 7, how much do they have in savings and investments?
   .row
     .small-12.medium-9.large-8.columns
       .options.radio
@@ -30,7 +30,7 @@ form
         .panel-indent
           .row
             .small-12.columns
-              label Is the applicant (or their partner) 61 or over?
+              label In question 8, is the applicant (or their partner) 61 or over?
           .row
             .small-12.medium-9.large-8.columns
               .options.radio
@@ -46,7 +46,7 @@ form
             br
             .row
               .small-12.columns
-                label How much do they have in savings and investments in question 8?
+                label In question 8, how much do they have in savings and investments?
             .row
               .small-12.medium-9.large-8.columns
                 .options.radio
@@ -72,7 +72,7 @@ javascript:
     $('#fee').text('£'+getUrlParameter('fee'));
     $('#age').text(getUrlParameter('age') + ' years old');
     $('#status').text(getUrlParameter('couple')=='false'?'Single':'Married or living with someone and sharing an income');
-    $('#status-describe').text(getUrlParameter('couple')=='false' ? 'How much do they have in savings and investments?' : 'How much do they have in savings and investments?');
+    $('#status-describe').text(getUrlParameter('couple')=='false' ? 'In question 7, how much do they have in savings and investments?' : 'In question 7, how much do they have in savings and investments?');
     $('#max-savings').text(getUrlParameter('age')>60?'£16,000': '£3,000');
     buildNextUrl('4-benefits.html');
 

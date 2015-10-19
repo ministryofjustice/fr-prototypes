@@ -4,7 +4,7 @@
   $('#results-income').toggle(getUrlParameter('calculator')=='true');
   $('#dob').text(unescape(getUrlParameter('dob')));
   $('#fee').text(unescape('£' + getUrlParameter('fee')));
-  $('#status').text(getUrlParameter('couple') == true ? 'Single' : 'Married or living with someone and sharing an income');
+  $('#status').text(getUrlParameter('couple') == false ? 'Single' : 'Married or living with someone and sharing an income');
 
 
   if (getUrlParameter('children')!='') {

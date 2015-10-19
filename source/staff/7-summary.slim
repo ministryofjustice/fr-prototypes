@@ -20,7 +20,7 @@ form
     .small-12.medium-5.large-4.columns 
       .subheader Full name
     .small-12.medium-7.large-8.columns 
-      | Miss Mary Anne Smith
+      | Mr Mark Morgan
   .row
     .small-12.medium-5.large-4.columns 
       .subheader Date of birth
@@ -29,7 +29,7 @@ form
     .small-12.medium-5.large-4.columns 
       .subheader NI number
     .small-12.medium-7.large-8.columns 
-      | JL 80 63 67 D
+      | PW 55 63 56 A
     .small-12.columns
   .row
     .small-12.medium-5.large-4.columns 
@@ -49,7 +49,7 @@ form
     .small-12.medium-5.large-4.columns 
       .subheader Fee
     .small-12.medium-7.large-8.columns#fee
-      | £410
+      | £215
   .row
     .small-12.medium-5.large-4.columns 
       .subheader Jurisdiction
@@ -59,16 +59,16 @@ form
     .small-12.medium-5.large-4.columns 
       .subheader Date application received
     .small-12.medium-7.large-8.columns 
-      | 28 Jul 2015
+      | 15 October 2015
   .row
     .small-12.medium-5.large-4.columns 
       .subheader Form name or number
     .small-12.medium-7.large-8.columns 
-      | D8
+      | C100
   hr
   .row
     .small-12.medium-7.large-8.columns
-      h4 Assessment
+      h4 Result
   .row
     .small-12.medium-5.large-4.columns
       .subheader Savings and investments
@@ -85,8 +85,8 @@ form
     .row
       .small-12.medium-5.large-4.columns
         .subheader Income
-      .small-12.medium-7.large-8.columns.summary-result-success#outcome
-        | &#10003; Passed
+      .small-12.medium-8.large-8.columns
+        #income-result-display.summary-result.orange.bold &#10003; Passed (waiting for evidence check)
     .row
       .small-12.medium-5.large-4.columns
         .subheader Number of children
@@ -96,7 +96,7 @@ form
       .small-12.medium-5.large-4.columns
         .subheader Total monthly income
       .small-12.medium-7.large-8.columns#income
-        | £1000
+        | £1042
   br
   .row
     .small-12.medium-12.large-12.columns    
@@ -141,7 +141,7 @@ javascript:
     } else if(getUrlParameter('calculator')=='true') {
       $('#remission-type').addClass('callout-part');
       if(to_pay=='The applicant has £0 to pay') {
-        $('#remission-type h3').text('This application has been chosen for investigation. You’ll need to ask for supporting evidence. ');
+        $('#remission-type h3').text('Evidence of income needs to be checked for this application');
         buildNextUrl('8-confirmation-evidence.html');
       } else {
         $('#remission-type h3').text(to_pay);

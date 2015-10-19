@@ -1,0 +1,54 @@
+---
+title: 'Apply for help with fees'
+nav_title: 'GOV.UK'
+---
+
+form
+  .row
+    .small-12.medium-6.columns
+      br
+      h4 Do you receive wages?
+  
+  .row
+    .small-12.medium-6.columns 
+      .options.radio
+        .option
+          label for="wages-no"
+            input id="wages-no" type="radio" name="wages" value="true"
+            | No 
+            .option
+          label for="wages-yes"
+            input id="wages-yes" type="radio" name="wages" value="false"
+            | Yes
+  #wages-number.hide
+    .row
+      .small-12.medium-6.columns
+        .panel-indent
+          .row
+            .small-12.columns
+              label for='wages-number' How much do you receive a month? <br>(before tax and National Insurance deductions)
+          .row
+            .small-12.medium-5.large-5.columns
+              .small-2.medium-3.large-3.columns style="padding:0px;"
+                span.prefix
+                  label.inline for='fee' £
+              .small-10.medium-9.large-9.columns style="padding:0px;"
+                input id='fee' type="number"
+
+
+  br
+  .row
+    .small-12.medium-6.columns
+      a href="income2.html" 
+        .button.success Continue
+
+
+
+javascript:
+  $(document).ready( function() {
+  });
+
+  $("input[name='wages']").on('change', function () {
+    $('#wages-number').toggleClass('hide', $("input[name='wages']:checked").val() == "true");
+    buildNextUrl($("input[name='wages']:checked").val() == "true" ? '#.html' : '#.html');
+  });

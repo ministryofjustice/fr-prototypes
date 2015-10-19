@@ -1,0 +1,64 @@
+---
+title: 'Apply for help with fees'
+nav_title: 'GOV.UK'
+---
+
+form
+  .row
+    .small-12.medium-7.columns
+      br
+      h4 Do you receive rental income?
+      p Either from anyone living with you or from other properties you own.
+
+  .row
+    .small-12.medium-6.columns 
+      .options.radio
+        .option
+          label for="wages-no"
+            input id="wages-no" type="radio" name="wages" value="true"
+            | No 
+            .option
+          label for="wages-yes"
+            input id="wages-yes" type="radio" name="wages" value="false"
+            | Yes
+  #wages-number.hide
+    .row
+      .small-12.medium-6.columns
+        .panel-indent
+          .row
+            .small-12.columns
+              p How much do you receive a month?
+
+          .row
+            .small-12.columns
+              label for="form" Rent from anyone living with you
+              .small-2.medium-3.large-1.columns style="padding:0px;"
+                span.prefix
+                  label.inline for='fee' £
+              .small-10.medium-9.large-4.columns.end style="padding:0px;"
+                input id='fee' type="number"
+          .row
+            .small-12.columns
+              label for="form" Rent from other properties you own
+              .small-2.medium-3.large-1.columns style="padding:0px;"
+                span.prefix
+                  label.inline for='fee' £
+              .small-10.medium-9.large-4.columns.end style="padding:0px;"
+                input id='fee' type="number"
+      
+  br
+  .row
+    .small-12.medium-6.columns
+      a href="income6.html" 
+        .button.success Continue
+
+
+
+javascript:
+  $(document).ready( function() {
+  });
+
+  $("input[name='wages']").on('change', function () {
+    $('#wages-number').toggleClass('hide', $("input[name='wages']:checked").val() == "true");
+    buildNextUrl($("input[name='wages']:checked").val() == "true" ? '#.html' : '#.html');
+  });

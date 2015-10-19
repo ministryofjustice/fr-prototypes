@@ -11,7 +11,7 @@ html ng-app="app"
   body class="#{yield_content(:body_class)}"
     = partial 'partials/layout/nav'
     .row
-      -if current_page.path == 'index.html' || current_page.path == 'home-staff-iteration-1.html' || current_page.path == 'home-manager-iteration-1.html'|| current_page.path == 'staff/guide-processing.html' || current_page.path == 'staff/guide-fraud.html'|| current_page.path == 'staff/guide-appeals.html'|| current_page.path == 'staff/guide-part-payments.html'|| current_page.path == 'staff/guide-evidence.html' || current_page.path == 'staff/guide-landing.html' || current_page.path == 'staff/evidence-check-2.html' || current_page.path == 'staff/7-summary.html' || current_page.path == 'staff/payment-2.html' || current_page.path == 'staff/evidence-check-6a.html' || current_page.path == 'staff/evidence-check-6b.html' || current_page.path == 'staff/payment-4a.html' || current_page.path == 'staff/payment-4b.html'
+      -if current_page.path == 'index.html' || current_page.path == 'home-staff-iteration-1.html' || current_page.path == 'home-manager-iteration-1.html'|| current_page.path == 'staff/guide-processing.html' || current_page.path == 'staff/guide-fraud.html'|| current_page.path == 'staff/guide-appeals.html'|| current_page.path == 'staff/guide-part-payments.html'|| current_page.path == 'staff/guide-evidence.html' || current_page.path == 'staff/guide-landing.html' || current_page.path == 'staff/evidence-check-2.html' || current_page.path == 'staff/7-summary.html' || current_page.path == 'staff/payment-2.html' || current_page.path == 'staff/evidence-check-6a.html' || current_page.path == 'staff/evidence-check-6b.html' || current_page.path == 'staff/payment-4a.html' || current_page.path == 'staff/payment-4b.html' || current_page.path == 'public/0-start.html' || current_page.path == 'public/form-number.html' || current_page.path == 'public/case-number.html' || current_page.path == 'public/probate.html' || current_page.path == 'public/refund.html' || current_page.path == 'public/dob.html' || current_page.path == 'public/name.html'  || current_page.path == 'public/ni.html' || current_page.path == 'public/address.html' || current_page.path == 'public/status.html' || current_page.path == 'public/children.html' || current_page.path == 'public/contact.html' || current_page.path == 'public/summary.html' || current_page.path == 'public/savings.html' || current_page.path == 'public/benefits.html' || current_page.path == 'public/income1.html' || current_page.path == 'public/income2.html' || current_page.path == 'public/income3.html' || current_page.path == 'public/income4.html' || current_page.path == 'public/income5.html' || current_page.path == 'public/income6.html' || current_page.path == 'public/income7.html' || current_page.path == 'public/confirmation.html'
         .large-12.columns
           = yield
       -else
@@ -21,9 +21,12 @@ html ng-app="app"
           h1
           = partial 'partials/layout/sub_nav' unless current_page.path=='staff/7-summary.html'
     .row
-      .small-12.columns
-        = partial 'partials/layout/footer'
-        p
-        = link_to '', '/'
-    = javascript_include_tag 'libs', 'app', 'details.polyfill'
-    = include_javascripts(current_page.data.javascripts || current_page.data.javascripts)
+      -if current_page.path == 'public/0-start.html' || current_page.path == 'public/form-number.html' || current_page.path == 'public/case-number.html' || current_page.path == 'public/probate.html' || current_page.path == 'public/refund.html' || current_page.path == 'public/dob.html' || current_page.path == 'public/name.html' || current_page.path == 'public/ni.html' || current_page.path == 'public/address.html' || current_page.path == 'public/status.html' || current_page.path == 'public/children.html' || current_page.path == 'public/contact.html' || current_page.path == 'public/summary.html' || current_page.path == 'public/savings.html' || current_page.path == 'public/benefits.html' || current_page.path == 'public/income1.html' || current_page.path == 'public/income2.html' || current_page.path == 'public/income3.html' || current_page.path == 'public/income4.html' || current_page.path == 'public/income5.html' || current_page.path == 'public/income6.html' || current_page.path == 'public/income7.html' || current_page.path == 'public/confirmation.html'
+        .small-12.columns
+      -else
+        .small-12.columns
+          = partial 'partials/layout/footer'
+          p
+          = link_to '', '/'
+      = javascript_include_tag 'libs', 'app', 'details.polyfill'
+      = include_javascripts(current_page.data.javascripts || current_page.data.javascripts)

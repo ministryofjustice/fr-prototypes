@@ -1,0 +1,51 @@
+---
+title: 'Help with fees'
+nav_title: 'Help with fees'
+section_title: 'Process application'
+---
+form
+  br
+  .row
+    .small-12.columns
+      h2
+        |Waiting for evidence
+  br
+  .row
+    .small-12.medium-12.columns
+      .panel.callout.received
+        h3
+          span.white AT001-15-1
+
+  .row
+    .small-12.medium-12.columns
+      .panel
+
+        p Dear Mr Mark Morgan
+        p Reference: <strong>AT001-15-1</strong>
+        p We have received your application for help with fees. Unfortunately you’re not eligible because: 
+    
+        ul
+          li you have more than £3,000 in savings  
+          li you have more than the £1,500 maximum income limit
+
+        p.bold If you disagree with this decision 
+        p You can appeal to [NAME OF DELIVERY MANAGER], Delivery Manager at [COURT / TRIBUNAL NAME]. You need to do this by [DATE].  
+
+        p Yours sincerely,
+  br
+  .row
+    .small-12.medium-6.large-6.columns
+      a.button.success href='../index.html' Back to start
+
+javascript:
+  $(document).ready( function() {
+    //$('#spot-check-true').toggle((getUrlParameter('spotcheck'))=='true');
+
+    //if ((getUrlParameter('spotcheck')=='false' && getUrlParameter('spotcheck')=='false')) {
+      //var show = !!Math.floor(Math.random() * 2);
+      //$('#spot-check-rand').toggle(!!Math.floor(Math.random() * 2));
+    //}
+    $('a div.button.success').on('click', function() {
+      $('#copied').fadeTo(1,1).fadeTo(2000, 0);
+    });
+  });

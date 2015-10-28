@@ -1,4 +1,4 @@
-<!DOCTYPE html><html ng-app="app"><head><meta charset="utf-8" /><title>Help with fees</title><meta content="width=device-width" name="viewport" /><link href="../assets/stylesheets/styles.css" rel="stylesheet" /><link href="../assets/stylesheets/r2_calculator.css" rel="stylesheet" /><link href="../assets/stylesheets/r1calc.css" rel="stylesheet" /><script src="../assets/javascripts/jquery.min.js"></script></head><body><div class="contain-to-grid"><nav class="top-bar" data-topbar=""><ul class="title-area"><li class="name"><h1><a href="../">Help with fees</a></h1></li></ul><ul><li class="section"><h1>Process application</h1></li></ul><section class="top-bar-section"><ul class="right"><li><a href=""></a></li></ul></section></nav></div><div class="row"><div class="large-7 columns"><form><br /><div class="row"><div class="small-12 columns"><h2>Processing complete</h2></div></div><br /><div class="row"><div class="small-11 columns"><div class="panel callout received"><div class="row"><div class="small-12 medium-9 large-11 columns"><h3>AT001-15-4</h3></div></div></div></div></div><div class="row"><div class="small-12 columns"><a class="button success" href="../index.html">Back to start</a></div></div></form><script>$(document).ready( function() {
+<!DOCTYPE html><html ng-app="app"><head><meta charset="utf-8" /><title>Help with fees</title><meta content="width=device-width" name="viewport" /><link href="../assets/stylesheets/styles.css" rel="stylesheet" /><link href="../assets/stylesheets/r2_calculator.css" rel="stylesheet" /><link href="../assets/stylesheets/r1calc.css" rel="stylesheet" /><script src="../assets/javascripts/jquery.min.js"></script></head><body><div class="contain-to-grid"><nav class="top-bar" data-topbar=""><ul class="title-area"><li class="name"><h1><a href="../">Help with fees</a></h1></li></ul><ul><li class="section"><h1>Process application</h1></li></ul><section class="top-bar-section"><ul class="right"><li><a href=""></a></li></ul></section></nav></div><div class="row"><div class="large-7 columns"><form><br /><div class="row"><div class="small-12 columns"><h2>Processing complete</h2></div></div><br /><div class="row"><div class="small-12 medium-12 large-12 columns"><div class="panel callout callout-full" id="remission-type"><h3>The applicant doesn’t have to pay the fee</h3></div></div></div><div class="row"><div class="small-11 columns"><div class="panel callout received"><div class="row"><div class="small-12 medium-9 large-11 columns"><h3>AT001-15-4</h3></div></div></div></div></div><hr /><div class="row"><div class="small-12 medium-7 large-8 columns"><h4>Result</h4></div><div class="small-12 medium-5 large-4 columns"><div class="text-right"><a href="#">Change result</a></div></div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Savings and investments</div></div><div class="small-12 medium-7 large-8 columns"><div class="summary-result-success" id="income-result-display">&#10003; Passed</div></div></div><div id="results-benefits"><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Benefits</div></div><div class="small-12 medium-7 large-8 columns"><div class="summary-result-success">&#10003; Passed</div></div></div></div><div id="results-income"><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Income</div></div><div class="small-12 medium-8 large-8 columns"><div class="summary-result orange bold" id="income-result-display">&#10003; Passed (waiting for evidence check)</div></div></div></div><div class="row"><div class="small-12 columns"><a class="button success" href="../index.html">Back to start</a></div></div></form><script>$(document).ready( function() {
   //$('#spot-check-true').toggle((getUrlParameter('spotcheck'))=='true');
 
   //if ((getUrlParameter('spotcheck')=='false' && getUrlParameter('spotcheck')=='false')) {
@@ -7,5 +7,63 @@
   //}
   $('a div.button.success').on('click', function() {
     $('#copied').fadeTo(1,1).fadeTo(2000, 0);
+  });
+});</script><script>$(document).ready( function() {
+  $('#benefits').text(getUrlParameter('benefits')=='true' ? 'Receiving correct benefits' : 'Benefits not received');
+  $('#results-benefits').toggle(getUrlParameter('benefits')=='true');
+  $('#results-income').toggle(getUrlParameter('calculator')=='true');
+  $('#dob').text(unescape(getUrlParameter('dob')));
+  $('#fee').text(unescape('£' + getUrlParameter('fee')));
+  $('#status').text(getUrlParameter('couple') == 'false' ? 'Single' : 'Married or living with someone and sharing an income');
+
+
+  if (getUrlParameter('children')!='') {
+    $('#children').text(getUrlParameter('children'));
+  }
+  if (getUrlParameter('income')!='') {
+    $('#income').text('£' + getUrlParameter('income'));
+  }
+  var to_pay = unescape(getUrlParameter('to_pay'));
+  if (to_pay!='') {
+    //$('#outcome').text(to_pay);
+    console.log(to_pay.indexOf("£"));
+    console.log(to_pay.indexOf("£0"));
+    if ((to_pay.indexOf("£") >= 0) && (to_pay.indexOf("£0") == -1)) {
+      //part remission
+      $('#outcome').addClass('orange');
+    }
+  }
+
+  if(getUrlParameter('benefits')=='true') {
+    $('#remission-type').addClass('callout-full');
+    buildNextUrl('8-confirmation-success.html');
+    $('#next-url div').text('Complete processing');
+  } else if(getUrlParameter('calculator')=='true') {
+    $('#remission-type').addClass('callout-part');
+    if(to_pay=='The applicant has £0 to pay') {
+      $('#remission-type h3').text('Evidence of income needs to be checked for this application');
+      buildNextUrl('8-confirmation-evidence.html');
+    } else {
+      $('#remission-type h3').text(to_pay);
+      buildNextUrl('8-confirmation-part-remission.html');
+    }
+  }
+  if (getUrlParameter('savings-exceeded') == 'true') {
+    $('#income-result-display').addClass('summary-result-failure').text('Failed. Savings over the threshold');
+    $('#remission-type').removeClass('callout-full').addClass('callout-none');
+    $('#remission-type h3').text('The applicant must pay the full fee');
+  } else if (getUrlParameter('over-61')=='true' || getUrlParameter('age')>60){
+    $('#income-result-display').html('&#10003; Passed. Less than £16,000');
+  }
+
+  $('input[name="decision"]').on('change', function () {
+    $('#spot-check-manual').toggle($('input[name="decision"]:checked').val()!="none")
+    $("#next-url").attr("href", updateQueryStringParameter('decision', $('input[name="decision"]:checked').val()));
+  });
+  $('input[name="spot-check"]').on('change', function () {
+    $("#next-url").attr("href", updateQueryStringParameter('spotcheck', $('input[name="spot-check"]').is(':checked')));
+  });
+  $('#challenge').on('change', function () {
+    $('#override-decision').toggle($('#challenge').is(':checked'));
   });
 });</script></div><div class="large-5 columns"><h1></h1><br /><div class="row"><div class="columns small-12 collapse"><h2>&nbsp;</h2><div class="row sidebar collapse"><div class="columns small-12"><h4>Next steps</h4><ul><li>write reference on the top right corner of the form</li><li>copy reference into the case management system</li></ul><br /><span><strong><a target="_blank" href="guide-landing.html">See the guides</a></strong></span></div></div></div></div></div></div><div class="row"><div class="small-12 columns"><br /><br /><footer class="row page-footer"><div class="small-12 columns"><div class="small-12 medium-12 large-6 columns"><h4>Contact us</h4><hr style="color:bfc1c3;" /><h5>Technical support</h5><p><a href="mailto:helpwithfees.support@digital.justice.gov.uk">helpwithfees.support@digital.justice.gov.uk</a></p></div><div class="small-12 medium-12 large-6 columns"><h4>Your feedback</h4><hr style="color:bfc1c3;" /><div class="small-8 columns" style="padding-left:0px;"><h5>Tell us what you think</h5><p><a href="#">Give feedback</a></p></div><div class="small-4 columns"><img src="../assets/images/copyright.png" style="padding-top:35px;" /></div></div></div></footer><p></p><a href="/"></a></div><script src="../assets/javascripts/libs.js"></script><script src="../assets/javascripts/app.js"></script><script src="../assets/javascripts/details.polyfill.js"></script></div></body></html>

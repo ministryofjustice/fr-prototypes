@@ -1,0 +1,39 @@
+---
+title: 'Help with fees'
+nav_title: 'Help with fees'
+section_title: 'Process evidence'
+---
+form
+  br
+  .row
+    .small-12.columns
+      h2
+        |Processing complete
+  br
+
+  .row
+    .small-12.medium-11.columns
+      .panel
+
+        p Dear Mr Mark Morgan
+        p
+          |You must pay&nbsp;
+          span#to_pay
+          |&nbsp;before we can process your application
+        p We have received your documents however they are not correct, therefore we’re unable to process your application. This may have an impact on the original case or claim related to this application.
+        p You will need to make a new application if you still require help.  
+        p Yours sincerely,
+  br
+  .row
+    .small-12.medium-6.large-6.columns
+      a.button.success href='../index.html' Back to start
+
+
+javascript:
+  $(document).ready( function() {
+    $('#to_pay').text(unescape(getUrlParameter('to_pay')));
+
+    $('a div.button.success').on('click', function() {
+      $('#copied').fadeTo(1,1).fadeTo(2000, 0);
+    });
+  });

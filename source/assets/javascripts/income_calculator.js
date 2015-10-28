@@ -74,7 +74,7 @@
         showResult = function(data) {
             var add_class, show_text;
             add_class = 'callout-' + data.type;
-            show_text = 'The applicant has £0 to pay';
+            show_text = "The applicant doesn't have to pay the fee";
             switch (data.type) {
                 case 'none':
                     show_text = 'The applicant must pay the full fee';
@@ -84,6 +84,13 @@
             }
             $('#calculator.callout').removeClass('callout-none callout-part callout-full');
             $('#calculator.callout').addClass(add_class);
+            if (location.pathname.substring(location.pathname.lastIndexOf("/") + 1)=='evidence-check-4.html') {
+                $("#next-url").attr("href", updateQueryStringParameter('income', $('#income').val()));
+                $("#next-url").attr("href", updateQueryStringParameter('outcome', data.type));
+                if(data.type=='part') {
+                    $("#next-url").attr("href", updateQueryStringParameter('to_pay', escape(data.to_pay)));
+                }
+            }
             $('h3#fee-remit').text(show_text);
             $('#confirm_fee').text(incomeCalculator.prototype.formatCurrency($('#fee').val()));
             $('#confirm_status').text($('input:radio[name=couple]:checked').parent().text());

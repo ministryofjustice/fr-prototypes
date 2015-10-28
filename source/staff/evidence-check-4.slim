@@ -22,7 +22,7 @@ br
             .options.radio
               .option
                 label for='couple-no'
-                  input data-check='couple' id='couple-no' name="couple" type="radio" value='false'
+                  input data-check='couple' id='couple-no' name="couple" type="radio" value='false' checked='true'
                   |Single
               .option
                 label for='couple-yes'
@@ -61,8 +61,12 @@ br
 
 javascript:
   $(document).ready(function () {
-    $('#fee').val('410');
-    $('#children').val('1');
+    $('#fee').val('215');
+    $('#children').val('0');
     $("input[name='couple'][value='false']").prop("checked", true)
     buildNextUrl('evidence-check-6a.html');
+
+    $('#check_btn').on('click', function() {
+      $("#next-url").attr("href", updateQueryStringParameter('income', $('#income').val()));
+    });
   });

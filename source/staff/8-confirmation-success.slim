@@ -11,11 +11,41 @@ form
         |Processing complete
   br
   .row
+    .small-12.medium-12.large-12.columns    
+      .panel.callout.callout-full#remission-type
+        h3 The applicant doesn’t have to pay the fee
+  .row
     .small-11.columns
       .panel.callout.received
         .row
           .small-12.medium-9.large-11.columns
             h3 AT001-15-4
+  hr
+  .row
+    .small-12.medium-7.large-8.columns
+      h4 Result
+    .small-12.medium-5.large-4.columns
+      .text-right
+        a href='#'
+          | Change result
+  .row
+    .small-12.medium-5.large-4.columns
+      .subheader Savings and investments
+    .small-12.medium-7.large-8.columns
+      #income-result-display.summary-result-success &#10003; Passed
+  #results-benefits
+    .row
+      .small-12.medium-5.large-4.columns
+        .subheader Benefits
+      .small-12.medium-7.large-8.columns
+        .summary-result-success
+          | &#10003; Passed
+  #results-income
+    .row
+      .small-12.medium-5.large-4.columns
+        .subheader Income
+      .small-12.medium-8.large-8.columns
+        #income-result-display.summary-result.orange.bold &#10003; Passed (waiting for evidence check)
 
   .row
     .small-12.columns
@@ -31,5 +61,67 @@ javascript:
     //}
     $('a div.button.success').on('click', function() {
       $('#copied').fadeTo(1,1).fadeTo(2000, 0);
+    });
+  });
+
+
+javascript:
+  $(document).ready( function() {
+    $('#benefits').text(getUrlParameter('benefits')=='true' ? 'Receiving correct benefits' : 'Benefits not received');
+    $('#results-benefits').toggle(getUrlParameter('benefits')=='true');
+    $('#results-income').toggle(getUrlParameter('calculator')=='true');
+    $('#dob').text(unescape(getUrlParameter('dob')));
+    $('#fee').text(unescape('£' + getUrlParameter('fee')));
+    $('#status').text(getUrlParameter('couple') == 'false' ? 'Single' : 'Married or living with someone and sharing an income');
+
+
+    if (getUrlParameter('children')!='') {
+      $('#children').text(getUrlParameter('children'));
+    }
+    if (getUrlParameter('income')!='') {
+      $('#income').text('£' + getUrlParameter('income'));
+    }
+    var to_pay = unescape(getUrlParameter('to_pay'));
+    if (to_pay!='') {
+      //$('#outcome').text(to_pay);
+      console.log(to_pay.indexOf("£"));
+      console.log(to_pay.indexOf("£0"));
+      if ((to_pay.indexOf("£") >= 0) && (to_pay.indexOf("£0") == -1)) {
+        //part remission
+        $('#outcome').addClass('orange');
+      }
+    }
+
+    if(getUrlParameter('benefits')=='true') {
+      $('#remission-type').addClass('callout-full');
+      buildNextUrl('8-confirmation-success.html');
+      $('#next-url div').text('Complete processing');
+    } else if(getUrlParameter('calculator')=='true') {
+      $('#remission-type').addClass('callout-part');
+      if(to_pay=='The applicant has £0 to pay') {
+        $('#remission-type h3').text('Evidence of income needs to be checked for this application');
+        buildNextUrl('8-confirmation-evidence.html');
+      } else {
+        $('#remission-type h3').text(to_pay);
+        buildNextUrl('8-confirmation-part-remission.html');
+      }
+    }
+    if (getUrlParameter('savings-exceeded') == 'true') {
+      $('#income-result-display').addClass('summary-result-failure').text('Failed. Savings over the threshold');
+      $('#remission-type').removeClass('callout-full').addClass('callout-none');
+      $('#remission-type h3').text('The applicant must pay the full fee');
+    } else if (getUrlParameter('over-61')=='true' || getUrlParameter('age')>60){
+      $('#income-result-display').html('&#10003; Passed. Less than £16,000');
+    }
+
+    $('input[name="decision"]').on('change', function () {
+      $('#spot-check-manual').toggle($('input[name="decision"]:checked').val()!="none")
+      $("#next-url").attr("href", updateQueryStringParameter('decision', $('input[name="decision"]:checked').val()));
+    });
+    $('input[name="spot-check"]').on('change', function () {
+      $("#next-url").attr("href", updateQueryStringParameter('spotcheck', $('input[name="spot-check"]').is(':checked')));
+    });
+    $('#challenge').on('change', function () {
+      $('#override-decision').toggle($('#challenge').is(':checked'));
     });
   });

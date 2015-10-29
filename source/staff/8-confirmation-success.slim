@@ -19,9 +19,6 @@ form
               h3
                 span.white AT001-15-4
 
-  .row
-    .small-12.medium-7.large-12.columns
-      h4 Result
 
   .row
     .small-12.medium-5.large-5.columns
@@ -35,16 +32,19 @@ form
       .small-12.medium-7.large-7.columns
         .summary-result-success
           | &#10003; Passed
+  hr
   #results-income
     .row
       .small-12.medium-5.large-5.columns
         .subheader Income
       .small-12.medium-8.large-7.columns
         #income-result-display.summary-result.orange.bold &#10003; Passed (waiting for evidence check)
+  hr
   .row
-    .small-12.medium-12.large-12.columns    
-      span#remission-type
-        h3 The applicant doesn’t have to pay the fee
+    .small-12.medium-5.large-5.columns
+      .subheader Result
+    .small-12.medium-8.large-7.columns
+      #income-result-display.summary-result-success &#10003; The applicant doesn't have to pay the fee
 
   br
   br

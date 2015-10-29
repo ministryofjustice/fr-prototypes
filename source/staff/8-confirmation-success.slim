@@ -6,47 +6,44 @@ section_title: 'Process application'
 form
   br
   .row
-    .small-12.columns
-      h2
-        |Processing complete
-  br
-  .row
-    .small-12.medium-12.large-12.columns    
-      .panel.callout.callout-full#remission-type
-        h3 The applicant doesn’t have to pay the fee
-  .row
     .small-11.columns
       .panel.callout.received
         .row
-          .small-12.medium-9.large-11.columns
-            h3 AT001-15-4
-  hr
+          .small-12.medium-9.large-12.columns
+            center
+              h2 Processing complete
+              h4 The reference number is
+              h3 AT001-15-4
+
   .row
-    .small-12.medium-7.large-8.columns
+    .small-12.medium-7.large-12.columns
       h4 Result
-    .small-12.medium-5.large-4.columns
-      .text-right
-        a href='#'
-          | Change result
+
   .row
-    .small-12.medium-5.large-4.columns
+    .small-12.medium-5.large-5.columns
       .subheader Savings and investments
-    .small-12.medium-7.large-8.columns
+    .small-12.medium-7.large-7.columns
       #income-result-display.summary-result-success &#10003; Passed
   #results-benefits
     .row
-      .small-12.medium-5.large-4.columns
+      .small-12.medium-5.large-5.columns
         .subheader Benefits
-      .small-12.medium-7.large-8.columns
+      .small-12.medium-7.large-7.columns
         .summary-result-success
           | &#10003; Passed
   #results-income
     .row
-      .small-12.medium-5.large-4.columns
+      .small-12.medium-5.large-5.columns
         .subheader Income
-      .small-12.medium-8.large-8.columns
+      .small-12.medium-8.large-7.columns
         #income-result-display.summary-result.orange.bold &#10003; Passed (waiting for evidence check)
+  .row
+    .small-12.medium-12.large-12.columns    
+      .panel.callout.callout-full#remission-type
+        h3 The applicant doesn’t have to pay the fee
 
+  br
+  br
   .row
     .small-12.columns
       a.button.success href='../index.html' Back to start

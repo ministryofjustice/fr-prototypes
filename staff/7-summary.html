@@ -1,11 +1,8 @@
-<!DOCTYPE html><html ng-app="app"><head><meta charset="utf-8" /><title>Help with fees</title><meta content="width=device-width" name="viewport" /><link href="../assets/stylesheets/styles.css" rel="stylesheet" /><link href="../assets/stylesheets/r2_calculator.css" rel="stylesheet" /><link href="../assets/stylesheets/r1calc.css" rel="stylesheet" /><script src="../assets/javascripts/jquery.min.js"></script></head><body><div class="contain-to-grid"><nav class="top-bar" data-topbar=""><ul class="title-area"><li class="name"><h1><a href="../">Help with fees</a></h1></li></ul><ul><li class="section"><h1>Process application</h1></li></ul><section class="top-bar-section"><ul class="right"><li><a href=""></a></li></ul></section></nav></div><div class="row"><div class="large-12 columns"><form><br /><div class="row"><div class="small-12 medium-12 large-12 columns"><h2>Check details</h2></div></div><br /><div class="row"><div class="small-12 medium-7 large-8 columns"><h4>Personal details</h4></div><div class="small-12 medium-5 large-4 columns"><div class="text-right"><a href="#">Change personal details</a></div></div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Full name</div></div><div class="small-12 medium-7 large-8 columns">Mr Mark Morgan</div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Date of birth</div></div><div class="small-12 medium-7 large-8 columns" id="dob"></div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">NI number</div></div><div class="small-12 medium-7 large-8 columns">PW 55 63 56 A</div><div class="small-12 columns"></div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Status</div></div><div class="small-12 medium-7 large-8 columns" id="status"></div><div class="small-12 columns"></div></div><hr /><div class="row"><div class="small-12 medium-7 large-8 columns"><h4>Application details</h4></div><div class="small-12 medium-5 large-4 columns"><div class="text-right"><a href="#">Change application details</a></div></div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Fee</div></div><div class="small-12 medium-7 large-8 columns" id="fee">£215</div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Jurisdiction</div></div><div class="small-12 medium-7 large-8 columns" id="fee">Family court</div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Date application received</div></div><div class="small-12 medium-7 large-8 columns">15 Oct 2015</div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Form name or number</div></div><div class="small-12 medium-7 large-8 columns">C100</div><div class="small-12 columns"></div><hr /></div><div class="row"><div class="small-12 medium-7 large-8 columns"><h4>Income details   </h4></div><div class="small-12 medium-5 large-4 columns"><div class="text-right"><a href="#">Change income details </a></div></div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Number of children</div></div><div class="small-12 medium-7 large-8 columns" id="children">None</div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Total monthly income</div></div><div class="small-12 medium-7 large-8 columns" id="income">£1042</div></div><br /><div class="row"><div class="small-12 medium-6 columns"><a href="8-confirmation-evidence.html" id="next-url"></a><div class="button success">Complete processing</div></div></div></form><script>$(document).ready( function() {
-  $('#benefits').text(getUrlParameter('benefits')=='true' ? 'Receiving correct benefits' : 'Benefits not received');
-  $('#results-benefits').toggle(getUrlParameter('benefits')=='true');
-  $('#results-income').toggle(getUrlParameter('calculator')=='true');
+<!DOCTYPE html><html ng-app="app"><head><meta charset="utf-8" /><title>Help with fees</title><meta content="width=device-width" name="viewport" /><link href="../assets/stylesheets/styles.css" rel="stylesheet" /><link href="../assets/stylesheets/r2_calculator.css" rel="stylesheet" /><link href="../assets/stylesheets/r1calc.css" rel="stylesheet" /><script src="../assets/javascripts/jquery.min.js"></script></head><body><div class="contain-to-grid"><nav class="top-bar" data-topbar=""><ul class="title-area"><li class="name"><h1><a href="../">Help with fees</a></h1></li></ul><ul><li class="section"><h1>Process application</h1></li></ul><section class="top-bar-section"><ul class="right"><li><a href=""></a></li></ul></section></nav></div><div class="row"><div class="large-12 columns"><form><br /><div class="row"><div class="small-12 medium-12 large-12 columns"><h2>Check details</h2></div></div><br /><div class="row"><div class="small-12 medium-7 large-8 columns"><h4>Personal details</h4></div><div class="small-12 medium-5 large-4 columns"><div class="text-right"><a href="#">Change personal details</a></div></div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Full name</div></div><div class="small-12 medium-7 large-8 columns">Mr Mark Morgan</div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Date of birth</div></div><div class="small-12 medium-7 large-8 columns" id="dob"></div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">NI number</div></div><div class="small-12 medium-7 large-8 columns">PW 55 63 56 A</div><div class="small-12 columns"></div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Status</div></div><div class="small-12 medium-7 large-8 columns" id="status"></div><div class="small-12 columns"></div></div><hr /><div class="row"><div class="small-12 medium-7 large-8 columns"><h4>Application details</h4></div><div class="small-12 medium-5 large-4 columns"><div class="text-right"><a href="#">Change application details</a></div></div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Fee</div></div><div class="small-12 medium-7 large-8 columns" id="fee">£215</div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Jurisdiction</div></div><div class="small-12 medium-7 large-8 columns" id="fee">Family court</div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Date application received</div></div><div class="small-12 medium-7 large-8 columns">15 Oct 2015</div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Form name or number</div></div><div class="small-12 medium-7 large-8 columns">C100</div><div class="small-12 columns"></div></div><div id="income-only"><hr /><div class="row"><div class="small-12 medium-7 large-8 columns"><h4>Income details</h4></div><div class="small-12 medium-5 large-4 columns"><div class="text-right"><a href="#">Change income details</a></div></div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Number of children</div></div><div class="small-12 medium-7 large-8 columns" id="children">None</div></div><div class="row"><div class="small-12 medium-5 large-4 columns"><div class="subheader">Total monthly income</div></div><div class="small-12 medium-7 large-8 columns" id="income">£1042</div></div></div><br /><div class="row"><div class="small-12 medium-6 columns"><a href="8-confirmation-success.html" id="next-url"><div class="button success">Complete processing</div></a></div></div></form><script>$(document).ready( function() {
+  $('#income-only').toggle(getUrlParameter('benefits')=='false');
   $('#dob').text(unescape(getUrlParameter('dob')));
   $('#fee').text(unescape('£' + getUrlParameter('fee')));
   $('#status').text(getUrlParameter('couple') == 'false' ? 'Single' : 'Married or living with someone and sharing an income');
-
 
   if (getUrlParameter('children')!='') {
     $('#children').text(getUrlParameter('children'));
@@ -13,47 +10,5 @@
   if (getUrlParameter('income')!='') {
     $('#income').text('£' + getUrlParameter('income'));
   }
-  var to_pay = unescape(getUrlParameter('to_pay'));
-  if (to_pay!='') {
-    //$('#outcome').text(to_pay);
-    console.log(to_pay.indexOf("£"));
-    console.log(to_pay.indexOf("£0"));
-    if ((to_pay.indexOf("£") >= 0) && (to_pay.indexOf("£0") == -1)) {
-      //part remission
-      $('#outcome').addClass('orange');
-    }
-  }
-
-  if(getUrlParameter('benefits')=='true') {
-    $('#remission-type').addClass('callout-full');
-    buildNextUrl('8-confirmation-success.html');
-    $('#next-url div').text('Complete processing');
-  } else if(getUrlParameter('calculator')=='true') {
-    $('#remission-type').addClass('callout-part');
-    if(to_pay=='The applicant has £0 to pay') {
-      $('#remission-type h3').text('Evidence of income needs to be checked for this application');
-      buildNextUrl('8-confirmation-evidence.html');
-    } else {
-      $('#remission-type h3').text(to_pay);
-      buildNextUrl('8-confirmation-part-remission.html');
-    }
-  }
-  if (getUrlParameter('savings-exceeded') == 'true') {
-    $('#income-result-display').addClass('summary-result-failure').text('Failed. Savings over the threshold');
-    $('#remission-type').removeClass('callout-full').addClass('callout-none');
-    $('#remission-type h3').text('The applicant must pay the full fee');
-  } else if (getUrlParameter('over-61')=='true' || getUrlParameter('age')>60){
-    $('#income-result-display').html('&#10003; Passed. Less than £16,000');
-  }
-
-  $('input[name="decision"]').on('change', function () {
-    $('#spot-check-manual').toggle($('input[name="decision"]:checked').val()!="none")
-    $("#next-url").attr("href", updateQueryStringParameter('decision', $('input[name="decision"]:checked').val()));
-  });
-  $('input[name="spot-check"]').on('change', function () {
-    $("#next-url").attr("href", updateQueryStringParameter('spotcheck', $('input[name="spot-check"]').is(':checked')));
-  });
-  $('#challenge').on('change', function () {
-    $('#override-decision').toggle($('#challenge').is(':checked'));
-  });
+  buildNextUrl('8-confirmation-success.html');
 });</script></div></div><div class="row"><div class="small-12 columns"><br /><br /><footer class="row page-footer"><div class="small-12 columns"><div class="small-12 medium-12 large-6 columns"><h4>Contact us</h4><hr style="color:bfc1c3;" /><h5>Technical support</h5><p><a href="mailto:helpwithfees.support@digital.justice.gov.uk">helpwithfees.support@digital.justice.gov.uk</a></p></div><div class="small-12 medium-12 large-6 columns"><h4>Your feedback</h4><hr style="color:bfc1c3;" /><div class="small-8 columns" style="padding-left:0px;"><h5>Tell us what you think</h5><p><a href="#">Give feedback</a></p></div><div class="small-4 columns"><img src="../assets/images/copyright.png" style="padding-top:35px;" /></div></div></div></footer><p></p><a href="/"></a></div><script src="../assets/javascripts/libs.js"></script><script src="../assets/javascripts/app.js"></script><script src="../assets/javascripts/details.polyfill.js"></script></div></body></html>

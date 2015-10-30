@@ -27,7 +27,7 @@ form
     .small-12.medium-5.large-3.columns
       .subheader Savings
     .small-12.medium-7.large-9.columns
-      #income-result-display.summary-result-success &#10003; Passed
+      #savings-result-display.summary-result-success &#10003; Passed
   #results-benefits
     .row
       .small-12.medium-5.large-3.columns
@@ -35,19 +35,19 @@ form
       .small-12.medium-7.large-9.columns
         .summary-result-success
           | &#10003; Passed
-  hr
   #results-income
-    .row
-      .small-12.medium-5.large-3.columns
-        .subheader Income
-      .small-12.medium-8.large-9.columns
-        #income-result-display.summary-result.orange.bold &#10003; Passed (waiting for evidence check)
+    hr
+      .row
+        .small-12.medium-5.large-3.columns
+          .subheader Income
+        .small-12.medium-8.large-9.columns
+          #income-result-display.summary-result-success.bold &#10003; Passed
   hr
   .row
     .small-12.medium-5.large-3.columns
       .subheader Result
     .small-12.medium-8.large-9.columns
-      #income-result-display.summary-result-success &#10003; The applicant doesn't have to pay the fee
+      #result-display.summary-result-success &#10003; The applicant doesn't have to pay the fee
   hr
 
   br
@@ -58,75 +58,72 @@ form
 
 javascript:
   $(document).ready( function() {
-    //$('#spot-check-true').toggle((getUrlParameter('spotcheck'))=='true');
-
-    //if ((getUrlParameter('spotcheck')=='false' && getUrlParameter('spotcheck')=='false')) {
-      //var show = !!Math.floor(Math.random() * 2);
-      //$('#spot-check-rand').toggle(!!Math.floor(Math.random() * 2));
-    //}
-    $('a div.button.success').on('click', function() {
-      $('#copied').fadeTo(1,1).fadeTo(2000, 0);
-    });
-  });
-
-
-javascript:
-  $(document).ready( function() {
     $('#benefits').text(getUrlParameter('benefits')=='true' ? 'Receiving correct benefits' : 'Benefits not received');
     $('#results-benefits').toggle(getUrlParameter('benefits')=='true');
     $('#results-income').toggle(getUrlParameter('calculator')=='true');
-    $('#dob').text(unescape(getUrlParameter('dob')));
-    $('#fee').text(unescape('£' + getUrlParameter('fee')));
-    $('#status').text(getUrlParameter('couple') == 'false' ? 'Single' : 'Married or living with someone and sharing an income');
 
+    if (getUrlParameter('savings-exceeded') == 'true') {
+      $('#savings-result-display').addClass('summary-result-failure').text('Failed. Savings over the threshold');
+      $('#result-display').addClass('summary-result-failure').text('The applicant must pay the full fee');
+    } else if (getUrlParameter('over-61') == 'true' || getUrlParameter('age') > 60) {
+      $('#income-result-display').html('&#10003; Passed. Less than £16,000');
+    }
 
-    if (getUrlParameter('children')!='') {
-      $('#children').text(getUrlParameter('children'));
-    }
-    if (getUrlParameter('income')!='') {
-      $('#income').text('£' + getUrlParameter('income'));
-    }
     var to_pay = unescape(getUrlParameter('to_pay'));
     if (to_pay!='') {
-      //$('#outcome').text(to_pay);
+      $('#result-display').text(to_pay);
       console.log(to_pay.indexOf("£"));
       console.log(to_pay.indexOf("£0"));
       if ((to_pay.indexOf("£") >= 0) && (to_pay.indexOf("£0") == -1)) {
         //part remission
-        $('#outcome').addClass('orange');
+        $('#result-display').addClass('orange');
+        $('#income-result-display').removeClass('summary-result-success').addClass('orange').text('✓ Passed')
+      } else if (to_pay == "The applicant must pay the full fee") {
+        $('#result-display').addClass('summary-result-failure');
       }
     }
 
-    if(getUrlParameter('benefits')=='true') {
-      $('#remission-type').addClass('callout-full');
-      buildNextUrl('8-confirmation-success.html');
-      $('#next-url div').text('Complete processing');
-    } else if(getUrlParameter('calculator')=='true') {
-      $('#remission-type').addClass('callout-part');
-      if(to_pay=='The applicant has £0 to pay') {
-        $('#remission-type h3').text('Evidence of income needs to be checked for this application');
-        buildNextUrl('8-confirmation-evidence.html');
-      } else {
-        $('#remission-type h3').text(to_pay);
-        buildNextUrl('8-confirmation-part-remission.html');
+    if(getUrlParameter('calculator')=='true') {
+      if(to_pay=="The applicant doesn't have to pay the fee") {
+        $('#result-display').addClass('orange').text('Evidence of income needs to be checked for this application');
       }
     }
-    if (getUrlParameter('savings-exceeded') == 'true') {
-      $('#income-result-display').addClass('summary-result-failure').text('Failed. Savings over the threshold');
-      $('#remission-type').removeClass('callout-full').addClass('callout-none');
-      $('#remission-type h3').text('The applicant must pay the full fee');
-    } else if (getUrlParameter('over-61')=='true' || getUrlParameter('age')>60){
-      $('#income-result-display').html('&#10003; Passed. Less than £16,000');
-    }
 
-    $('input[name="decision"]').on('change', function () {
-      $('#spot-check-manual').toggle($('input[name="decision"]:checked').val()!="none")
-      $("#next-url").attr("href", updateQueryStringParameter('decision', $('input[name="decision"]:checked').val()));
-    });
-    $('input[name="spot-check"]').on('change', function () {
-      $("#next-url").attr("href", updateQueryStringParameter('spotcheck', $('input[name="spot-check"]').is(':checked')));
-    });
-    $('#challenge').on('change', function () {
-      $('#override-decision').toggle($('#challenge').is(':checked'));
-    });
+    //var to_pay = unescape(getUrlParameter('to_pay'));
+    //if (to_pay!='') {
+    //  //$('#outcome').text(to_pay);
+    //  console.log(to_pay.indexOf("£"));
+    //  console.log(to_pay.indexOf("£0"));
+    //  if ((to_pay.indexOf("£") >= 0) && (to_pay.indexOf("£0") == -1)) {
+    //    //part remission
+    //    $('#outcome').addClass('orange');
+    //  }
+    //}
+    //
+    //if(getUrlParameter('benefits')=='true') {
+    //  $('#remission-type').addClass('callout-full');
+    //  buildNextUrl('8-confirmation-success.html');
+    //  $('#next-url div').text('Complete processing');
+    //} else if(getUrlParameter('calculator')=='true') {
+    //  $('#remission-type').addClass('callout-part');
+    //  if(to_pay=='The applicant has £0 to pay') {
+    //    $('#remission-type h3').text('Evidence of income needs to be checked for this application');
+    //    buildNextUrl('8-confirmation-evidence.html');
+    //  } else {
+    //    $('#remission-type h3').text(to_pay);
+    //    buildNextUrl('8-confirmation-part-remission.html');
+    //  }
+    //}
+
+    //
+    //$('input[name="decision"]').on('change', function () {
+    //  $('#spot-check-manual').toggle($('input[name="decision"]:checked').val()!="none")
+    //  $("#next-url").attr("href", updateQueryStringParameter('decision', $('input[name="decision"]:checked').val()));
+    //});
+    //$('input[name="spot-check"]').on('change', function () {
+    //  $("#next-url").attr("href", updateQueryStringParameter('spotcheck', $('input[name="spot-check"]').is(':checked')));
+    //});
+    //$('#challenge').on('change', function () {
+    //  $('#override-decision').toggle($('#challenge').is(':checked'));
+    //});
   });

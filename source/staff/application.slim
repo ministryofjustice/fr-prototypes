@@ -102,14 +102,17 @@ form
     .small-12.medium-12.large-12.columns    
       .panel.callout.received
         h3 The applicant doesn't have to pay the fee
-        p 
-          details
-            summary Was this application processed in error?
-            div If a mistake was made while processing this application, you can remove the application from the system.
-            br
+        
 
-            a.button.small.alert href='8-confirmation-expired.html' Remove application
-            p This will completely remove the application from the system, you will need to process the application again to log it on the system.
+  .row
+    .small-12.medium-6.columns
+      .panel  
+        details
+          summary Was this application processed in error?
+          div If a mistake was made while processing this application, you can remove the application from the system.
+          br
+          a.button.small.alert href='../index.html' Remove application
+          p You will need to process the application again to log it on the system.
 
 javascript:
   $(document).ready( function() {

@@ -12,28 +12,25 @@ form
     .small-12.medium-6.columns  
       .options.radio
         .option
-          label for="case-no"
-            input id="case-no" type="radio" name="case" value="true"
+          label for="savings-less"
+            input id="savings-less" type="radio" name="savings" value="true"
             | Less than £3,000 
             .option
-          label for="case-yes"
-            input id="case-yes" type="radio" name="case" value="false"
+          label for="savings-more"
+            input id="savings-more" type="radio" name="savings" value="false"
             | More than £3,000
 
   br
   .row
     .small-12.medium-6.columns
-      a href='contact.html'
+      a href='name.html'
         .button.success Continue
-
-
-
 
 javascript:
   $(document).ready( function() {
   });
 
-  $("input[name='kid']").on('change', function () {
-    $('#kid-number').toggleClass('hide', $("input[name='kid']:checked").val() == "true");
-    buildNextUrl($("input[name='kid']:checked").val() == "true" ? '#.html' : '#.html');
+  $("input[name='savings']").on('change', function () {
+    $('#XXX').toggleClass('hide', $("input[name='savings']:checked").val() == "true");
+    buildNextUrl($("input[name='savings']:checked").val() == "true" ? 'name.html' : 'confirmation-savings.html');
   });

@@ -5,32 +5,29 @@ nav_title: 'GOV.UK'
 
 form
   .row
-    .small-12.medium-6.columns
+    .small-12.medium-9.columns    
       br
       h4 How much do you have in savings and investments?
-  .row
-    .small-12.medium-6.columns  
+
+    .small-12.medium-6.columns.end   
       .options.radio
         .option
-          label for="savings-less"
-            input id="savings-less" type="radio" name="savings" value="true"
-            | Less than £3,000 
-            .option
-          label for="savings-more"
-            input id="savings-more" type="radio" name="savings" value="false"
-            | More than £3,000
-
+          label for="evidence-correct-no"
+            input id="evidence-correct-no" type="radio" name="evidence-correct" value="true" Less than £3,000 
+        .option
+          label for="evidence-correct-yes"
+            input id="evidence-correct-yes" type="radio" name="evidence-correct" value="false" More than £3,000
   br
   .row
-    .small-12.medium-6.columns
-      a href='name.html'
+    .small-12.columns
+      a#next-url href='name.html'
         .button.success Continue
 
 javascript:
   $(document).ready( function() {
   });
 
-  $("input[name='savings']").on('change', function () {
-    $('#XXX').toggleClass('hide', $("input[name='savings']:checked").val() == "true");
-    buildNextUrl($("input[name='savings']:checked").val() == "true" ? 'name.html' : 'confirmation-savings.html');
+  $("input[name='evidence-correct']").on('change', function () {
+    $('#evidence-comment').toggleClass('hide', $("input[name='evidence-correct']:checked").val() == "true");
+    buildNextUrl($("input[name='evidence-correct']:checked").val() == "true" ? 'name.html' : 'confirmation-savings.html');
   });

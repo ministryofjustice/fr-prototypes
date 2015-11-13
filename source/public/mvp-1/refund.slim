@@ -33,6 +33,54 @@ form
       a href='probate.html'
         .button.success Continue
 
+
+
+
+  br
+  .row
+    .small-12.medium-12.large-12.columns    
+      label Is the evidence ready to process? 
+    .small-12.medium-9.large-9.columns.end   
+      .options.radio
+        .option
+          label for="evidence-correct-yes"
+            input id="evidence-correct-yes" type="radio" name="evidence-correct" value="true"
+            | Yes, the evidence is for the correct applicant and dated in the last 3 months 
+            .option
+          label for="evidence-correct-no"
+            input id="evidence-correct-no" type="radio" name="evidence-correct" value="false"
+            | No, there is a problem with the evidence and it needs to be returned 
+  
+  #evidence-comment.hide
+    .row
+      .small-12.medium-9.large-9.columns
+        .panel-indent
+          label for='evidence-comment'
+            | Describe the problem with the evidence
+            textarea rows="2" cols="50"
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      a#next-url href='evidence-check-4.html'
+        .button.success Next
+ 
+
+javascript:
+  $(document).ready( function() {
+  });
+
+  $("input[name='evidence-correct']").on('change', function () {
+    $('#evidence-comment').toggleClass('hide', $("input[name='evidence-correct']:checked").val() == "true");
+    buildNextUrl($("input[name='evidence-correct']:checked").val() == "true" ? 'probate.html' : 'confirmation-refund.html');
+  });
+
+
+
+
+
+
+
+
 javascript:
   $(document).ready( function() {
   });

@@ -7,22 +7,21 @@ form
   .row
     .small-12.medium-6.columns    
       br
-      h4 What is your status?
-      p If your case is against your partner, such as a divorce, dissolution or domestic violence, select single.
+      h4 How much do you and your partner have in savings and investments?
 
   .row
     .small-12.medium-6.columns.end   
       .options.radio
         .option
           label for="evidence-correct-no"
-            input id="evidence-correct-no" type="radio" name="evidence-correct" value="true" Single
+            input id="evidence-correct-no" type="radio" name="evidence-correct" value="true" Less than £3,000 
         .option
           label for="evidence-correct-yes"
-            input id="evidence-correct-yes" type="radio" name="evidence-correct" value="false" Married or living with someone and sharing an income
+            input id="evidence-correct-yes" type="radio" name="evidence-correct" value="false" More than £3,000
   br
   .row
     .small-12.columns
-      a#next-url href='savings.html'
+      a#next-url href='benefits.html'
         .button.success Continue
 
 javascript:
@@ -31,5 +30,5 @@ javascript:
 
   $("input[name='evidence-correct']").on('change', function () {
     $('#evidence-comment').toggleClass('hide', $("input[name='evidence-correct']:checked").val() == "true");
-    buildNextUrl($("input[name='evidence-correct']:checked").val() == "true" ? 'savings.html' : 'savings-2.html');
+    buildNextUrl($("input[name='evidence-correct']:checked").val() == "true" ? 'benefits.html' : 'confirmation-savings.html');
   });

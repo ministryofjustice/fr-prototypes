@@ -30,17 +30,5 @@ form
   br
   .row
     .small-12.columns
-      a href='ni.html'
+      a href='name.html'
         .button.success Continue
-
-
-
-
-javascript:
-  $(document).ready( function() {
-  });
-
-  $("input[name='refund']").on('change', function () {
-    $('#refund-details').toggleClass('hide', $("input[name='refund']:checked").val() == "true");
-    buildNextUrl($("input[name='refund']:checked").val() == "true" ? '#.html' : '#.html');
-  });

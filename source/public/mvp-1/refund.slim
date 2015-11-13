@@ -13,13 +13,20 @@ form
     .small-12.medium-6.columns.end   
       .options.radio
         .option
-          label for="refund-no"
-            input id="refund-no" type="radio" name="refund" value="true"
+          label for="evidence-correct-yes"
+            input id="evidence-correct-yes" type="radio" name="evidence-correct" value="true"
             | No 
             .option
-          label for="refund-yes"
-            input id="refund-yes" type="radio" name="refund" value="false"
+          label for="evidence-correct-no"
+            input id="evidence-correct-no" type="radio" name="evidence-correct" value="false"
             | Yes
+  #evidence-comment.hide
+  .row
+    .small-12.medium-9.large-9.columns
+      .panel-indent
+        label for='evidence-comment'
+          | Describe the problem with the evidence
+          textarea rows="2" cols="50"
   br
   .row
     .small-12.columns
@@ -30,7 +37,7 @@ javascript:
   $(document).ready( function() {
   });
 
-  $("input[name='refund']").on('change', function () {
-    $('#XXX').toggleClass('hide', $("input[name='refund']:checked").val() == "true");
-    buildNextUrl($("input[name='refund']:checked").val() == "true" ? 'probate.html' : 'confirmation-refund.html');
+  $("input[name='evidence-correct']").on('change', function () {
+    $('#evidence-comment').toggleClass('hide', $("input[name='evidence-correct']:checked").val() == "true");
+    buildNextUrl($("input[name='evidence-correct']:checked").val() == "true" ? 'probate.html' : 'confirmation-refund.html');
   });

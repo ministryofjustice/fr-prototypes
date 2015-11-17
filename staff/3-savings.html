@@ -10,6 +10,7 @@
     if (getUrlParameter('couple') == 'true' && getUrlParameter('age') < 61) {
       $('#savings-more').toggleClass('hide', $("input[name='savings']:checked").val() == "false");
     }
+    setNextPage();
   });
   $("input[name='age']").on('change', function () {
     $('#sixteen').toggleClass('hide', $("input[name='age']:checked").val() == "false");

@@ -2,6 +2,7 @@
 title: 'Help with fees'
 nav_title: 'Help with fees'
 section_title: 'Process application'
+rh_help: true
 ---
 form
   br
@@ -80,6 +81,7 @@ javascript:
       if (getUrlParameter('couple') == 'true' && getUrlParameter('age') < 61) {
         $('#savings-more').toggleClass('hide', $("input[name='savings']:checked").val() == "false");
       }
+      setNextPage();
     });
     $("input[name='age']").on('change', function () {
       $('#sixteen').toggleClass('hide', $("input[name='age']:checked").val() == "false");

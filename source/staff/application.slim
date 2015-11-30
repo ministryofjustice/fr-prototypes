@@ -105,14 +105,17 @@ form
 
   .row
     .small-12.medium-12.columns
-      .panel  
-        details
-          summary Delete application
-          div You can delete an application if you've made a mistake or the applicant no longer needs help with their fee. 
-          label for='e-comment' Describe why you''re deleting this application
-            textarea rows="2" cols="50"
-          br
-          a.button.small.alert href='list-processed-oct.html' Delete application
+      .panel
+        .row
+          .small-12.medium-9.large-6.large-6.columns  
+            details
+              summary Delete application
+              div You can delete an application if you've made a mistake or the applicant no longer needs help with their fee.
+              br 
+              label for='e-comment' 
+                | Describe why you’re deleting this application
+                textarea rows="2" cols="50"
+              a.button.small.alert href='list-processed-oct.html' Delete application
 
 javascript:
   $(document).ready( function() {

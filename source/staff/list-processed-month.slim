@@ -9,15 +9,26 @@ form
       h2 Processed applications
   br
 
+
   .row
-    .small-12.medium-4.columns
-      p.large
-        a href="list-processed-aug.html" ❮ Previous month
-    .small-12.medium-4.columns
-      h4 style="text-align:center;" September 2015
-    .small-12.medium-4.columns
-      p.large style="text-align:right;"
-        a href="list-processed-oct.html" Next month ❯
+    .small-12.columns
+      .panel
+         .row      
+          .small-12.medium-4.columns
+            label for='first_name' Date from
+            span.hint For example DD/MM/YYYY
+            input name='first_name' type='text' placeholder='1/11/2015'     
+          .small-12.medium-4.columns
+            label for='first_name' Date to
+            span.hint For example DD/MM/YYYY
+            input name='first_name' type='text' placeholder='1/12/2015'
+          .small-12.medium-4.columns
+            a href='list-processed-month.html'
+              .button.success style='margin-top:36px;'
+                | Show applications
+  br
+
+
   .row
     .small-12.columns
       table width="100%"
@@ -36,8 +47,38 @@ form
               a href='application.html'
                 | AT001-15-106
             td Mr John Smith
-            td 5 September
-            td 5 September
+            td 2 November
+            td 2 November
+            td Juliana Richardson
+            td
+
+          tr
+            td 
+              a href='application.html'
+                | AT001-15-106
+            td Mr John Smith
+            td 3 November
+            td 3 November
+            td Juliana Richardson
+            td
+
+          tr
+            td 
+              a href='application.html'
+                | AT001-15-106
+            td Mr John Smith
+            td 4 November
+            td 5 November
+            td Juliana Richardson
+            td
+
+          tr
+            td 
+              a href='application.html'
+                | AT001-15-106
+            td Mr John Smith
+            td 9 November
+            td 9 November
             td Juliana Richardson
             td
 
@@ -46,18 +87,18 @@ form
               a href='application-emergency.html'
                 | AT001-15-107
             td Mrs Vanessa Smith
-            td 10 September
-            td 12 September
+            td 10 November
+            td 12 November
             td Juliana Richardson
-            td Yes
+            td 
 
           tr
             td
               a href='application.html'
                 | AT001-15-108
             td Mr Peter Geoffery-Smith
-            td 15 September
-            td 15 September
+            td 16 November
+            td 16 November
             td Juliana Richardson
             td
           tr
@@ -65,18 +106,18 @@ form
               a href='application-emergency.html'
                 | AT001-15-109
             td Mr John Smith
-            td 19 September
-            td 20 September
+            td 19 November
+            td 20 November
             td Juliana Richardson
-            td Yes
+            td 
 
           tr
             td 
               a href='application.html'
                 | AT001-15-110
             td Mrs Vanessa Smith
-            td 24 September
-            td 24 September
+            td 23 November
+            td 23 November
             td Juliana Richardson
             td
 
@@ -85,10 +126,32 @@ form
               a href='application.html'
                 | AT001-15-111
             td Mr Peter Geoffery-Smith
-            td 30 September
-            td 30 September
+            td 24 November
+            td 24 November
             td Juliana Richardson
             td
+
+
+
+          tr
+            td 
+              a href='application.html'
+                | AT001-15-112
+            td Ms Sarah Nicoles
+            td 25 November
+            td 25 November
+            td Juliana Richardson
+            td
+
+          tr
+            td 
+              a href='application-emergency.html'
+                | AT001-15-113
+            td Mrs Tray Caulson
+            td 30 November
+            td 30 November
+            td Juliana Richardson
+            td Yes
 
 javascript:
   $(document).ready( function() {

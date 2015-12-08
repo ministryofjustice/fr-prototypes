@@ -10,38 +10,19 @@ form
       h1
         |Application complete
   br
-  .row
-    .small-12.medium-6.columns
-      .panel.callout.received
-        .row
-          .small-12.medium-9.large-9.columns
-            h3 AT001-15-4
 
   .row
     .small-12.columns
-      p We have sent you a confirmation email.
+      p Your reference number is: <strong>XC1234R</strong> 
+      p You'll receive a confirmation email if you provided your email address.
       hr
       br
       h4 What happens next?
-      p We've sent your application to the court.
-      p They will contact you either to confirm your application, or to ask for more information.
-      p If you have any questions about your application, contact <a href"#"> the call centre</a>.
+      p Your application will be processed. We'll let you know if your application has been unsuccessful or if we need more information from you. 
+      p If you have any questions about your application, contact the court or tribunal dealing with your claim. 
       br
       p <a href="#">Print</a>
 
   .row
     .small-12.columns
       a.button.success href='0-start.html' Finished
-
-javascript:
-  $(document).ready( function() {
-    //$('#spot-check-true').toggle((getUrlParameter('spotcheck'))=='true');
-
-    //if ((getUrlParameter('spotcheck')=='false' && getUrlParameter('spotcheck')=='false')) {
-      //var show = !!Math.floor(Math.random() * 2);
-      //$('#spot-check-rand').toggle(!!Math.floor(Math.random() * 2));
-    //}
-    $('a div.button.success').on('click', function() {
-      $('#copied').fadeTo(1,1).fadeTo(2000, 0);
-    });
-  });

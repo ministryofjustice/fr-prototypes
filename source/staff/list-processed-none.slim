@@ -1,0 +1,38 @@
+---
+title: 'Help with fees'
+nav_title: 'Help with fees'
+---
+form
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      h2 Processed applications
+  br
+
+
+  .row
+    .small-12.columns
+      .panel
+         .row      
+          .small-12.medium-4.columns
+            label for='first_name' Date from
+            span.hint For example DD/MM/YYYY
+            input name='first_name' type='text' placeholder='29/11/2015'     
+          .small-12.medium-4.columns
+            label for='first_name' Date to
+            span.hint For example DD/MM/YYYY
+            input name='first_name' type='text' placeholder='30/11/2015'
+          .small-12.medium-4.columns
+            a href='list-processed-month.html'
+              .button.success style='margin-top:36px;'
+                | Show applications
+  br
+
+
+  .row
+    .small-12.columns
+      p There were no applications processed from 29 November 2015 to 30 November 2015.
+
+javascript:
+  $(document).ready( function() {
+  });

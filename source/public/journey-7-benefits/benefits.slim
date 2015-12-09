@@ -8,6 +8,7 @@ form
   .row
     .small-12.medium-7.columns
       h4 Do you receive any of the following benefits?
+      p We’ll contact the Department for Work and Pensions to confirm that you are (or were) getting one of these benefits.
   .row      
     .small-12.medium-6.columns
       ul
@@ -29,6 +30,24 @@ form
           label for="case-no"
             input id="case-no" type="radio" name="case" value="true"
             | No
+  br
+  .row
+    .small-12.medium-7.columns  
+      details
+        summary Help with benefits
+        .panel-indent 
+          h5 If you’ve only recently started receiving one of these benefits
+          p 
+            |(for example, in the last few days), our staff may not be able to confirm your eligibility with the Department for Work and Pensions. In this case you should provide a letter from the job centre.
+          h5 Benefits with similar names
+          p There are some benefits with similar names. If you are receiving one of the benefits listed below, select 'No'.
+          ul
+            li Contribution-based Job Seekers Allowance (JSA)
+            li Contribution-based Employment Support Allowance (ESA)
+            li Pension Credit and Savings Credit
+            li Universal Credit (and you're earning more than £6,000 a year)
+            li Scottish Legal Aid Advice and Assistance
+            li Scottish Legal Aid Advice by Way of Representation (ABWOR)
 
   br
   .row

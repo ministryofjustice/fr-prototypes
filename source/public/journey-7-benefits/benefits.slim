@@ -66,7 +66,7 @@ form
   br
   .row
     .small-12.medium-12.large-12.columns
-      a#next-url href='payment-4a.html'
+      a#next-url href='refund.html'
         .button.success Continue
 
 
@@ -76,5 +76,5 @@ javascript:
 
   $("input[name='payment-correct']").on('change', function () {
     $('#payment-comment').toggleClass('hide', $("input[name='payment-correct']:checked").val() == "true");
-    buildNextUrl($("input[name='payment-correct']:checked").val() == "true" ? 'payment-4a.html' : 'payment-4b.html');
+    buildNextUrl($("input[name='payment-correct']:checked").val() == "true" ? 'refund.html' : 'children.html');
   });

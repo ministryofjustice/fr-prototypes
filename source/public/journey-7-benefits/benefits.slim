@@ -19,25 +19,31 @@ form
         li State Pension (Guarantee Credit)
         li Scottish Civil Legal Aid (not Advice and Assistance or Advice by Way of Representation)
   
+
+
+
   br
   .row
-    .small-12.medium-6.columns    
+    .small-12.medium-10.large-10.columns    
+      h4 The applicant must pay <strong>£305</strong>.
+      label Have you received payment for the correct amount?
+    .small-12.medium-9.large-8.columns.end   
       .options.radio
         .option
-          label for="evidence-correct-yes"
-            input id="evidence-correct-yes" type="radio" name="evidence-correct" value="true"
-            | Yes, I am receiving one of the benefits listed
-            .option
-          label for="evidence-correct-no"
-            input id="evidence-correct-no" type="radio" name="evidence-correct" value="false"
+          label for="payment-correct-yes"
+            input id="payment-correct-yes" type="radio" name="payment-correct" value="true"
+            | Yes
+        .option
+          label for="payment-correct-no"
+            input id="payment-correct-no" type="radio" name="payment-correct" value="false"
             | No
   
-  #evidence-comment.hide
+  #payment-comment.hide
     .row
-      .small-12.medium-9.large-9.columns
+      .small-12.medium-9.large-8.columns
         .panel-indent
-          label for='evidence-comment'
-            | Temp
+          label for='payment-comment'
+            | What is incorrect about the payment?
             textarea rows="2" cols="50"
 
 
@@ -67,13 +73,11 @@ form
         .button.success Continue
 
 
-
-
 javascript:
   $(document).ready( function() {
   });
 
-  $("input[name='evidence-correct']").on('change', function () {
-    $('#evidence-comment').toggleClass('hide', $("input[name='evidence-correct']:checked").val() == "true");
-    buildNextUrl($("input[name='evidence-correct']:checked").val() == "true" ? 'refund.html' : 'children.html');
+  $("input[name='payment-correct']").on('change', function () {
+    $('#payment-comment').toggleClass('hide', $("input[name='payment-correct']:checked").val() == "true");
+    buildNextUrl($("input[name='payment-correct']:checked").val() == "true" ? 'payment-4a.html' : 'payment-4b.html');
   });

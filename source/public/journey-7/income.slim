@@ -9,23 +9,39 @@ form
       br
       h4 What is your total monthly income, before tax and National Insurance?
   
-      .row
-        .small-12.medium-10.columns
-          label for="form" Wages (before tax and National Insurance deductions)
-          .small-2.medium-3.large-3.columns style="padding:0px;"
-            span.prefix
-              label.inline for='fee' £
-          .small-10.medium-9.large-7.columns.end style="padding:0px;"
-            input id='fee' type="number"
 
-      .row
-        .small-12.medium-10.columns
-          label for="form" Child Benefit
-          .small-2.medium-3.large-3.columns style="padding:0px;"
-            span.prefix
-              label.inline for='fee' £
-          .small-10.medium-9.large-7.columns.end style="padding:0px;"
-            input id='fee' type="number"
+  .row
+    .small-12.medium-6.columns
+      .options.radio
+        .option
+          label for="email"
+            input id="email" name="email" type="checkbox"
+            | Wages
+
+  #email-detail.hide
+    .row
+      .small-2.medium-3.large-3.columns style="padding:0px;"
+        span.prefix
+          label.inline for='fee' £
+      .small-10.medium-9.large-7.columns.end style="padding:0px;"
+        input id='fee' type="number"
+  
+  .row
+    .small-12.medium-6.columns
+      .options.radio
+        .option
+          label for="phone"
+            input id="phone" name="phone" type="checkbox"
+            | Child benefit
+
+  #phone-detail.hide
+    .row
+      .small-2.medium-3.large-3.columns style="padding:0px;"
+        span.prefix
+          label.inline for='fee' £
+      .small-10.medium-9.large-7.columns.end style="padding:0px;"
+        input id='fee' type="number"
+
       .row
         .small-12.medium-10.columns
           label for="form" Working Tax Credit
@@ -118,3 +134,26 @@ form
     .small-12.medium-6.columns
       a href="refund.html" 
         .button.success Continue
+
+
+javascript:
+  $(document).ready( function() {
+    buildNextUrl('3-savings.html');
+    $('#fee').bind('change', function () {
+      $("#next-url").attr("href", updateQueryStringParameter('fee', $(this).val()));
+    });
+
+    $('#email').on('change', function () {
+      console.log('clicked email cb');
+      $('#email-detail').toggle($('#email').is(':checked'));
+      $(this).parent().toggleClass('selected', $(this).is(':checked'));
+    });
+
+    $('#phone').on('change', function () {
+      console.log('clicked phone cb');
+      $('#phone-detail').toggle($('#phone').is(':checked'));
+      $(this).parent().toggleClass('selected', $(this).is(':checked'));
+    });
+
+
+  });

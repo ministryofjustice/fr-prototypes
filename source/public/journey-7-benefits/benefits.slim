@@ -30,6 +30,29 @@ form
           label for="case-no"
             input id="case-no" type="radio" name="case" value="true"
             | No
+  
+  br
+  .row
+    .small-12.medium-6.columns    
+      .options.radio
+        .option
+          label for="evidence-correct-yes"
+            input id="evidence-correct-yes" type="radio" name="evidence-correct" value="true"
+            | Yes, I am receiving one of the benefits listed
+            .option
+          label for="evidence-correct-no"
+            input id="evidence-correct-no" type="radio" name="evidence-correct" value="false"
+            | No
+  
+  #evidence-comment.hide
+    .row
+      .small-12.medium-9.large-9.columns
+        .panel-indent
+          label for='evidence-comment'
+            | Describe the problem with the evidence
+            textarea rows="2" cols="50"
+
+
   br
   .row
     .small-12.medium-7.columns  
@@ -62,7 +85,7 @@ javascript:
   $(document).ready( function() {
   });
 
-  $("input[name='kid']").on('change', function () {
-    $('#kid-number').toggleClass('hide', $("input[name='kid']:checked").val() == "true");
-    buildNextUrl($("input[name='kid']:checked").val() == "true" ? '#.html' : '#.html');
+  $("input[name='evidence-correct']").on('change', function () {
+    $('#evidence-comment').toggleClass('hide', $("input[name='evidence-correct']:checked").val() == "true");
+    buildNextUrl($("input[name='evidence-correct']:checked").val() == "true" ? 'refund.html' : 'children.html');
   });

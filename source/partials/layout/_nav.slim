@@ -1,8 +1,14 @@
 .contain-to-grid
   nav.top-bar(data-topbar)
-    ul.title-area
-      li.name
-        img src="assets/images/crest.png"
-        h1
-          =link_to (current_page.data.nav_title || 'Help with fees'), '/index.html'
-      li Welcome Juliana Richardson View profile Sign out
+    
+    .row
+      .small-6.columns
+        div.title-area
+          div 
+            img src="assets/images/crest.png"
+          div.name
+            h1
+              =link_to (current_page.data.nav_title || 'Help with fees'), '/index.html'
+      .small-6.columns 
+        li
+          |Welcome Juliana Richardson View profile Sign out

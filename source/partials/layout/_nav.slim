@@ -2,14 +2,7 @@
   nav.top-bar(data-topbar)
     ul.title-area
       li.name
+        img src="assets/images/crest.png"
         h1
           =link_to (current_page.data.nav_title || 'Help with fees'), '/index.html'
-    ul
-      li.section
-        h1 #{current_page.data.section_title || '' }
-    section.top-bar-section
-      ul.right
-        - data.nav.each do |page|
-          li class=('active' if page.url == current_page.url)
-            =link_to page.name, page.url
-      
+      li Welcome Juliana Richardson View profile Sign out

@@ -8,7 +8,3 @@ br
         -if @guide_file.rindex('/') > 0
 		  -if sitemap.find_resource_by_path(current_page.path.gsub('staff/', 'staff/guide/'))
 	  		=partial("#{current_page.path.gsub('staff/', 'staff/guide/')}")
-
-			span
-				strong
-					=link_to 'See the guides', '/staff/guide-landing.html', target: '_blank'

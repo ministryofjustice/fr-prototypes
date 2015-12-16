@@ -1,0 +1,92 @@
+---
+title: 'Help with fees'
+nav_title: 'Help with fees'
+section_title: 'Process application'
+rh_help: true
+---
+
+form
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      h2 Application details
+  br
+  .row
+    .small-12.medium-5.large-5.columns
+      label for='fee' Fee
+      .small-2.medium-3.large-3.columns style="padding:0px;"
+        span.prefix
+          label.inline for='fee' £
+      .small-10.medium-9.large-9.columns style="padding:0px;"
+        input id='fee' type="number"
+
+  .row
+    .small-12.medium-9.large-8.columns.form-group
+      #status-block
+        .row
+          .columns.small-12
+            label Jurisdiction
+            .options.radio.juri
+              .option
+                label for='couple-no'
+                  input data-check='couple' id='couple-no' name="couple" type="radio" value='false'
+                  |County
+              .option
+                label for='couple-yes'
+                  input data-check='couple' id='couple-yes' name="couple" type="radio" value='true'
+                  |Family
+              .option
+                label for='couple-high'
+                  input data-check='couple' id='couple-high' name="couple" type="radio" value='true'
+                  |High
+  
+  .row
+    .small-12.medium-9.large-8.columns
+      label for='claim_number'
+        | Form name or number 
+        input name='claim_number' id='claim_number' type='text'
+
+  .row
+    .small-12.medium-9.large-8.columns
+      .options.radio
+        .option
+          label for="emerg"
+            input id="emerg" type="checkbox" name="emerg"
+            | This is an emergency case
+  
+  #emerg-comment.hide
+    .row
+      .small-12.medium-9.large-8.columns
+        .panel-indent
+          label for='e-comment'
+            | Reason for emergency
+            textarea rows="2" cols="50"
+
+  br
+  .row
+    .small-12.medium-7.large-7.columns
+      a#next-url href='online-application-details-3.html'
+        .button.success Next
+
+javascript:
+  $(document).ready( function() {
+    buildNextUrl('online-application-details-3.html');
+    $('#fee').bind('change', function () {
+      $("#next-url").attr("href", updateQueryStringParameter('fee', $(this).val()));
+    });
+
+    $('#emerg').on('change', function () {
+      console.log('clicked emerg cb');
+      $('#emerg-comment').toggle($('#emerg').is(':checked'));
+      $(this).parent().toggleClass('selected', $(this).is(':checked'));
+    });
+
+
+  });
+
+  function getPage() {
+    $possible = $("input[name='ben-type']:checked").val();
+    $result = $possible != 'b' ? 'a' : 'b';
+    return $result;
+  }
+

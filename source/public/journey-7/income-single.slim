@@ -1,0 +1,163 @@
+---
+title: 'Apply for help with fees'
+nav_title: 'GOV.UK'
+---
+
+form
+  .row
+    .small-12.columns
+      br
+      h4 What is your total monthly income?
+  br
+
+  .row
+    .small-12.medium-9.columns
+      table width="100%"
+        tr
+          td width="60%" Wages (before tax and National Insurance)
+          td 
+            .row
+              .small-3.medium-3.large-3.columns style="padding:0px;"
+                span.prefix
+                  label.inline for='fee' £
+              .small-9.medium-9.large-8.columns.end style="padding:0px;"
+                input id='fee' type="number" style="margin-bottom:0px;"
+          td width="12%" a month
+        tr
+          td Child Benefit
+          td
+            .row
+              .small-3.medium-3.large-3.columns style="padding:0px;"
+                span.prefix
+                  label.inline for='fee' £
+              .small-9.medium-9.large-8.columns.end style="padding:0px;"
+                input id='fee' type="number" style="margin-bottom:0px;"
+          td width="12%" a month
+        tr
+          td Working tax credit
+          td 
+            .row
+              .small-3.medium-3.large-3.columns style="padding:0px;"
+                span.prefix
+                  label.inline for='fee' £
+              .small-9.medium-9.large-8.columns.end style="padding:0px;"
+                input id='fee' type="number" style="margin-bottom:0px;"
+          td width="12%" a month
+        tr
+          td Child tax credit
+          td
+            .row
+              .small-3.medium-3.large-3.columns style="padding:0px;"
+                span.prefix
+                  label.inline for='fee' £
+              .small-9.medium-9.large-8.columns.end style="padding:0px;"
+                input id='fee' type="number" style="margin-bottom:0px;"
+          td width="12%" a month
+        tr
+          td Maintenence payments
+          td 
+            .row
+              .small-3.medium-3.large-3.columns style="padding:0px;"
+                span.prefix
+                  label.inline for='fee' £
+              .small-9.medium-9.large-8.columns.end style="padding:0px;"
+                input id='fee' type="number" style="margin-bottom:0px;"
+          td width="12%" a month
+        tr
+          td Contribution-based Jobseekers Allowance (JSA)
+          td
+            .row
+              .small-3.medium-3.large-3.columns style="padding:0px;"
+                span.prefix
+                  label.inline for='fee' £
+              .small-9.medium-9.large-8.columns.end style="padding:0px;"
+                input id='fee' type="number" style="margin-bottom:0px;"
+          td width="12%" a month
+        tr
+          td Contribution-based Employment and Support Allowance (ESA)
+          td 
+            .row
+              .small-3.medium-3.large-3.columns style="padding:0px;"
+                span.prefix
+                  label.inline for='fee' £
+              .small-9.medium-9.large-8.columns.end style="padding:0px;"
+                input id='fee' type="number" style="margin-bottom:0px;"
+          td width="12%" a month
+        tr
+          td Universal Credit
+          td
+            .row
+              .small-3.medium-3.large-3.columns style="padding:0px;"
+                span.prefix
+                  label.inline for='fee' £
+              .small-9.medium-9.large-8.columns.end style="padding:0px;"
+                input id='fee' type="number" style="margin-bottom:0px;"
+          td width="12%" a month
+        tr
+          td Pensions (state, work, private)
+          td
+            .row
+              .small-3.medium-3.large-3.columns style="padding:0px;"
+                span.prefix
+                  label.inline for='fee' £
+              .small-9.medium-9.large-8.columns.end style="padding:0px;"
+                input id='fee' type="number" style="margin-bottom:0px;"
+          td width="12%" a month
+        tr
+          td Rent from anyone living with you
+          td 
+            .row
+              .small-3.medium-3.large-3.columns style="padding:0px;"
+                span.prefix
+                  label.inline for='fee' £
+              .small-9.medium-9.large-8.columns.end style="padding:0px;"
+                input id='fee' type="number" style="margin-bottom:0px;"
+          td width="12%" a month
+        tr
+          td Rent from other properties you own
+          td
+            .row
+              .small-3.medium-3.large-3.columns style="padding:0px;"
+                span.prefix
+                  label.inline for='fee' £
+              .small-9.medium-9.large-8.columns.end style="padding:0px;"
+                input id='fee' type="number" style="margin-bottom:0px;"
+          td width="12%" a month
+        tr
+          td 
+            | Other monthly income 
+            input id='fee' type="text" style="margin-bottom:0px;"
+          td
+            .row style="padding-top:18px;"
+              .small-3.medium-3.large-3.columns style="padding:0px;"
+                span.prefix
+                  label.inline for='fee' £
+              .small-9.medium-9.large-8.columns.end style="padding:0px;"
+                input id='fee' type="number" style="margin-bottom:0px;"
+          td width="12%" a month
+        tr
+          td.bold Total
+          td
+            .row
+              .small-3.medium-3.large-3.columns style="padding:0px;"
+                span.prefix
+                  label.inline for='fee' £
+              .small-9.medium-9.large-8.columns.end style="padding:0px;"
+                input id='fee' type="number" style="margin-bottom:0px;" placeholder="968" 
+          td.bold width="12%" a month
+
+
+  br
+  .row
+    .small-12.medium-6.columns
+      a href="refund.html" 
+        .button.success Continue
+
+
+javascript:
+  $(document).ready( function() {
+    buildNextUrl('3-savings.html');
+    $('#fee').bind('change', function () {
+      $("#next-url").attr("href", updateQueryStringParameter('fee', $(this).val()));
+    });
+  });

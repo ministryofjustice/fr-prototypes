@@ -1,0 +1,138 @@
+---
+title: 'Apply for help with fees'
+nav_title: 'GOV.UK'
+---
+
+form
+  .row
+    .small-12.columns
+      p <a href="#">Home</a> &nbsp;>&nbsp; <a href="#">Crime, justice and the law</a> &nbsp;>&nbsp; <a href="#">Courts, sentencing and tribunals</a>
+      br
+      h1 Apply for help with fees
+      p.large You may not have to pay a court or tribunal fee, or you may get some money off.
+
+
+      h3 Check if you can get help with fees
+      br
+      .row
+        .small-12.medium-5.large-6.columns
+          label 1. Do you have more than £3000 in savings and investments?
+      .row
+        .small-12.medium-6.columns
+          .row
+            .options.radio
+              .small-6.columns
+                .option
+                  label for="savings-yes"
+                    input id="savings-yes" type="radio" name="savings" value="true" Yes
+              .small-6.columns
+                .option
+                  label for="savings-no"
+                    input id="savings-no" type="radio" name="savings" value="false" No
+      #question-2.start-hidden
+        .row
+          .small-12.medium-5.large-6.columns
+            label 2. Are you receiving one of these 6 benefits?
+            ul
+              li Income-based Jobseeker's Allowance (JSA)
+              li Income-related Employment and Support Allowance (ESA)
+              li Income Support
+              li Universal Credit (and you’re earning less than £6,000)
+              li State Pension (Guarantee Credit)
+              li Scottish Civil Legal Aid (not Advice and Assistance or Advice by Way of Representation)
+        .row
+          .small-12.medium-6.columns.end
+            .row
+              .small-12.columns.end
+                .options.radio
+                  .option
+                    label for="benefits-no"
+                      input id="benefits-no" type="radio" name="benefits" value="true" Yes
+                  .option
+                    label for="benefits-yes"
+                      input id="benefits-yes" type="radio" name="benefits" value="false" No
+      #question-3.start-hidden
+        .row
+          .small-12.medium-5.large-6.columns
+            label 3. Do you earn less than £1000 <strong>before</strong> tax and National Insurance?
+        .row
+          .small-12.medium-6.columns
+            .row
+              .options.radio
+                .small-6.columns
+                  .option
+                    label for="income-yes"
+                      input id="income-yes" type="radio" name="income" value="true" Yes
+                .small-6.columns
+                  .option
+                    label for="income-no"
+                      input id="income-no" type="radio" name="income" value="false" No
+
+      .row
+        .columns.small-12
+          #maybe-yes.start-hidden It is likely that you'll get help with your fees. However, this is <strong>not</strong> a final decision as we'll need more information from you to assess your eligibility. Read more about <a href="#eligibility"> who is eligible </a>
+          #maybe-not.start-hidden We need more information from you to know whether you're eligible for help with fees. Your age, relationship status and court fee will all be considered. Read more about <a href="#eligibility"> who is eligible </a>
+
+      #apply-now.start-hidden
+        h3 Apply now
+        p You'll need your National Insurance number as well as details of your savings and income to hand.
+        ol
+          li Complete the application form: <a href="http://hmctsformfinder.justice.gov.uk/courtfinder/forms/ex160-eng.pdf" target="_blank">‘Apply for help with fees (EX160)’(PDF 82KB)</a>.
+
+          li Send the completed form to the court or tribunal dealing with your case or claim. See <a href="https://courttribunalfinder.service.gov.uk/search/ target="_blank">information about courts and tribunals</a> including contact details.
+
+      p Read the <a href="http://hmctsformfinder.justice.gov.uk/courtfinder/forms/ex160a-eng-2015.10.pdf" target="_blank"> guide to applying for help with fees (PDF 145KB)</a> for more information.
+
+javascript:
+  $(document).ready(function () {
+    $('.start-hidden').hide();
+
+    $('input[name="savings"]').on('click', function() {
+      if ($("input[name='savings']:checked").val()=='true') {
+        $('#question-2').show();
+        hide_outcomes();
+      } else {
+        $('#question-2').hide();
+        show_negative_result();
+      }
+      $('#question-2').toggle($.parseJSON($("input[name='savings']:checked").val()));
+    });
+    $('input[name="benefits"]').on('click', function() {
+      if ($("input[name='benefits']:checked").val()=='true') {
+        $('#question-3').show();
+        hide_outcomes();
+      } else {
+        $('#question-3').hide();
+        show_negative_result();
+      }
+    });
+    $('input[name="income"]').on('click', function() {
+      if ($("input[name='benefits']:checked").val()=='true') {
+        show_positive_result();
+      } else {
+        show_negative_result();
+      }
+    });
+  });
+
+  function hide_outcomes() {
+    $('#maybe-yes').hide();
+    $('#maybe-not').hide();
+    $('#apply-now').hide();
+  }
+
+  function show_negative_result() {
+    $('#maybe-yes').hide();
+    $('#maybe-not').show();
+    show_result();
+  }
+
+  function show_positive_result() {
+    $('#maybe-yes').show();
+    $('#maybe-not').hide();
+    show_result();
+  }
+
+  function show_result() {
+    $('#apply-now').show();
+  }

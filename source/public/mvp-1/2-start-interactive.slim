@@ -16,7 +16,7 @@ form
       br
       .row
         .small-12.medium-5.large-6.columns
-          label 1. Do you have more than £3000 in savings and investments?
+          label 1. Do you have less than £3000 in savings and investments?
       .row
         .small-12.medium-6.columns
           .row
@@ -73,7 +73,7 @@ form
           #maybe-yes.start-hidden It is likely that you'll get help with your fees. However, this is <strong>not</strong> a final decision as we'll need more information from you to assess your eligibility. Read more about <a href="#eligibility"> who is eligible </a>
           #maybe-not.start-hidden We need more information from you to know whether you're eligible for help with fees. Your age, relationship status and court fee will all be considered. Read more about <a href="#eligibility"> who is eligible </a>
 
-      #apply-now.start-hidden
+      #apply-now
         h3 Apply now
         p You'll need your National Insurance number as well as details of your savings and income to hand.
         ol
@@ -99,11 +99,10 @@ javascript:
     });
     $('input[name="benefits"]').on('click', function() {
       if ($("input[name='benefits']:checked").val()=='true') {
-        $('#question-3').show();
-        hide_outcomes();
-      } else {
         $('#question-3').hide();
-        show_negative_result();
+        show_positive_result();
+      } else {
+        $('#question-3').show();
       }
     });
     $('input[name="income"]').on('click', function() {
@@ -118,21 +117,14 @@ javascript:
   function hide_outcomes() {
     $('#maybe-yes').hide();
     $('#maybe-not').hide();
-    $('#apply-now').hide();
   }
 
   function show_negative_result() {
     $('#maybe-yes').hide();
     $('#maybe-not').show();
-    show_result();
   }
 
   function show_positive_result() {
     $('#maybe-yes').show();
     $('#maybe-not').hide();
-    show_result();
-  }
-
-  function show_result() {
-    $('#apply-now').show();
   }

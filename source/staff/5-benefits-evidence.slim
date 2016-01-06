@@ -1,0 +1,90 @@
+---
+title: 'Help with fees'
+nav_title: 'Help with fees'
+section_title: 'Process application'
+rh_help: true
+---
+form
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      h2 Benefits
+  br
+  .row
+    .small-12.medium-12.large-12.columns    
+      label Has the applicant provided paper evidence?
+    .small-12.medium-9.large-8.columns.end   
+      .options.radio
+        .option
+          label for="benefits-no"
+            input id="benefits-no" type="radio" name="benefits" value="true"
+            | No
+        .option
+          label for="benefits-yes"
+            input id="benefits-yes" type="radio" name="benefits" value="false"
+            | Yes, the application has provided paper evidence
+
+
+  #evidence-check.hide
+    .row
+      .small-12.medium-9.large-8.columns 
+        .panel-indent   
+          label Is the evidence for the correct applicant and dated in the last 3 months?
+          .options.radio
+            .option
+              label for="evidence-correct-yes"
+                input id="evidence-correct-yes" type="radio" name="evidence-correct" value="false"
+                | No
+                .option
+              label for="evidence-correct-no"
+                input id="evidence-correct-no" type="radio" name="evidence-correct" value="true"
+                | Yes, the evidence is correct
+          br
+          #evidence-comment.hide
+            .row
+              .small-12.columns
+                  label for='evidence-comment'
+                    | Describe the problem with the evidence
+                    textarea rows="2" cols="50"
+
+  br
+  .row
+    .small-12.medium-7.large-7.columns
+      a#next-url href='7-summary.html'
+        .button.success Next
+   
+
+javascript:
+  $(document).ready(function () {
+    buildNextUrl('5-benefits-result.html');
+
+    $("input[name='benefits']").on('change', function () {
+      if ($("input[name='benefits']:checked").val()=="false") {
+        buildNextUrl('6-income.html');
+      } else {
+        buildNextUrl('5-benefits-result.html');
+      }
+      $("#next-url").attr("href", updateQueryStringParameter('benefits', $("input[name='benefits']:checked").val()));
+    });
+  });
+
+  function setPassFail(ctrl, pass, fail) {
+    var result = false;
+    //result = !!Math.floor(Math.random() * 2);
+    if (result) {
+      $(ctrl).addClass('success').removeClass('alert').text(pass);
+    } else {
+      $(ctrl).addClass('alert').removeClass('success').text(fail);
+    }
+    return result;
+  }
+
+  $("input[name='evidence-correct']").on('change', function () {
+    $('#evidence-comment').toggleClass('hide', $("input[name='evidence-correct']:checked").val() == "true");
+    buildNextUrl($("input[name='evidence-correct']:checked").val() == "true" ? 'evidence-check-4.html' : 'evidence-check-6b.html');
+  });
+
+  $("input[name='benefits']").on('change', function () {
+    $('#evidence-check').toggleClass('hide', $("input[name='benefits']:checked").val() == "true");
+    buildNextUrl($("input[name='benefits']:checked").val() == "true" ? '7-summary.html' : '7-summary.html');
+  });

@@ -13,7 +13,7 @@ form
   .row
     .small-12.medium-12.large-12.columns    
       label In question 9, do they receive any of the benefits listed? 
-    .small-12.medium-8.large-7.columns.end   
+    .small-12.medium-9.large-8.columns.end   
       .options.radio
         .option
           label for="benefits-no"
@@ -27,7 +27,7 @@ form
   br
   .row
     .small-12.medium-7.large-7.columns
-      a#next-url href='5-benefits-result.html'
+      a#next-url href='5-benefits-evidence.html'
         .button.success Next
    
 
@@ -46,7 +46,7 @@ javascript:
       if ($("input[name='benefits']:checked").val()=="false") {
         buildNextUrl('6-income.html');
       } else {
-        buildNextUrl('5-benefits-result.html');
+        buildNextUrl('5-benefits-evidence.html');
       }
       $("#next-url").attr("href", updateQueryStringParameter('benefits', $("input[name='benefits']:checked").val()));
     });

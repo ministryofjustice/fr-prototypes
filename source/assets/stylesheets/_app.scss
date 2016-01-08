@@ -137,6 +137,10 @@ span.hint {
   &.callout-none {
     background-color: $error-colour;
   }
+  &.dwp-error {
+    background-color: #ffcccc;
+    border: 1px solid red;
+  }
   &.callout-full {
     background: $turquoise;
   }

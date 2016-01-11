@@ -141,9 +141,9 @@ form
             .row
               .small-3.medium-3.large-3.columns style="padding:0px;"
                 span.prefix
-                  label.inline for='total' £
+                  label.inline for='total-sum' £
               .small-9.medium-9.large-8.columns.end style="padding:0px;"
-                input id='total' type="number" style="margin-bottom:0px;" 
+                input id='total-sum' type="number" style="margin-bottom:0px;" readonly=""
           td.bold width="12%" a month
 
 
@@ -157,11 +157,13 @@ form
 javascript:
   $(document).ready( function() {
     $('.sum-me').on('change', function() {
-      var total=0;
-      $('.sum-me').each(function() {
-        total = parseFloat($(this).val()) + total
+      total=0;
+      $('.sum-me').each(function(i,n){
+        if ($(n).val() != "") {
+          var thisVal = parseFloat($(n).val());
+          total += thisVal;
+        }
       });
+      $('#total-sum').val(total);
     });
-    alert(total);
-    $('#total').val(total);
   });

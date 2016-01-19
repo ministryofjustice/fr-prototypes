@@ -10,93 +10,102 @@ form
 
   br
   .row
-    .small-12.medium-8.large-8.columns
+    .small-12.medium-.large-8.columns
       h4 Personal details
   .row
-    .small-12.medium-4.large-4.columns 
+    .small-12.medium-5.large-4.columns 
       .subheader Full name
-    .small-12.medium-8.large-8.columns 
+    .small-12.medium-7.large-8.columns 
       | Mr Mark Morgan
   .row
-    .small-12.medium-4.large-4.columns 
+    .small-12.medium-5.large-4.columns 
       .subheader Date of birth
-    .small-12.medium-8.large-8.columns 
+    .small-12.medium-7.large-8.columns 
       | 2 December 1979
   .row
-    .small-12.medium-4.large-4.columns 
+    .small-12.medium-5.large-4.columns 
       .subheader NI number
-    .small-12.medium-8.large-8.columns 
+    .small-12.medium-7.large-8.columns 
       | PW 55 63 56 A
   .row
-    .small-12.medium-4.large-4.columns 
+    .small-12.medium-5.large-4.columns 
       .subheader Status
-    .small-12.medium-8.large-8.columns 
+    .small-12.medium-7.large-8.columns 
       | Single
-  .row
-    .small-12.medium-4.large-4.columns 
-      .subheader Number of children
-    .small-12.medium-8.large-8.columns 
-      | None
-  .row
-    .small-12.medium-4.large-4.columns 
-      .subheader Total monthly income
-    #income.small-12.medium-4.large-4.columns
-      | £823
-    .small-12.medium-4.large-4.columns 
-      .text-right
-        a href='#'
-          | Change income
     .small-12.columns
   hr
   .row
     .small-12.medium-8.large-8.columns
       h4 Application details
   .row
-    .small-12.medium-4.large-4.columns 
+    .small-12.medium-5.large-4.columns 
       .subheader Fee
-    .small-12.medium-8.large-8.columns 
+    .small-12.medium-7.large-8.columns 
       | £215
   .row
-    .small-12.medium-4.large-4.columns 
+    .small-12.medium-5.large-4.columns 
       .subheader Jurisdiction
-    .small-12.medium-8.large-8.columns 
+    .small-12.medium-7.large-8.columns 
       | Family court
   .row
-    .small-12.medium-4.large-4.columns 
+    .small-12.medium-5.large-4.columns 
       .subheader Date application received
-    .small-12.medium-8.large-8.columns 
+    .small-12.medium-7.large-8.columns 
       | 19 October 2015
   .row
-    .small-12.medium-4.large-4.columns 
+    .small-12.medium-5.large-4.columns 
       .subheader Form name or number
-    .small-12.medium-8.large-8.columns 
+    .small-12.medium-7.large-8.columns 
       | C100
     .small-12.columns  
   hr
   .row
-    .small-12.medium-8.large-8.columns
-      h4 Result
+    .small-12.medium-7.large-8.columns
+      h4 Savings and investments
   .row
-    .small-12.medium-4.large-4.columns
-      .subheader Savings and investments
-    .small-12.medium-8.large-8.columns
-      #savings-result-display.summary-result-success &#10003; Passed
+    .small-12.medium-5.large-4.columns 
+      .subheader Less than maximum savings
+    .small-12.medium-7.large-8.columns 
+      | Yes
+  hr
   .row
-    .small-12.medium-4.large-4.columns
-      .subheader Income
-    .small-12.medium-8.large-8.columns
-      #income-result-display.summary-result-success &#10003; Passed
-  br
+    .small-12.medium-7.large-8.columns
+      h4 Benefits
   .row
-    .small-12.medium-12.large-12.columns    
-      #remission-type.panel.callout
-        h3 The applicant doesn't have to pay the fee
+    .small-12.medium-5.large-4.columns 
+      .subheader Applicant recieving benefits
+    .small-12.medium-7.large-8.columns 
+      | No
+  hr
+  .row
+    .small-12.medium-7.large-8.columns
+      h4 Income
+    .small-12.medium-5.large-4.columns
+      .text-right
+        a href='#'
+          | Change income
+  .row
+    .small-12.medium-5.large-4.columns 
+      .subheader Applicant has children
+    .small-12.medium-7.large-8.columns 
+      | Yes
+  .row
+    .small-12.medium-5.large-4.columns
+      .subheader Number of children
+    .small-12.medium-7.large-8.columns#children
+      | None
+  .row
+    .small-12.medium-5.large-4.columns
+      .subheader Total monthly income
+    .small-12.medium-7.large-8.columns#income
+      | £1042
+  hr
 
   br
   .row
-    .small-12.medium-5.large-3.columns
+    .small-12.medium-6.large-4.columns
       a#next-url href='evidence-check-7a.html'
-        .button.success Complete processing
+        .button.success.large Complete processing
 
 javascript:
   $(document).ready( function() {

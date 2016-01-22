@@ -7,25 +7,13 @@ form
   .row
     .small-12.columns
       h2 Processed application
+
+
   br
   .row
     .small-12.columns   
       .panel.callout.grey 
         h3 AT001-15-4
-
-  .row
-    .small-12.medium-12.columns
-      .panel
-        .row
-          .small-12.medium-9.large-6.large-6.columns  
-            details
-              summary Delete application
-              div You can delete an application if you've made a mistake or the applicant no longer needs help with their fee.
-              br 
-              label for='e-comment' 
-                | Describe why you’re deleting this application
-                textarea rows="2" cols="50"
-              a.button.small.alert href='list-processed-oct.html' Delete application
 
   .row
     .small-12.medium-7.large-8.columns
@@ -132,21 +120,29 @@ form
     .small-12.medium-12.large-12.columns    
       .panel.callout.received
         h3 The applicant doesn't have to pay the fee
-
   .row
     .small-12.columns
       .panel
-        h4 Processing details     
-        .row
-          .small-12.medium-5.large-4.columns 
-            .subheader Date processed
-          .small-12.medium-7.large-8.columns 
-            | 10 January 2016 
-        .row
-          .small-12.medium-5.large-4.columns 
-            .subheader Processed by
-          .small-12.medium-7.large-8.columns 
-            | Juliana Richardson
+        h4 Delete application
+        p You can delete an application if you've made a mistake or the applicant no longer needs help with their fee.
+        p 
+          details
+            summary Delete application
+            div 
+              .panel-indent
+                p Describe why you’re deleting this application
+                textarea rows="2" cols="50"
+                a.button.small.alert href='list-processed-oct.html' Delete application
+  .row
+    .small-12.columns
+      h4 Processing details     
+      table width="100%"
+        tr
+          td width="34%" Date application processed
+          td 10 January 2016 
+        tr
+          td Processed by
+          td Juliana Richardson
 
 javascript:
   $(document).ready( function() {

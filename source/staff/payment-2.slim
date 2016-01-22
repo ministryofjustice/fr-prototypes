@@ -11,20 +11,6 @@ form
     .small-12.medium-12.large-12.columns   
       .panel.callout.grey 
         h3 AT001-15-4
-  
-  .row
-    .small-12.columns
-      .panel
-        h4 Process part-payment
-        a.button.success href='payment-3.html' Start now
-        p 
-          details
-            summary If the part-payment can't be processed
-            div 
-              .panel-indent
-                p Part-payment needs to arrive by <strong>20 January 2016</strong> for this application.
-                p If you’re unable to process the payment, choose ‘Return application’ to remove it from ‘Waiting for part-payment' and return everything to the applicant.
-                a.button.small href='8-confirmation-expired.html' Return application
 
   .row
     .small-12.medium-8.large-8.columns
@@ -132,20 +118,31 @@ form
     .small-12.medium-12.large-12.columns    
       .panel.callout.callout-part
         h3 The applicant must pay £305 towards the fee
+  
   .row
     .small-12.columns
       .panel
-        h4 Processing details     
-        .row
-          .small-12.medium-5.large-4.columns 
-            .subheader Date processed
-          .small-12.medium-7.large-8.columns 
-            | 10 January 2016 
-        .row
-          .small-12.medium-5.large-4.columns 
-            .subheader Processed by
-          .small-12.medium-7.large-8.columns 
-            | Juliana Richardson
+        h4 Process part-payment
+        a.button.success href='payment-3.html' Start now
+        p 
+          details
+            summary If the part-payment can't be processed
+            div 
+              .panel-indent
+                p Part-payment needs to arrive by <strong>20 January 2016</strong> for this application.
+                p If you’re unable to process the payment, choose ‘Return application’ to remove it from ‘Waiting for part-payment' and return everything to the applicant.
+                a.button.small href='8-confirmation-expired.html' Return application
+
+  .row
+    .small-12.columns
+      h4 Processing details     
+      table width="100%"
+        tr
+          td width="34%" Date application processed
+          td 10 January 2016 
+        tr
+          td Processed by
+          td Juliana Richardson
 
 javascript:
   $(document).ready( function() {

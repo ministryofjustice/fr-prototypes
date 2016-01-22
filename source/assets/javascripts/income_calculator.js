@@ -74,13 +74,13 @@
         showResult = function(data) {
             var add_class, show_text;
             add_class = 'callout-' + data.type;
-            show_text = "The applicant doesn't have to pay the fee";
+            show_text = "Eligible for help with fees";
             switch (data.type) {
                 case 'none':
-                    show_text = 'The applicant must pay the full fee';
+                    show_text = 'Not eligible for help with fees';
                     break;
                 case 'part':
-                    show_text = 'The applicant must pay ' + data.to_pay + ' towards the fee';
+                    show_text = 'Must pay ' + data.to_pay + ' towards the fee';
             }
             $('#calculator.callout').removeClass('callout-none callout-part callout-full');
             $('#calculator.callout').addClass(add_class);

@@ -6,20 +6,23 @@ nav_title: 'GOV.UK'
 form
   .row
     .small-12.columns
-      p <a href="#">Home</a> &nbsp;>&nbsp; <a href="#">Crime, justice and the law</a> &nbsp;>&nbsp; <a href="#">Courts, sentencing and tribunals</a>
       br
       h1 Apply for help with fees
       p.large You may not have to pay a court or tribunal fee, or you may get some money off.
 
-      .row
-        .small-12.columns
-          .panel
-            h4
-              img src="../../assets/images/icon-sml-process-home.png" width="36px" height="36px"
-              |&nbsp; You're likely to get help
-            p You have less than £3,000 in savings and investments
-            p Your total monthly income is less than £1,085 a month
-            div You're receiving one of these benefits:
+  br
+  .row
+    .small-12.columns
+      h4 You're eligible to apply if:
+      .panel 
+        |You have less than £3,000 in savings and investments
+
+  .row
+    .small-12.columns    
+      .row data-equalizer=''
+        .small-6.columns
+          .panel data-equalizer-watch=''
+            p You're receiving one of these benefits:
             ul
               li
                 span Income-based Jobseeker's Allowance
@@ -32,7 +35,7 @@ form
               li
                 span Income Support
               li
-                span Universal Credit
+                span Universal Credits
                 span.hint
                   |&nbsp;(and you’re earning less than £6,000)
               li
@@ -43,47 +46,14 @@ form
                 span Scottish Civil Legal Aid
                 span.hint
                   |&nbsp;(not Advice and Assistance or Advice by Way of Representation)
-        .small-12.columns
-          .panel
-            h4
-              img src="../../assets/images/icon-sml-maybe-eligible.png" width="36px" height="36px"
-              |&nbsp; You may still get help
-            p You have more than £3,000 in savings and investments
-            p Your total monthly income is more than £1,085 a month
-            div You're receiving one of these benefits:
-            ul
-              li
-                span Child Benefit
-              li
-                span Working Tax Credit
-              li
-                span Child Tax Credit
-              li
-                span Contribution-based Jobseeker's Allowance
-                span.hint
-                  |&nbsp;(JSA)
-              li
-                span Contribution-based Employment and Support Allowance
-                span.hint
-                  |&nbsp;(ESA)
-              li
-                span Universal Credit
-                span.hint
-                  |&nbsp;(and you’re earning more than £6,000)
-            br
-            p 
-              |For more information, read the guide &nbsp;
-              a href="http://hmctsformfinder.justice.gov.uk/courtfinder/forms/ex160a-eng-2015.11.pdf" target="_blank" How to apply for help with fees (PDF 145KB)
-        .small-12.columns
-          .panel
-            h4 
-              img src="../../assets/images/icon-sml-not-eligible.png" width="36px" height="36px"
-              |&nbsp; You won't get help 
-            p You have more than £16,000 in savings and investments
-            p Your total monthly income is more than £5,735 a month
+        .small-6.columns
+          .panel data-equalizer-watch=''
+            p Your total monthly income is less than £1,085 <br> (This can include benefits such as working tax credit and child tax credit)
 
 
 
+  .row
+    .small-12.columns
       br
       h4 What you'll need to apply:
       ul
@@ -96,13 +66,19 @@ form
         li your most recent payslip or tax return if you are self employed
         li any letters about the benefits you are receiving
 
+
       br
       p Applying takes around 10 minutes.
 
+    
+  .row
+    .small-12.columns
+      a href="#" How to apply
+  br
   .row
     .small-12.columns
       a href='status.html'
-        .button.success Start now
+        .button.success.large Apply now
   br
   .row
     .small-12.columns

@@ -123,54 +123,23 @@ form
 
   .row
     .small-12.columns
-      .panel
-        h4 Processing details     
-        .row
-          .small-12.medium-5.large-4.columns 
-            .subheader Application processed
-          .small-12.medium-7.large-8.columns 
-            | 10 January 2016 
-        .row
-          .small-12.medium-5.large-4.columns 
-            .subheader Processed by
-          .small-12.medium-7.large-8.columns 
-            | Juliana Richardson
-
-        br
-        .row
-          .small-12.medium-5.large-4.columns 
-            .subheader Evidence processed
-          .small-12.medium-7.large-8.columns 
-            | 21 January 2016 
-        .row
-          .small-12.medium-5.large-4.columns 
-            .subheader Processed by
-          .small-12.medium-7.large-8.columns 
-            | Juliana Richardson
-        .row
-          .small-12.medium-5.large-4.columns 
-            .subheader Reason rejected
-          .small-12.medium-7.large-8.columns 
-            | "Missing payslips"
-
-        br
-        .row
-          .small-12.medium-5.large-4.columns 
-            .subheader Application deleted
-          .small-12.medium-7.large-8.columns 
-            | 28 January 2016
-        .row
-          .small-12.medium-5.large-4.columns 
-            .subheader Deleted by
-          .small-12.medium-7.large-8.columns 
-            | Juliana Richardson
-
-
-        .row
-          .small-12.medium-5.large-4.columns 
-            .subheader Reason deleted
-          .small-12.medium-7.large-8.columns 
-            | "The case was never issued"
+      h4 Processing details     
+      table width="100%"
+        tr
+          th width="20%" Application processed
+          td width="16%" 10 January 2016
+          td width="18%" Juliana Richardson
+          td width="46%" 
+        tr
+          th Evidence processed
+          td 11 January 2016
+          td Juliana Richardson
+          td Reason not processed: "The applicant did not provide one month of bank statements for any and all accounts as required."
+        tr
+          th Application deleted
+          td 21 January 2016
+          td Juliana Richardson
+          td Reason deleted: "The case was never issued."
 
 
 javascript:

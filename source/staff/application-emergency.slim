@@ -125,37 +125,36 @@ form
 
   .row
     .small-12.columns
-      .panel
-        .row
-          .small-12.medium-9.large-6.large-6.columns  
-            details
-              summary Delete application
-              div You can delete an application if you've made a mistake or the applicant no longer needs help with their fee.
-              br 
-              label for='e-comment' 
-                | Describe why you’re deleting this application
-                textarea rows="2" cols="50"
-                a.button.small.alert href='list-processed-oct.html' Delete application
+      h4 Processing details     
+      table width="100%"
+        tr
+          th width="20%" Application processed
+          td width="16%" 10 January 2016
+          td width="18%" Juliana Richardson
+          td width="46%" Reason for emergency: "Applicant is getting evicted same day."
+        tr
+          th Evidence processed
+          td 11 January 2016
+          td Juliana Richardson
+          td Reason not processed: "The applicant did not provide one month of bank statements for any and all accounts as required."
+        tr
+          th Part-payment processed
+          td 14 January 2016
+          td Juliana Richardson
+          td Reason not processed: "The cheque is made out to Bristol City Council."
 
+  br
   .row
     .small-12.columns
       .panel
-        h4 Processing details     
-        .row
-          .small-12.medium-5.large-4.columns 
-            .subheader Date processed
-          .small-12.medium-7.large-8.columns 
-            | 10 January 2016 
-        .row
-          .small-12.medium-5.large-4.columns 
-            .subheader Processed by
-          .small-12.medium-7.large-8.columns 
-            | Juliana Richardson
-        .row
-          .small-12.medium-5.large-4.columns 
-            .subheader Reason for emergency
-          .small-12.medium-7.large-8.columns 
-            | Applicant is getting evicted same day.
+        details
+          summary Delete application
+          div 
+            .panel-indent
+              p You can delete an application if you've made a mistake or the applicant no longer needs help with their fee.
+              label Describe why you're deleting this application
+              textarea rows="4" cols="50"
+              a.button.small.alert href='8-confirmation-expired.html' Delete application
 
 
 javascript:

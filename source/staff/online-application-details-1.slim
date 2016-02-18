@@ -12,14 +12,9 @@ form
       h2 Application details
   br
   .row
-    .small-12.medium-5.large-5.columns
+    .small-12.medium-9.large-8.columns
       label for='fee' Full name
-      .small-2.medium-3.large-3.columns style="padding:0px;"
-        span.prefix
-          label.inline for='fee' Mr Mark Morgan
-      .small-10.medium-9.large-9.columns style="padding:0px;"
-        <input id='fee' type="number" disabled>
-  br
+        <input id='fee' type="number" disabled placeholder="Mr Mark Morgan">
   .row
     .small-12.medium-5.large-5.columns
       label for='fee' Fee
@@ -79,7 +74,7 @@ form
 
 javascript:
   $(document).ready( function() {
-    buildNextUrl('online-application-details-3.html');
+    buildNextUrl('online-application-details-2.html');
     $('#fee').bind('change', function () {
       $("#next-url").attr("href", updateQueryStringParameter('fee', $(this).val()));
     });

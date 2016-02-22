@@ -1,0 +1,106 @@
+---
+title: 'Help with fees'
+nav_title: 'Help with fees'
+section_title: 'Process application'
+rh_help: false
+---
+form       
+  br
+  .row   
+    .small-12.columns   
+      .panel.callout.grey
+        .confirm-box   
+          div.confirmation-two 
+            img src="../assets/images/confirmation-tick.png" width="27px" height="27px" style="margin-right:15px;"
+              |The reference number is
+
+          div.confirmation
+            |AT001-15-3
+
+  .row
+    .small-12.medium-7.large-8.columns
+      h3 Result
+
+  .row
+    .small-12.medium-5.large-3.columns
+      .subheader.large Savings and investments
+    .small-12.medium-7.large-9.columns
+      #savings-result-display.summary-result-success.large &#10003; Passed
+  #results-benefits
+    .row
+      .small-12.medium-5.large-3.columns
+        .subheader.large Benefits
+      .small-12.medium-7.large-9.columns
+        .summary-result-success.large
+          | &#10003; Passed
+  #results-income
+      .row
+        .small-12.medium-5.large-3.columns
+          .subheader.large Income
+        .small-12.medium-7.large-9.columns
+          #income-result-display.summary-result-success.bold.large &#10003; Passed
+  br
+  .row
+    .small-12.columns
+      .panel.callout.received
+        .row
+          .small-12.columns
+            h3 The applicant must pay £55 towards the fee
+
+  hr
+  br
+  h3 Next steps 
+  br
+
+  .row
+    .small-12.columns
+      p.large Write the reference number on the top right corner of the paper form
+      p.large store and application and documents in a secure location
+      p.large Write to the applicant asking them to send payment for their application. You can copy and paste the letter below: 
+      br
+
+  br
+  .row
+    .small-12.medium-12.large-12.columns
+      .panel
+
+        p Dear Mr Mark Morgan
+        p.bold Reference: AT001-15-3
+        p We have received your application for help with fees. You are eligible to make a part-payment and must pay £55 towards the fee.
+        p We’ve calculated this as follows:
+        p Your total monthly income: £1,500
+        p Number of children: None
+        p Amount to pay: £55
+        br
+        p.bold How to pay
+        ul
+          li by post with a cheque written out to ‘HM Courts and Tribunals Service’ for the amount
+          li by debit card over the phone
+           li in person with a cheque, cash or debit card at the court counter
+
+        br
+        p Please make sure you pay this amount by 1 March 2016
+        br
+        p.bold If you don’t agree with the amount you have to pay
+        p If you disagree with our decision about the amount you have to pay, you can appeal to Sarah Roberts, Delivery Manager at Bristol Civil and Family Justice Centre. You need to do this by 24 February 2016.  
+        p Yours sincerely,
+        p Juliana Richardson
+
+  br
+  .row
+    .small-12.columns
+      a.button.success href='../index.html' Back to start
+
+
+javascript:
+  $(document).ready( function() {
+    //$('#spot-check-true').toggle((getUrlParameter('spotcheck'))=='true');
+
+    //if ((getUrlParameter('spotcheck')=='false' && getUrlParameter('spotcheck')=='false')) {
+      //var show = !!Math.floor(Math.random() * 2);
+      //$('#spot-check-rand').toggle(!!Math.floor(Math.random() * 2));
+    //}
+    $('a div.button.success').on('click', function() {
+      $('#copied').fadeTo(1,1).fadeTo(2000, 0);
+    });
+  });

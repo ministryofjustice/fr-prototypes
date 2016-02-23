@@ -227,6 +227,10 @@ ul {
   color: $error-colour;
   font-weight: bold;
 }
+.summary-result-pending {
+  color: $orange;
+  font-weight: bold;
+}
 
 .button.pending {
   background: $orange;

@@ -11,52 +11,29 @@ form
       span.hint &nbsp; &nbsp; Question 14 of 14
       br
       br
-      h4 If we have questions about your application, how should we contact you?
-  
-  .row
-    .small-12.medium-4.columns
-      .options.radio
-        .option
-          label for="email"
-            input id="email" name="email" type="checkbox"
-            | Email
+      h4 What's your email address?  
 
-  #email-detail.hide
-    .row
-      .small-12.medium-6.columns
-        .panel-indent
-          label for="email-detail" 
-            | Email address
-            input id="form_number" name="form_number" type="text"
-  
-  .row
-    .small-12.medium-4.columns
-      .options.radio
-        .option
-          label for="phone"
-            input id="phone" name="phone" type="checkbox"
-            | Phone call
 
-  #phone-detail.hide
-    .row
-      .small-12.medium-6.columns
-        .panel-indent
-          label for="phone-detail" 
-            | Phone number
-            input id="form_number" name="form_number" type="text"
-          
-  .row
-    .small-12.medium-4.columns
-      .options.radio
-        .option
-          label for="post"
-            input id="post" name="post" type="checkbox"
-            | Post
-  br
   .row
     .small-12.medium-6.columns
       p class="large"
-        | Enter an email address if you want an email confirmation of your application.
+        | We'll email you to confirm your application has been received. 
+
+  .row
+    .small-12.medium-6.columns
+      label for='case-number'
+        | Email address
+        textarea rows="2" cols="20"
+
+
+  
+  .row
+    .small-12.medium-6.columns
+      .options.check
+        .option
+          label for="email"
+            input id="email" name="email" type="checkbox" Check this box if you'd be willing to share your experience of this service. A member of the team will contact you. We won't use your email address for anything else. 
+ 
       br
       a href="summary.html" 
         .button.success Continue

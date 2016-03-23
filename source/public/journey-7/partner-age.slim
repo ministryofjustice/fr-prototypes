@@ -1,0 +1,36 @@
+---
+title: 'Apply for help with fees'
+nav_title: 'GOV.UK'
+---
+
+form
+  .row
+    .small-12.columns
+      br
+      a href="savings.html" Back
+      span.hint &nbsp; &nbsp; Step 3 of 17
+      br
+      br
+      h4 Is your partner 61 or over?
+
+    .small-12.medium-6.columns.end   
+      .options.radio
+        .option
+          label for="probate-no"
+            input id="probate-no" type="radio" name="probate" value="true"
+            | No 
+            .option
+          label for="probate-yes"
+            input id="probate-yes" type="radio" name="probate" value="false"
+            | Yes
+
+  br
+  .row
+    .small-12.columns
+      a href='benefits.html'
+        .button.success Continue
+
+
+javascript:
+  $(document).ready( function() {
+  });

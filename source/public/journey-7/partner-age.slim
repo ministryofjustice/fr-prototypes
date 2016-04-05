@@ -11,7 +11,7 @@ form
       span.hint &nbsp; &nbsp; Step 3 of 17
       br
       br
-      h4 Are you (or your partner) 61 or over?
+      h4 Are you or your partner 61 or over?
 
     .small-12.medium-6.columns.end   
       .options.radio
@@ -25,10 +25,10 @@ form
             | Yes
   #case-number.hide
     .row
-      .small-12.medium-6.columns
+      .small-12.medium-8.columns
         .panel-indent
           label for='case-number'
-            | How much do you have in savings and investments
+            | How much do you and your partner have in savings and investments?
           .row
             .small-12.medium-5.large-5.columns
               .small-2.medium-3.large-3.columns style="padding:0px;"
@@ -37,7 +37,6 @@ form
               .small-10.medium-9.large-9.columns style="padding:0px;"
                     input id='fee' type="number"
 
-  br
   .row
     .small-12.columns
       a href='benefits.html'
@@ -51,6 +50,6 @@ javascript:
   });
 
   $("input[name='case']").on('change', function () {
-    $('#case-number').toggleClass('hide', $("input[name='case']:checked").val() == "true");
+    $('#case-number').toggleClass('hide', $("input[name='case']:checked").val() == "false");
     buildNextUrl($("input[name='case']:checked").val() == "true" ? '#.html' : '#.html');
   });

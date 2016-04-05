@@ -8,7 +8,7 @@ form
     .small-12.columns
       br
       a href="savings.html" Back
-      span.hint &nbsp; &nbsp; Step 3 of 17
+      span.hint &nbsp; &nbsp; Step 10 of 18
       br
       br
       h4 Are you (or your partner) 61 or over?
@@ -16,21 +16,41 @@ form
     .small-12.medium-6.columns.end   
       .options.radio
         .option
-          label for="probate-no"
-            input id="probate-no" type="radio" name="probate" value="true"
+          label for="case-no"
+            input id="case-no" type="radio" name="case" value="true"
             | No 
             .option
-          label for="probate-yes"
-            input id="probate-yes" type="radio" name="probate" value="false"
+          label for="case-yes"
+            input id="case-yes" type="radio" name="case" value="false"
             | Yes
+  #case-number.hide
+    .row
+      .small-12.medium-6.columns
+        .panel-indent
+          label for='case-number'
+            | How much do you have in savings and investments
+          .row
+            .small-12.medium-5.large-5.columns
+              .small-2.medium-3.large-3.columns style="padding:0px;"
+                span.prefix
+                  label.inline for='fee' £
+              .small-10.medium-9.large-9.columns style="padding:0px;"
+                    input id='fee' type="number"
 
   br
   .row
     .small-12.columns
-      a href='savings-amount.html'
+      a href='benefits.html'
         .button.success Continue
+
+
 
 
 javascript:
   $(document).ready( function() {
+  });
+
+  $("input[name='case']").on('change', function () {
+    $('#case-number').toggleClass('hide', $("input[name='case']:checked").val() == "true");
+    buildNextUrl($("input[name='case']:checked").val() == "true" ? '#.html' : '#.html');
   });

@@ -11,7 +11,8 @@ form
       span.hint &nbsp; &nbsp; Step 4 of 17
       br
       br
-      h4 Do you receive any of the following benefits?
+      h4#refund-true Do you receive any of the following benefits?
+      h4#refund-false I've no idea what this should say!
       p We’ll contact the Department for Work and Pensions to confirm that you are (or were) getting one of these benefits.
   .row      
     .small-12.medium-6.columns
@@ -97,6 +98,8 @@ form
 
 javascript:
   $(document).ready( function() {
+    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
+    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
   });
 
   $("input[name='payment-correct']").on('change', function () {

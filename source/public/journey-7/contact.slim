@@ -35,13 +35,14 @@ form
             input id="email" name="email" type="checkbox" Check this box if you're willing to share your experience of this service. A member of the team may contact you. We won't use your email address for anything else. 
  
       br
-      a href="summary.html" 
+      a#next-url href="summary.html" 
         .button.success Continue
 
 
 javascript:
+
   $(document).ready( function() {
-    buildNextUrl('3-savings.html');
+    buildNextUrl('summary.html');
     $('#fee').bind('change', function () {
       $("#next-url").attr("href", updateQueryStringParameter('fee', $(this).val()));
     });

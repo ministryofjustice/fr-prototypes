@@ -31,7 +31,7 @@ form
   br
   .row
     .small-12.columns
-      a href='address.html'
+      a#next-url href='address.html'
         .button.success Continue
 
 
@@ -39,9 +39,12 @@ form
 
 javascript:
   $(document).ready( function() {
+    buildNextUrl('address.html');
+    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
+    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
   });
 
   $("input[name='case']").on('change', function () {
     $('#case-number').toggleClass('hide', $("input[name='case']:checked").val() == "true");
-    buildNextUrl($("input[name='case']:checked").val() == "true" ? '#.html' : '#.html');
+    //buildNextUrl($("input[name='case']:checked").val() == "true" ? '#.html' : '#.html');
   });

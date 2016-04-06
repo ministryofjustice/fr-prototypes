@@ -8,7 +8,7 @@ form
     .small-12.medium-9.columns
       br
       a href="benefits" Back
-      span.hint &nbsp; &nbsp; Step 7 of 17
+      span.hint &nbsp; &nbsp; Step 1 of 18
       br
       br
       h4 Have you already paid the fee?
@@ -50,7 +50,7 @@ form
   br
   .row
     .small-12.columns
-      a#next-url href='probate.html'
+      a#next-url href='status.html'
         .button.success Continue
 
 
@@ -58,8 +58,10 @@ form
 
 javascript:
   $(document).ready( function() {
+    buildNextUrl('status.html');
+    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
+    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
   });
-
   $("input[name='refund']").on('change', function () {
     $('#refund-details').toggleClass('hide', $("input[name='refund']:checked").val() != "true");
     $("#next-url").attr("href", updateQueryStringParameter('refund',$("input[name='refund']:checked").val() == "true"));

@@ -8,7 +8,7 @@ form
     .small-12.medium-6.columns
       br
       a href="benefits.html" Back
-      span.hint &nbsp; &nbsp; Step 5 of 17
+      span.hint &nbsp; &nbsp; Step 8 of 18
       br
       br
       h4 Do you have any children living with you, or who you support financially?
@@ -36,7 +36,7 @@ form
   br
   .row
     .small-12.columns
-      a href='income-single.html'
+      a#next-url href='income-single.html'
         .button.success Continue
 
 
@@ -44,6 +44,9 @@ form
 
 javascript:
   $(document).ready( function() {
+    buildNextUrl('income-single.html');
+    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
+    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
   });
 
   $("input[name='kid']").on('change', function () {

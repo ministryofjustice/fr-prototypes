@@ -30,5 +30,12 @@ form
   br
   .row
     .small-12.columns
-      a href='ni.html'
+      a#next-url href='ni.html'
         .button.success Continue
+
+javascript:
+  $(document).ready( function() {
+    buildNextUrl('ni.html');
+    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
+    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
+  });

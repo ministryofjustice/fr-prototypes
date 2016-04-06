@@ -8,10 +8,11 @@ form
     .small-12.medium-10.columns
       br
       a href="status.html" Back
-      span.hint &nbsp; &nbsp; Step 2 of 17
+      span.hint &nbsp; &nbsp; Step 3 of 18
       br
       br
-      h4 How much do you and your partner have in savings and investments?
+      h4#refund-false How much do you have in savings and investments?
+      h4#refund-true When you paid the fee, how much savings and investments did you have? 
   .row
     .small-12.medium-6.columns  
       .options.radio
@@ -20,8 +21,8 @@ form
             input id="payment-correct-low" type="radio" name="savings-amount" value=""
             | Less than £3,000 
         .option
-          label for="savings-amount-medium"
-            input id="savings-amount-medium" type="radio" name="savings-amount" value=""
+          label for="case-middle"
+            input id="case-middle" type="radio" name="case" value="false"
             | Between £3,000 and £16,000
         .option
           label for="savings-amount-high"
@@ -61,13 +62,14 @@ form
   br
   .row
     .small-12.medium-6.columns
-      a href='partner-age.html'
+      a#next-url href='partner-age.html'
         .button.success Continue
-
-
 
 
 javascript:
   $(document).ready( function() {
+    buildNextUrl('partner-age.html');
+    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
+    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
   });
 

@@ -8,10 +8,11 @@ form
     .small-12.columns
       br
       a href="children.html" Back
-      span.hint &nbsp; &nbsp; Step 6 of 17
+      span.hint &nbsp; &nbsp; Step 9 of 18
       br
       br
-      h4 What is your total monthly income?
+      h4#refund-false What is your total monthly income?
+      h4#refund-true When you paid the fee, what was your total monthly income?
       p Enter the amount of money you get every month before any tax or National Insurance payments have been taken off.
       p If you get paid weekly, multiply your weekly pay by 52, then divide it by 12. This will give you a monthly total.
       p There are some benefits you shouldn't include as income, see the full list and further information about completing this section in the <a href="http://hmctsformfinder.justice.gov.uk/courtfinder/forms/ex160a-eng-20160212.pdf"> guide. </a>  
@@ -157,13 +158,18 @@ form
   br
   .row
     .small-12.medium-6.columns
-      a href="refund.html" 
+      a#next-url href="probate.html" 
         .button.success Continue
 
 
 javascript:
   $(document).ready( function() {
-    $('.sum-me').on('change', function() {
+    buildNextUrl('savings-amount.html');
+    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
+    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
+  });
+
+  $('.sum-me').on('change', function() {
       total=0;
       $('.sum-me').each(function(i,n){
         if ($(n).val() != "") {

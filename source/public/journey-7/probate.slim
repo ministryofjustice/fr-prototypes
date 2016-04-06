@@ -54,7 +54,7 @@ form
   br
   .row
     .small-12.columns
-      a href='case-number.html'
+      a#next-url href='case-number.html'
         .button.success Continue
 
 
@@ -62,9 +62,11 @@ form
 
 javascript:
   $(document).ready( function() {
+    buildNextUrl('case-number.html');
+    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
+    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
   });
 
   $("input[name='probate']").on('change', function () {
     $('#probate-details').toggleClass('hide', $("input[name='probate']:checked").val() == "true");
-    buildNextUrl($("input[name='probate']:checked").val() == "true" ? '#.html' : '#.html');
   });

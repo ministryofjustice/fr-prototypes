@@ -4,56 +4,106 @@ nav_title: 'GOV.UK'
 ---
 
 form
-  .row
-    .small-12.medium-7.columns
-      br
-      a href="savings.html" Back
-      span.hint &nbsp; &nbsp; Step 4 of 17
-      br
-      br
-      h4 Do you receive any of the following benefits?
-      p We’ll contact the Department for Work and Pensions to confirm that you are (or were) getting one of these benefits.
-  .row      
-    .small-12.medium-6.columns
-      ul
-        li 
-          span Income-based Jobseeker’s Allowance
-          span.hint
-            |&nbsp;(JSA)
-        li 
-          span Income-related Employment and Support Allowance
-          span.hint
-            |&nbsp;(ESA)
-        li 
-          span Income Support
-        li 
-          span Universal Credit 
-          span.hint
-            |&nbsp;(and you’re earning less than £6,000 a year)
-        li 
-          span State Pension
-          span.hint
-            |&nbsp;(Guarantee Credit)
-        li
-          span Scottish Civil Legal Aid 
-          span.hint
-            |&nbsp;(not Advice and Assistance or Advice by Way of Representation)
-  
+  #refund-false
+    .row
+      .small-12.medium-7.columns
+        br
+        a href="savings.html" Back
+        span.hint &nbsp; &nbsp; Step 7 of 18
+        br
+        br
+        h4 Do you receive any of the following benefits?
+        p We’ll contact the Department for Work and Pensions to confirm that you are (or were) getting one of these benefits.
+    
+    .row      
+      .small-12.medium-6.columns
+        ul
+          li 
+            span Income-based Jobseeker’s Allowance
+            span.hint
+              |&nbsp;(JSA)
+          li 
+            span Income-related Employment and Support Allowance
+            span.hint
+              |&nbsp;(ESA)
+          li 
+            span Income Support
+          li 
+            span Universal Credit 
+            span.hint
+              |&nbsp;(and you’re earning less than £6,000 a year)
+          li 
+            span State Pension
+            span.hint
+              |&nbsp;(Guarantee Credit)
+          li
+            span Scottish Civil Legal Aid 
+            span.hint
+              |&nbsp;(not Advice and Assistance or Advice by Way of Representation)
+    
+    br
+    .row
+      .small-12.medium-6.columns   
+        .options.radio
+          .option
+            label for="payment-correct-no-false"
+              input id="payment-correct-no-false" type="radio" name="payment-correct" value="false"
+              | No
+          .option
+            label for="payment-correct-yes-false"
+              input id="payment-correct-yes-false" type="radio" name="payment-correct" value="true"
+              | Yes, I am receiving one of the benefits listed
 
+  #refund-true
+    .row
+      .small-12.medium-7.columns
+        br
+        a href="savings.html" Back
+        span.hint &nbsp; &nbsp; Step 7 of 18
+        br
+        br
+        h4 When you paid the fee, did you receive any of the following benefits?
+        p We’ll contact the Department for Work and Pensions to confirm that you are (or were) getting one of these benefits.
+    
+    .row      
+      .small-12.medium-6.columns
+        ul
+          li 
+            span Income-based Jobseeker’s Allowance
+            span.hint
+              |&nbsp;(JSA)
+          li 
+            span Income-related Employment and Support Allowance
+            span.hint
+              |&nbsp;(ESA)
+          li 
+            span Income Support
+          li 
+            span Universal Credit 
+            span.hint
+              |&nbsp;(and you’re earning less than £6,000 a year)
+          li 
+            span State Pension
+            span.hint
+              |&nbsp;(Guarantee Credit)
+          li
+            span Scottish Civil Legal Aid 
+            span.hint
+              |&nbsp;(not Advice and Assistance or Advice by Way of Representation)
+    
+    br
+    .row
+      .small-12.medium-6.columns   
+        .options.radio
+          .option
+            label for="payment-correct-no-true"
+              input id="payment-correct-no-true" type="radio" name="payment-correct" value="false"
+              | No
+          .option
+            label for="payment-correct-yes-true"
+              input id="payment-correct-yes-true" type="radio" name="payment-correct" value="true"
+              | Yes, I was receiving one of the benefits listed
 
-
-  br
-  .row
-    .small-12.medium-6.columns   
-      .options.radio
-        .option
-          label for="payment-correct-no"
-            input id="payment-correct-no" type="radio" name="payment-correct" value="false"
-            | No
-        .option
-          label for="payment-correct-yes"
-            input id="payment-correct-yes" type="radio" name="payment-correct" value="true"
-            | Yes, I am receiving one of the benefits listed
 
   br
   .row
@@ -91,15 +141,18 @@ form
   br
   .row
     .small-12.medium-12.large-12.columns
-      a#next-url href='refund.html'
+      a#next-url href='probate.html'
         .button.success Continue
 
 
 javascript:
   $(document).ready( function() {
+    buildNextUrl('probate.html');
+    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
+    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
   });
 
   $("input[name='payment-correct']").on('change', function () {
     $('#payment-comment').toggleClass('hide', $("input[name='payment-correct']:checked").val() == "true");
-    buildNextUrl($("input[name='payment-correct']:checked").val() == "true" ? 'refund.html' : 'children.html');
+    //buildNextUrl($("input[name='payment-correct']:checked").val() == "true" ? 'probate.html' : 'children.html');
   });

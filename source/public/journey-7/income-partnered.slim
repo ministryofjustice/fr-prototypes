@@ -271,10 +271,16 @@ form
   br
   .row
     .small-12.medium-6.columns
-      a href="refund.html" 
+      a#next-url href="probate.html" 
         .button.success Continue
 
 
+javascript:
+  $(document).ready( function() {
+    buildNextUrl('savings-amount.html');
+    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
+    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
+  });
 javascript:
   $(document).ready( function() {
     buildNextUrl('3-savings.html');

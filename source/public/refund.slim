@@ -5,38 +5,30 @@ nav_title: 'GOV.UK'
 
 form
   .row
-    .small-12.columns
+    .small-12.medium-9.columns
       br
-      a href="refund.html" Back
-      span.hint &nbsp; &nbsp; Step 8 of 17
+      span.hint Step 1 of 18
       br
-      br
-      h4#refund-false Are you paying a fee for a probate case?
-      h4#refund-true Did you pay a fee for a probate case?
-
-      p These cases are usually about the property and belongings of someone who has died.
+      h4 Have you already paid the fee?
+      p You can apply for a refund for a fee paid in the last 3 months. 
 
     .small-12.medium-6.columns.end   
       .options.radio
         .option
-          label for="probate-no"
-            input id="probate-no" type="radio" name="probate" value="true"
+          label for="refund-no"
+            input id="refund-no" type="radio" name="refund" value="false"
             | No 
             .option
-          label for="probate-yes"
-            input id="probate-yes" type="radio" name="probate" value="false"
+          label for="refund-yes"
+            input id="refund-yes" type="radio" name="refund" value="true"
             | Yes
-  #probate-details.hide
+  #refund-details.hide
     .row
       .small-12.medium-6.columns
         .panel-indent
-          label for='probate-details'
-            | The name of the deceased is
-            input name='probate-name' id='form_number' type='text'
-
           .row
             .small-12.medium-7.columns
-              label for='dod_day' Date of their death
+              label for='dod_day' The fee was paid on
               .small-4.medium-4.large-4.columns style='padding-left: 0px;'
                 label for='dod_day'
                   small Day
@@ -56,7 +48,7 @@ form
   br
   .row
     .small-12.columns
-      a#next-url href='case-number.html'
+      a#next-url href='status.html'
         .button.success Continue
 
 
@@ -64,9 +56,11 @@ form
 
 javascript:
   $(document).ready( function() {
-    buildNextUrl('case-number.html');
+    buildNextUrl('status.html');
+    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
+    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
   });
-
-  $("input[name='probate']").on('change', function () {
-    $('#probate-details').toggleClass('hide', $("input[name='probate']:checked").val() == "true");
+  $("input[name='refund']").on('change', function () {
+    $('#refund-details').toggleClass('hide', $("input[name='refund']:checked").val() != "true");
+    $("#next-url").attr("href", updateQueryStringParameter('refund',$("input[name='refund']:checked").val() == "true"));
   });

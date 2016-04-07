@@ -1,0 +1,90 @@
+---
+title: 'Apply for help with fees'
+nav_title: 'GOV.UK'
+---
+
+form
+  .row
+    .small-12.columns
+      br
+      span.hint Step 9 of 18
+      br
+      h4#refund-false What is your total monthly income?
+      h4#refund-true When you paid the fee, what was your total monthly income?
+      // p Enter the amount of money you get every month before any tax or National Insurance payments have been taken off.
+      // p If you get paid weekly, multiply your weekly pay by 52, then divide it by 12. This will give you a monthly total.
+      // p There are some benefits you shouldn't include as income, see the full list and further information about completing this section in the <a href="http://hmctsformfinder.justice.gov.uk/courtfinder/forms/ex160a-eng-20160212.pdf"> guide. </a>  
+      p Select the income sources that apply to you (and your partner).
+
+
+  .row  
+     .small-12.medium-6.columns.end   
+      .options.radio
+        .option
+          label for="income-wages"
+            input id="income-wages" type="checkbox" name="income" value="income-wages"
+            | Wages (before tax and National Insurance) 
+          .option
+          label for="income-child-benefit"
+            input id="income-child-benefit" type="checkbox" name="income" value="income-child-benefit"
+            | Child Benefit
+          label for="income-working-tax-credit"
+            input id="income-working-tax-credit" type="checkbox" name="income" value="income-working-tax-credit"
+            | Working tax credit
+          .option
+          label for="income-child-tax-credit"
+            input id="income-child-tax-credit" type="checkbox" name="income" value="income-child-tax-credit"
+            | Child tax credit
+          label for="income-maintenence-payments"
+            input id="income-maintenence-payments" type="checkbox" name="income" value="income-maintenence-payments"
+            | Maintenence payments 
+          .option
+          label for="income-jsa"
+            input id="income-jsa" type="checkbox" name="income" value="income-jsa"
+            | Contribution-based Jobseekers Allowance (JSA)
+          label for="income-esa"
+            input id="income-esa" type="checkbox" name="income" value="income-esa"
+            | Contribution-based Employment and Support Allowance (ESA)
+          .option
+          label for="income-universal-credit"
+            input id="income-universal-credit" type="checkbox" name="income" value="income-universal-credit"
+            | Universal Credit
+          label for="income-pensions"
+            input id="income-pensions" type="checkbox" name="income" value="income-pensions"
+            | Pensions (state, work, private) 
+          .option
+          label for="income-rent"
+            input id="income-rent" type="checkbox" name="income" value="income-rent"
+            | Rent from anyone living with you
+          label for="income-rent-other"
+            input id="income-rent-other" type="checkbox" name="income" value="income-rent-other"
+            | Rent from other properties you own
+          .option
+          label for="income-other"
+            input id="income-other" type="checkbox" name="income" value="income-other"
+            | Other monthly income
+  br
+  .row
+    .small-12.medium-6.columns
+      a#next-url href="probate.html" 
+        .button.success Continue
+
+
+javascript:
+  $(document).ready( function() {
+    buildNextUrl('income-wages.html');
+    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
+    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
+  });
+
+//  $('.sum-me').on('change', function() {
+      total=0;
+      $('.sum-me').each(function(i,n){
+        if ($(n).val() != "") {
+          var thisVal = parseFloat($(n).val());
+          total += thisVal;
+        }
+      });
+      $('#total-sum').val(total);
+    });
+  });

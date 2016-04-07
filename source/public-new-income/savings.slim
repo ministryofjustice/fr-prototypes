@@ -1,0 +1,76 @@
+---
+title: 'Apply for help with fees'
+nav_title: 'GOV.UK'
+---
+
+form
+  .row
+    .small-12.medium-10.columns
+      br
+      span.hint Step 3 of 18
+      br
+      h4#refund-false How much do you have in savings and investments?
+      h4#refund-true  How much did you have in savings and investments at the time you paid the fee?  
+  .row
+    .small-12.medium-6.columns  
+      .options.radio
+        .option
+          label for="payment-correct-low"
+            input id="payment-correct-low" type="radio" name="savings-amount" value="less-than-3k"
+            | Less than £3,000 
+        .option
+          label for="case-middle"
+            input id="case-middle" type="radio" name="savings-amount" value="between-3-16k"
+            | Between £3,000 and £16,000
+        .option
+          label for="savings-amount-high"
+            input id="savings-amount-high" type="radio" name="savings-amount" value="more-than-16k"
+            | More than £16,000
+
+  br
+  .row
+    .small-12.medium-6.columns  
+      details
+        summary Help with savings and investments
+        .panel-indent
+          h5 What to include in savings and investments:
+          ul
+            li money in ISAs and any other savings account
+            li joint savings accounts that you share with your partner
+            li fixed rate or investment bonds
+            li any lump sum (eg a redundancy payout)
+            li stocks and shares
+            li trust funds (or any other kind of fund)
+            li second homes
+            li any money or property outside the UK
+          br
+          h5 Don’t include the following in your savings total:
+          ul
+            li wages or benefits
+            li joint savings accounts that you share with your partner if your case is against your partner
+            li personal pensions
+            li capital value of self-employed businesses
+            li student loans
+            li unfair dismissal awards
+            li money from the criminal injury compensation scheme
+            li medical negligence or personal injury awards
+            li any compensation under a statutory scheme in respect of Mesothelioma
+
+
+  br
+  .row
+    .small-12.medium-6.columns
+      a#next-url href='partner-age.html'
+        .button.success Continue
+
+
+javascript:
+  $(document).ready( function() {
+    buildNextUrl('partner-age.html');
+    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
+    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
+  });
+  $("input[name='savings-amount']").on('change', function () {
+    buildNextUrl($("input[name='savings-amount']:checked").val() == "between-3-16k" ? 'partner-age.html' : 'benefits.html');
+  });
+

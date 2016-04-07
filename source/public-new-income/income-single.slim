@@ -162,9 +162,9 @@ form
 
 javascript:
   $(document).ready( function() {
-    buildNextUrl('probate.html');
-    //$('#refund-true').toggle(getUrlParameter('refund') == 'true');
-    //$('#refund-false').toggle(getUrlParameter('refund') == 'false');
+    buildNextUrl('savings-amount.html');
+    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
+    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
   });
 
   $('.sum-me').on('change', function() {
@@ -176,4 +176,5 @@ javascript:
         }
       });
       $('#total-sum').val(total);
+    });
   });

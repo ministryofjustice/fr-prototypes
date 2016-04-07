@@ -1,0 +1,48 @@
+---
+title: 'Apply for help with fees'
+nav_title: 'GOV.UK'
+---
+
+form
+  .row
+    .small-12.columns
+      br
+      span.hint Step 13 of 17
+      br
+      h4 What is your full name?
+
+  .row
+    .small-12.medium-2.columns
+      label for='case-number'
+        | Title
+        input name='form_number' id='form_number' type='text'
+
+  .row 
+    .small-12.medium-6.columns
+      label for='case-number'
+        | First name
+        input name='form_number' id='form_number' type='text'
+      label for='case-number'
+        | Last name
+        input name='form_number' id='form_number' type='text'
+
+  br
+  .row
+    .small-12.columns
+      a#next-url href='address.html'
+        .button.success Continue
+
+
+
+
+javascript:
+  $(document).ready( function() {
+    buildNextUrl('address.html');
+    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
+    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
+  });
+
+  $("input[name='case']").on('change', function () {
+    $('#case-number').toggleClass('hide', $("input[name='case']:checked").val() == "true");
+    //buildNextUrl($("input[name='case']:checked").val() == "true" ? '#.html' : '#.html');
+  });

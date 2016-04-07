@@ -63,8 +63,6 @@ form
 javascript:
   $(document).ready( function() {
     buildNextUrl('case-number.html');
-    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
-    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
   });
 
   $("input[name='probate']").on('change', function () {

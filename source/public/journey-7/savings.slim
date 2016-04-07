@@ -18,15 +18,15 @@ form
       .options.radio
         .option
           label for="payment-correct-low"
-            input id="payment-correct-low" type="radio" name="savings-amount" value=""
+            input id="payment-correct-low" type="radio" name="savings-amount" value="less-than-3k"
             | Less than £3,000 
         .option
           label for="case-middle"
-            input id="case-middle" type="radio" name="case" value="false"
+            input id="case-middle" type="radio" name="savings-amount" value="between-3-16k"
             | Between £3,000 and £16,000
         .option
           label for="savings-amount-high"
-            input id="savings-amount-high" type="radio" name="savings-amount" value=""
+            input id="savings-amount-high" type="radio" name="savings-amount" value="more-than-16k"
             | More than £16,000
 
   br
@@ -71,5 +71,8 @@ javascript:
     buildNextUrl('partner-age.html');
     $('#refund-true').toggle(getUrlParameter('refund') == 'true');
     $('#refund-false').toggle(getUrlParameter('refund') == 'false');
+  });
+  $("input[name='savings-amount']").on('change', function () {
+    buildNextUrl($("input[name='savings-amount']:checked").val() == "between-3-16k" ? 'partner-age.html' : 'benefits.html');
   });
 

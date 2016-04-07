@@ -1,0 +1,43 @@
+---
+title: 'Apply for help with fees'
+nav_title: 'GOV.UK'
+---
+
+form
+  .row
+    .small-12.columns
+      br
+      span.hint Step 14 of 17
+      br
+      h4 What is your address?
+  .row
+    .small-12.medium-6.columns
+      label for='case-number'
+        | Address
+        textarea rows="4" cols="50"
+  .row 
+    .small-12.medium-3.columns
+      label for='case-number'
+        | Postcode
+        input name='form_number' id='form_number' type='text'
+
+  br
+  .row
+    .small-12.columns
+      a#next-url href='contact.html'
+        .button.success Continue
+
+
+
+
+javascript:
+  $(document).ready( function() {
+    buildNextUrl('contact.html');
+    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
+    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
+  });
+
+  $("input[name='case']").on('change', function () {
+    $('#case-number').toggleClass('hide', $("input[name='case']:checked").val() == "true");
+    buildNextUrl($("input[name='case']:checked").val() == "true" ? '#.html' : '#.html');
+  });

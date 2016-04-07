@@ -1,0 +1,99 @@
+---
+title: 'Apply for help with fees'
+nav_title: 'GOV.UK'
+---
+
+form
+  .row
+    .small-12.columns
+      br
+      h4 Your feedback
+      br
+  .row
+    .small-12.medium-6.columns
+      label for='case-number'
+        | Did you have any difficulty using this service to apply for help with fees?
+        textarea rows="4" cols="50"
+        br
+
+  .row
+    .small-12.medium-6.columns
+      label for='case-number'
+        | Do you have any ideas for how it could be improved?
+        textarea rows="4" cols="50"
+        br
+
+  .row
+    .small-12.medium-6.columns.end   
+      .options.radio
+        div Overall, how satisfied are you about applying for help with fees online?
+        .option
+          label
+            input id="happy-1" type="radio" name="ha-1" value="true"
+            | Very satisfied
+            .option
+          label
+            input id="happy-2" type="radio" name="ha-2" value="false"
+            | Satisfied
+          label
+            input id="happy-3" type="radio" name="ha-3" value="false"
+            | Neither satisfied or dissatisfied
+          label
+            input id="happy-4" type="radio" name="ha-4" value="false"
+            | Dissatisfied
+          label
+            input id="happy-5" type="radio" name="ha-5" value="false"
+            | Very dissatisfied
+
+  br
+  br
+
+  .row
+    .small-12.medium-6.columns.end   
+      .options.radio
+        div Did you have any help filling in this form?
+        .option
+          label
+            input id="help-1" type="radio" name="h-1" value="true"
+            | No, I filled in this form myself
+            .option
+          label
+            input id="help-2" type="radio" name="h-2" value="true"
+            | I have difficulty using computers so someone filled in this form for me
+          label
+            input id="help-3" type="radio" name="h-3" value="true"
+            | I used an accessibility tool such as a screen reader
+          label
+            input id="help-4" type="radio" name="h-4" value="false"
+            | I had some other kind of help 
+
+  br
+  br
+
+  .row
+    .small-12.medium-6.columns
+      p Your feedback is very valuable. If you're willing to talk more about your experience of applying for help with court fees enter your email address below. A member of the team will get in touch. 
+      p We won't use your email address for anything else.
+      br
+      label for='case-number'
+        | Email address
+        input name='form_number' id='form_number' type='text'
+
+
+  br
+  .row
+    .small-12.columns
+      a href='contact.html'
+        .button.success Continue
+
+
+
+
+javascript:
+  $(document).ready( function() {
+  });
+
+  $("input[name='case']").on('change', function () {
+    $('#case-number').toggleClass('hide', $("input[name='case']:checked").val() == "true");
+    buildNextUrl($("input[name='case']:checked").val() == "true" ? '#.html' : '#.html');
+  });

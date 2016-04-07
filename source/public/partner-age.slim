@@ -7,9 +7,7 @@ form
   .row
     .small-12.columns
       br
-      a href="savings.html" Back
-      span.hint &nbsp; &nbsp; Step 5 of 18
-      br
+      span.hint Step 5 of 18
       br
       h4#refund-false Are you or your partner 61 or over?
       h4#refund-true When you paid the fee, were you or your partner 61 or over?
@@ -45,8 +43,6 @@ form
         .button.success Continue
 
 
-
-
 javascript:
   $(document).ready( function() {
     buildNextUrl('savings-amount.html');
@@ -55,6 +51,7 @@ javascript:
   
     $("input[name='case']").on('change', function () {
       $('#case-number').toggleClass('hide', $("input[name='case']:checked").val() == "true");
-      buildNextUrl($("input[name='case']:checked").val() == "true" ? '#.html' : '#.html');
+      buildNextUrl('benefits.html');
+      //buildNextUrl($("input[name='case']:checked").val() == "true" ? 'benefits.html' : '#.html');
     });
   });

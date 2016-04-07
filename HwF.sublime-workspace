@@ -1,0 +1,678 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "---\ntitle: 'Apply for help with fees'\nnav_title: 'GOV.UK'\n---\n\nform\n  .row\n    .small-12.medium-9.columns\n      span.hint Step 1 of 18\n      br\n      br\n      h4 Have you already paid the fee?\n      p You can apply for a refund for a fee paid in the last 3 months. If you’re applying for a refund, answer the following questions about your circumstances at the time you paid the fee.\n\n    .small-12.medium-6.columns.end   \n      .options.radio\n        .option\n          label for=\"refund-no\"\n            input id=\"refund-no\" type=\"radio\" name=\"refund\" value=\"false\"\n            | No \n            .option\n          label for=\"refund-yes\"\n            input id=\"refund-yes\" type=\"radio\" name=\"refund\" value=\"true\"\n            | Yes\n  #refund-details.hide\n    .row\n      .small-12.medium-6.columns\n        .panel-indent\n          .row\n            .small-12.medium-7.columns\n              label for='dod_day' The fee was paid on\n              .small-4.medium-4.large-4.columns style='padding-left: 0px;'\n                label for='dod_day'\n                  small Day\n              .small-4.medium-4.large-4.columns style='padding-left: 0px;'\n                label for='dod_month'\n                  small Month\n              .small-4.medium-4.large-4.columns style='padding: 0px;'\n                label for='dod_year'\n                  small Year\n              .small-4.medium-4.large-4.columns style='padding-left: 0px;'\n                input id='dod_day' type='number'\n              .small-4.medium-4.large-4.columns style='padding-left: 0px;'\n                input id='dod_month' type='number'\n              .small-4.medium-4.large-4.columns style='padding: 0px;'\n                input id='dod_year' type='number'\n\n  br\n  .row\n    .small-12.columns\n      a#next-url href='status.html'\n        .button.success Continue\n\n\n\n\njavascript:\n  $(document).ready( function() {\n    buildNextUrl('status.html');\n    $('#refund-true').toggle(getUrlParameter('refund') == 'true');\n    $('#refund-false').toggle(getUrlParameter('refund') == 'false');\n  });\n  $(\"input[name='refund']\").on('change', function () {\n    $('#refund-details').toggleClass('hide', $(\"input[name='refund']:checked\").val() != \"true\");\n    $(\"#next-url\").attr(\"href\", updateQueryStringParameter('refund',$(\"input[name='refund']:checked\").val() == \"true\"));\n  });",
+			"file": "source/public/journey-7/refund.slim",
+			"file_size": 2373,
+			"file_write_time": 131044930590000000,
+			"settings":
+			{
+				"buffer_size": 2319,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/public/address.slim",
+			"settings":
+			{
+				"buffer_size": 1072,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "---\ntitle: 'Apply for help with fees'\nnav_title: 'GOV.UK'\n---\n\nform\n  .row\n    .small-12.columns\n      br\n      a href=\"0-start.html\" Back\n      span.hint &nbsp; &nbsp; Step 2 of 18\n      br\n      br\n      h4 What's your status?\n  .row  \n    .small-12.medium-6.columns.end   \n      .options.radio\n        .option\n          label for=\"status-no\"\n            input id=\"status-no\" type=\"radio\" name=\"status\" value=\"false\"\n            | Single \n            .option\n          label for=\"status-yes\"\n            input id=\"status-yes\" type=\"radio\" name=\"status\" value=\"true\"\n            | Married or living with someone and sharing an income\n\n  br\n  .row\n    .small-12.medium-6.columns  \n      details\n        summary Help with status\n        .panel-indent\n          h5 Choose ‘married or living with someone and sharing an income’ if you’re:\n          ul\n            li married\n            li civil partners\n            li living together as if you are married or in a civil partnership\n            li living at the same address with a joint income\n            li a couple forced to live apart, eg where one or both is serving in the Armed forces, in prison or living in residential care\n          br\n          h5 Choose ‘single’ if you rely on your own income or your case involves your partner, for example:\n          ul\n            li divorce, dissolution or annulment (unless you have married again or live with a new partner)\n            li gender recognition\n            li domestic violence\n            li forced marriage\n            li you and your partner are both part of a multiple fee group\n\n  br\n  .row\n    .small-12.columns\n      a#next-url href='savings.html'\n        .button.success Continue\n\n  br\n  .row\n    .small-12.medium-7.large-6.columns\n      a href='0-start.html'\n        |Back to start\n\n\n\njavascript:\n  $(document).ready( function() {\n    buildNextUrl('savings.html');\n    $('#refund-true').toggle(getUrlParameter('refund') == 'true');\n    $('#refund-false').toggle(getUrlParameter('refund') == 'false');\n  });\n  $(\"input[name='status']\").on('change', function () {\n    $(\"#next-url\").attr(\"href\", updateQueryStringParameter('married',$(\"input[name='status']:checked\").val() == \"true\"));\n  });",
+			"file": "source/public/journey-7/status.slim",
+			"file_size": 2222,
+			"file_write_time": 131045121040000000,
+			"settings":
+			{
+				"buffer_size": 2212,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "---\ntitle: 'Apply for help with fees'\nnav_title: 'GOV.UK'\n---\n\nform\n  .row\n    .small-12.medium-10.columns\n      br\n      a href=\"status.html\" Back\n      span.hint &nbsp; &nbsp; Step 3 of 18\n      br\n      br\n      h4#refund-false How much do you have in savings and investments?\n      h4#refund-true When you paid the fee, how much savings and investments did you have? \n  .row\n    .small-12.medium-6.columns  \n      .options.radio\n        .option\n          label for=\"payment-correct-low\"\n            input id=\"payment-correct-low\" type=\"radio\" name=\"savings-amount\" value=\"less-than-3k\"\n            | Less than £3,000 \n        .option\n          label for=\"case-middle\"\n            input id=\"case-middle\" type=\"radio\" name=\"savings-amount\" value=\"between-3-16k\"\n            | Between £3,000 and £16,000\n        .option\n          label for=\"savings-amount-high\"\n            input id=\"savings-amount-high\" type=\"radio\" name=\"savings-amount\" value=\"more-than-16k\"\n            | More than £16,000\n\n  br\n  .row\n    .small-12.medium-6.columns  \n      details\n        summary Help with savings and investments\n        .panel-indent\n          h5 What to include in savings and investments:\n          ul\n            li money in ISAs and any other savings account\n            li joint savings accounts that you share with your partner\n            li fixed rate or investment bonds\n            li any lump sum (eg a redundancy payout)\n            li stocks and shares\n            li trust funds (or any other kind of fund)\n            li second homes\n            li any money or property outside the UK\n          br\n          h5 Don’t include the following in your savings total:\n          ul\n            li wages or benefits\n            li joint savings accounts that you share with your partner if your case is against your partner\n            li personal pensions\n            li capital value of self-employed businesses\n            li student loans\n            li unfair dismissal awards\n            li money from the criminal injury compensation scheme\n            li medical negligence or personal injury awards\n            li any compensation under a statutory scheme in respect of Mesothelioma\n\n\n  br\n  .row\n    .small-12.medium-6.columns\n      a#next-url href='partner-age.html'\n        .button.success Continue\n\n\njavascript:\n  $(document).ready( function() {\n    buildNextUrl('partner-age.html');\n    $('#refund-true').toggle(getUrlParameter('refund') == 'true');\n    $('#refund-false').toggle(getUrlParameter('refund') == 'false');\n  });\n  $(\"input[name='savings-amount']\").on('change', function () {\n    buildNextUrl($(\"input[name='savings-amount']:checked\").val() == \"between-3-16k\" ? 'partner-age.html' : 'benefits.html');\n  });\n\n",
+			"file": "source/public/journey-7/savings.slim",
+			"file_size": 2741,
+			"file_write_time": 131045121040000000,
+			"settings":
+			{
+				"buffer_size": 2735,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "---\ntitle: 'Apply for help with fees'\nnav_title: 'GOV.UK'\n---\n\nform\n  .row\n    .small-12.columns\n      br\n      a href=\"savings.html\" Back\n      span.hint &nbsp; &nbsp; Step 5 of 18\n      br\n      br\n      h4#refund-false Are you or your partner 61 or over?\n      h4#refund-true When you paid the fee, were you or your partner 61 or over?\n\n    .small-12.medium-6.columns.end   \n      .options.radio\n        .option\n          label for=\"case-yes\"\n            input id=\"case-yes\" type=\"radio\" name=\"case\" value=\"true\"\n            | Yes \n            .option\n          label for=\"case-no\"\n            input id=\"case-no\" type=\"radio\" name=\"case\" value=\"false\"\n            | No\n  #case-number.hide\n    .row\n      .small-12.medium-8.columns\n        .panel-indent\n          label for='case-number'\n            | How much do you and your partner have in savings and investments?\n          .row\n            .small-12.medium-5.large-5.columns\n              .small-2.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-10.medium-9.large-9.columns style=\"padding:0px;\"\n                    input id='fee' type=\"number\"\n\n  br\n  .row\n    .small-12.columns\n      a#next-url href='savings-amount.html'\n        .button.success Continue\n\n\njavascript:\n  $(document).ready( function() {\n    buildNextUrl('savings-amount.html');\n    $('#refund-true').toggle(getUrlParameter('refund') == 'true');\n    $('#refund-false').toggle(getUrlParameter('refund') == 'false');\n  \n    $(\"input[name='case']\").on('change', function () {\n      $('#case-number').toggleClass('hide', $(\"input[name='case']:checked\").val() == \"true\");\n      buildNextUrl('benefits.html');\n      //buildNextUrl($(\"input[name='case']:checked\").val() == \"true\" ? 'benefits.html' : '#.html');\n    });\n  });\n",
+			"file": "source/public/journey-7/partner-age.slim",
+			"file_size": 1832,
+			"file_write_time": 131045127810000000,
+			"settings":
+			{
+				"buffer_size": 1831,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "---\ntitle: 'Apply for help with fees'\nnav_title: 'GOV.UK'\n---\n\nform\n  #refund-false\n    .row\n      .small-12.medium-7.columns\n        br\n        a href=\"savings.html\" Back\n        span.hint &nbsp; &nbsp; Step 7 of 18\n        br\n        br\n        h4 Do you receive any of the following benefits?\n        p We’ll contact the Department for Work and Pensions to confirm that you are (or were) getting one of these benefits.\n    \n    .row      \n      .small-12.medium-6.columns\n        ul\n          li \n            span Income-based Jobseeker’s Allowance\n            span.hint\n              |&nbsp;(JSA)\n          li \n            span Income-related Employment and Support Allowance\n            span.hint\n              |&nbsp;(ESA)\n          li \n            span Income Support\n          li \n            span Universal Credit \n            span.hint\n              |&nbsp;(and you’re earning less than £6,000 a year)\n          li \n            span State Pension\n            span.hint\n              |&nbsp;(Guarantee Credit)\n          li\n            span Scottish Civil Legal Aid \n            span.hint\n              |&nbsp;(not Advice and Assistance or Advice by Way of Representation)\n    \n    br\n    .row\n      .small-12.medium-6.columns   \n        .options.radio\n          .option\n            label for=\"benefits-no\"\n              input id=\"benefits-no\" type=\"radio\" name=\"benefits\" value=\"false\"\n              | No\n          .option\n            label for=\"benefits-yes\"\n              input id=\"benefits-yes\" type=\"radio\" name=\"benefits\" value=\"true\"\n              | Yes, I am receiving one of the benefits listed\n\n  #refund-true\n    .row\n      .small-12.medium-7.columns\n        br\n        a href=\"savings.html\" Back\n        span.hint &nbsp; &nbsp; Step 7 of 18\n        br\n        br\n        h4 When you paid the fee, did you receive any of the following benefits?\n        p We’ll contact the Department for Work and Pensions to confirm that you are (or were) getting one of these benefits.\n    \n    .row      \n      .small-12.medium-6.columns\n        ul\n          li \n            span Income-based Jobseeker’s Allowance\n            span.hint\n              |&nbsp;(JSA)\n          li \n            span Income-related Employment and Support Allowance\n            span.hint\n              |&nbsp;(ESA)\n          li \n            span Income Support\n          li \n            span Universal Credit \n            span.hint\n              |&nbsp;(and you’re earning less than £6,000 a year)\n          li \n            span State Pension\n            span.hint\n              |&nbsp;(Guarantee Credit)\n          li\n            span Scottish Civil Legal Aid \n            span.hint\n              |&nbsp;(not Advice and Assistance or Advice by Way of Representation)\n    \n    br\n    .row\n      .small-12.medium-6.columns   \n        .options.radio\n          .option\n            label for=\"refund-benefits-no\"\n              input id=\"refund-benefits-no\" type=\"radio\" name=\"benefits\" value=\"false\"\n              | No\n          .option\n            label for=\"refund-benefits-yes\"\n              input id=\"refund-benefits-yes\" type=\"radio\" name=\"benefits\" value=\"true\"\n              | Yes, I was receiving one of the benefits listed\n\n\n  br\n  .row\n    .small-12.medium-7.columns  \n      details\n        summary Help with benefits\n        .panel-indent \n          h5 If you’ve only recently started receiving one of these benefits\n          p \n            |(for example, in the last few days), our staff may not be able to confirm your eligibility with the Department for Work and Pensions. In this case you should provide a letter from the job centre.\n          h5 Benefits with similar names\n          p There are some benefits with similar names. If you are receiving one of the benefits listed below, select 'No'.\n          ul\n            li \n              span Contribution-based Job Seekers Allowance\n              span.hint\n                |&nbsp;(JSA)\n            li \n              span Contribution-based Employment Support Allowance\n              span.hint\n                |&nbsp;(ESA)\n            li \n              span Pension Credit and Savings Credit\n            li \n              span Universal Credit\n              span.hint\n                |&nbsp;(and you're earning more than £6,000 a year)\n            li \n              span Scottish Legal Aid Advice and Assistance\n            li \n              span Scottish Legal Aid Advice by Way of Representation\n              span.hint\n                |&nbsp;(ABWOR)\n\n  br\n  .row\n    .small-12.medium-12.large-12.columns\n      a#next-url href='children.html'\n        .button.success Continue\n\n\njavascript:\n  $(document).ready( function() {\n    buildNextUrl('children.html');\n    $('#refund-true').toggle(getUrlParameter('refund') == 'true');\n    $('#refund-false').toggle(getUrlParameter('refund') == 'false');\n  });\n\n  $(\"input[name='benefits']\").on('change', function () {\n    $('#payment-comment').toggleClass('hide', $(\"input[name='benefits']:checked\").val() == \"true\");\n    buildNextUrl($(\"input[name='benefits']:checked\").val() == \"true\" ? 'probate.html' : 'children.html');\n  });\n",
+			"file": "source/public/journey-7/benefits.slim",
+			"file_size": 5137,
+			"file_write_time": 131045134890000000,
+			"settings":
+			{
+				"buffer_size": 5120,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/public/confirmation-refund.slim",
+			"settings":
+			{
+				"buffer_size": 1328,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/public/confirmation.slim",
+			"settings":
+			{
+				"buffer_size": 1194,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "---\ntitle: 'Apply for help with fees'\nnav_title: 'GOV.UK'\n---\n\nform\n  .row\n    .small-12.columns\n      br\n      a href=\"refund.html\" Back\n      span.hint &nbsp; &nbsp; Step 8 of 17\n      br\n      br\n      h4 Are you paying a fee for a probate case?\n      p These cases are usually about the property and belongings of someone who has died.\n\n    .small-12.medium-6.columns.end   \n      .options.radio\n        .option\n          label for=\"probate-no\"\n            input id=\"probate-no\" type=\"radio\" name=\"probate\" value=\"true\"\n            | No \n            .option\n          label for=\"probate-yes\"\n            input id=\"probate-yes\" type=\"radio\" name=\"probate\" value=\"false\"\n            | Yes\n  #probate-details.hide\n    .row\n      .small-12.medium-6.columns\n        .panel-indent\n          label for='probate-details'\n            | The name of the deceased is\n            input name='probate-name' id='form_number' type='text'\n\n          .row\n            .small-12.medium-7.columns\n              label for='dod_day' Date of their death\n              .small-4.medium-4.large-4.columns style='padding-left: 0px;'\n                label for='dod_day'\n                  small Day\n              .small-4.medium-4.large-4.columns style='padding-left: 0px;'\n                label for='dod_month'\n                  small Month\n              .small-4.medium-4.large-4.columns style='padding: 0px;'\n                label for='dod_year'\n                  small Year\n              .small-4.medium-4.large-4.columns style='padding-left: 0px;'\n                input id='dod_day' type='number'\n              .small-4.medium-4.large-4.columns style='padding-left: 0px;'\n                input id='dod_month' type='number'\n              .small-4.medium-4.large-4.columns style='padding: 0px;'\n                input id='dod_year' type='number'\n\n  br\n  .row\n    .small-12.columns\n      a#next-url href='case-number.html'\n        .button.success Continue\n\n\n\n\njavascript:\n  $(document).ready( function() {\n    buildNextUrl('case-number.html');\n  });\n\n  $(\"input[name='probate']\").on('change', function () {\n    $('#probate-details').toggleClass('hide', $(\"input[name='probate']:checked\").val() == \"true\");\n  });",
+			"file": "source/public/journey-7/probate.slim",
+			"file_size": 2187,
+			"file_write_time": 131045121040000000,
+			"settings":
+			{
+				"buffer_size": 2187,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "---\ntitle: 'Apply for help with fees'\nnav_title: 'GOV.UK'\n---\n\nform\n  .row\n    .small-12.medium-6.columns\n      br\n      a href=\"address.html\" Back\n      span.hint &nbsp; &nbsp; Step 15 of 17\n      br\n      br\n      h4 What's your email address?  \n\n\n  .row\n    .small-12.medium-6.columns\n      p class=\"large\"\n        | We'll email you to confirm your application has been received. \n\n  .row\n    .small-12.medium-6.columns\n      label for='case-number'\n        | Email address\n        textarea rows=\"2\" cols=\"20\"\n\n\n  \n  .row\n    .small-12.medium-6.columns\n      .options.check\n        .option\n          label for=\"email\"\n            input id=\"email\" name=\"email\" type=\"checkbox\" Check this box if you're willing to share your experience of this service. A member of the team may contact you. We won't use your email address for anything else. \n \n      br\n      a#next-url href=\"summary.html\" \n        .button.success Continue\n\n\njavascript:\n\n  $(document).ready( function() {\n    buildNextUrl('summary.html');\n    $('#fee').bind('change', function () {\n      $(\"#next-url\").attr(\"href\", updateQueryStringParameter('fee', $(this).val()));\n    });\n\n    $('#email').on('change', function () {\n      console.log('clicked email cb');\n      $('#email-detail').toggle($('#email').is(':checked'));\n      $(this).parent().toggleClass('selected', $(this).is(':checked'));\n    });\n\n    $('#phone').on('change', function () {\n      console.log('clicked phone cb');\n      $('#phone-detail').toggle($('#phone').is(':checked'));\n      $(this).parent().toggleClass('selected', $(this).is(':checked'));\n    });\n\n\n  });\n",
+			"file": "source/public/journey-7/contact.slim",
+			"file_size": 1601,
+			"file_write_time": 131044930650000000,
+			"settings":
+			{
+				"buffer_size": 1601,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "---\ntitle: 'Apply for help with fees'\nnav_title: 'GOV.UK'\n---\n\nform\n  .row\n    .small-12.columns\n      br\n      a href=\"children.html\" Back\n      span.hint &nbsp; &nbsp; Step 9 of 18\n      br\n      br\n      h4#refund-false What is your total monthly income?\n      h4#refund-true When you paid the fee, what was your total monthly income?\n      p Enter the amount of money you get every month before any tax or National Insurance payments have been taken off.\n      p If you get paid weekly, multiply your weekly pay by 52, then divide it by 12. This will give you a monthly total.\n      p There are some benefits you shouldn't include as income, see the full list and further information about completing this section in the <a href=\"http://hmctsformfinder.justice.gov.uk/courtfinder/forms/ex160a-eng-20160212.pdf\"> guide. </a>  \n      p You only need to fill in the fields that apply to you.\n\n  .row\n    .small-12.medium-9.columns\n      table width=\"100%\"\n        tr\n          td width=\"60%\" Wages (before tax and National Insurance)\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input.sum-me id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n        tr\n          td Child Benefit\n          td\n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input.sum-me id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n        tr\n          td Working tax credit\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input.sum-me id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n        tr\n          td Child tax credit\n          td\n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input.sum-me id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n        tr\n          td Maintenence payments\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input.sum-me id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n        tr\n          td Contribution-based Jobseekers Allowance (JSA)\n          td\n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input.sum-me id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n        tr\n          td Contribution-based Employment and Support Allowance (ESA)\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input.sum-me id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n        tr\n          td Universal Credit\n          td\n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input.sum-me id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n        tr\n          td Pensions (state, work, private)\n          td\n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input.sum-me id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n        tr\n          td Rent from anyone living with you\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input.sum-me id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n        tr\n          td Rent from other properties you own\n          td\n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input.sum-me id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n        tr\n          td \n            | Other monthly income \n            input id='fee' type=\"text\" style=\"margin-bottom:0px;\"\n          td\n            .row style=\"padding-top:18px;\"\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input.sum-me id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n        tr\n          td.bold Total\n          td\n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='total-sum' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='total-sum' type=\"number\" style=\"margin-bottom:0px;\" readonly=\"\"\n          td.bold width=\"12%\" a month\n\n\n  br\n  .row\n    .small-12.medium-6.columns\n      a#next-url href=\"probate.html\" \n        .button.success Continue\n\n\njavascript:\n  $(document).ready( function() {\n    buildNextUrl('savings-amount.html');\n    $('#refund-true').toggle(getUrlParameter('refund') == 'true');\n    $('#refund-false').toggle(getUrlParameter('refund') == 'false');\n  });\n\n  $('.sum-me').on('change', function() {\n      total=0;\n      $('.sum-me').each(function(i,n){\n        if ($(n).val() != \"\") {\n          var thisVal = parseFloat($(n).val());\n          total += thisVal;\n        }\n      });\n      $('#total-sum').val(total);\n    });\n  });",
+			"file": "source/public/journey-7/income-single.slim",
+			"file_size": 7028,
+			"file_write_time": 131044223170000000,
+			"settings":
+			{
+				"buffer_size": 7015,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "---\ntitle: 'Apply for help with fees'\nnav_title: 'GOV.UK'\n---\n\nform\n  .row\n    .small-12.columns\n      br\n      a href=\"children.html\" Back\n      span.hint &nbsp; &nbsp; Step 6 of 17\n      br\n      br\n      h4 What is your total monthly income?\n      p You only need to fill in the fields that apply to you. \n  br\n\n  .row\n    .small-12.medium-12.columns\n      table width=\"100%\"\n        \n        tr\n          td \n          td \n            .row\n              .small-12.columns style=\"padding:0px;\"\n                |Your monthly income\n          td\n          td colspan=\"2\" \n            .row\n              .small-12.columns style=\"padding:0px;\"\n                |Your partner's monthly income\n        tr\n          td Wages (before tax and National Insurance)\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td a month\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td a month\n        tr\n          td Child Benefit\n          td\n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td a month\n        tr\n          td Working tax credit\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td a month\n        tr\n          td Child tax credit\n          td\n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td a month\n        tr\n          td Maintenence payments\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td a month\n        tr\n          td Contribution-based Jobseekers Allowance (JSA)\n          td\n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td a month\n        tr\n          td Contribution-based Employment and Support Allowance (ESA)\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td a month\n        tr\n          td Universal Credit\n          td\n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td a month\n        tr\n          td Pensions (state, work, private)\n          td\n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td a month\n        tr\n          td Rent from anyone living with you\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td a month\n        tr\n          td Rent from other properties you own\n          td\n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td a month\n        tr\n          td \n            | Other monthly income \n            input id='fee' type=\"text\" style=\"margin-bottom:0px;\"\n          td\n            .row style=\"padding-top:18px;\"\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td width=\"12%\" a month\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td a month\n        tr\n          td.bold Total\n          td\n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td.bold width=\"12%\" a month\n          td \n            .row\n              .small-3.medium-3.large-3.columns style=\"padding:0px;\"\n                span.prefix\n                  label.inline for='fee' £\n              .small-9.medium-9.large-8.columns.end style=\"padding:0px;\"\n                input id='fee' type=\"number\" style=\"margin-bottom:0px;\"\n          td.bold a month\n\n\n  br\n  .row\n    .small-12.medium-6.columns\n      a#next-url href=\"probate.html\" \n        .button.success Continue\n\n\njavascript:\n  $(document).ready( function() {\n    buildNextUrl('savings-amount.html');\n    $('#refund-true').toggle(getUrlParameter('refund') == 'true');\n    $('#refund-false').toggle(getUrlParameter('refund') == 'false');\n  });\njavascript:\n  $(document).ready( function() {\n    buildNextUrl('3-savings.html');\n    $('#fee').bind('change', function () {\n      $(\"#next-url\").attr(\"href\", updateQueryStringParameter('fee', $(this).val()));\n    });\n  });\n",
+			"file": "source/public/journey-7/income-partnered.slim",
+			"file_size": 10981,
+			"file_write_time": 131044235940000000,
+			"settings":
+			{
+				"buffer_size": 10955,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "pa",
+		"selected_items":
+		[
+			[
+				"pa",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/jasonbootle/GitHub/fr-prototypes",
+		"/Users/jasonbootle/GitHub/fr-prototypes/source",
+		"/Users/jasonbootle/GitHub/fr-prototypes/source/public"
+	],
+	"file_history":
+	[
+		"/Users/jasonbootle/GitHub/fr-prototypes/source/public/journey-7/savings-amount.slim",
+		"/Users/jasonbootle/GitHub/fr-prototypes/source/public/journey-7/name.slim",
+		"/Users/jasonbootle/GitHub/fr-prototypes/source/public/journey-7/ni.slim",
+		"/Users/jasonbootle/GitHub/fr-prototypes/source/public/journey-7/children.slim",
+		"/Users/jasonbootle/GitHub/fr-prototypes/source/public/journey-7/dob.slim",
+		"/Users/jasonbootle/GitHub/fr-prototypes/source/public/journey-7/address.slim",
+		"/Users/jasonbootle/GitHub/fr-prototypes/source/public/journey-7/case-number.slim",
+		"/Users/jasonbootle/GitHub/fr-prototypes/source/public/journey-7/form-number.slim",
+		"/Users/jasonbootle/GitHub/fr-prototypes/source/public/journey-7/status.slim",
+		"/Users/jasonbootle/GitHub/fr-prototypes/source/public/journey-7/savings.slim",
+		"/Users/jasonbootle/GitHub/fr-prototypes/source/public/journey-7/partner-age.slim",
+		"/Users/jasonbootle/GitHub/fr-prototypes/source/public/journey-7/0-start.slim",
+		"/Users/jasonbootle/GitHub/fr-prototypes/source/public/journey-7/confirmation-refund.slim",
+		"/Users/jasonbootle/GitHub/fr-prototypes/source/public/journey-7/confirmation.slim",
+		"/Users/jasonbootle/GitHub/fr-prototypes/source/public/journey-7/summary.slim",
+		"/Users/jasonbootle/GitHub/fr-prototypes/source/public/journey-7/0-start-paper.slim",
+		"/Users/jasonbootle/Documents/Prototype/kit-master/docs/principles.md"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"0-start.html"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"start.html"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "source/public/journey-7/refund.slim",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2319,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								62,
+								62
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby Slim/Syntaxes/Ruby Slim.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "source/public/address.slim",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1072,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby Slim/Syntaxes/Ruby Slim.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "source/public/journey-7/status.slim",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2212,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2023,
+								2023
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby Slim/Syntaxes/Ruby Slim.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "source/public/journey-7/savings.slim",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2735,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2359,
+								2359
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby Slim/Syntaxes/Ruby Slim.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "source/public/journey-7/partner-age.slim",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1831,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1708,
+								1708
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby Slim/Syntaxes/Ruby Slim.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "source/public/journey-7/benefits.slim",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5120,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5048,
+								5048
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby Slim/Syntaxes/Ruby Slim.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1094.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "source/public/confirmation-refund.slim",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1328,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby Slim/Syntaxes/Ruby Slim.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "source/public/confirmation.slim",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1194,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1194,
+								1194
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby Slim/Syntaxes/Ruby Slim.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "source/public/journey-7/probate.slim",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2187,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2019,
+								2019
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby Slim/Syntaxes/Ruby Slim.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "source/public/journey-7/contact.slim",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1601,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1000,
+								1000
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby Slim/Syntaxes/Ruby Slim.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "source/public/journey-7/income-single.slim",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7015,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								279,
+								337
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby Slim/Syntaxes/Ruby Slim.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "source/public/journey-7/income-partnered.slim",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10955,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								218,
+								218
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby Slim/Syntaxes/Ruby Slim.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "HwF.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 215.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

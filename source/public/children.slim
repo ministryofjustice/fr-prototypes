@@ -42,7 +42,7 @@ form
 
 javascript:
   $(document).ready( function() {
-    buildNextUrl($(getUrlParameter('married')) == "true" ? 'income-partnered.html' : 'income-single.html');
+    buildNextUrl(getUrlParameter('married') == "true" ? 'income-partnered.html' : 'income-single.html');
     //buildNextUrl('income-single.html');
     // $('#refund-true').toggle(getUrlParameter('refund') == 'true');
     // $('#refund-false').toggle(getUrlParameter('refund') == 'false');

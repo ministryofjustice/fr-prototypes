@@ -163,11 +163,12 @@ form
 javascript:
   $(document).ready( function() {
     buildNextUrl('probate.html');
-    //$('#refund-true').toggle(getUrlParameter('refund') == 'true');
-    //$('#refund-false').toggle(getUrlParameter('refund') == 'false');
+    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
+    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
   });
 
-  $('.sum-me').on('change', function() {
+
+//  $('.sum-me').on('change', function() {
       total=0;
       $('.sum-me').each(function(i,n){
         if ($(n).val() != "") {

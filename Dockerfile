@@ -6,5 +6,7 @@ RUN bower install --allow-root
 # docker run -i -t -v $(readlink -f $SSH_AUTH_SOCK):/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent ubuntu /bin/bash
 # in jenkins maybe
 RUN middleman build --verbose
-RUN middleman deploy
-CMD ["echo", "done"]
+EXPOSE 4567
+EXPOSE 35729
+ENTRYPOINT ["bundle", "exec", "middleman"]
+CMD ["server"]

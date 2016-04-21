@@ -7,14 +7,21 @@ form
   .row
     .small-12.medium-6.columns
       br
-      span.hint Step 10 of 17
+      span.hint Step 1 of 20
       br
       h4 What is the form name or number related to this application?
       p eg ‘N1’ or ‘notice to appeal’ form
   .row
     .small-12.medium-6.columns.end
+      label Form name or number
       input name='form_number' id='form_number' type='text'
+      .options.radio
+        .option
+          label for="income-wages"
+            input id="income-wages" type="checkbox" name="income" value="income-wages"
+            | I don’t know the name of the form 
 
+  br
   .row
     .small-12.medium-6.columns  
       details
@@ -28,12 +35,20 @@ form
   br
   .row
     .small-12.columns
-      a#next-url href='ni.html'
+      a#next-url href='refund.html'
         .button.success Continue
+
+
+  br
+  .row
+    .small-12.medium-7.large-6.columns
+      a href='start.html'
+        | Start a new application
+
 
 javascript:
   $(document).ready( function() {
-    buildNextUrl('ni.html');
+    buildNextUrl('refund.html');
     $('#refund-true').toggle(getUrlParameter('refund') == 'true');
     $('#refund-false').toggle(getUrlParameter('refund') == 'false');
   });

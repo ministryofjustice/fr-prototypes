@@ -24,61 +24,46 @@ var incomeSummaryModule = {
 
     $('.row.income-detail').remove();
 
-    html += '<div class="small-12 medium-5 large-4 columns">';
+    html += '<div class="small-12 medium-4 columns">';
     html += '<div class="subheader">Total income (monthly)</div>';
     html += '</div>';
-    html += '<div class="small-12 medium-6 large-7 columns">';
-    html += '£' + self.totals[2];
+    html += '<div class="small-12 medium-7 columns">';
+    html += '<strong>£' + self.totals[2] + '</strong>';
     html += '</div>';
     html += '<div class="small-12 medium-1 large-1 columns">';
     html += '<a href="income.html">Change</a>';
     html += '</div>';
 
-    $('.row#income-summary').html(html).after(self.incomeSourcesTableRow());
+    $('.row#income-summary').html(html).after(self.incomeSourcesRows());
   },
 
-  incomeSourcesTableRow: function() {
+  incomeSourcesRows: function() {
     var self = this,
         html = '';
 
-    html += '<div class="row">';
-    html += '<div class="small-8 small-offset-2 columns">';
-    html += '<table width="100%">';
-
     if(self.isMarried === 'true') {
-      html += '<thead>';
-      html += '<tr>';
-      html += '<th>Source</th>';
-      html += '<th>You</th>';
-      html += '<th>Your partner</th>';
-      html += '</tr>';
-      html += '</thead>';
+      html += '<div class="row">';
+      html += '<div class="small-4 small-offset-4 columns"><strong>You</strong></div>';
+      html += '<div class="small-4 columns"><strong>Your partner</strong></div>';
+      html += '</div>';
     }
-
-    html += '<tbody>';
 
     self.sources.forEach(function(source) {
-      html += '<tr>';
-      html += '<th>' + source.text + '</th>';
-      html += '<td>£' + (source.userAmount ? source.userAmount : 0) + '</td>';
-      if(self.isMarried === 'true') {
-        html += '<td>£' + (source.partnerAmount ? source.partnerAmount : 0) + '</td>';
-      }
-      html += '</tr>';
+      html += '<div class="row">';
+      html += '<div class="small-4 columns"><div class="subheader">' + source.text + '</div></div>';
+      html += '<div class="small-4 columns">£' + (source.userAmount ? source.userAmount : 0) + '</div>';
+
+      html += '<div class="small-4 columns">' + (self.isMarried === 'true' ? '£' + (source.partnerAmount ? source.partnerAmount : 0) : '&nbsp;') + '</div>';
+
+      html += '</div>';
     });
 
-    html += '</tbody>';
-    html += '<tfoot>';
-    html += '<tr>';
-    html += '<td></td>';
-    html += '<td>£' + self.totals[0] + '</td>';
     if(self.isMarried === 'true') {
-      html += '<td>£' + self.totals[1] + '</td>';
+      html += '<div class="row">';
+      html += '<div class="small-4 small-offset-4 columns"><strong>£' + self.totals[0] + '</strong></div>';
+      html += '<div class="small-4 columns"><strong>£' + self.totals[1] + '</strong></div>';
+      html += '</div>';
     }
-    html += '</tr>';
-    html += '</tfoot>';
-    html += '</table>';
-    html += '</div></div>';
 
     return html;
   },

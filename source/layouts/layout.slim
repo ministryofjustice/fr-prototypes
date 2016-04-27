@@ -1,5 +1,5 @@
 doctype html
-html ng-app="app"
+html
   head
     meta charset='utf-8'
     title = current_page.data.title || yield_content(:page_title) || 'Ministry of Justice'
@@ -28,5 +28,5 @@ html ng-app="app"
           = partial 'partials/layout/footer'
           p
           = link_to '', '/'
-      = javascript_include_tag 'libs', 'app', 'details.polyfill'
+      = javascript_include_tag 'libs', 'app', 'details.polyfill', 'income_sources', 'income_input', 'income_summary'
       = include_javascripts(current_page.data.javascripts || current_page.data.javascripts)

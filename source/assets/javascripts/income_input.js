@@ -28,16 +28,34 @@ var incomeInputModule = {
     var self = this,
         incomeSource = self.sources[n],
         html = '',
-        $target = $('#income-entry');
+        $target = $('#income-entry'),
+        who = '';
 
     $target.data({
       source: incomeSource,
       sourceNum: n
     });
 
-    html += '<span class="hint">10.' + (n + 1) + ' of 20</span>';
+    html += '<span class="hint">10 of 20</span>';
 
-    html += '<h4>Income: ' + incomeSource.text + '</h4>';
+    html += '<h4>' + incomeSource.text + '</h4>';
+
+    if(incomeSource.user && incomeSource.partner) {
+      who = 'you and your partner receive';
+    } else {
+      if(incomeSource.user) {
+        who = 'you receive';
+      } else {
+        who = 'your partner receives';
+      }
+    }
+
+    if(incomeSource.name === 'income-wages') {
+      html += '<br><p>Enter the amount ' + who + ' every month before tax and National Insurance have been taken off.</p>';
+      html += '<p>If you get paid weekly, multiply your weekly wage by 52 and divide by 12 to get a monthly total.</p>';
+    } else {
+      html += '<br><p>Enter the amount ' + who + ' every month.</p>';
+    }
 
     for(var x in self.prefixes) {
       var prefix = self.prefixes[x];
@@ -51,12 +69,9 @@ var incomeInputModule = {
 
   writeInput: function(prefix, incomeSource) {
     var html = '',
-        person = (prefix === 'user' ? "your" : "your partner's");
+        preface = (prefix === 'user' ? "You receive" : "Your partner receives");
 
-    html += '<br><p>Enter <strong>' + person + '</strong> income from ' + incomeSource.text + ' <strong>per month</strong>.</p>';
-    if(incomeSource.name === 'income-wages') {
-      html += '<p>Enter the amount before tax and National Insurance have been taken off.</p>';
-    }
+    html += '<label for="' + prefix + '-' + incomeSource.name + '">' + preface + '</label>';
 
     html += '<div class="row"><div class="small-6 medium-10 columns"><div class="small-2 columns" style="padding: 0">'
     html += '<span class="prefix"><label class="inline" for="' + prefix + '-' + incomeSource.name + '">£</label></span>';

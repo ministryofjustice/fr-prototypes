@@ -2,9 +2,11 @@
 
 var incomeInputModule = {
   sources: null,
-  prefixes: incomeSourcesModule.prefixes,
+  prefixes: null,
   init: function() {
     var self = this;
+
+    self.prefixes = incomeSourcesModule.prefixes;
 
     self.sources = JSON.parse(localStorage.getItem('income-sources'));
     console.dir(self.sources);

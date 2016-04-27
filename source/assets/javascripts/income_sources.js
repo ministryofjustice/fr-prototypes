@@ -6,7 +6,7 @@ var incomeSourcesModule = {
   sources: [
     {
       name: 'income-wages',
-      text: 'Wages (before tax and National Insurance)'
+      text: 'Wages'
     },
     {
       name: 'income-child-benefit',

@@ -10,11 +10,8 @@ var incomeSummaryModule = {
 
     if($('.row#income-summary').length) {
       self.sources = JSON.parse(localStorage.getItem('income-sources'));
-      console.dir(self.sources);
       self.totals = self.getTotals();
       self.showIncomeSummary();
-
-      console.log(self.totals);
     }
   },
 
@@ -28,7 +25,7 @@ var incomeSummaryModule = {
     html += '<div class="subheader">Total income (monthly)</div>';
     html += '</div>';
     html += '<div class="small-12 medium-7 columns">';
-    html += '<strong>£' + self.totals[2] + '</strong>';
+    html += '<strong>' + self.formatCurrency(self.totals[2]) + '</strong>';
     html += '</div>';
     html += '<div class="small-12 medium-1 large-1 columns">';
     html += '<a href="income.html">Change</a>';
@@ -51,17 +48,17 @@ var incomeSummaryModule = {
     self.sources.forEach(function(source) {
       html += '<div class="row">';
       html += '<div class="small-4 columns"><div class="subheader">' + source.text + '</div></div>';
-      html += '<div class="small-4 columns">£' + (source.userAmount ? source.userAmount : 0) + '</div>';
+      html += '<div class="small-4 columns">' + self.formatCurrency((source.userAmount ? source.userAmount : 0)) + '</div>';
 
-      html += '<div class="small-4 columns">' + (self.isMarried === 'true' ? '£' + (source.partnerAmount ? source.partnerAmount : 0) : '&nbsp;') + '</div>';
+      html += '<div class="small-4 columns">' + (self.isMarried === 'true' ? self.formatCurrency(source.partnerAmount ? source.partnerAmount : 0) : '&nbsp;') + '</div>';
 
       html += '</div>';
     });
 
     if(self.isMarried === 'true') {
       html += '<div class="row">';
-      html += '<div class="small-4 small-offset-4 columns"><strong>£' + self.totals[0] + '</strong></div>';
-      html += '<div class="small-4 columns"><strong>£' + self.totals[1] + '</strong></div>';
+      html += '<div class="small-4 small-offset-4 columns"><strong>' + self.formatCurrency(self.totals[0]) + '</strong></div>';
+      html += '<div class="small-4 columns"><strong>' + self.formatCurrency(self.totals[1]) + '</strong></div>';
       html += '</div>';
     }
 
@@ -79,5 +76,9 @@ var incomeSummaryModule = {
     });
 
     return [userTotal, partnerTotal, (self.isMarried === 'true' ? userTotal + partnerTotal : userTotal)];
+  },
+
+  formatCurrency: function(amount) {
+    return '£' + numeral(amount).format('0,0.00');
   }
 };

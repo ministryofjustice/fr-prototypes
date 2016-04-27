@@ -11,17 +11,28 @@ var incomeInputModule = {
     self.sources = JSON.parse(localStorage.getItem('income-sources'));
     console.dir(self.sources);
 
+    if(self.sources.length) {
+      self.collectIncome(0);
+      self.bindEvents();
+    } else {
+      self.finishIncome();
+    }
+  },
+
+  bindEvents: function() {
+    var self = this;
+
+    $(document).on('keypress', '#income-entry input', function(e) {
+      if(e.keyCode === 13) {
+        e.preventDefault();
+        self.recordIncome();
+      }
+    });
+
     $('#next-url').attr('href', '#').on('click', function(e) {
       e.preventDefault();
       self.recordIncome();
     });
-
-    if(self.sources.length) {
-      self.collectIncome(0);
-    } else {
-      // TODO: no income
-      self.finishIncome();
-    }
   },
 
   collectIncome: function(n) {
@@ -65,6 +76,7 @@ var incomeInputModule = {
     }
 
     $target.html(html);
+    $target.find('input').eq(0).trigger('focus');
   },
 
   writeInput: function(prefix, incomeSource) {

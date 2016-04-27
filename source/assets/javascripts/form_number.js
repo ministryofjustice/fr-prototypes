@@ -76,7 +76,7 @@ var formNumberModule = {
     var self = this;
 
     if(self.getStoredFormNumber()) {
-      $('.form-number').html(self.getStoredFormNumber() + ' application').wrap('<strong />');
+      $('.form-number').html('your ' + self.getStoredFormNumber() + ' form');
     }
   }
 };

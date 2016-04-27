@@ -73,23 +73,44 @@ var incomeSourcesModule = {
       e.preventDefault();
       self.getSources();
     });
+
+    $(document).on('click', '#income-sources-wrapper input', function(e) {
+      self.checkColumn($(e.target));
+    });
   },
 
   writeIncomeSources: function() {
     var self = this,
-        $wrapper = $('#income-sources-wrapper');
-
-
+        $wrapper = $('#income-sources-wrapper'),
+        html = '';
 
     self.sources.forEach(function(source) {
-      var html = '<div class="row source-row" data-source="' + source.name + '">';
+      html += '<div class="row source-row" data-source="' + source.name + '">';
       html += self.compileSource(source.name, source.text, self.prefixes[0]);
       if(self.isMarried === 'true') {
         html += self.compileSource(source.name, source.text, self.prefixes[1]);
       };
       html += '</div>';
-      $wrapper.append(html);
     });
+
+    html += '<div class="row source-row no-income-row">';
+    html += '<div class="small-12 medium-6 columns">';
+    html += '<div class="options radio"><div class="option">';
+    html += '<label for="user-none">';
+    html += '<input id="user-none" class="check-none" type="checkbox">';
+    html += 'No income';
+    html += '</label></div></div></div>';
+    if(self.isMarried === 'true') {
+      html += '<div class="small-12 medium-6 columns">';
+      html += '<div class="options radio"><div class="option">';
+      html += '<label for="partner-none">';
+      html += '<input id="partner-none" class="check-none" type="checkbox">';
+      html += 'No income';
+      html += '</label></div></div></div>';
+    };
+    html += '</div>';
+
+    $wrapper.append(html);
   },
 
   compileSource: function(name, text, prefix) {
@@ -107,7 +128,7 @@ var incomeSourcesModule = {
     var self = this,
         sources = [];
 
-    $(self.sourcesContainer).find('.source-row').each(function(n, row) {
+    $(self.sourcesContainer).find('.source-row:not(.no-income-row)').each(function(n, row) {
       var $row = $(row),
           checkedInRow = $row.find('input:checked');
       if(checkedInRow.length) {
@@ -132,5 +153,15 @@ var incomeSourcesModule = {
     var self = this;
 
     document.location = $(self.nextButton).attr('href');
+  },
+
+  checkColumn: function($el) {
+    var whichColumn = $el.attr('id').split('-')[0];
+
+    if($el.hasClass('check-none')) {
+      $('input[id^="' + whichColumn + '"]:checked').trigger('click');
+    } else {
+      $('input[id="' + whichColumn + '-none"]:checked').trigger('click');
+    }
   }
 };

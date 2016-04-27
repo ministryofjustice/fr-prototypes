@@ -9,8 +9,8 @@ form
       br
       span.hint Step 1 of 20
       br
-      h4 What court or tribunal fee do you need help with? 
-      p Enter the court or tribunal form number for the court business you need help with, for example ‘C100’, ‘D8’ or ‘notice to appeal’ form. 
+      h4 What court or tribunal fee do you need help with?
+      p Enter the court or tribunal form number for the court business you need help with, for example ‘C100’, ‘D8’ or ‘notice to appeal’ form.
 
   .row
     .small-12.medium-6.columns.end
@@ -18,19 +18,19 @@ form
       input name='form_number' id='form_number' type='text'
       .options.radio
         .option
-          label for="income-wages"
-            input id="income-wages" type="checkbox" name="income" value="income-wages"
-            | I don’t know the form name or number  
+          label for="form-unknown"
+            input id="form-unknown" type="checkbox"
+            | I don’t know the form name or number
 
   br
   .row
-    .small-12.medium-6.columns  
+    .small-12.medium-6.columns
       details
         summary Help with form name or number
         .panel-indent
           p You can usually find the form name at the top of the form, and the number at the bottom.
           p If you don’t have a form name or number, for example if you’re applying for help with a hearing fee, then write ‘hearing fee’ as the answer to this question.
- 
+
   br
   .row
     .small-12.columns
@@ -50,4 +50,6 @@ javascript:
     buildNextUrl('refund.html');
     $('#refund-true').toggle(getUrlParameter('refund') == 'true');
     $('#refund-false').toggle(getUrlParameter('refund') == 'false');
+
+    formNumberModule.init();
   });

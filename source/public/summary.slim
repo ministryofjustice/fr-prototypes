@@ -67,10 +67,10 @@ form
       | £500
     .small-12.medium-1.large-1.columns
   hr
-  .row
+  .row#form-number
     .small-12.medium-5.large-4.columns
       .subheader Form name or number
-    .small-12.medium-6.large-7.columns
+    .small-12.medium-6.large-7.columns.detail
       | N244
     .small-12.medium-1.large-1.columns
       a href="form-number.html"
@@ -146,4 +146,5 @@ form
 javascript:
   $(document).ready( function() {
     incomeSummaryModule.init();
+    formNumberModule.init();
   });

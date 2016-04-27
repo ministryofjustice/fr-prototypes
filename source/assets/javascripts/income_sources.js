@@ -54,11 +54,12 @@ var incomeSourcesModule = {
     },
   ],
   prefixes: ['user', 'partner'],
-  isMarried: getUrlParameter('married').toString(),
+  isMarried: null,
 
   init: function() {
     var self = this;
     if($(self.sourcesContainer).length) {
+      self.isMarried = getUrlParameter('married').toString();
       self.bindEvents();
       self.writeIncomeSources();
     }

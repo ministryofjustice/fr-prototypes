@@ -2,13 +2,15 @@
 
 var incomeSummaryModule = {
   sources: null,
-  prefixes: incomeSourcesModule.prefixes,
-  isMarried: getUrlParameter('married').toString(),
+  prefixes: null,
+  isMarried: null,
 
   init: function() {
     var self = this;
 
     if($('.row#income-summary').length) {
+      self.prefixes = incomeSourcesModule.prefixes;
+      self.isMarried = getUrlParameter('married').toString();
       self.sources = JSON.parse(localStorage.getItem('income-sources'));
       self.totals = self.getTotals();
       self.showIncomeSummary();

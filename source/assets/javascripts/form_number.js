@@ -1,8 +1,6 @@
 "use strict";
 
 var formNumberModule = {
-  defaultFormText: 'Your Application',
-
   init: function() {
     var self = this;
 
@@ -12,6 +10,10 @@ var formNumberModule = {
 
     if($('.row#form-number').length) {
       self.writeFormNumberToSummary();
+    }
+
+    if($('.show-form-number').length) {
+      self.displayFormNumber();
     }
   },
 
@@ -28,16 +30,28 @@ var formNumberModule = {
     var self = this,
         formNumber = self.defaultFormText;
 
+    localStorage.removeItem('form-number');
+
     if(!$('#form-unknown').prop('checked')) {
       if($('#form_number').val() !== '') {
         formNumber = $('#form_number').val();
+        localStorage.setItem('form-number', JSON.stringify(formNumber));
       }
     }
 
-    console.log(formNumber);
-    localStorage.setItem('form-number', JSON.stringify(formNumber));
-
     self.goNext();
+  },
+
+  getStoredFormNumber: function() {
+    var self = this,
+        key = 'form-number',
+        storedFormNumber = false;
+
+    if(localStorage.getItem(key)) {
+      storedFormNumber = JSON.parse(localStorage.getItem(key));
+    }
+
+    return storedFormNumber;
   },
 
   goNext: function() {
@@ -49,12 +63,20 @@ var formNumberModule = {
         key = 'form-number',
         storedFormNumber;
 
-    if(localStorage.getItem(key)) {
-      storedFormNumber = JSON.parse(localStorage.getItem(key));
+    if(self.getStoredFormNumber()) {
+      storedFormNumber = self.getStoredFormNumber();
     } else {
-      storedFormNumber = self.defaultFormText;
+      storedFormNumber = 'not known';
     }
 
     $('#form-number .detail').text(storedFormNumber);
+  },
+
+  displayFormNumber: function() {
+    var self = this;
+
+    if(self.getStoredFormNumber()) {
+      $('.form-number').html(self.getStoredFormNumber() + ' application').wrap('<strong />');
+    }
   }
 };

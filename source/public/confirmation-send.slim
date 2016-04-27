@@ -5,33 +5,35 @@ nav_title: 'GOV.UK'
 
 form
   .row
-    .small-12.medium-10.columns
+    .small-12.medium-8.columns.show-form-number
       span.hint Step 20 of 20
       br
       br
-      h4 Send your application to complete the process 
+      h4 Send your <span class="form-number">court or tribunal form</span> to complete the process
       br
-      div.large
-      img src=image_path("../../assets/images/icon-post.png") &nbsp; &nbsp; Deliver your paperwork to the court or tribunal dealing with your case. You can do this by post or in person. 
+
+      p style="display: table"
+        span style="display: table-cell; width: 145px"
+          img src=image_path("../../assets/images/icon-post.png") align="left"
+        span style="display: table-cell; vertical-align: middle; padding-left: 20px;" Deliver your paperwork to the court or tribunal dealing with your case. You can do this by post or in person.
       br
-      br
-      .row
-        .small-12.medium-10.columns
-          .panel
-            h4.bold What happens next?
-            br
-            ol
-              li Your application will be assessed by court or tribunal staff. This usually takes no longer than 21 days. 
-              br
-              li You'll hear from the court or tribunal if your application is unsuccessful or if they need more information from you. 
-              br
-              li If your application is successful you'll hear directly from the court or tribunal dealing with your case.  
+      / .row
+      /   .small-12.medium-10.columns
+      .panel
+        h4.bold What happens next?
+        br
+        ol
+          li Your application will be assessed by court or tribunal staff. This usually takes no longer than 21 days.
+          br
+          li You'll hear from the court or tribunal if your application is unsuccessful or if they need more information from you.
+          br
+          li If your application is successful you'll hear directly from the court or tribunal dealing with your case.
 
   br
   .row
     .small-12.columns
-      a href="#"Print this page
-  
+      a href="#" Print this page
+
   br
   .row
     .small-12.medium-7.large-6.columns
@@ -39,6 +41,13 @@ form
         .success Start a new application
   br
   br
-  
 
-  
+
+
+javascript:
+  $(document).ready( function() {
+    formNumberModule.init();
+  });
+
+
+

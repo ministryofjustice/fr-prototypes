@@ -5,26 +5,27 @@ nav_title: 'GOV.UK'
 
 form
   .row
-    .small-12.medium-10.columns
+    .small-12.medium-10.columns.show-form-number
       span.hint Step 19 of 20
       br
       br
-      h4 Your application for help with fees is not finished yet 
+      h4 Your application for help with fees is not finished yet
       br
       ul
-        li you must write this reference number [HWF-xxx-xxx] on the court or tribunal form for which you need help with the fee 
+        li
+          | you must write this reference number [HWF-xxx-xxx] on the <span class="form-number">court or tribunal form</span> for which you need help with the fee
       br
       div.large
       img src=image_path("/assets/images/icon-hwf-paper-form.png") &nbsp; &nbsp;
       br
-        li write the reference number in the ‘HWF reference’ field if there is one. If not, you should write it wherever there is space on the court or tribunal form 
+        li write the reference number in the ‘HWF reference’ field if there is one. If not, you should write it wherever there is space on the court or tribunal form
         br
-        li you can also print this page and attach it to your court or tribunal form 
+        li you can also print this page and attach it to your court or tribunal form
 
   .row
     .small-12.columns
       a href="#"Print this page
-  
+
   br
   br
   .row
@@ -32,5 +33,8 @@ form
       a#next-url href='confirmation-send.html'
         .button.success Continue
 
+javascript:
+  $(document).ready( function() {
+    formNumberModule.init();
+  });
 
-  

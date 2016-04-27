@@ -4,8 +4,6 @@ var formNumberModule = {
   init: function() {
     var self = this;
 
-    console.log('formNumberModule.init');
-
     if($('input#form_number').length) {
       self.bindEvents();
     }

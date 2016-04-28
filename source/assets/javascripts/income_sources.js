@@ -157,12 +157,26 @@ var incomeSourcesModule = {
   },
 
   checkColumn: function($el) {
-    var whichColumn = $el.attr('id').split('-')[0];
+    var self = this,
+        whichColumn = $el.attr('id').split('-')[0];
 
-    if($el.hasClass('check-none')) {
-      $('input[id^="' + whichColumn + '"]:checked').trigger('click');
+    if($el.hasClass('check-none') && $el.is(':checked')) {
+      $('input[id^="' + whichColumn + '"]:checked').each(function(n, el) {
+        self.unselect($(el));
+      });
+      self.select($el);
     } else {
-      $('input[id="' + whichColumn + '-none"]:checked').trigger('click');
+      $('input[id="' + whichColumn + '-none"]:checked').each(function(n, el) {
+        self.unselect($(el));
+      });
     }
+  },
+
+  select: function($el) {
+    $el.prop('checked', true).closest('label').addClass('selected');
+  },
+
+  unselect: function($el) {
+    $el.prop('checked', false).closest('label').removeClass('selected');
   }
 };

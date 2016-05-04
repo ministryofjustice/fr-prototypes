@@ -18,11 +18,17 @@ br
   .small-12.medium-6.columns
     .panel data-equalizer-watch=''
       h4 Process an online application
-      label for='last_name'
-        | Reference
-        input id='last_name' type='text'
+      label for='reference'
+        | Enter 6 character reference
+      .small-2.medium-3.large-3.columns style="padding:0px;"
+        span.prefix
+          label.inline for='fee' HWF 
+      .small-10.medium-9.large-9.columns style="padding:0px;"
+        input id='reference' type='text' style='text-transform: uppercase;'
+      
       a.button.success href='online-application-details-1.html' 
-        |Start now
+        | Start now
+
 
 br
 .row

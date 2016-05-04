@@ -4,18 +4,18 @@ nav_title: 'Help with fees'
 section_title: 'Process application'
 rh_help: false
 ---
-form       
+form
   br
-  .row   
-    .small-12.columns   
+  .row
+    .small-12.columns
       .panel.callout.grey
-        .confirm-box   
-          div.confirmation-two 
+        .confirm-box
+          div.confirmation-two
             img src="../assets/images/confirmation-tick.png" width="27px" height="27px" style="margin-right:15px;"
               |The reference number is
 
           div.confirmation
-            |AT001-15-4
+            | HWF-TTK-421
 
   .row
     .small-12.medium-7.large-8.columns
@@ -45,18 +45,18 @@ form
       .panel.callout.received
         .row
           .small-12.columns
-            h3#result-display &#10003; Eligible for help with fees 
+            h3#result-display &#10003; Eligible for help with fees
 
 
   hr
   br
-  h3 Next steps 
+  h3 Next steps
   .row
     .small-12.columns
       ul
         li write reference on the top right corner of the form
         li copy reference into the case management system
-        
+
   br
 
 
@@ -80,7 +80,8 @@ javascript:
     }
 
     var to_pay = unescape(getUrlParameter('to_pay'));
-    if (to_pay!='') {
+    if (to_pay !== 'undefined' && to_pay != '') {
+      console.log(to_pay);
       $('#result-display').text(to_pay);
       console.log(to_pay.indexOf("£"));
       console.log(to_pay.indexOf("£0"));

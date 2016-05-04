@@ -19,64 +19,49 @@ form
     .small-12.medium-5.large-5.columns
       .small-2.medium-3.large-3.columns style="padding:0px;"
         span.prefix
-          label.inline for='fee' £
+          label.inline for='savings-detail' £
       .small-10.medium-9.large-9.columns style="padding:0px;"
-        input id='fee' type="number"
+        input id='savings-detail' type="number" max="16000"
 
-
-  #savings-more.row.hide.collapse
-    .row
-      .small-12.columns
-        .panel-indent
-          .row
-            .small-12.columns
-              label In question 8, is the applicant (or their partner) 61 or over?
-          .row
-            .small-12.medium-9.large-8.columns
-              .options.radio
-                .option
-                  label for="age-no"
-                    input id="age-no" type="radio" name="age" value="false"
-                    | No
-                .option
-                  label for="age-yes"
-                    input id="age-yes" type="radio" name="age" value="true"
-                    | Yes
-          #figure.row.hide
-            br
-            .row
-              .small-12.columns
-                label In question 8, how much do they have in savings and investments?
-            .row
-              .small-12.medium-5.large-5.columns
-                .row
-                  .small-2.medium-3.large-3.columns style="padding:0px;"
-                    span.prefix
-                      label.inline for='fee' £
-                  .small-10.medium-9.large-9.columns style="padding:0px;"
-                    input id='fee' type="number"
-          #sixteen.row.hide
-            br
-            .row
-              .small-12.columns
-                label In question 8, how much do they have in savings and investments?
-            .row
-              .small-12.medium-9.large-8.columns
-                .options.radio
-                  .option
-                    label for="sixteen-no"
-                      input id="sixteen-no" type="radio" name="sixteen" value="false"
-                      | Less than £16,000
-                  .option
-                    label for="sixteen-yes"
-                      input id="sixteen-yes" type="radio" name="sixteen" value="true"
-                      | More than £16,000
-
-  
   br
   .row
     .small-12.medium-7.large-7.columns
       a#next-url href='4-benefits.html'
         .button.success Next
 
+javascript:
+  $(document).ready( function() {
+    buildNextUrl('4-benefits.html');
 
+    $('#next-url').on('click', function(e) {
+      e.preventDefault();
+      var $form = $(e.target).closest('form')[0];
+      if($form.checkValidity()) {
+        document.location = $('#next-url').attr('href');
+      } else {
+        $('<input type="submit">').hide().appendTo($form).click().remove();
+      }
+    });
+  });
+  $("input#savings-detail").on('change', function () {
+    var $input = $("#savings-detail"),
+        amount = parseInt($input.val(), 10),
+        threshold = getUrlParameter('threshold'),
+        nextPage = '4-benefits.html',
+        fail = false;
+
+    if(amount > threshold) {
+      if(getUrlParameter('couple') === 'true') {
+        nextPage = '3-partner-age.html';
+      } else {
+        nextPage = '7-summary.html';
+        fail = true;
+      }
+    }
+
+    buildNextUrl(nextPage);
+    $("#next-url").attr("href", updateQueryStringParameter('savings-detail',  amount));
+    if(fail) {
+      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded',  'true'));
+    }
+  });

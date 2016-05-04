@@ -15,74 +15,68 @@ form
       label
         span#status-describe In question 7 and 8, how much do they have in savings and investments?
   .row
-    .small-12.medium-9.columns  
+    .small-12.medium-9.columns
       .options.radio
         .option
           label for="savings-low"
-            input id="savings-low" type="radio" name="savings-amount" value="less-than-3k"
-            | Less than £3,000 
+            input id="savings-low" type="radio" name="savings-amount" value="less-than-3k" data-next="4-benefits.html" data-savings="low"
+            | Less than £3,000
         .option
           label for="savings-middle"
-            input id="savings-middle" type="radio" name="savings-amount" value="between-3-16k"
+            input id="savings-middle" type="radio" name="savings-amount" value="between-3-16k" data-next="3-savings-amount.html" data-savings="mid"
             | Between £3,000 and £16,000
         .option
           label for="savings-amount-high"
-            input id="savings-amount-high" type="radio" name="savings-amount" value="more-than-16k"
+            input id="savings-amount-high" type="radio" name="savings-amount" value="more-than-16k" data-next="7-summary.html" data-savings="high"
             | More than £16,000
 
     br
-    
+
   br
   .row
     .small-12.medium-7.large-7.columns
       a#next-url href='4-benefits.html'
         .button.success Next
 
-// @CLIVE - I added this
 javascript:
   $(document).ready( function() {
     buildNextUrl('4-benefits.html');
-    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
-    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
+    $("#next-url").attr("href", updateQueryStringParameter('savings',  'low'));
+    $("#next-url").attr("href", updateQueryStringParameter('threshold',  calcThreshold()));
   });
   $("input[name='savings-amount']").on('change', function () {
-    buildNextUrl($("input[name='savings-amount']:checked").val() == "between-3-16k" ? '3-savings-amount.html' : '7-summary.html');
-  });
-
-// @CLIVE - this was already here
-javascript:
-  $(document).ready( function() {
-    $('#fee').text('£'+getUrlParameter('fee'));
-    $('#age').text(getUrlParameter('age') + ' years old');
-    $('#status').text(getUrlParameter('couple')=='false'?'Single':'Married or living with someone and sharing an income');
-    $('#status-describe').text(getUrlParameter('couple')=='false' ? 'In question 7, how much do they have in savings and investments?' : 'In question 7, how much do they have in savings and investments?');
-    $('#max-savings').text(getUrlParameter('age')>60?'£16,000': '£3,000');
-    buildNextUrl('4-benefits.html');
-
-    $("input[name='savings']").on('change', function () {
-      if (getUrlParameter('couple') == 'true' && getUrlParameter('age') < 61) {
-        $('#savings-more').toggleClass('hide', $("input[name='savings']:checked").val() == "false");
-      }
-      setNextPage();
-    });
-    $("input[name='age']").on('change', function () {
-      $('#sixteen').toggleClass('hide', $("input[name='age']:checked").val() == "false");
-      setNextPage();
-      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded', $("input[name='age']:checked").val()=='false'));
-      $("#next-url").attr("href", updateQueryStringParameter('over-61', $("input[name='age']:checked").val()=='true'));
-    });
-
-    $("input[name='age']").on('change', function () {
-      $('#figure').toggleClass('hide', $("input[name='age']:checked").val() == "true");
-    });
-
-  });
-  function setNextPage() {
-    var jumpToSummary = false;
-    if (getUrlParameter('couple') == 'true' && getUrlParameter('age')<61) {
-      jumpToSummary = ($("input[name='savings']:checked").val() == 'true' && $("input[name='age']:checked").val() == 'false');
-    } else {
-      jumpToSummary = $("input[name='savings']:checked").val() == 'true';
+    var $opt = $("input[name='savings-amount']:checked");
+    buildNextUrl($opt.data('next'));
+    $("#next-url").attr("href", updateQueryStringParameter('savings',  $opt.data('savings')));
+    $("#next-url").attr("href", updateQueryStringParameter('threshold',  calcThreshold()));
+    if($opt.data('savings') === 'high') {
+      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded',  'true'));
     }
-    buildNextUrl(jumpToSummary ? '4-benefits.html' : '7-summary.html');
+  });
+  function calcThreshold() {
+    var threshold = 3000,
+        bands = [
+          [1000, 4000],
+          [1335, 5000],
+          [1665, 6000],
+          [2000, 7000],
+          [2330, 8000],
+          [4000, 10000],
+          [5000, 12000],
+          [6000, 14000],
+          [7000, 16000]
+        ],
+        fee = getUrlParameter('fee'),
+        age = getUrlParameter('age');
+
+    if(age && age > 60) {
+      threshold = 16000;
+    } else if(fee) {
+      for(x in bands) {
+        if(fee > bands[x][0]) {
+          threshold = bands[x][1];
+        }
+      }
+    }
+    return threshold;
   }

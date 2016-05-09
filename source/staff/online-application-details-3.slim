@@ -4,13 +4,13 @@ nav_title: 'Help with fees'
 section_title: 'Process application'
 rh_help: false
 ---
-form       
+form
   br
-  .row   
-    .small-12.columns   
+  .row
+    .small-12.columns
       .panel.callout.grey
-        .confirm-box   
-          div.confirmation-two 
+        .confirm-box
+          div.confirmation-two
             img src="../assets/images/confirmation-tick.png" width="27px" height="27px" style="margin-right:15px;"
               |The reference number is
 
@@ -37,12 +37,12 @@ form
       .panel.callout.received
         .row
           .small-12.columns
-            h3 Eligible for help with fees 
+            h3 Eligible for help with fees
 
 
   hr
   br
-  h3 Next steps 
+  h3 Next steps
   br
 
   .row
@@ -59,18 +59,18 @@ form
 
 javascript:
   $(document).ready( function() {
-    $('#benefits').text(getUrlParameter('benefits')=='true' ? 'Receiving correct benefits' : 'Benefits not received');
-    $('#results-benefits').toggle(getUrlParameter('benefits')=='true');
-    $('#results-income').toggle(getUrlParameter('calculator')=='true');
+    $('#benefits').text(getValue('benefits')=='true' ? 'Receiving correct benefits' : 'Benefits not received');
+    $('#results-benefits').toggle(getValue('benefits')=='true');
+    $('#results-income').toggle(getValue('calculator')=='true');
 
-    if (getUrlParameter('savings-exceeded') == 'true') {
+    if (getValue('savings-exceeded') == 'true') {
       $('#savings-result-display').addClass('summary-result-failure').text('Failed. Savings over the threshold');
       $('#result-display').addClass('summary-result-failure').text('The applicant must pay the full fee');
-    } else if (getUrlParameter('over-61') == 'true' || getUrlParameter('age') > 60) {
+    } else if (getValue('over-61') == 'true' || getValue('age') > 60) {
       $('#income-result-display').html('&#10003; Passed. Less than £16,000');
     }
 
-    var to_pay = unescape(getUrlParameter('to_pay'));
+    var to_pay = unescape(getValue('to_pay'));
     if (to_pay!='') {
       $('#result-display').text(to_pay);
       console.log(to_pay.indexOf("£"));
@@ -84,13 +84,13 @@ javascript:
       }
     }
 
-    if(getUrlParameter('calculator')=='true') {
+    if(getValue('calculator')=='true') {
       if(to_pay=="The applicant doesn't have to pay the fee") {
         $('#result-display').addClass('orange').text('Evidence of income needs to be checked for this application');
       }
     }
 
-    //var to_pay = unescape(getUrlParameter('to_pay'));
+    //var to_pay = unescape(getValue('to_pay'));
     //if (to_pay!='') {
     //  //$('#outcome').text(to_pay);
     //  console.log(to_pay.indexOf("£"));
@@ -101,11 +101,11 @@ javascript:
     //  }
     //}
     //
-    //if(getUrlParameter('benefits')=='true') {
+    //if(getValue('benefits')=='true') {
     //  $('#remission-type').addClass('callout-full');
     //  buildNextUrl('8-confirmation-success.html');
     //  $('#next-url div').text('Complete processing');
-    //} else if(getUrlParameter('calculator')=='true') {
+    //} else if(getValue('calculator')=='true') {
     //  $('#remission-type').addClass('callout-part');
     //  if(to_pay=='The applicant has £0 to pay') {
     //    $('#remission-type h3').text('Evidence of income needs to be checked for this application');

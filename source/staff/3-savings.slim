@@ -41,16 +41,16 @@ form
 javascript:
   $(document).ready( function() {
     buildNextUrl('4-benefits.html');
-    $("#next-url").attr("href", updateQueryStringParameter('savings',  'low'));
-    $("#next-url").attr("href", updateQueryStringParameter('threshold',  calcThreshold()));
+    storeValue('savings',  'low');
+    storeValue('threshold',  calcThreshold());
   });
   $("input[name='savings-amount']").on('change', function () {
     var $opt = $("input[name='savings-amount']:checked");
     buildNextUrl($opt.data('next'));
-    $("#next-url").attr("href", updateQueryStringParameter('savings',  $opt.data('savings')));
-    $("#next-url").attr("href", updateQueryStringParameter('threshold',  calcThreshold()));
+    storeValue('savings',  $opt.data('savings'));
+    storeValue('threshold',  calcThreshold());
     if($opt.data('savings') === 'high') {
-      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded',  'true'));
+      storeValue('savings-exceeded',  'true');
     }
   });
   function calcThreshold() {

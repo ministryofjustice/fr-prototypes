@@ -13,24 +13,24 @@ form
     .small-12.medium-.large-8.columns
       h4 Personal details
   .row
-    .small-12.medium-5.large-4.columns 
+    .small-12.medium-5.large-4.columns
       .subheader Full name
-    .small-12.medium-7.large-8.columns 
+    .small-12.medium-7.large-8.columns
       | Mr Mark Morgan
   .row
-    .small-12.medium-5.large-4.columns 
+    .small-12.medium-5.large-4.columns
       .subheader Date of birth
-    .small-12.medium-7.large-8.columns 
+    .small-12.medium-7.large-8.columns
       | 2 December 1979
   .row
-    .small-12.medium-5.large-4.columns 
+    .small-12.medium-5.large-4.columns
       .subheader NI number
-    .small-12.medium-7.large-8.columns 
+    .small-12.medium-7.large-8.columns
       | PW 55 63 56 A
   .row
-    .small-12.medium-5.large-4.columns 
+    .small-12.medium-5.large-4.columns
       .subheader Status
-    .small-12.medium-7.large-8.columns 
+    .small-12.medium-7.large-8.columns
       | Single
     .small-12.columns
   hr
@@ -38,52 +38,52 @@ form
     .small-12.medium-8.large-8.columns
       h4 Application details
   .row
-    .small-12.medium-5.large-4.columns 
+    .small-12.medium-5.large-4.columns
       .subheader Fee
-    .small-12.medium-7.large-8.columns 
+    .small-12.medium-7.large-8.columns
       | £215
   .row
-    .small-12.medium-5.large-4.columns 
+    .small-12.medium-5.large-4.columns
       .subheader Jurisdiction
-    .small-12.medium-7.large-8.columns 
+    .small-12.medium-7.large-8.columns
       | Family court
   .row
-    .small-12.medium-5.large-4.columns 
+    .small-12.medium-5.large-4.columns
       .subheader Date application received
-    .small-12.medium-7.large-8.columns 
+    .small-12.medium-7.large-8.columns
       | 19 October 2015
   .row
-    .small-12.medium-5.large-4.columns 
+    .small-12.medium-5.large-4.columns
       .subheader Form name or number
-    .small-12.medium-7.large-8.columns 
+    .small-12.medium-7.large-8.columns
       | C100
-    .small-12.columns  
+    .small-12.columns
   hr
   .row
     .small-12.medium-7.large-8.columns
       h4 Savings and investments
   .row
-    .small-12.medium-5.large-4.columns 
-      .subheader Savings total eligible 
-    .small-12.medium-7.large-8.columns 
+    .small-12.medium-5.large-4.columns
+      .subheader Savings total eligible
+    .small-12.medium-7.large-8.columns
       | Yes
   hr
   .row
     .small-12.medium-7.large-8.columns
       h4 Benefits
   .row
-    .small-12.medium-5.large-4.columns 
+    .small-12.medium-5.large-4.columns
       .subheader Receiving eligible benefits
-    .small-12.medium-7.large-8.columns 
+    .small-12.medium-7.large-8.columns
       | No
   hr
   .row
     .small-12.medium-7.large-8.columns
       h4 Income
   .row
-    .small-12.medium-5.large-4.columns 
+    .small-12.medium-5.large-4.columns
       .subheader Applicant has children
-    .small-12.medium-7.large-8.columns 
+    .small-12.medium-7.large-8.columns
       | Yes
   .row
     .small-12.medium-5.large-4.columns
@@ -95,7 +95,7 @@ form
       .subheader Total monthly income
     .small-12.medium-7.large-8.columns#income
       | £1042
-  
+
   hr
   .row
     .small-12.medium-7.large-8.columns
@@ -105,14 +105,14 @@ form
         a href='#'
           | Change evidence
   .row
-    .small-12.medium-5.large-4.columns 
-      .subheader Evidence processed 
-    .small-12.medium-7.large-8.columns 
+    .small-12.medium-5.large-4.columns
+      .subheader Evidence processed
+    .small-12.medium-7.large-8.columns
       | Yes
   .row
-    .small-12.medium-5.large-4.columns 
+    .small-12.medium-5.large-4.columns
       .subheader Total monthly income from evidence
-    .small-12.medium-7.large-8.columns 
+    .small-12.medium-7.large-8.columns
       | £1,050
   hr
 
@@ -124,8 +124,8 @@ form
 
 javascript:
   $(document).ready( function() {
-    $('#income').text('£' + getUrlParameter('income'));
-    switch (getUrlParameter('outcome')) {
+    $('#income').text('£' + getValue('income'));
+    switch (getValue('outcome')) {
       case 'none':
         $('#income-result-display')
           .removeClass('summary-result-success')
@@ -136,7 +136,7 @@ javascript:
         buildNextUrl('evidence-check-7b.html');
         break;
       case 'part':
-        to_pay = getUrlParameter('to_pay') || '0'
+        to_pay = getValue('to_pay') || '0'
         $('#remission-type').addClass('callout-part');
       $('#remission-type h3').text('The applicant must pay ' + unescape(to_pay) + ' towards the fee');
         buildNextUrl('evidence-check-7c.html');

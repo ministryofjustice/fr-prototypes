@@ -46,8 +46,8 @@ javascript:
     }
 
     buildNextUrl(nextPage);
-    $("#next-url").attr("href", updateQueryStringParameter('partnerOver61', $("input[name='partnerOver61']:checked").val()));
+    storeValue('partnerOver61', $("input[name='partnerOver61']:checked").val());
     if(fail) {
-      $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded',  'true'));
+      storeValue('savings-exceeded',  'true');
     }
   });

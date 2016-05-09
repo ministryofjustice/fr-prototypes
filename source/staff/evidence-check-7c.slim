@@ -18,12 +18,12 @@ form
 
         p Dear Mr Mark Morgan
         p We’ve received your application for financial help with court or tribunal fees.
-        p We have assessed your application, and found that you will need to pay part of the fee in order to for you case to proceed. 
+        p We have assessed your application, and found that you will need to pay part of the fee in order to for you case to proceed.
         p
           |Please supply a cheque to the sum of&nbsp;
           span#to_pay
           |&nbsp;payable to 'HM Courts &amp; Tribunal Service'
-        p Please supply payment by 12 November 2015.  
+        p Please supply payment by 12 November 2015.
         p Yours sincerely,
   br
   .row
@@ -33,7 +33,7 @@ form
 
 javascript:
   $(document).ready( function() {
-    $('#to_pay').text(unescape(getUrlParameter('to_pay')));
+    $('#to_pay').text(unescape(getValue('to_pay')));
 
     $('a div.button.success').on('click', function() {
       $('#copied').fadeTo(1,1).fadeTo(2000, 0);

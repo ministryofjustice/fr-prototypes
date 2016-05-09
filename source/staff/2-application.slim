@@ -60,7 +60,7 @@ form
   .row
     .small-12.medium-9.large-8.columns
       label for='claim_number'
-        | Form name or number 
+        | Form name or number
         input name='claim_number' id='claim_number' type='text'
 
   .row
@@ -134,7 +134,7 @@ form
           label for="emerg"
             input id="emerg" type="checkbox" name="emerg"
             | This is an emergency case
-  
+
   #emerg-comment.hide
     .row
       .small-12.medium-9.large-8.columns
@@ -153,7 +153,7 @@ javascript:
   $(document).ready( function() {
     buildNextUrl('3-savings.html');
     $('#fee').bind('change', function () {
-      $("#next-url").attr("href", updateQueryStringParameter('fee', $(this).val()));
+      storeValue('fee', $(this).val());
     });
 
     $('#refund').on('change', function () {

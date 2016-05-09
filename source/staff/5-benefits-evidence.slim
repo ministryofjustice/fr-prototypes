@@ -7,18 +7,18 @@ rh_help: true
 form
   br
   .row
-      .small-12.medium-12.large-12.columns    
+      .small-12.medium-12.large-12.columns
         .panel.callout.dwp-error
-          p There’s a problem with the applicant’s surname, date of birth or National Insurance number. <a href="#personal details page">Check all details were entered correctly </a>  
+          p There’s a problem with the applicant’s surname, date of birth or National Insurance number. <a href="#personal details page">Check all details were entered correctly </a>
 
   .row
     .small-12.medium-12.large-12.columns
       h2 Benefits
-   
+
   .row
-    .small-12.medium-12.large-12.columns    
+    .small-12.medium-12.large-12.columns
       label Has the applicant provided paper evidence?
-    .small-12.medium-9.large-8.columns.end   
+    .small-12.medium-9.large-8.columns.end
       .options.radio
         .option
           label for="benefits-no"
@@ -32,8 +32,8 @@ form
 
   #evidence-check.hide
     .row
-      .small-12.medium-9.large-8.columns 
-        .panel-indent   
+      .small-12.medium-9.large-8.columns
+        .panel-indent
           label Is the evidence for the correct applicant and dated in the last 3 months?
           .options.radio
             .option
@@ -57,7 +57,7 @@ form
     .small-12.medium-7.large-7.columns
       a#next-url href='7-summary.html'
         .button.success Next
-   
+
 
 javascript:
   $(document).ready(function () {
@@ -69,7 +69,7 @@ javascript:
       } else {
         buildNextUrl('5-benefits-result.html');
       }
-      $("#next-url").attr("href", updateQueryStringParameter('benefits', $("input[name='benefits']:checked").val()));
+      storeValue('benefits', $("input[name='benefits']:checked").val());
     });
   });
 

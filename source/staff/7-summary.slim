@@ -129,24 +129,24 @@ form
 
 javascript:
   $(document).ready( function() {
-    $('#income-only').toggle(getUrlParameter('benefits') == 'false');
-    $('#benefits').toggle(getUrlParameter('benefits') == 'undefined');
-    $('#dob').text(unescape(getUrlParameter('dob')));
-    $('#fee').text(unescape('£' + getUrlParameter('fee')));
-    $('#status').text(getUrlParameter('couple') == 'false' ? 'Single' : 'Married or living with someone and sharing an income');
+    $('#income-only').toggle(getValue('benefits') == 'false');
+    $('#benefits').toggle(getValue('benefits') == 'undefined');
+    $('#dob').text(unescape(getValue('dob')));
+    $('#fee').text(unescape('£' + getValue('fee')));
+    $('#status').text(getValue('couple') == 'false' ? 'Single' : 'Married or living with someone and sharing an income');
 
-    if (getUrlParameter('children')!='') {
-      $('#children').text(getUrlParameter('children'));
+    if (getValue('children')!='') {
+      $('#children').text(getValue('children'));
     }
-    if (getUrlParameter('income')!='') {
-      $('#income').text('£' + getUrlParameter('income'));
+    if (getValue('income')!='') {
+      $('#income').text('£' + getValue('income'));
     }
-    if (getUrlParameter('savings') === 'high') {
+    if (getValue('savings') === 'high') {
       $('#savings-toggle').text('No');
     }
-    if (getUrlParameter('savings') === 'mid') {
-      if(parseInt(getUrlParameter('savings-detail'), 10) > parseInt(getUrlParameter('threshold'), 10)) {
-        if(getUrlParameter('partnerOver61') !== 'true') {
+    if (getValue('savings') === 'mid') {
+      if(parseInt(getValue('savings-detail'), 10) > parseInt(getValue('threshold'), 10)) {
+        if(getValue('partnerOver61') !== 'true') {
           $('#savings-toggle').text('No');
         }
       }

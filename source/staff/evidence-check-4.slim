@@ -68,6 +68,6 @@ javascript:
     buildNextUrl('evidence-check-6a.html');
 
     $('#check_btn').on('click', function() {
-      $("#next-url").attr("href", updateQueryStringParameter('income', $('#income').val()));
+      storeValue('income', $('#income').val());
     });
   });

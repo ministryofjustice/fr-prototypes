@@ -68,18 +68,18 @@ form
 
 javascript:
   $(document).ready( function() {
-    $('#benefits').text(getValue('benefits')=='true' ? 'Receiving correct benefits' : 'Benefits not received');
-    $('#results-benefits').toggle(getValue('benefits')=='true');
-    $('#results-income').toggle(getValue('calculator')=='true');
+    $('#benefits').text(getValue('staff', 'benefits')=='true' ? 'Receiving correct benefits' : 'Benefits not received');
+    $('#results-benefits').toggle(getValue('staff', 'benefits')=='true');
+    $('#results-income').toggle(getValue('staff', 'calculator')=='true');
 
-    if (getValue('savings-exceeded') == 'true') {
+    if (getValue('staff', 'savings-exceeded') == 'true') {
       $('#savings-result-display').addClass('summary-result-failure').text('Failed. Savings over the threshold');
       $('#result-display').addClass('summary-result-failure').text('The applicant must pay the full fee');
-    } else if (getValue('over-61') == 'true' || getValue('age') > 60) {
+    } else if (getValue('staff', 'over-61') == 'true' || getValue('staff', 'age') > 60) {
       $('#income-result-display').html('&#10003; Passed. Less than £16,000');
     }
 
-    var to_pay = unescape(getValue('to_pay'));
+    var to_pay = unescape(getValue('staff', 'to_pay'));
     if (to_pay && to_pay !== 'false' && to_pay !== 'undefined' && to_pay != '') {
       console.log(to_pay);
       $('#result-display').text(to_pay);
@@ -94,13 +94,13 @@ javascript:
       }
     }
 
-    if(getValue('calculator')=='true') {
+    if(getValue('staff', 'calculator')=='true') {
       if(to_pay=="The applicant doesn't have to pay the fee") {
         $('#result-display').addClass('orange').text('Evidence of income needs to be checked for this application');
       }
     }
 
-    //var to_pay = unescape(getValue('to_pay'));
+    //var to_pay = unescape(getValue('staff', 'to_pay'));
     //if (to_pay!='') {
     //  //$('#outcome').text(to_pay);
     //  console.log(to_pay.indexOf("£"));
@@ -111,11 +111,11 @@ javascript:
     //  }
     //}
     //
-    //if(getValue('benefits')=='true') {
+    //if(getValue('staff', 'benefits')=='true') {
     //  $('#remission-type').addClass('callout-full');
     //  buildNextUrl('8-confirmation-success.html');
     //  $('#next-url div').text('Complete processing');
-    //} else if(getValue('calculator')=='true') {
+    //} else if(getValue('staff', 'calculator')=='true') {
     //  $('#remission-type').addClass('callout-part');
     //  if(to_pay=='The applicant has £0 to pay') {
     //    $('#remission-type h3').text('Evidence of income needs to be checked for this application');

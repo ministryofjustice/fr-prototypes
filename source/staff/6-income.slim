@@ -86,15 +86,15 @@ br
 
 javascript:
   $(document).ready(function () {
-    $('#fee').val(getValue('fee'));
-    $("input[name='couple'][value='" + getValue('couple') + "']").prop("checked", true)
+    $('#fee').val(getValue('staff', 'fee'));
+    $("input[name='couple'][value='" + getValue('staff', 'couple') + "']").prop("checked", true)
     buildNextUrl('7-summary.html');
-    storeValue('calculator', 'true');
+    storeValue('staff', 'calculator', 'true');
     $("#next-url").hide();
 
     $('#next-url').on('click', function () {
       var to_pay = escape($('#fee-remit').text());
-      storeValue('to_pay', to_pay);
+      storeValue('staff', 'to_pay', to_pay);
     });
     $("input[name='any-kids']").on('change', function () {
       $('#income-block').show();

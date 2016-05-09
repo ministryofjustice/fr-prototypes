@@ -46,12 +46,12 @@ javascript:
   $("input#savings-detail").on('change', function () {
     var $input = $("#savings-detail"),
         amount = parseInt($input.val(), 10),
-        threshold = getValue('threshold'),
+        threshold = getValue('staff', 'threshold'),
         nextPage = '4-benefits.html',
         fail = false;
 
     if(amount > threshold) {
-      if(getValue('couple') === 'true') {
+      if(getValue('staff', 'couple') === 'true') {
         nextPage = '3-partner-age.html';
       } else {
         nextPage = '7-summary.html';
@@ -60,8 +60,8 @@ javascript:
     }
 
     buildNextUrl(nextPage);
-    storeValue('savings-detail',  amount);
+    storeValue('staff', 'savings-detail',  amount);
     if(fail) {
-      storeValue('savings-exceeded',  'true');
+      storeValue('staff', 'savings-exceeded',  'true');
     }
   });

@@ -46,8 +46,8 @@ javascript:
     }
 
     buildNextUrl(nextPage);
-    storeValue('partnerOver61', $("input[name='partnerOver61']:checked").val());
+    storeValue('staff', 'partnerOver61', $("input[name='partnerOver61']:checked").val());
     if(fail) {
-      storeValue('savings-exceeded',  'true');
+      storeValue('staff', 'savings-exceeded',  'true');
     }
   });

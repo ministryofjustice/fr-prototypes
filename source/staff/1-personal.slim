@@ -90,7 +90,7 @@ javascript:
 
   $(document).ready( function() {
     $("input[name='couple']").on('change', function () {
-      storeValue('couple', $("input[name='couple']:checked").val());
+      storeValue('staff', 'couple', $("input[name='couple']:checked").val());
     });
     $("input[type='number']").on('change', function () {
       var day =  $('#doa_day').val();
@@ -99,8 +99,8 @@ javascript:
 
       var d = new Date(year, month, day);
       var dob = day + ' ' + monthNames[month] + ' ' + year;
-      storeValue('dob',  dob);
-      storeValue('age',  _calculateAge(d));
+      storeValue('staff', 'dob',  dob);
+      storeValue('staff', 'age',  _calculateAge(d));
     });
   });
 

@@ -33,7 +33,7 @@ form
 
 javascript:
   $(document).ready( function() {
-    $('#to_pay').text(unescape(getValue('to_pay')));
+    $('#to_pay').text(unescape(getValue('staff', 'to_pay')));
 
     $('a div.button.success').on('click', function() {
       $('#copied').fadeTo(1,1).fadeTo(2000, 0);

@@ -41,16 +41,16 @@ form
 javascript:
   $(document).ready( function() {
     buildNextUrl('4-benefits.html');
-    storeValue('savings',  'low');
-    storeValue('threshold',  calcThreshold());
+    storeValue('staff', 'savings',  'low');
+    storeValue('staff', 'threshold',  calcThreshold());
   });
   $("input[name='savings-amount']").on('change', function () {
     var $opt = $("input[name='savings-amount']:checked");
     buildNextUrl($opt.data('next'));
-    storeValue('savings',  $opt.data('savings'));
-    storeValue('threshold',  calcThreshold());
+    storeValue('staff', 'savings',  $opt.data('savings'));
+    storeValue('staff', 'threshold',  calcThreshold());
     if($opt.data('savings') === 'high') {
-      storeValue('savings-exceeded',  'true');
+      storeValue('staff', 'savings-exceeded',  'true');
     }
   });
   function calcThreshold() {

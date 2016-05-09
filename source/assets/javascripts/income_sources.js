@@ -144,7 +144,7 @@ var incomeSourcesModule = {
       }
     });
 
-    localStorage.setItem('income-sources', JSON.stringify(sources));
+    storeValue('public', 'income-sources', sources);
 
     // console.log(sources);
     self.goNext();

@@ -129,24 +129,24 @@ form
 
 javascript:
   $(document).ready( function() {
-    $('#income-only').toggle(getValue('benefits') == 'false');
-    $('#benefits').toggle(getValue('benefits') == 'undefined');
-    $('#dob').text(unescape(getValue('dob')));
-    $('#fee').text(unescape('£' + getValue('fee')));
-    $('#status').text(getValue('couple') == 'false' ? 'Single' : 'Married or living with someone and sharing an income');
+    $('#income-only').toggle(getValue('staff', 'benefits') == 'false');
+    $('#benefits').toggle(getValue('staff', 'benefits') == 'undefined');
+    $('#dob').text(unescape(getValue('staff', 'dob')));
+    $('#fee').text(unescape('£' + getValue('staff', 'fee')));
+    $('#status').text(getValue('staff', 'couple') == 'false' ? 'Single' : 'Married or living with someone and sharing an income');
 
-    if (getValue('children')!='') {
-      $('#children').text(getValue('children'));
+    if (getValue('staff', 'children')!='') {
+      $('#children').text(getValue('staff', 'children'));
     }
-    if (getValue('income')!='') {
-      $('#income').text('£' + getValue('income'));
+    if (getValue('staff', 'income')!='') {
+      $('#income').text('£' + getValue('staff', 'income'));
     }
-    if (getValue('savings') === 'high') {
+    if (getValue('staff', 'savings') === 'high') {
       $('#savings-toggle').text('No');
     }
-    if (getValue('savings') === 'mid') {
-      if(parseInt(getValue('savings-detail'), 10) > parseInt(getValue('threshold'), 10)) {
-        if(getValue('partnerOver61') !== 'true') {
+    if (getValue('staff', 'savings') === 'mid') {
+      if(parseInt(getValue('staff', 'savings-detail'), 10) > parseInt(getValue('staff', 'threshold'), 10)) {
+        if(getValue('staff', 'partnerOver61') !== 'true') {
           $('#savings-toggle').text('No');
         }
       }

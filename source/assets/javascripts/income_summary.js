@@ -11,7 +11,7 @@ var incomeSummaryModule = {
     if($('.row#income-summary').length) {
       self.prefixes = incomeSourcesModule.prefixes;
       self.isMarried = getUrlParameter('married').toString();
-      self.sources = JSON.parse(localStorage.getItem('income-sources'));
+      self.sources = getValue('public', 'income-sources');
       self.totals = self.getTotals();
       self.showIncomeSummary();
     }

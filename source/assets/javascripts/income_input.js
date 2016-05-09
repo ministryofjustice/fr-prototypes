@@ -8,7 +8,8 @@ var incomeInputModule = {
 
     self.prefixes = incomeSourcesModule.prefixes;
 
-    self.sources = JSON.parse(localStorage.getItem('income-sources'));
+    // self.sources = JSON.parse(localStorage.getItem('income-sources'));
+    self.sources = getValue('public', 'income-sources');
     console.dir(self.sources);
 
     if(self.sources.length) {
@@ -110,7 +111,8 @@ var incomeInputModule = {
       }
     }
 
-    localStorage.setItem('income-sources', JSON.stringify(self.sources));
+    // localStorage.setItem('income-sources', JSON.stringify(self.sources));
+    storeValue('public', 'income-sources', self.sources);
     // console.log('saved!');
     // console.log(self.sources);
 

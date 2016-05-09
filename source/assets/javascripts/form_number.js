@@ -30,12 +30,13 @@ var formNumberModule = {
     var self = this,
         formNumber = self.defaultFormText;
 
-    localStorage.removeItem('form-number');
+    clearValue('public', 'form-number');
 
     if(!$('#form-unknown').prop('checked')) {
       if($('#form_number').val() !== '') {
         formNumber = $('#form_number').val();
-        localStorage.setItem('form-number', JSON.stringify(formNumber));
+        // localStorage.setItem('form-number', JSON.stringify(formNumber));
+        storeValue('public', 'form-number', formNumber);
       }
     }
 
@@ -43,13 +44,9 @@ var formNumberModule = {
   },
 
   getStoredFormNumber: function() {
-    var self = this,
-        key = 'form-number',
-        storedFormNumber = false;
+    var storedFormNumber = false;
 
-    if(localStorage.getItem(key)) {
-      storedFormNumber = JSON.parse(localStorage.getItem(key));
-    }
+    storedFormNumber = getValue('public', 'form-number');
 
     return storedFormNumber;
   },

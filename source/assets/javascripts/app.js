@@ -52,16 +52,18 @@ function listLocalStorage() {
   console.log(obj);
 }
 
-function storeValue(key, value) {
-  localStorage.setItem(key, JSON.stringify(value));
+function storeValue(app, key, value) {
+  var appkey = app + '_' + key;
+  localStorage.setItem(appkey, JSON.stringify(value));
 
-  console.log('stored: ' + key + '=' + value);
+  console.log('stored: ' + appkey + '=' + value);
 }
 
-function getValue(key) {
-  var val = JSON.parse(localStorage.getItem(key));
+function getValue(app, key) {
+  var appkey = app + '_' + key,
+      val = JSON.parse(localStorage.getItem(appkey));
 
-  console.log('requested: ' + key);
+  console.log('requested: ' + appkey);
 
   if(val && val !== 'null') {
     console.log('returned: ' + val);
@@ -72,6 +74,17 @@ function getValue(key) {
   return false;
 }
 
-function clearValue(key) {
-  localStorage.removeItem(key);
+function clearValue(app, key) {
+  localStorage.removeItem(app + '_' + key);
+}
+
+function clearAppData(app) {
+  var l = localStorage.length;
+
+  for (var i = l - 1; i >= 0; i--) {
+    var key = localStorage.key(i);
+    if(key.indexOf(app) === 0) {
+      localStorage.removeItem(key);
+    }
+  }
 }

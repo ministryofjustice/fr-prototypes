@@ -66,8 +66,8 @@ javascript:
           [6000, 14000],
           [7000, 16000]
         ],
-        fee = getUrlParameter('fee'),
-        age = getUrlParameter('age');
+        fee = getValue('staff', 'fee'),
+        age = getValue('staff', 'age');
 
     if(age && age > 60) {
       threshold = 16000;

@@ -1,16 +1,16 @@
-<!DOCTYPE html><html><head><meta charset="utf-8" /><title>Help with fees</title><meta content="width=device-width" name="viewport" /><link href="../assets/stylesheets/styles.css" rel="stylesheet" /><link href="../assets/stylesheets/r2_calculator.css" rel="stylesheet" /><link href="../assets/stylesheets/r1calc.css" rel="stylesheet" /><script src="../assets/javascripts/jquery.min.js"></script></head><body><div class="contain-to-grid"><nav class="top-bar" data-topbar=""><div class="row"><div class="small-12 columns"><span class="title-area"><span class="name"><h1><a href="../">Help with fees</a></h1></span></span></div></div><div class="row"><div class="small-12 columns" style="margin-top:15px;"><span class="alpha-tag">ALPHA</span> &nbsp; Tell us what you <a href="feedback.html">think and help us improve</a> <hr /></div></div></nav></div><div class="row"><div class="large-12 columns"><form><br /><div class="row"><div class="small-12 columns"><div class="panel callout grey"><div class="confirm-box"><div class="confirmation-two"><img height="27px" src="../assets/images/confirmation-tick.png" style="margin-right:15px;" width="27px">The reference number is</img></div><div class="confirmation">HWF-1612-1345</div></div></div></div></div><div class="row"><div class="small-12 medium-7 large-8 columns"><h3>Result</h3></div></div><div class="row"><div class="small-12 medium-5 large-3 columns"><div class="subheader large">Savings and investments</div></div><div class="small-12 medium-7 large-9 columns"><div class="summary-result-success large">&#10003; Passed</div></div></div><div class="row"><div class="small-12 medium-5 large-3 columns"><div class="subheader large">Income</div></div><div class="small-12 medium-7 large-9 columns"><div class="summary-result-success bold large">&#10003; Passed</div></div></div><br /><div class="row"><div class="small-12 columns"><div class="panel callout received"><div class="row"><div class="small-12 columns"><h3>Eligible for help with fees </h3></div></div></div></div></div><hr /><br /><h3>Next steps </h3><br /><div class="row"><div class="small-12 columns"><p class="large">Copy reference into the case management system</p><br /></div></div><br /><div class="row"><div class="small-12 columns"><a class="button success" href="../index.html">Back to start</a></div></div></form><script>$(document).ready( function() {
-  $('#benefits').text(getUrlParameter('benefits')=='true' ? 'Receiving correct benefits' : 'Benefits not received');
-  $('#results-benefits').toggle(getUrlParameter('benefits')=='true');
-  $('#results-income').toggle(getUrlParameter('calculator')=='true');
+<!DOCTYPE html><html><head><meta charset="utf-8" /><title>Help with fees</title><meta content="width=device-width" name="viewport" /><link href="../assets/stylesheets/styles.css" rel="stylesheet" /><link href="../assets/stylesheets/r2_calculator.css" rel="stylesheet" /><link href="../assets/stylesheets/r1calc.css" rel="stylesheet" /><script src="../assets/javascripts/jquery.min.js"></script></head><body><div class="contain-to-grid"><nav class="top-bar" data-topbar=""><div class="row"><div class="small-12 columns"><span class="title-area"><span class="name"><h1><a href="../">Help with fees</a></h1></span></span></div></div><div class="row"><div class="small-12 columns" style="margin-top:15px;"><span class="alpha-tag">ALPHA</span> &nbsp; Tell us what you <a href="feedback.html">think and help us improve</a> <hr /></div></div></nav></div><div class="row"><div class="large-12 columns"><form><br /><div class="row"><div class="small-12 columns"><div class="panel callout grey"><div class="confirm-box"><div class="confirmation-two"><img height="27px" src="../assets/images/confirmation-tick.png" style="margin-right:15px;" width="27px">The reference number is</img></div><div class="confirmation">HWF-1612-1345</div></div></div></div></div><div class="row"><div class="small-12 medium-7 large-8 columns"><h3>Result</h3></div></div><div class="row"><div class="small-12 medium-5 large-3 columns"><div class="subheader large">Savings and investments</div></div><div class="small-12 medium-7 large-9 columns"><div class="summary-result-success large">&#10003; Passed</div></div></div><div class="row"><div class="small-12 medium-5 large-3 columns"><div class="subheader large">Income</div></div><div class="small-12 medium-7 large-9 columns"><div class="summary-result-success bold large">&#10003; Passed</div></div></div><br /><div class="row"><div class="small-12 columns"><div class="panel callout received"><div class="row"><div class="small-12 columns"><h3>Eligible for help with fees</h3></div></div></div></div></div><hr /><br /><h3>Next steps</h3><br /><div class="row"><div class="small-12 columns"><p class="large">Copy reference into the case management system</p><br /></div></div><br /><div class="row"><div class="small-12 columns"><a class="button success" href="../index.html">Back to start</a></div></div></form><script>$(document).ready( function() {
+  $('#benefits').text(getValue('staff', 'benefits')=='true' ? 'Receiving correct benefits' : 'Benefits not received');
+  $('#results-benefits').toggle(getValue('staff', 'benefits')=='true');
+  $('#results-income').toggle(getValue('staff', 'calculator')=='true');
 
-  if (getUrlParameter('savings-exceeded') == 'true') {
+  if (getValue('staff', 'savings-exceeded') == 'true') {
     $('#savings-result-display').addClass('summary-result-failure').text('Failed. Savings over the threshold');
     $('#result-display').addClass('summary-result-failure').text('The applicant must pay the full fee');
-  } else if (getUrlParameter('over-61') == 'true' || getUrlParameter('age') > 60) {
+  } else if (getValue('staff', 'over-61') == 'true' || getValue('staff', 'age') > 60) {
     $('#income-result-display').html('&#10003; Passed. Less than £16,000');
   }
 
-  var to_pay = unescape(getUrlParameter('to_pay'));
+  var to_pay = unescape(getValue('staff', 'to_pay'));
   if (to_pay!='') {
     $('#result-display').text(to_pay);
     console.log(to_pay.indexOf("£"));
@@ -24,13 +24,13 @@
     }
   }
 
-  if(getUrlParameter('calculator')=='true') {
+  if(getValue('staff', 'calculator')=='true') {
     if(to_pay=="The applicant doesn't have to pay the fee") {
       $('#result-display').addClass('orange').text('Evidence of income needs to be checked for this application');
     }
   }
 
-  //var to_pay = unescape(getUrlParameter('to_pay'));
+  //var to_pay = unescape(getValue('staff', 'to_pay'));
   //if (to_pay!='') {
   //  //$('#outcome').text(to_pay);
   //  console.log(to_pay.indexOf("£"));
@@ -41,11 +41,11 @@
   //  }
   //}
   //
-  //if(getUrlParameter('benefits')=='true') {
+  //if(getValue('staff', 'benefits')=='true') {
   //  $('#remission-type').addClass('callout-full');
   //  buildNextUrl('8-confirmation-success.html');
   //  $('#next-url div').text('Complete processing');
-  //} else if(getUrlParameter('calculator')=='true') {
+  //} else if(getValue('staff', 'calculator')=='true') {
   //  $('#remission-type').addClass('callout-part');
   //  if(to_pay=='The applicant has £0 to pay') {
   //    $('#remission-type h3').text('Evidence of income needs to be checked for this application');

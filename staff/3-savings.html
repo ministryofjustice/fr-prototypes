@@ -1,41 +1,86 @@
-<!DOCTYPE html><html><head><meta charset="utf-8" /><title>Help with fees</title><meta content="width=device-width" name="viewport" /><link href="../assets/stylesheets/styles.css" rel="stylesheet" /><link href="../assets/stylesheets/r2_calculator.css" rel="stylesheet" /><link href="../assets/stylesheets/r1calc.css" rel="stylesheet" /><script src="../assets/javascripts/jquery.min.js"></script></head><body><div class="contain-to-grid"><nav class="top-bar" data-topbar=""><div class="row"><div class="small-12 columns"><span class="title-area"><span class="name"><h1><a href="../">Help with fees</a></h1></span></span></div></div><div class="row"><div class="small-12 columns" style="margin-top:15px;"><span class="alpha-tag">ALPHA</span> &nbsp; Tell us what you <a href="feedback.html">think and help us improve</a> <hr /></div></div></nav></div><div class="row"><div class="large-7 columns"><form><br /><div class="row"><div class="small-12 columns"><h2>Savings and investments</h2></div></div><br /><div class="row"><div class="small-12 columns"><label><span id="status-describe">In question 7 and 8, how much do they have in savings and investments?</span></label></div></div><div class="row"><div class="small-12 medium-9 columns"><div class="options radio"><div class="option"><label for="savings-low"><input data-next="4-benefits.html" data-savings="low" id="savings-low" name="savings-amount" type="radio" value="less-than-3k" />Less than £3,000</label></div><div class="option"><label for="savings-middle"><input data-next="3-savings-amount.html" data-savings="mid" id="savings-middle" name="savings-amount" type="radio" value="between-3-16k" />Between £3,000 and £16,000</label></div><div class="option"><label for="savings-amount-high"><input data-next="7-summary.html" data-savings="high" id="savings-amount-high" name="savings-amount" type="radio" value="more-than-16k" />More than £16,000</label></div></div></div><br /></div><br /><div class="row"><div class="small-12 medium-7 large-7 columns"><a href="4-benefits.html" id="next-url"><div class="button success">Next</div></a></div></div></form><script>$(document).ready( function() {
+<!DOCTYPE html><html><head><meta charset="utf-8" /><title>Help with fees</title><meta content="width=device-width" name="viewport" /><link href="../assets/stylesheets/styles.css" rel="stylesheet" /><link href="../assets/stylesheets/r2_calculator.css" rel="stylesheet" /><link href="../assets/stylesheets/r1calc.css" rel="stylesheet" /><script src="../assets/javascripts/jquery.min.js"></script></head><body><div class="contain-to-grid"><nav class="top-bar" data-topbar=""><div class="row"><div class="small-12 columns"><span class="title-area"><span class="name"><h1><a href="../">Help with fees</a></h1></span></span></div></div><div class="row"><div class="small-12 columns" style="margin-top:15px;"><span class="alpha-tag">ALPHA</span> &nbsp; Tell us what you <a href="feedback.html">think and help us improve</a> <hr /></div></div></nav></div><div class="row"><div class="large-7 columns"><form><br /><div class="row"><div class="small-12 columns"><h2>Savings and investments</h2></div></div><br /><div class="row"><div class="small-12 columns"><label><span id="status-describe">In question 7, how much do they have in savings and investments?</span></label></div></div><div class="row"><div class="small-12 medium-9 columns"><div class="options radio"><div class="option"><label for="savings-low"><input id="savings-low" name="savings-amount" type="radio" value="less-than-3k" />Less than £3,000</label></div><div class="option"><label for="savings-amount-high"><input id="savings-amount-high" name="savings-amount" type="radio" value="more-than-3k" />More than £3,000</label></div></div></div></div><div class="hide panel-indent" id="over3k"><div id="married-under-61"><div class="row"><div class="small-12 columns"><label>In question 8, is the applicant's partner 61 or over?</label></div></div><div class="row"><div class="small-12 medium-9 columns"><div class="options radio"><div class="option"><label for="partnerOver61No"><input id="partnerOver61No" name="partnerOver61" type="radio" value="no" />No</label><div class="panel-indent hide" id="savings-detail"><label for="savings-detail">How much do they have in savings and investments?<input id="savings-detail-amount" name="savings-detail" type="number" /></label></div></div><div class="option"><label for="partnerOver61Yes"><input id="partnerOver61Yes" name="partnerOver61" type="radio" value="yes" />Yes</label><div class="panel-indent hide" id="over16k"><div class="row"><div class="small-12 columns"><label>In question 8, how much do they have?</label></div></div><div class="row"><div class="small-12 columns"><div class="options radio"><div class="option"><label for="over16kNo"><input id="over16kNo" name="over16k" type="radio" value="false" />Less than £16,000</label></div><div class="option"><label for="over16kYes"><input id="over16kYes" name="over16k" type="radio" value="true" />More than £16,000</label></div></div></div></div></div></div></div></div></div></div></div><br /><div class="row"><div class="small-12 medium-7 large-7 columns"><a href="4-benefits.html" id="next-url"><div class="button success">Next</div></a></div></div></form><script>$(document).ready( function() {
   buildNextUrl('4-benefits.html');
-  $("#next-url").attr("href", updateQueryStringParameter('savings',  'low'));
-  $("#next-url").attr("href", updateQueryStringParameter('threshold',  calcThreshold()));
-});
-$("input[name='savings-amount']").on('change', function () {
-  var $opt = $("input[name='savings-amount']:checked");
-  buildNextUrl($opt.data('next'));
-  $("#next-url").attr("href", updateQueryStringParameter('savings',  $opt.data('savings')));
-  $("#next-url").attr("href", updateQueryStringParameter('threshold',  calcThreshold()));
-  if($opt.data('savings') === 'high') {
-    $("#next-url").attr("href", updateQueryStringParameter('savings-exceeded',  'true'));
-  }
-});
-function calcThreshold() {
-  var threshold = 3000,
-      bands = [
-        [1000, 4000],
-        [1335, 5000],
-        [1665, 6000],
-        [2000, 7000],
-        [2330, 8000],
-        [4000, 10000],
-        [5000, 12000],
-        [6000, 14000],
-        [7000, 16000]
-      ],
-      fee = getUrlParameter('fee'),
-      age = getUrlParameter('age');
+  storeValue('staff', 'savings',  'low');
+  storeValue('staff', 'threshold', 3000);
 
-  if(age && age > 60) {
-    threshold = 16000;
-  } else if(fee) {
-    for(x in bands) {
-      if(fee > bands[x][0]) {
-        threshold = bands[x][1];
-      }
+  if(parseInt(getValue('staff', 'age'), 10) > 60) {
+    console.log('applicant 61+');
+    var h = $('#over16k').html();
+    $('#over3k').html(h);
+  } else if(getValue('staff', 'couple') === 'false') {
+    console.log('applicant < 60, single');
+    var h = $('#savings-detail').html();
+    $('#over3k').html(h);
+  }
+
+  if($('#savings-amount-high').is(':checked')) {
+    $('#over3k').show();
+
+    if($('#partnerOver61No').is(':checked')) {
+      $('#savings-detail').show();
+    }
+    if($('#partnerOver61Yes').is(':checked')) {
+      $('#over16k').show();
     }
   }
-  return threshold;
+});
+
+$(document).on('change', 'input[name="savings-amount"]', function () {
+  var $opt = $("input[name='savings-amount']:checked");
+
+  clearValue('staff', 'savings-exceeded');
+
+  $('#over3k').toggle($('#savings-amount-high').is(':checked'));
+  if($opt.val() === 'more-than-3k') {
+    storeValue('staff', 'savings',  'mid');
+    deselectRadio([$('#over3k').find('input[type="radio"]')]);
+    $('#savings-detail').hide().find('input').val('');
+    $('#over16k').hide();
+  } else {
+    storeValue('staff', 'savings',  'low');
+    storeValue('staff', 'savings-exceeded', 'false');
+    buildNextUrl(passOrFail());
+  }
+});
+
+$(document).on('change', 'input[name="partnerOver61"]', function () {
+  var $opt = $("input[name='partnerOver61']:checked");
+
+  clearValue('staff', 'savings-exceeded');
+  clearValue('staff', 'savings-detail');
+  clearValue('staff', 'over16k');
+  if($opt.val() === 'no') {
+    $('#over16k').hide();
+    clearValue('staff', 'over16k');
+    $('#savings-detail').show().find('input').val('');
+    storeValue('staff', 'threshold', calcThreshold());
+  } else {
+    $('#savings-detail').hide();
+    clearValue('staff', 'savings-detail');
+    $('#over16k').show();
+    deselectRadio([$('#over16k').find('input[type="radio"]')]);
+
+    storeValue('staff', 'threshold', 16000);
+  }
+});
+
+$(document).on('change', 'input[name="over16k"]', function () {
+  var $opt = $("input[name='over16k']:checked");
+
+  storeValue('staff', 'over16k', $opt.val());
+  storeValue('staff', 'savings-exceeded',  $opt.val());
+  storeValue('staff', 'savings',  $opt.val().toString() === 'true' ? 'high' : 'mid');
+  buildNextUrl(passOrFail());
+});
+
+$(document).on('change', 'input#savings-detail-amount', function (e) {
+  var $el = $(e.target);
+
+  storeValue('staff', 'savings-detail', $el.val());
+  storeValue('staff', 'savings-exceeded', parseInt($el.val(), 10) > getValue('staff', 'threshold') ? 'true' : 'false' );
+  buildNextUrl(passOrFail());
+});
+
+function passOrFail() {
+  return (getValue('staff', 'savings-exceeded').toString() === 'true' ? '7-summary.html' : '4-benefits.html');
 }</script></div><div class="large-5 columns"><h1></h1><br /><div class="row"><div class="columns small-12 collapse"><h2>&nbsp;</h2><div class="row sidebar collapse"><div class="columns small-12"><h4>Savings and investments</h4><p><a target="_blank" href="guide-processing.html#savings">Read about the maximum amounts of savings and investments allowed</a></p></div></div></div></div></div></div><div class="row"><div class="small-12 columns"><br /><footer class="row page-footer"><div class="small-12 columns"><div class="row"><div class="small-12 medium-5 large-6 columns"><h4>Contact us</h4><hr style="color:bfc1c3;" /><div class="bold">Email us</div><p><a href="mailto:helpwithfees.support@digital.justice.gov.uk">helpwithfees.support@digital.justice.gov.uk</a></p><div class="bold">Give feedback</div><p><a href="#">Tell us what you think</a></p></div><div class="small-12 medium-7 large-6 columns"><h4>Staff guides</h4><hr style="color:bfc1c3;" /><div class="row"><div class="small-7 columns"><p>How to process an application, deal with spot checks, part payments, appeals, and fraud.</p><p><a target="_blank" href="guide-landing.html">See the guides</a></p></div><div class="small-4 columns end"><img src="../assets/images/icon-guide-home.png" /></div></div></div></div></div></footer><p></p><a href="/"></a></div><script src="../assets/javascripts/libs.js"></script><script src="../assets/javascripts/numeral.min.js"></script><script src="../assets/javascripts/app.js"></script><script src="../assets/javascripts/details.polyfill.js"></script><script src="../assets/javascripts/income_sources.js"></script><script src="../assets/javascripts/income_input.js"></script><script src="../assets/javascripts/income_summary.js"></script><script src="../assets/javascripts/form_number.js"></script></div></body></html>

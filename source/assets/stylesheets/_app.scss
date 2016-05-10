@@ -84,7 +84,8 @@ $gutter-two-thirds: $gutter - $gutter-one-third;
   font-size: 1.25rem;
 }
 
-.options.radio label {
+.options.radio > label,
+.options.radio > .option > label {
 
   display: block;
   float: none;
@@ -124,6 +125,9 @@ $gutter-two-thirds: $gutter - $gutter-one-third;
   border-left: 4px solid #bfc1c3;
   padding: 10px 0 10px 15px;
   margin: 10px 15px 45px 0;
+  .options & {
+    margin-bottom: 10px;
+  }
 }
 span.hint {
   color: $secondary-text-colour;
@@ -312,7 +316,7 @@ hr {
     border: 0;
     border-top: 1px solid #bfc1c3;
     margin: 1em 0;
-    padding: 0; 
+    padding: 0;
 }
 .guide-cols {
   width: 18%;

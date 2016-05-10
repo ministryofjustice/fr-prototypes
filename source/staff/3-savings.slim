@@ -13,24 +13,54 @@ form
   .row
     .small-12.columns
       label
-        span#status-describe In question 7 and 8, how much do they have in savings and investments?
+        span#status-describe In question 7, how much do they have in savings and investments?
   .row
     .small-12.medium-9.columns
       .options.radio
         .option
           label for="savings-low"
-            input id="savings-low" type="radio" name="savings-amount" value="less-than-3k" data-next="4-benefits.html" data-savings="low"
+            input id="savings-low" type="radio" name="savings-amount" value="less-than-3k"
             | Less than £3,000
         .option
-          label for="savings-middle"
-            input id="savings-middle" type="radio" name="savings-amount" value="between-3-16k" data-next="3-savings-amount.html" data-savings="mid"
-            | Between £3,000 and £16,000
-        .option
           label for="savings-amount-high"
-            input id="savings-amount-high" type="radio" name="savings-amount" value="more-than-16k" data-next="7-summary.html" data-savings="high"
-            | More than £16,000
+            input id="savings-amount-high" type="radio" name="savings-amount" value="more-than-3k"
+            | More than £3,000
 
-    br
+  #over3k.hide.panel-indent
+    #married-under-61
+      .row
+        .small-12.columns
+          label In question 8, is the applicant's partner 61 or over?
+      .row
+        .small-12.medium-9.columns
+          .options.radio
+            .option
+              label for="partnerOver61No"
+                input id="partnerOver61No" type="radio" name="partnerOver61" value="no"
+                | No
+              #savings-detail.panel-indent.hide
+                label for="savings-detail"
+                  | How much do they have in savings and investments?
+                  input name="savings-detail" id="savings-detail-amount" type="number"
+            .option
+              label for="partnerOver61Yes"
+                input id="partnerOver61Yes" type="radio" name="partnerOver61" value="yes"
+                | Yes
+              #over16k.panel-indent.hide
+                .row
+                  .small-12.columns
+                    label In question 8, how much do they have?
+                .row
+                  .small-12.columns
+                    .options.radio
+                      .option
+                        label for="over16kNo"
+                          input id="over16kNo" type="radio" name="over16k" value="false"
+                          | Less than £16,000
+                      .option
+                        label for="over16kYes"
+                          input id="over16kYes" type="radio" name="over16k" value="true"
+                          | More than £16,000
 
   br
   .row
@@ -42,41 +72,75 @@ javascript:
   $(document).ready( function() {
     buildNextUrl('4-benefits.html');
     storeValue('staff', 'savings',  'low');
-    storeValue('staff', 'threshold',  calcThreshold());
-  });
-  $("input[name='savings-amount']").on('change', function () {
-    var $opt = $("input[name='savings-amount']:checked");
-    buildNextUrl($opt.data('next'));
-    storeValue('staff', 'savings',  $opt.data('savings'));
-    storeValue('staff', 'threshold',  calcThreshold());
-    if($opt.data('savings') === 'high') {
-      storeValue('staff', 'savings-exceeded',  'true');
-    }
-  });
-  function calcThreshold() {
-    var threshold = 3000,
-        bands = [
-          [1000, 4000],
-          [1335, 5000],
-          [1665, 6000],
-          [2000, 7000],
-          [2330, 8000],
-          [4000, 10000],
-          [5000, 12000],
-          [6000, 14000],
-          [7000, 16000]
-        ],
-        fee = getValue('staff', 'fee'),
-        age = getValue('staff', 'age');
+    storeValue('staff', 'threshold', 3000);
 
-    if(age && age > 60) {
-      threshold = 16000;
-    } else if(fee) {
-      for(x in bands) {
-        if(fee > bands[x][0]) {
-          threshold = bands[x][1];
-        }
-      }
+    if(parseInt(getValue('staff', 'age'), 10) > 60) {
+      console.log('applicant 61+');
+      var h = $('#over16k').html();
+      $('#over3k').html(h);
+    } else if(getValue('staff', 'couple') === 'false') {
+      console.log('applicant < 60, single');
+      var h = $('#savings-detail').html();
+      $('#over3k').html(h);
     }
-    return threshold;
+  });
+
+  $(document).on('change', 'input[name="savings-amount"]', function () {
+    var $opt = $("input[name='savings-amount']:checked");
+
+    clearValue('staff', 'savings-exceeded');
+
+    $('#over3k').toggle($('#savings-amount-high').is(':checked'));
+    if($opt.val() === 'more-than-3k') {
+      storeValue('staff', 'savings',  'mid');
+      deselectRadio([$('#over3k').find('input[type="radio"]')]);
+      $('#savings-detail').hide().find('input').val('');
+      $('#over16k').hide();
+    } else {
+      storeValue('staff', 'savings',  'low');
+      storeValue('staff', 'savings-exceeded', 'false');
+      buildNextUrl(passOrFail());
+    }
+  });
+
+  $(document).on('change', 'input[name="partnerOver61"]', function () {
+    var $opt = $("input[name='partnerOver61']:checked");
+
+    clearValue('staff', 'savings-exceeded');
+    clearValue('staff', 'savings-detail');
+    clearValue('staff', 'over16k');
+    if($opt.val() === 'no') {
+      $('#over16k').hide();
+      clearValue('staff', 'over16k');
+      $('#savings-detail').show().find('input').val('');
+      storeValue('staff', 'threshold', calcThreshold());
+    } else {
+      $('#savings-detail').hide();
+      clearValue('staff', 'savings-detail');
+      $('#over16k').show();
+      deselectRadio([$('#over16k').find('input[type="radio"]')]);
+
+      storeValue('staff', 'threshold', 16000);
+    }
+  });
+
+  $(document).on('change', 'input[name="over16k"]', function () {
+    var $opt = $("input[name='over16k']:checked");
+
+    storeValue('staff', 'over16k', $opt.val());
+    storeValue('staff', 'savings-exceeded',  $opt.val());
+    storeValue('staff', 'savings',  $opt.val().toString() === 'true' ? 'high' : 'mid');
+    buildNextUrl(passOrFail());
+  });
+
+  $(document).on('change', 'input#savings-detail-amount', function (e) {
+    var $el = $(e.target);
+
+    storeValue('staff', 'savings-detail', $el.val());
+    storeValue('staff', 'savings-exceeded', parseInt($el.val(), 10) > getValue('staff', 'threshold') ? 'true' : 'false' );
+    buildNextUrl(passOrFail());
+  });
+
+  function passOrFail() {
+    return (getValue('staff', 'savings-exceeded').toString() === 'true' ? '7-summary.html' : '4-benefits.html');
   }

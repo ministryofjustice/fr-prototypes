@@ -83,6 +83,17 @@ javascript:
       var h = $('#savings-detail').html();
       $('#over3k').html(h);
     }
+
+    if($('#savings-amount-high').is(':checked')) {
+      $('#over3k').show();
+
+      if($('#partnerOver61No').is(':checked')) {
+        $('#savings-detail').show();
+      }
+      if($('#partnerOver61Yes').is(':checked')) {
+        $('#over16k').show();
+      }
+    }
   });
 
   $(document).on('change', 'input[name="savings-amount"]', function () {

@@ -5,7 +5,7 @@ section_title: 'Process application'
 rh_help: true
 ---
 
-form
+form data-abide='ajax'
   br
   .row
     .small-12.medium-12.large-12.columns
@@ -13,12 +13,14 @@ form
   br
   .row
     .small-12.medium-5.large-5.columns
-      label for='fee' Fee
+      label for='fee'
+        | Fee
+        small.error Enter the fee
       .small-2.medium-3.large-3.columns style="padding:0px;"
         span.prefix
           label.inline for='fee' £
       .small-10.medium-9.large-9.columns style="padding:0px;"
-        input id='fee' type="number"
+        input id='fee' type='number' required=''
 
   .row
     .small-12.medium-9.large-8.columns.form-group
@@ -151,6 +153,10 @@ form
 
 javascript:
   $(document).ready( function() {
+    $(document).foundation();
+
+    formValidationModule.init();
+
     buildNextUrl('3-savings.html');
     $('#fee').bind('change', function () {
       storeValue('staff', 'fee', $(this).val());

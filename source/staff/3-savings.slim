@@ -4,26 +4,25 @@ nav_title: 'Help with fees'
 section_title: 'Process application'
 rh_help: true
 ---
-form
+form data-abide='ajax'
   br
   .row
     .small-12.columns
       h2 Savings and investments
   br
   .row
-    .small-12.columns
-      label
-        span#status-describe In question 7, how much do they have in savings and investments?
-  .row
     .small-12.medium-9.columns
+      label
+        | In question 7, how much do they have in savings and investments?
+        small.error Select the option which applies
       .options.radio
         .option
           label for="savings-low"
-            input id="savings-low" type="radio" name="savings-amount" value="less-than-3k"
+            input id="savings-low" type="radio" name="savings-amount" value="less-than-3k" required=''
             | Less than £3,000
         .option
           label for="savings-amount-high"
-            input id="savings-amount-high" type="radio" name="savings-amount" value="more-than-3k"
+            input id="savings-amount-high" type="radio" name="savings-amount" value="more-than-3k" required=''
             | More than £3,000
 
   #over3k.hide.panel-indent
@@ -71,6 +70,10 @@ form
 
 javascript:
   $(document).ready( function() {
+    $(document).foundation();
+
+    formValidationModule.init();
+
     buildNextUrl('4-benefits.html');
     storeValue('staff', 'savings',  'low');
     storeValue('staff', 'threshold', 3000);

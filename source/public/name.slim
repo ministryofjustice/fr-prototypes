@@ -13,18 +13,18 @@ form
 
   .row
     .small-12.medium-2.columns
-      label for='case-number'
+      label for='title'
         | Title
-        input name='form_number' id='form_number' type='text'
+        input name='title' id='title' type='text'
 
-  .row 
+  .row
     .small-12.medium-6.columns
-      label for='case-number'
+      label for='first_name'
         | First name
-        input name='form_number' id='form_number' type='text'
-      label for='case-number'
+        input name='first_name' id='first_name' type='text'
+      label for='last_name'
         | Last name
-        input name='form_number' id='form_number' type='text'
+        input name='last_name' id='last_name' type='text'
 
   br
   .row
@@ -44,11 +44,4 @@ form
 javascript:
   $(document).ready( function() {
     buildNextUrl('address.html');
-    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
-    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
-  });
-
-  $("input[name='case']").on('change', function () {
-    $('#case-number').toggleClass('hide', $("input[name='case']:checked").val() == "true");
-    //buildNextUrl($("input[name='case']:checked").val() == "true" ? '#.html' : '#.html');
   });

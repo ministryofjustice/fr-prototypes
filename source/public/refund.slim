@@ -10,14 +10,14 @@ form
       span.hint Step 2 of 20
       br
       h4 Have you already paid the fee?
-      p You can apply for a refund for a fee paid in the last 3 months. 
+      p You can apply for a refund for a fee paid in the last 3 months.
 
-    .small-12.medium-6.columns.end   
+    .small-12.medium-6.columns.end
       .options.radio
         .option
           label for="refund-no"
             input id="refund-no" type="radio" name="refund" value="false"
-            | No 
+            | No
             .option
           label for="refund-yes"
             input id="refund-yes" type="radio" name="refund" value="true"
@@ -63,9 +63,8 @@ form
 javascript:
   $(document).ready( function() {
     buildNextUrl('status.html');
-    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
-    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
   });
+
   $("input[name='refund']").on('change', function () {
     $('#refund-details').toggleClass('hide', $("input[name='refund']:checked").val() != "true");
     $("#next-url").attr("href", updateQueryStringParameter('refund',$("input[name='refund']:checked").val() == "true"));

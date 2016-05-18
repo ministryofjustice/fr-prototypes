@@ -15,7 +15,7 @@ form
       label for='case-number'
         | Address
         textarea rows="4" cols="50"
-  .row 
+  .row
     .small-12.medium-3.columns
       label for='case-number'
         | Postcode
@@ -38,8 +38,6 @@ form
 javascript:
   $(document).ready( function() {
     buildNextUrl('contact.html');
-    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
-    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
   });
 
   $("input[name='case']").on('change', function () {

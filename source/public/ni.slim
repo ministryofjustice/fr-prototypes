@@ -11,17 +11,17 @@ form
       br
       h4 What is your National Insurance number?
       p Example: QQ 12 34 56 C
-    
+
     .small-12.medium-6.large-3.columns.end
       input name='form_number' id='form_number' type='text'
   .row
-    .small-12.medium-6.columns  
+    .small-12.medium-6.columns
       details
         summary If you don't know your National Insurance number
         .panel-indent
           ul
             li look for your National Insurance number on payslips or official letters about tax, pensions or benefits
-            li 
+            li
               a href="https://www.gov.uk/lost-national-insurance-number" target="_blank" ask for a reminder through the post
           br
           p If you can’t provide a National Insurance number you will need to provide a letter from the job centre.
@@ -44,11 +44,4 @@ form
 javascript:
   $(document).ready( function() {
     buildNextUrl('dob.html');
-    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
-    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
-  });
-
-  $("input[name='case']").on('change', function () {
-    $('#case-number').toggleClass('hide', $("input[name='case']:checked").val() == "true");
-    // buildNextUrl($("input[name='case']:checked").val() == "true" ? '#.html' : '#.html');
   });

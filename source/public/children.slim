@@ -11,14 +11,14 @@ form
       br
       h4 Do you have any children living with you, or who you support financially?
       p Up to 19 years old in full-time education.
-  
-  .row  
-     .small-12.medium-6.columns.end   
+
+  .row
+     .small-12.medium-6.columns.end
       .options.radio
         .option
           label for="kid-no"
             input id="kid-no" type="radio" name="kid" value="false"
-            | No 
+            | No
             .option
           label for="kid-yes"
             input id="kid-yes" type="radio" name="kid" value="true"
@@ -49,8 +49,6 @@ form
 javascript:
   $(document).ready( function() {
     buildNextUrl('income.html');
-    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
-    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
   });
 
   $("input[name='kid']").on('change', function () {

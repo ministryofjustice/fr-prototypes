@@ -48,8 +48,3 @@ javascript:
   $(document).ready( function() {
     buildNextUrl('name.html');
   });
-
-  $("input[name='refund']").on('change', function () {
-    $('#refund-details').toggleClass('hide', $("input[name='refund']:checked").val() == "true");
-    //buildNextUrl($("input[name='refund']:checked").val() == "true" ? '#.html' : '#.html');
-  });

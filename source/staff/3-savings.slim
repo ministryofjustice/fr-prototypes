@@ -4,45 +4,46 @@ nav_title: 'Help with fees'
 section_title: 'Process application'
 rh_help: true
 ---
-form
+form data-abide='ajax'
   br
   .row
     .small-12.columns
       h2 Savings and investments
   br
   .row
-    .small-12.columns
-      label
-        span#status-describe In question 7, how much do they have in savings and investments?
-  .row
     .small-12.medium-9.columns
+      label
+        | In question 7, how much do they have in savings and investments?
+        small.error Select the option which applies
       .options.radio
         .option
           label for="savings-low"
-            input id="savings-low" type="radio" name="savings-amount" value="less-than-3k"
+            input id="savings-low" type="radio" name="savings-amount" value="less-than-3k" required=''
             | Less than £3,000
         .option
           label for="savings-amount-high"
-            input id="savings-amount-high" type="radio" name="savings-amount" value="more-than-3k"
+            input id="savings-amount-high" type="radio" name="savings-amount" value="more-than-3k" required=''
             | More than £3,000
 
   #over3k.hide.panel-indent
     #married-under-61
       .row
         .small-12.columns
-          label In question 8, is the applicant's partner 61 or over?
-      .row
-        .small-12.medium-9.columns
+          label
+            | In question 8, is the applicant's partner 61 or over?
+            small.error Select the option which applies
           .options.radio
             .option
               label for="partnerOver61No"
                 input id="partnerOver61No" type="radio" name="partnerOver61" value="no"
                 | No
               #savings-detail.panel-indent.hide
-                label for="savings-detail"
-                  | How much do they have in savings and investments?
-                .small-6
-                  input name="savings-detail" id="savings-detail-amount" type="number"
+                .row
+                  .small-12.columns
+                    label for="savings-detail"
+                      | How much do they have in savings and investments?
+                    .small-6
+                      input name="savings-detail" id="savings-detail-amount" type="number"
             .option
               label for="partnerOver61Yes"
                 input id="partnerOver61Yes" type="radio" name="partnerOver61" value="yes"
@@ -50,9 +51,8 @@ form
               #over16k.panel-indent.hide
                 .row
                   .small-12.columns
-                    label In question 8, how much do they have?
-                .row
-                  .small-12.columns
+                    label
+                      | In question 8, how much do they have?
                     .options.radio
                       .option
                         label for="over16kNo"
@@ -71,6 +71,10 @@ form
 
 javascript:
   $(document).ready( function() {
+    $(document).foundation();
+
+    formValidationModule.init();
+
     buildNextUrl('4-benefits.html');
     storeValue('staff', 'savings',  'low');
     storeValue('staff', 'threshold', 3000);
@@ -97,12 +101,15 @@ javascript:
     }
   });
 
-  $(document).on('change', 'input[name="savings-amount"]', function () {
+  $(document).on('change', 'input[name="savings-amount"]', function() {
     var $opt = $("input[name='savings-amount']:checked");
 
     clearValue('staff', 'savings-exceeded');
 
-    $('#over3k').toggle($('#savings-amount-high').is(':checked'));
+    $('#over3k').toggle($('#savings-amount-high').is(':checked'), function() {
+
+    });
+
     if($opt.val() === 'more-than-3k') {
       storeValue('staff', 'savings',  'mid');
       deselectRadio([$('#over3k').find('input[type="radio"]')]);
@@ -113,6 +120,9 @@ javascript:
       storeValue('staff', 'savings-exceeded', 'false');
       buildNextUrl(passOrFail());
     }
+
+    $('#over3k').find('input:hidden').attr('required', false);
+    $('#over3k').find('input:visible').attr('required', '');
   });
 
   $(document).on('change', 'input[name="partnerOver61"]', function () {
@@ -121,15 +131,17 @@ javascript:
     clearValue('staff', 'savings-exceeded');
     clearValue('staff', 'savings-detail');
     clearValue('staff', 'over16k');
+    $('#over16k').removeClass('error');
+
     if($opt.val() === 'no') {
-      $('#over16k').hide();
+      $('#over16k').hide().find('input').attr('required', false);
       clearValue('staff', 'over16k');
-      $('#savings-detail').show().find('input').val('');
+      $('#savings-detail').show().find('input').val('').attr('required', '');
       storeValue('staff', 'threshold', calcThreshold());
     } else {
-      $('#savings-detail').hide();
+      $('#savings-detail').hide().find('input').attr('required', false);
       clearValue('staff', 'savings-detail');
-      $('#over16k').show();
+      $('#over16k').show().find('input').attr('required', '');
       deselectRadio([$('#over16k').find('input[type="radio"]')]);
 
       storeValue('staff', 'threshold', 16000);

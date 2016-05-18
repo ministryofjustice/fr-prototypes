@@ -5,7 +5,7 @@ section_title: 'Process application'
 rh_help: true
 ---
 
-form
+form data-abide='ajax'
   br
   .row
     .small-12.medium-12.large-12.columns
@@ -25,30 +25,29 @@ form
     .small-12.medium-9.large-8.columns
       label for='last_name'
         | Last name
-        input id='last_name' type='text'
+        small.error Enter the applicant's last name
+        input id='last_name' type='text' required=''
   .row
     .small-12.medium-6.large-5.columns
-      label for='doa_day' Date of birth
+      label Date of birth
+      small.error Enter a valid date of birth
       .small-4.medium-4.large-4.columns style='padding-left: 0px;'
         label for='doa_day'
           small Day
+          input id='doa_day' type='number' min='1' max='31' required=''
       .small-4.medium-4.large-4.columns style='padding-left: 0px;'
         label for='doa_month'
           small Month
+          input id='doa_month' type='number' min='1' max='12' required=''
       .small-4.medium-4.large-4.columns style='padding: 0px;'
         label for='doa_year'
           small Year
-      .small-4.medium-4.large-4.columns style='padding-left: 0px;'
-        input id='doa_day' type='number'
-      .small-4.medium-4.large-4.columns style='padding-left: 0px;'
-        input id='doa_month' type='number'
-      .small-4.medium-4.large-4.columns style='padding: 0px;'
-        input id='doa_year' type='number'
+          input id='doa_year' type='number' min='1900' max='2000' required=''
   .row
     .small-12.medium-9.large-8.columns
       label for='claim_number'
         | National Insurance number
-        span.hint
+        span.hint.block
           | (Must be completed for benefits based applications)
         input name='claim_number' id='claim_number' type='text'
 
@@ -61,12 +60,12 @@ form
             .options.radio
               .option
                 label for='couple-no'
-                  input data-check='couple' id='couple-no' name="couple" type="radio" value='false'
-                  |Single
+                  input data-check='couple' id='couple-no' name="couple" type="radio" value='false' required=''
+                  | Single
               .option
                 label for='couple-yes'
-                  input data-check='couple' id='couple-yes' name="couple" type="radio" value='true'
-                  |Married or living with someone and sharing an income
+                  input data-check='couple' id='couple-yes' name="couple" type="radio" value='true' required=''
+                  | Married or living with someone and sharing an income
 
   br
   .row
@@ -75,7 +74,6 @@ form
         .button.success Next
 
 javascript:
-
   var monthNames = [
     "Jan", "Feb", "Mar",
     "Apr", "May", "Jun", "Jul",
@@ -88,14 +86,18 @@ javascript:
   var monthIndex = date.getMonth();
   var year = date.getFullYear();
 
-  $(document).ready( function() {
-    $("input[name='couple']").on('change', function () {
+  $(document).ready(function() {
+    $(document).foundation();
+
+    formValidationModule.init();
+
+    $("input[name='couple']").on('change', function() {
       storeValue('staff', 'couple', $("input[name='couple']:checked").val());
     });
-    $("input[type='number']").on('change', function () {
-      var day =  $('#doa_day').val();
-      var month = $('#doa_month').val()-1;
-      var year = $('#doa_year').val();
+    $("input[type='number']").on('change', function() {
+      var day = parseInt($('#doa_day').val(), 10);
+      var month = parseInt($('#doa_month').val(), 10) - 1;
+      var year = parseInt($('#doa_year').val(), 10);
 
       var d = new Date(year, month, day);
       var dob = day + ' ' + monthNames[month] + ' ' + year;
@@ -109,4 +111,3 @@ javascript:
     var ageDate = new Date(ageDifMs); // miliseconds from epoch
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
-

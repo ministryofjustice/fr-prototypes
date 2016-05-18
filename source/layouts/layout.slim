@@ -20,13 +20,16 @@ html
       -else # full width-page
         .large-12.columns
           = yield
-    .row
-      -if current_page.path.start_with?('public/')
-        .small-12.columns
-      -else
-        .small-12.columns
-          = partial 'partials/layout/footer'
-          p
-          = link_to '', '/'
+
+      -if current_page.path.start_with?('staff/')
+        .row
+          .small-12.columns
+            = partial 'partials/layout/footer'
+
       = javascript_include_tag 'libs', 'numeral.min', 'app', 'details.polyfill', 'income_sources', 'income_input', 'income_summary', 'form_number'
+
+      -if current_page.path.start_with?('staff/')
+        = javascript_include_tag 'form_validation'
+      -else
+        = javascript_include_tag 'income_sources', 'income_input', 'income_summary', 'form_number'
       = include_javascripts(current_page.data.javascripts || current_page.data.javascripts)

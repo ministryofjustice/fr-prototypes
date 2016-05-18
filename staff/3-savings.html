@@ -1,4 +1,8 @@
-<!DOCTYPE html><html><head><meta charset="utf-8" /><title>Help with fees</title><meta content="width=device-width" name="viewport" /><link href="../assets/stylesheets/styles.css" rel="stylesheet" /><link href="../assets/stylesheets/r2_calculator.css" rel="stylesheet" /><link href="../assets/stylesheets/r1calc.css" rel="stylesheet" /><script src="../assets/javascripts/jquery.min.js"></script></head><body><div class="contain-to-grid"><nav class="top-bar" data-topbar=""><div class="row"><div class="small-12 columns"><span class="title-area"><span class="name"><h1><a href="../">Help with fees</a></h1></span></span></div></div><div class="row"><div class="small-12 columns" style="margin-top:15px;"><span class="alpha-tag">ALPHA</span> &nbsp; Tell us what you <a href="feedback.html">think and help us improve</a> <hr /></div></div></nav></div><div class="row"><div class="large-7 columns"><form><br /><div class="row"><div class="small-12 columns"><h2>Savings and investments</h2></div></div><br /><div class="row"><div class="small-12 columns"><label><span id="status-describe">In question 7, how much do they have in savings and investments?</span></label></div></div><div class="row"><div class="small-12 medium-9 columns"><div class="options radio"><div class="option"><label for="savings-low"><input id="savings-low" name="savings-amount" type="radio" value="less-than-3k" />Less than £3,000</label></div><div class="option"><label for="savings-amount-high"><input id="savings-amount-high" name="savings-amount" type="radio" value="more-than-3k" />More than £3,000</label></div></div></div></div><div class="hide panel-indent" id="over3k"><div id="married-under-61"><div class="row"><div class="small-12 columns"><label>In question 8, is the applicant's partner 61 or over?</label></div></div><div class="row"><div class="small-12 medium-9 columns"><div class="options radio"><div class="option"><label for="partnerOver61No"><input id="partnerOver61No" name="partnerOver61" type="radio" value="no" />No</label><div class="panel-indent hide" id="savings-detail"><label for="savings-detail">How much do they have in savings and investments?</label><div class="small-6"><input id="savings-detail-amount" name="savings-detail" type="number" /></div></div></div><div class="option"><label for="partnerOver61Yes"><input id="partnerOver61Yes" name="partnerOver61" type="radio" value="yes" />Yes</label><div class="panel-indent hide" id="over16k"><div class="row"><div class="small-12 columns"><label>In question 8, how much do they have?</label></div></div><div class="row"><div class="small-12 columns"><div class="options radio"><div class="option"><label for="over16kNo"><input id="over16kNo" name="over16k" type="radio" value="false" />Less than £16,000</label></div><div class="option"><label for="over16kYes"><input id="over16kYes" name="over16k" type="radio" value="true" />More than £16,000</label></div></div></div></div></div></div></div></div></div></div></div><br /><div class="row"><div class="small-12 medium-7 large-7 columns"><a href="4-benefits.html" id="next-url"><div class="button success">Next</div></a></div></div></form><script>$(document).ready( function() {
+<!DOCTYPE html><html><head><meta charset="utf-8" /><title>Help with fees</title><meta content="width=device-width" name="viewport" /><link href="../assets/stylesheets/styles.css" rel="stylesheet" /><link href="../assets/stylesheets/r2_calculator.css" rel="stylesheet" /><link href="../assets/stylesheets/r1calc.css" rel="stylesheet" /><script src="../assets/javascripts/jquery.min.js"></script></head><body><div class="contain-to-grid"><nav class="top-bar" data-topbar=""><div class="row"><div class="small-12 columns"><span class="title-area"><span class="name"><h1><a href="../">Help with fees</a></h1></span></span></div></div><div class="row"><div class="small-12 columns" style="margin-top:15px;"><span class="alpha-tag">ALPHA</span> &nbsp; Tell us what you <a href="feedback.html">think and help us improve</a> <hr /></div></div></nav></div><div class="row"><div class="large-7 columns"><form data-abide="ajax"><br /><div class="row"><div class="small-12 columns"><h2>Savings and investments</h2></div></div><br /><div class="row"><div class="small-12 medium-9 columns"><label>In question 7, how much do they have in savings and investments?<small class="error">Select the option which applies</small></label><div class="options radio"><div class="option"><label for="savings-low"><input id="savings-low" name="savings-amount" required="" type="radio" value="less-than-3k" />Less than £3,000</label></div><div class="option"><label for="savings-amount-high"><input id="savings-amount-high" name="savings-amount" required="" type="radio" value="more-than-3k" />More than £3,000</label></div></div></div></div><div class="hide panel-indent" id="over3k"><div id="married-under-61"><div class="row"><div class="small-12 columns"><label>In question 8, is the applicant's partner 61 or over?<small class="error">Select the option which applies</small></label><div class="options radio"><div class="option"><label for="partnerOver61No"><input id="partnerOver61No" name="partnerOver61" type="radio" value="no" />No</label><div class="panel-indent hide" id="savings-detail"><div class="row"><div class="small-12 columns"><label for="savings-detail">How much do they have in savings and investments?</label><div class="small-6"><input id="savings-detail-amount" name="savings-detail" type="number" /></div></div></div></div></div><div class="option"><label for="partnerOver61Yes"><input id="partnerOver61Yes" name="partnerOver61" type="radio" value="yes" />Yes</label><div class="panel-indent hide" id="over16k"><div class="row"><div class="small-12 columns"><label>In question 8, how much do they have?</label><div class="options radio"><div class="option"><label for="over16kNo"><input id="over16kNo" name="over16k" type="radio" value="false" />Less than £16,000</label></div><div class="option"><label for="over16kYes"><input id="over16kYes" name="over16k" type="radio" value="true" />More than £16,000</label></div></div></div></div></div></div></div></div></div></div></div><br /><div class="row"><div class="small-12 medium-7 large-7 columns"><a href="4-benefits.html" id="next-url"><div class="button success">Next</div></a></div></div></form><script>$(document).ready( function() {
+  $(document).foundation();
+
+  formValidationModule.init();
+
   buildNextUrl('4-benefits.html');
   storeValue('staff', 'savings',  'low');
   storeValue('staff', 'threshold', 3000);
@@ -25,12 +29,15 @@
   }
 });
 
-$(document).on('change', 'input[name="savings-amount"]', function () {
+$(document).on('change', 'input[name="savings-amount"]', function() {
   var $opt = $("input[name='savings-amount']:checked");
 
   clearValue('staff', 'savings-exceeded');
 
-  $('#over3k').toggle($('#savings-amount-high').is(':checked'));
+  $('#over3k').toggle($('#savings-amount-high').is(':checked'), function() {
+
+  });
+
   if($opt.val() === 'more-than-3k') {
     storeValue('staff', 'savings',  'mid');
     deselectRadio([$('#over3k').find('input[type="radio"]')]);
@@ -41,6 +48,9 @@ $(document).on('change', 'input[name="savings-amount"]', function () {
     storeValue('staff', 'savings-exceeded', 'false');
     buildNextUrl(passOrFail());
   }
+
+  $('#over3k').find('input:hidden').attr('required', false);
+  $('#over3k').find('input:visible').attr('required', '');
 });
 
 $(document).on('change', 'input[name="partnerOver61"]', function () {
@@ -49,15 +59,17 @@ $(document).on('change', 'input[name="partnerOver61"]', function () {
   clearValue('staff', 'savings-exceeded');
   clearValue('staff', 'savings-detail');
   clearValue('staff', 'over16k');
+  $('#over16k').removeClass('error');
+
   if($opt.val() === 'no') {
-    $('#over16k').hide();
+    $('#over16k').hide().find('input').attr('required', false);
     clearValue('staff', 'over16k');
-    $('#savings-detail').show().find('input').val('');
+    $('#savings-detail').show().find('input').val('').attr('required', '');
     storeValue('staff', 'threshold', calcThreshold());
   } else {
-    $('#savings-detail').hide();
+    $('#savings-detail').hide().find('input').attr('required', false);
     clearValue('staff', 'savings-detail');
-    $('#over16k').show();
+    $('#over16k').show().find('input').attr('required', '');
     deselectRadio([$('#over16k').find('input[type="radio"]')]);
 
     storeValue('staff', 'threshold', 16000);
@@ -83,4 +95,4 @@ $(document).on('change', 'input#savings-detail-amount', function (e) {
 
 function passOrFail() {
   return (getValue('staff', 'savings-exceeded').toString() === 'true' ? '7-summary.html' : '4-benefits.html');
-}</script></div><div class="large-5 columns"><h1></h1><br /><div class="row"><div class="columns small-12 collapse"><h2>&nbsp;</h2><div class="row sidebar collapse"><div class="columns small-12"><h4>Savings and investments</h4><p><a target="_blank" href="guide-processing.html#savings">Read about the maximum amounts of savings and investments allowed</a></p></div></div></div></div></div></div><div class="row"><div class="small-12 columns"><br /><footer class="row page-footer"><div class="small-12 columns"><div class="row"><div class="small-12 medium-5 large-6 columns"><h4>Contact us</h4><hr style="color:bfc1c3;" /><div class="bold">Email us</div><p><a href="mailto:helpwithfees.support@digital.justice.gov.uk">helpwithfees.support@digital.justice.gov.uk</a></p><div class="bold">Give feedback</div><p><a href="#">Tell us what you think</a></p></div><div class="small-12 medium-7 large-6 columns"><h4>Staff guides</h4><hr style="color:bfc1c3;" /><div class="row"><div class="small-7 columns"><p>How to process an application, deal with spot checks, part payments, appeals, and fraud.</p><p><a target="_blank" href="guide-landing.html">See the guides</a></p></div><div class="small-4 columns end"><img src="../assets/images/icon-guide-home.png" /></div></div></div></div></div></footer><p></p><a href="/"></a></div><script src="../assets/javascripts/libs.js"></script><script src="../assets/javascripts/numeral.min.js"></script><script src="../assets/javascripts/app.js"></script><script src="../assets/javascripts/details.polyfill.js"></script><script src="../assets/javascripts/income_sources.js"></script><script src="../assets/javascripts/income_input.js"></script><script src="../assets/javascripts/income_summary.js"></script><script src="../assets/javascripts/form_number.js"></script></div></body></html>
+}</script></div><div class="large-5 columns"><h1></h1><br /><div class="row"><div class="columns small-12 collapse"><h2>&nbsp;</h2><div class="row sidebar collapse"><div class="columns small-12"><h4>Savings and investments</h4><p><a target="_blank" href="guide-processing.html#savings">Read about the maximum amounts of savings and investments allowed</a></p></div></div></div></div></div><div class="row"><div class="small-12 columns"><br /><footer class="row page-footer"><div class="small-12 columns"><div class="row"><div class="small-12 medium-5 large-6 columns"><h4>Contact us</h4><hr style="color:bfc1c3;" /><div class="bold">Email us</div><p><a href="mailto:helpwithfees.support@digital.justice.gov.uk">helpwithfees.support@digital.justice.gov.uk</a></p><div class="bold">Give feedback</div><p><a href="#">Tell us what you think</a></p></div><div class="small-12 medium-7 large-6 columns"><h4>Staff guides</h4><hr style="color:bfc1c3;" /><div class="row"><div class="small-7 columns"><p>How to process an application, deal with spot checks, part payments, appeals, and fraud.</p><p><a target="_blank" href="guide-landing.html">See the guides</a></p></div><div class="small-4 columns end"><img src="../assets/images/icon-guide-home.png" /></div></div></div></div></div></footer></div></div><script src="../assets/javascripts/libs.js"></script><script src="../assets/javascripts/numeral.min.js"></script><script src="../assets/javascripts/app.js"></script><script src="../assets/javascripts/details.polyfill.js"></script><script src="../assets/javascripts/income_sources.js"></script><script src="../assets/javascripts/income_input.js"></script><script src="../assets/javascripts/income_summary.js"></script><script src="../assets/javascripts/form_number.js"></script><script src="../assets/javascripts/form_validation.js"></script></div></body></html>

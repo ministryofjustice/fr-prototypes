@@ -59,7 +59,7 @@ var incomeSourcesModule = {
   init: function() {
     var self = this;
     if($(self.sourcesContainer).length) {
-      self.isMarried = getUrlParameter('married').toString();
+      self.isMarried = getValue('public', 'married').toString();
       self.bindEvents();
       self.writeIncomeSources();
     }

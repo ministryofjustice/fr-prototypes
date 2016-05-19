@@ -64,5 +64,5 @@ javascript:
   });
 
   $("input[name='status']").on('change', function () {
-    $("#next-url").attr("href", updateQueryStringParameter('married',$("input[name='status']:checked").val() == "true"));
+    storeValue('public', 'married', $("input[name='status']:checked").val() == "true");
   });

@@ -67,5 +67,5 @@ javascript:
 
   $("input[name='refund']").on('change', function () {
     $('#refund-details').toggleClass('hide', $("input[name='refund']:checked").val() != "true");
-    $("#next-url").attr("href", updateQueryStringParameter('refund',$("input[name='refund']:checked").val() == "true"));
+    storeValue('public', 'refund', $("input[name='refund']:checked").val() == "true");
   });

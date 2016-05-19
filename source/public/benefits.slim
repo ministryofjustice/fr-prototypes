@@ -12,36 +12,36 @@ form
         br
         h4 Do you receive any of the following benefits?
         p We’ll contact the Department for Work and Pensions to confirm that you are getting one of these benefits.
-    
-    .row      
+
+    .row
       .small-12.medium-6.columns
         ul
-          li 
+          li
             span Income-based Jobseeker’s Allowance
             span.hint
               |&nbsp;(JSA)
-          li 
+          li
             span Income-related Employment and Support Allowance
             span.hint
               |&nbsp;(ESA)
-          li 
+          li
             span Income Support
-          li 
-            span Universal Credit 
+          li
+            span Universal Credit
             span.hint
               |&nbsp;(and you’re earning less than £6,000 a year)
-          li 
+          li
             span State Pension
             span.hint
               |&nbsp;(Guarantee Credit)
           li
-            span Scottish Civil Legal Aid 
+            span Scottish Civil Legal Aid
             span.hint
               |&nbsp;(not Advice and Assistance or Advice by Way of Representation)
-    
+
     br
     .row
-      .small-12.medium-6.columns   
+      .small-12.medium-6.columns
         .options.radio
           .option
             label for="benefits-no"
@@ -60,36 +60,36 @@ form
         br
         h4 Did you receive any of the following benefits at the time you paid the fee?
         p We’ll contact the Department for Work and Pensions to confirm that you were getting one of these benefits.
-    
-    .row      
+
+    .row
       .small-12.medium-6.columns
         ul
-          li 
+          li
             span Income-based Jobseeker’s Allowance
             span.hint
               |&nbsp;(JSA)
-          li 
+          li
             span Income-related Employment and Support Allowance
             span.hint
               |&nbsp;(ESA)
-          li 
+          li
             span Income Support
-          li 
-            span Universal Credit 
+          li
+            span Universal Credit
             span.hint
               |&nbsp;(and you’re earning less than £6,000 a year)
-          li 
+          li
             span State Pension
             span.hint
               |&nbsp;(Guarantee Credit)
           li
-            span Scottish Civil Legal Aid 
+            span Scottish Civil Legal Aid
             span.hint
               |&nbsp;(not Advice and Assistance or Advice by Way of Representation)
-    
+
     br
     .row
-      .small-12.medium-6.columns   
+      .small-12.medium-6.columns
         .options.radio
           .option
             label for="refund-benefits-no"
@@ -103,33 +103,33 @@ form
 
   br
   .row
-    .small-12.medium-7.columns  
+    .small-12.medium-7.columns
       details
         summary Help with benefits
-        .panel-indent 
+        .panel-indent
           h5 If you’ve only recently started receiving one of these benefits
-          p 
+          p
             |(for example, in the last few days), our staff may not be able to confirm your eligibility with the Department for Work and Pensions. In this case you should provide a letter from the job centre.
           h5 Benefits with similar names
           p There are some benefits with similar names. If you are receiving one of the benefits listed below, select 'No'.
           ul
-            li 
+            li
               span Contribution-based Job Seekers Allowance
               span.hint
                 |&nbsp;(JSA)
-            li 
+            li
               span Contribution-based Employment Support Allowance
               span.hint
                 |&nbsp;(ESA)
-            li 
+            li
               span Pension Credit and Savings Credit
-            li 
+            li
               span Universal Credit
               span.hint
                 |&nbsp;(and you're earning more than £6,000 a year)
-            li 
+            li
               span Scottish Legal Aid Advice and Assistance
-            li 
+            li
               span Scottish Legal Aid Advice by Way of Representation
               span.hint
                 |&nbsp;(ABWOR)
@@ -151,8 +151,8 @@ form
 javascript:
   $(document).ready( function() {
     buildNextUrl('children.html');
-    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
-    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
+    $('#refund-true').toggle(getValue('public', 'refund') == 'true');
+    $('#refund-false').toggle(getValue('public', 'refund') != 'true');
   });
 
   $("input[name='benefits']").on('change', function () {

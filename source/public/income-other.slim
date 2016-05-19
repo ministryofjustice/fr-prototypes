@@ -13,14 +13,14 @@ form
       h4#refund-true Enter details about any other sources of income at the time you paid the fee
   .row
     .small-12.medium-6.columns.end
-      p How often did you receive this income? 
-      .small-12.medium-6.columns.end   
+      p How often did you receive this income?
+      .small-12.medium-6.columns.end
       .options.radio
         .option
         .option
           label for="weekly"
             input id="weekly" type="radio" name="income" value="weekly"
-            | Weekly 
+            | Weekly
           .option
           label for="fortnightly"
             input id="fortnightly" type="radio" name="income" value="fortnightly"
@@ -41,7 +41,7 @@ form
                   input id='fee' type="number"
   br
   .row
-    .small-12.medium-6.columns  
+    .small-12.medium-6.columns
       / details
       summary There are some benefits you shouldn't include as income, see the full list and further information about completing this section in the <a href="http://hmctsformfinder.justice.gov.uk/courtfinder/forms/ex160a-eng-20160212.pdf"> guide</a>.
       /  summary Help with form name or number
@@ -68,6 +68,6 @@ form
 javascript:
   $(document).ready( function() {
     buildNextUrl('probate.html');
-    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
-    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
+    $('#refund-true').toggle(getValue('public', 'refund') == 'true');
+    $('#refund-false').toggle(getValue('public', 'refund') != 'true');
   });

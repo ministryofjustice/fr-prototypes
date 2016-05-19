@@ -14,12 +14,12 @@ form
 
       p These cases are usually about the property and belongings of someone who has died.
 
-    .small-12.medium-6.columns.end   
+    .small-12.medium-6.columns.end
       .options.radio
         .option
           label for="probate-no"
             input id="probate-no" type="radio" name="probate" value="true"
-            | No 
+            | No
             .option
           label for="probate-yes"
             input id="probate-yes" type="radio" name="probate" value="false"
@@ -69,8 +69,8 @@ form
 javascript:
   $(document).ready( function() {
     buildNextUrl('case-number.html');
-    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
-    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
+    $('#refund-true').toggle(getValue('public', 'refund') == 'true');
+    $('#refund-false').toggle(getValue('public', 'refund') != 'true');
   });
 
   $("input[name='probate']").on('change', function () {

@@ -26,6 +26,7 @@ var incomeThresholdModule = {
     $('[name="income-amount"]').on('change', function(e) {
       var $el = $(e.target);
 
+      // TODO: you are here. route to pass/detail/warn depending on selection
       console.log($el.val());
     });
   },

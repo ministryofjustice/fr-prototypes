@@ -27,9 +27,9 @@ form
     .row
       .small-12.medium-3.columns
         .panel-indent
-          label for='kid-number'
+          label for='num-children'
             | Number of children
-            input name='form_number' id='form_number' type='text'
+            input name='num-children' id='num-children' type='number' step='1' min='0'
 
   br
   .row
@@ -49,8 +49,18 @@ form
 javascript:
   $(document).ready( function() {
     buildNextUrl('income.html');
+
+    storeValue('public', 'children', 0);
   });
 
   $("input[name='kid']").on('change', function () {
     $('#kid-number').toggleClass('hide', $("input[name='kid']:checked").val() == "false");
+
+    if($('#kid-no').is(':checked')) {
+      storeValue('public', 'children', 0);
+    }
+  });
+
+  $("input#num-children").on('change', function () {
+    storeValue('public', 'children', parseInt($('input#num-children').val(), 10));
   });

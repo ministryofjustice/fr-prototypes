@@ -3,7 +3,7 @@ title: 'Apply for help with fees'
 nav_title: 'GOV.UK'
 ---
 
-form#income-sources
+form#income-amount
   .row
     .small-12.columns
       br
@@ -20,17 +20,33 @@ form#income-sources
 
   .row
     .small-12.medium-9.columns
+      br
       p
-        | Please select the amount that you&nbsp;
+        | Please select the total amount that you&nbsp;
         span.partner and your partner&nbsp;
         span.refund-false receive&nbsp;
         span.refund-true received&nbsp;
-        | in total on average each month from:
+        | on average each month from:
 
-      ul.income-source-list
+      ul.income-sources
         li loading...
 
-
+  br
+  .row
+    .small-12.medium-6.columns
+      .options.radio
+        .option
+          label for="income-amount-low"
+            input id="income-amount-low" type="radio" name="income-amount" value="low"
+            | Less than £<span class="threshold-lower">1,085</span>
+        .option
+          label for="income-amount-middle"
+            input id="income-amount-middle" type="radio" name="income-amount" value="mid"
+            | Between £<span class="threshold-lower">1,085</span> and £<span class="threshold-upper">5,085</span>
+        .option
+          label for="income-amount-high"
+            input id="income-amount-high" type="radio" name="income-amount" value="high"
+            | More than £<span class="threshold-upper">5,085</span>
 
 
   br

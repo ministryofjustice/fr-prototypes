@@ -69,6 +69,9 @@ var incomeThresholdModule = {
 
     $('.threshold-lower').text(numeral(tFloor).format('0,0'));
     $('.threshold-upper').text(numeral(tCeil).format('0,0'));
+
+    storeValue('public', 'incomeThresholdFloor', tFloor);
+    storeValue('public', 'incomeThresholdCeiling', tCeil);
   },
 
   formatCurrency: function(amount) {

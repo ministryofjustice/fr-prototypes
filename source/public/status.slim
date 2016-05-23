@@ -10,13 +10,13 @@ form
       span.hint Step 3 of 20
       br
       h4 Are you single, married or living with someone and sharing an income?
-  .row  
-    .small-12.medium-6.columns.end   
+  .row
+    .small-12.medium-6.columns.end
       .options.radio
         .option
           label for="status-no"
             input id="status-no" type="radio" name="status" value="false"
-            | Single 
+            | Single
             .option
           label for="status-yes"
             input id="status-yes" type="radio" name="status" value="true"
@@ -24,7 +24,7 @@ form
 
   br
   .row
-    .small-12.medium-6.columns  
+    .small-12.medium-6.columns
       details
         summary Help with status
         .panel-indent
@@ -61,9 +61,8 @@ form
 javascript:
   $(document).ready( function() {
     buildNextUrl('savings.html');
-    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
-    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
   });
+
   $("input[name='status']").on('change', function () {
-    $("#next-url").attr("href", updateQueryStringParameter('married',$("input[name='status']:checked").val() == "true"));
+    storeValue('public', 'married', $("input[name='status']:checked").val() == "true");
   });

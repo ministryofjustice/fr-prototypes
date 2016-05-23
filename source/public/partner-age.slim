@@ -12,12 +12,12 @@ form
       h4#refund-false Are you or your partner 61 or over?
       h4#refund-true When you paid the fee, were you or your partner 61 or over?
 
-    .small-12.medium-6.columns.end   
+    .small-12.medium-6.columns.end
       .options.radio
         .option
           label for="case-yes"
             input id="case-yes" type="radio" name="case" value="true"
-            | Yes 
+            | Yes
             .option
           label for="case-no"
             input id="case-no" type="radio" name="case" value="false"
@@ -52,12 +52,11 @@ form
 javascript:
   $(document).ready( function() {
     buildNextUrl('savings-amount.html');
-    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
-    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
-  
+    $('#refund-true').toggle(getValue('public', 'refund') == 'true');
+    $('#refund-false').toggle(getValue('public', 'refund') != 'true');
+
     $("input[name='case']").on('change', function () {
       $('#case-number').toggleClass('hide', $("input[name='case']:checked").val() == "true");
       buildNextUrl('benefits.html');
-      //buildNextUrl($("input[name='case']:checked").val() == "true" ? 'benefits.html' : '#.html');
     });
   });

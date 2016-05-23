@@ -10,14 +10,14 @@ form
       span.hint Step 4 of 20
       br
       h4#refund-false How much do you have in savings and investments?
-      h4#refund-true  How much did you have in savings and investments at the time you paid the fee?  
+      h4#refund-true  How much did you have in savings and investments at the time you paid the fee?
   .row
-    .small-12.medium-6.columns  
+    .small-12.medium-6.columns
       .options.radio
         .option
           label for="payment-correct-low"
             input id="payment-correct-low" type="radio" name="savings-amount" value="less-than-3k"
-            | Less than £3,000 
+            | Less than £3,000
         .option
           label for="case-middle"
             input id="case-middle" type="radio" name="savings-amount" value="between-3-16k"
@@ -29,7 +29,7 @@ form
 
   br
   .row
-    .small-12.medium-6.columns  
+    .small-12.medium-6.columns
       details
         summary Help with savings and investments
         .panel-indent
@@ -74,9 +74,10 @@ form
 javascript:
   $(document).ready( function() {
     buildNextUrl('partner-age.html');
-    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
-    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
+    $('#refund-true').toggle(getValue('public', 'refund') == 'true');
+    $('#refund-false').toggle(getValue('public', 'refund') != 'true');
   });
+
   $("input[name='savings-amount']").on('change', function () {
     buildNextUrl($("input[name='savings-amount']:checked").val() == "between-3-16k" ? 'partner-age.html' : 'benefits.html');
   });

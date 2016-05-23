@@ -11,9 +11,6 @@ form#income-sources
       br
       h4#refund-false What kind of income do you receive?
       h4#refund-true What kind of income did you receive at the time you paid the fee?
-      // p Enter the amount of money you get every month before any tax or National Insurance payments have been taken off.
-      // p If you get paid weekly, multiply your weekly pay by 52, then divide it by 12. This will give you a monthly total.
-      // p There are some benefits you shouldn't include as income, see the full list and further information about completing this section in the <a href="http://hmctsformfinder.justice.gov.uk/courtfinder/forms/ex160a-eng-20160212.pdf"> guide. </a>
       p
         | Select the kind of income you
         span.partner
@@ -24,17 +21,14 @@ form#income-sources
   #income-sources-wrapper
 
     .row
-      .small-12.medium-6.columns
-        h3 Your income
-      .small-12.medium-6.columns.partner
-        h3 Your partner's income
+      p loading income sources...
 
 
 
   br
   .row
     .small-12.medium-6.columns
-      a#next-url href="probate.html"
+      a#next-url href="income-threshold.html"
         .button.success Continue
 
 
@@ -47,11 +41,11 @@ form#income-sources
 
 javascript:
   $(document).ready( function() {
-    buildNextUrl('income-dynamic.html');
-    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
-    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
+    buildNextUrl('income-threshold.html');
+    $('#refund-true').toggle(getValue('public', 'refund') == 'true');
+    $('#refund-false').toggle(getValue('public', 'refund') != 'true');
 
-    $('.partner').toggle(getUrlParameter('married') == 'true');
+    $('.partner').toggle(getValue('public', 'married').toString() == 'true');
 
     incomeSourcesModule.init();
   });

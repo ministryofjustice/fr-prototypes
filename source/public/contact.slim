@@ -9,13 +9,13 @@ form
       br
       span.hint Step 17 of 20
       br
-      h4 What's your email address?  
+      h4 What's your email address?
 
 
   .row
     .small-12.medium-6.columns
       p class="large"
-        | We can email you to confirm your application has been received. 
+        | We can email you to confirm your application has been received.
 
   .row
     .small-12.medium-6.columns
@@ -24,16 +24,16 @@ form
         textarea rows="2" cols="20"
 
 
-  
+
   .row
     .small-12.medium-6.columns
       .options.check
         .option
           label for="email"
-            input id="email" name="email" type="checkbox" Check this box if you're willing to share your experience of this service. A member of the team may contact you. We won't use your email address for anything else. 
- 
+            input id="email" name="email" type="checkbox" Check this box if you're willing to share your experience of this service. A member of the team may contact you. We won't use your email address for anything else.
+
       br
-      a#next-url href="summary.html" 
+      a#next-url href="summary.html"
         .button.success Continue
 
 
@@ -48,21 +48,4 @@ javascript:
 
   $(document).ready( function() {
     buildNextUrl('summary.html');
-    $('#fee').bind('change', function () {
-      $("#next-url").attr("href", updateQueryStringParameter('fee', $(this).val()));
-    });
-
-    $('#email').on('change', function () {
-      console.log('clicked email cb');
-      $('#email-detail').toggle($('#email').is(':checked'));
-      $(this).parent().toggleClass('selected', $(this).is(':checked'));
-    });
-
-    $('#phone').on('change', function () {
-      console.log('clicked phone cb');
-      $('#phone-detail').toggle($('#phone').is(':checked'));
-      $(this).parent().toggleClass('selected', $(this).is(':checked'));
-    });
-
-
   });

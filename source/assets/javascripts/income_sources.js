@@ -59,7 +59,7 @@ var incomeSourcesModule = {
   init: function() {
     var self = this;
     if($(self.sourcesContainer).length) {
-      self.isMarried = getUrlParameter('married').toString();
+      self.isMarried = getValue('public', 'married').toString();
       self.bindEvents();
       self.writeIncomeSources();
     }
@@ -85,68 +85,82 @@ var incomeSourcesModule = {
         $wrapper = $('#income-sources-wrapper'),
         html = '';
 
+    html += '<div class="small-12 medium-6 income-source-list columns user">';
+    html += '<h3>Your income</h3>';
     self.sources.forEach(function(source) {
-      html += '<div class="row source-row" data-source="' + source.name + '">';
+      html += '<div class="source-row" data-source="' + source.name + '" data-person="user">';
       html += self.compileSource(source.name, source.text, self.prefixes[0]);
-      if(self.isMarried === 'true') {
-        html += self.compileSource(source.name, source.text, self.prefixes[1]);
-      };
+
       html += '</div>';
     });
 
-    html += '<div class="row source-row no-income-row">';
-    html += '<div class="small-12 medium-6 columns">';
+    html += '<div class="source-row no-income-row">';
     html += '<div class="options radio"><div class="option">';
     html += '<label for="user-none">';
     html += '<input id="user-none" class="check-none" type="checkbox">';
     html += 'No income';
     html += '</label></div></div></div>';
+
+    html += '</div>';
+
+
     if(self.isMarried === 'true') {
-      html += '<div class="small-12 medium-6 columns">';
+      html += '<div class="small-12 medium-6 income-source-list columns partner">';
+      html += '<h3>Your partner\'s income</h3>';
+      self.sources.forEach(function(source) {
+        html += '<div class="source-row" data-source="' + source.name + '" data-person="partner">';
+        html += self.compileSource(source.name, source.text, self.prefixes[1]);
+        html += '</div>';
+      });
+
+      html += '<div class="source-row no-income-row">';
       html += '<div class="options radio"><div class="option">';
       html += '<label for="partner-none">';
       html += '<input id="partner-none" class="check-none" type="checkbox">';
       html += 'No income';
-      html += '</label></div></div></div>';
-    };
-    html += '</div>';
+      html += '</label></div></div>';
 
-    $wrapper.append(html);
+      html += '</div>';
+    };
+
+    $wrapper.find('.row').eq(0).html(html);
   },
 
   compileSource: function(name, text, prefix) {
-    var html = '<div class="small-12 medium-6 columns">';
+    var html = '';
+
     html += '<div class="options radio"><div class="option">';
     html += '<label for="' + prefix + '-' + name + '">';
     html += '<input id="' + prefix + '-' + name + '" type="checkbox">';
     html += text;
-    html += '</label></div></div></div>';
+    html += '</label></div></div>';
 
     return html;
   },
 
   getSources: function() {
     var self = this,
-        sources = [];
+        selectedSources = [];
 
-    $(self.sourcesContainer).find('.source-row:not(.no-income-row)').each(function(n, row) {
-      var $row = $(row),
-          checkedInRow = $row.find('input:checked');
-      if(checkedInRow.length) {
+    self.sources.forEach(function(source) {
+      var checkedSourceOpts = $('[data-source="' + source.name + '"] input:checked');
+
+      if(checkedSourceOpts.length) {
         var obj = {
-          name: $row.data('source'),
-          text: $row.find('input').eq(0).closest('label').text(),
+          name: source.name,
+          text: source.text
         };
-        obj[self.prefixes[0]] = $row.find('input[id^="' + self.prefixes[0] + '"]').prop('checked');
-        obj[self.prefixes[1]] = $row.find('input[id^="' + self.prefixes[1] + '"]').prop('checked');
+        self.prefixes.forEach(function(prefix) {
+          obj[prefix] = $('[data-source="' + source.name + '"][data-person="' + prefix + '"] input').prop('checked');
+        });
 
-        sources.push(obj);
+        selectedSources.push(obj);
       }
     });
 
-    storeValue('public', 'income-sources', sources);
+    storeValue('public', 'income-sources', selectedSources);
 
-    // console.log(sources);
+    // console.log(selectedSources);
     self.goNext();
   },
 

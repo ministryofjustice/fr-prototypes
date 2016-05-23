@@ -53,8 +53,6 @@ form
 javascript:
   $(document).ready( function() {
     buildNextUrl('refund.html');
-    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
-    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
 
     formNumberModule.init();
   });

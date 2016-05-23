@@ -11,14 +11,14 @@ form
       br
       h4 Do you have any children living with you, or who you support financially?
       p Up to 19 years old in full-time education.
-  
-  .row  
-     .small-12.medium-6.columns.end   
+
+  .row
+     .small-12.medium-6.columns.end
       .options.radio
         .option
           label for="kid-no"
             input id="kid-no" type="radio" name="kid" value="false"
-            | No 
+            | No
             .option
           label for="kid-yes"
             input id="kid-yes" type="radio" name="kid" value="true"
@@ -27,9 +27,9 @@ form
     .row
       .small-12.medium-3.columns
         .panel-indent
-          label for='kid-number'
+          label for='num-children'
             | Number of children
-            input name='form_number' id='form_number' type='text'
+            input name='num-children' id='num-children' type='number' step='1' min='0'
 
   br
   .row
@@ -49,11 +49,18 @@ form
 javascript:
   $(document).ready( function() {
     buildNextUrl('income.html');
-    $('#refund-true').toggle(getUrlParameter('refund') == 'true');
-    $('#refund-false').toggle(getUrlParameter('refund') == 'false');
+
+    storeValue('public', 'children', 0);
   });
 
   $("input[name='kid']").on('change', function () {
     $('#kid-number').toggleClass('hide', $("input[name='kid']:checked").val() == "false");
-    //buildNextUrl($("input[name='kid']:checked").val() == "true" ? 'income.html' : '#.html');
+
+    if($('#kid-no').is(':checked')) {
+      storeValue('public', 'children', 0);
+    }
+  });
+
+  $("input#num-children").on('change', function () {
+    storeValue('public', 'children', parseInt($('input#num-children').val(), 10));
   });

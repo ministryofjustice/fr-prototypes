@@ -10,7 +10,7 @@ var incomeSummaryModule = {
 
     if($('.row#income-summary').length) {
       self.prefixes = incomeSourcesModule.prefixes;
-      self.isMarried = getUrlParameter('married').toString();
+      self.isMarried = getValue('public', 'married').toString();
       self.sources = getValue('public', 'income-sources');
       self.totals = self.getTotals();
       self.showIncomeSummary();

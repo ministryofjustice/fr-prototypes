@@ -48,15 +48,3 @@ form
     .small-12.medium-7.large-6.columns
       a href='start.html'
         | Start a new application
-
-
-
-
-javascript:
-  $(document).ready( function() {
-  });
-
-  $("input[name='case']").on('change', function () {
-    $('#case-number').toggleClass('hide', $("input[name='case']:checked").val() == "true");
-    buildNextUrl($("input[name='case']:checked").val() == "true" ? '#.html' : '#.html');
-  });

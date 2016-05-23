@@ -26,7 +26,7 @@ html
           .small-12.columns
             = partial 'partials/layout/footer'
 
-      = javascript_include_tag 'libs', 'numeral.min', 'app', 'details.polyfill', 'income_sources', 'income_threshold', 'income_input', 'income_summary', 'form_number'
+      = javascript_include_tag 'libs', 'numeral.min', 'app', 'details.polyfill', 'income_sources', 'income_threshold', 'income_detail', 'income_input', 'income_summary', 'form_number'
 
       -if current_page.path.start_with?('staff/')
         = javascript_include_tag 'form_validation'

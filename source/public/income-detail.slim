@@ -3,7 +3,7 @@ title: 'Apply for help with fees'
 nav_title: 'GOV.UK'
 ---
 
-form#income-amount
+form#income-detail
   .row
     .small-12.columns
       br
@@ -22,7 +22,7 @@ form#income-amount
     .small-12.medium-9.columns
       br
       p
-        | Please select the total amount that you&nbsp;
+        | Please enter the total amount that you&nbsp;
         span.partner and your partner&nbsp;
         span.refund-false receive&nbsp;
         span.refund-true received&nbsp;
@@ -31,22 +31,19 @@ form#income-amount
       ul.income-sources
         li loading...
 
+      br
+      p
+        | Explanatory copy about averaging wages over the last three months etc...
+
+
   br
   .row
-    .small-12.medium-6.columns
-      .options.radio
-        .option
-          label for="income-amount-low"
-            input id="income-amount-low" type="radio" name="income-amount" value="low"
-            | Less than £<span class="threshold-lower">1,085</span>
-        .option
-          label for="income-amount-middle"
-            input id="income-amount-middle" type="radio" name="income-amount" value="mid"
-            | Between £<span class="threshold-lower">1,085</span> and £<span class="threshold-upper">5,085</span>
-        .option
-          label for="income-amount-high"
-            input id="income-amount-high" type="radio" name="income-amount" value="high"
-            | More than £<span class="threshold-upper">5,085</span>
+    .small-12.medium-5.large-5.columns
+      .small-2.medium-3.large-3.columns style="padding:0px;"
+        span.prefix
+          label.inline for='income-detail-amount' £
+      .small-10.medium-9.large-9.columns style="padding:0px;"
+        input id='income-detail-amount' type="number"
 
 
   br
@@ -64,11 +61,11 @@ form#income-amount
 
 javascript:
   $(document).ready( function() {
-    buildNextUrl($('#income-amount-middle').is(':checked') ? 'income-detail.html' : 'probate.html');
+    buildNextUrl('probate.html');
     $('.refund-true').toggle(getValue('public', 'refund') == 'true');
     $('.refund-false').toggle(getValue('public', 'refund') != 'true');
 
     $('.partner').toggle(getValue('public', 'married').toString() == 'true');
 
-    incomeThresholdModule.init();
+    incomeDetailModule.init();
   });

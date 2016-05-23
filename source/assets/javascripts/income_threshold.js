@@ -1,5 +1,4 @@
 "use strict";
-
 var incomeThresholdModule = {
   prefixes: ['user', 'partner'],
   isMarried: null,
@@ -9,6 +8,7 @@ var incomeThresholdModule = {
   thresholdChildAllowance: 245,
 
   init: function() {
+
     var self = this,
         $form = $('form#income-amount'),
         incomeLists = $('ul.income-sources', $form);
@@ -24,10 +24,11 @@ var incomeThresholdModule = {
 
   bindEvents: function() {
     $('[name="income-amount"]').on('change', function(e) {
-      var $el = $(e.target);
+      var $el = $(e.target),
+          band = $el.val();
 
-      // TODO: you are here. route to pass/detail/warn depending on selection
-      console.log($el.val());
+      storeValue('public', 'income-band', band);
+      buildNextUrl(band === 'mid' ? 'income-detail.html' : 'probate.html');
     });
   },
 

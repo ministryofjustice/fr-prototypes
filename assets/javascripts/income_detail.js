@@ -1,0 +1,1 @@
+"use strict";var incomeDetailModule={init:function(){var e=this,i=$("form#income-detail"),n=$("ul.income-sources",i);n.length&&(incomeThresholdModule.writeIncomeList(n),e.bindEvents())},bindEvents:function(){$("#income-detail-amount").on("change",function(e){var i=$(e.target);storeValue("public","income-detail",i.val())})}};

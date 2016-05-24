@@ -8,7 +8,8 @@ var incomeDetailModule = {
 
     if(incomeLists.length) {
       incomeThresholdModule.writeIncomeList(incomeLists);
-
+    }
+    if($form.length) {
       self.bindEvents();
     }
   },

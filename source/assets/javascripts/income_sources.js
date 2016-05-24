@@ -21,8 +21,8 @@ var incomeSourcesModule = {
       text: 'Child tax credit'
     },
     {
-      name: 'income-maintenence-payments',
-      text: 'Maintenence payments'
+      name: 'income-maintenance-payments',
+      text: 'Maintenance payments'
     },
     {
       name: 'income-jsa',

@@ -44,4 +44,11 @@ form
 javascript:
   $(document).ready( function() {
     buildNextUrl('address.html');
+
+    $('input[type="text"]').on('change', function(e) {
+      var $el = $(e.target),
+          val = $el.val();
+
+      storeValue('public', $el.attr('id'), val);
+    });
   });

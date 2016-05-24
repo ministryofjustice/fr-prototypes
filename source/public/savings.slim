@@ -16,15 +16,15 @@ form
       .options.radio
         .option
           label for="payment-correct-low"
-            input id="payment-correct-low" type="radio" name="savings-amount" value="less-than-3k"
+            input id="payment-correct-low" type="radio" name="savings-amount" value="less-than-3k" title="Less than £3,000"
             | Less than £3,000
         .option
           label for="case-middle"
-            input id="case-middle" type="radio" name="savings-amount" value="between-3-16k"
+            input id="case-middle" type="radio" name="savings-amount" value="between-3-16k" title="Between £3,000 and £16,000"
             | Between £3,000 and £16,000
         .option
           label for="savings-amount-high"
-            input id="savings-amount-high" type="radio" name="savings-amount" value="more-than-16k"
+            input id="savings-amount-high" type="radio" name="savings-amount" value="more-than-16k" title="More than £16,000"
             | More than £16,000
 
   br
@@ -80,5 +80,7 @@ javascript:
 
   $("input[name='savings-amount']").on('change', function () {
     buildNextUrl($("input[name='savings-amount']:checked").val() == "between-3-16k" ? 'partner-age.html' : 'benefits.html');
+
+    storeValue('public', 'savings', $("input[name='savings-amount']:checked").attr('title'));
   });
 

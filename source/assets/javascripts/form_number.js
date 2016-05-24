@@ -73,7 +73,16 @@ var formNumberModule = {
     var self = this;
 
     if(self.getStoredFormNumber()) {
-      $('.form-number').html('your ' + self.getStoredFormNumber() + ' form');
+
+      $('.form-number').each(function(n, el) {
+        var fStr = self.getStoredFormNumber(),
+            $el = $(el);
+
+        if($el.hasClass('strong')) {
+          fStr = '<strong>' + fStr + '</strong>';
+        }
+        $el.html('your ' + fStr + ' form');
+      });
     }
   }
 };

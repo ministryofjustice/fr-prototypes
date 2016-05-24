@@ -338,3 +338,19 @@ ul {
 .income-source-list {
   padding-top: 20px;
 }
+
+
+.hwf-image {
+  position: relative;
+
+  .hwf-number {
+    position: absolute;
+    left: 140px;
+    top: 5px;
+    padding: 12px 17px;
+    background: white;
+    font-size: 24px;
+    letter-spacing: 0.25px;
+    font-weight: bold;
+  }
+}

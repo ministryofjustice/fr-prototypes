@@ -2,7 +2,7 @@
 title: 'Help with fees'
 nav_title: 'Help with fees'
 ---
-form
+form#summary
   .row
     .small-12.columns
       br
@@ -13,7 +13,7 @@ form
   .row
     .small-12.medium-5.large-4.columns
       .subheader Status
-    .small-12.medium-6.large-7.columns
+    .small-12.medium-6.large-7.columns#married-detail
       | Single
     .small-12.medium-1.large-1.columns
       a href="status.html"
@@ -31,22 +31,23 @@ form
   .row
     .small-12.medium-5.large-4.columns
       .subheader Benefits
-    .small-12.medium-6.large-7.columns
+    .small-12.medium-6.large-7.columns#benefits-detail
       | No
     .small-12.medium-1.large-1.columns
       a href="benefits.html"
         | Change
-  hr
-  .row
-    .small-12.medium-5.large-4.columns
-      .subheader Number of children
-    .small-12.medium-6.large-7.columns
-      | 1
-    .small-12.medium-1.large-1.columns
-      a href="children.html"
-        | Change
-  hr
+  #children-row
+    hr
+    .row
+      .small-12.medium-5.large-4.columns
+        .subheader Number of children
+      .small-12.medium-6.large-7.columns#children-detail
+        | 0
+      .small-12.medium-1.large-1.columns
+        a href="children.html"
+          | Change
   .row#income-summary
+    hr
     .small-12.medium-5.large-4.columns
       .subheader Total income (monthly)
     .small-12.medium-6.large-7.columns#income-detail
@@ -67,7 +68,7 @@ form
   .row
     .small-12.medium-5.large-4.columns
       .subheader NI number
-    .small-12.medium-6.large-7.columns
+    .small-12.medium-6.large-7.columns#ni-detail.upper
       | PW 55 63 56 A
     .small-12.medium-1.large-1.columns
       a href="ni.html"
@@ -76,7 +77,7 @@ form
   .row
     .small-12.medium-5.large-4.columns
       .subheader Date of birth
-    .small-12.medium-6.large-7.columns
+    .small-12.medium-6.large-7.columns#dob-detail
       | 2 December 1979
     .small-12.medium-1.large-1.columns
       a href="dob.html"
@@ -85,7 +86,7 @@ form
   .row
     .small-12.medium-5.large-4.columns
       .subheader Full name
-    .small-12.medium-6.large-7.columns
+    .small-12.medium-6.large-7.columns#name-detail
       | Mr Mark Morgan
     .small-12.medium-1.large-1.columns
       a href="name.html"
@@ -94,8 +95,8 @@ form
   .row
     .small-12.medium-5.large-4.columns
       .subheader Address
-    .small-12.medium-6.large-7.columns
-      | 10 Leafy Street<br>London<br>E17 0XA
+    .small-12.medium-6.large-7.columns#address-detail
+      | 10 Placeholder Street<br>London<br>E17 0XA
     .small-12.medium-1.large-1.columns
       a href="address.html"
         | Change
@@ -103,17 +104,8 @@ form
   .row
     .small-12.medium-5.large-4.columns
       .subheader Email
-    .small-12.medium-6.large-7.columns
-      | mark.morgan1979@gmail.com
-    .small-12.medium-1.large-1.columns
-      a href="contact.html"
-        | Change
-  hr
-  .row
-    .small-12.medium-5.large-4.columns
-      .subheader Phone
-    .small-12.medium-6.large-7.columns
-      | 0208 1234 5678
+    .small-12.medium-6.large-7.columns#email-detail
+      | placeholder@example.com
     .small-12.medium-1.large-1.columns
       a href="contact.html"
         | Change

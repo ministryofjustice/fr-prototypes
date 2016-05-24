@@ -31,5 +31,5 @@ html
       -if current_page.path.start_with?('staff/')
         = javascript_include_tag 'form_validation'
       -else
-        = javascript_include_tag 'income_sources', 'income_input', 'income_summary', 'form_number'
+        = javascript_include_tag 'income_sources', 'income_input', 'summary', 'form_number'
       = include_javascripts(current_page.data.javascripts || current_page.data.javascripts)

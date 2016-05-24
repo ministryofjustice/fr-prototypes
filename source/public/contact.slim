@@ -19,9 +19,9 @@ form
 
   .row
     .small-12.medium-6.columns
-      label for='case-number'
+      label for='email-address'
         | Email address
-        textarea rows="2" cols="20"
+        input id='email-address' name='email-address' type='text'
 
 
 
@@ -30,7 +30,8 @@ form
       .options.check
         .option
           label for="email"
-            input id="email" name="email" type="checkbox" Check this box if you're willing to share your experience of this service. A member of the team may contact you. We won't use your email address for anything else.
+            input id="email" name="email" type="checkbox"
+            | &nbsp;Check this box if you're willing to share your experience of this service. A member of the team may contact you. We won't use your email address for anything else.
 
       br
       a#next-url href="summary.html"
@@ -48,4 +49,10 @@ javascript:
 
   $(document).ready( function() {
     buildNextUrl('summary.html');
+
+    /*
+    $("#email-address").on('change', function () {
+      storeValue('public', 'email-address', $('#email-address').val());
+    });
+    */
   });

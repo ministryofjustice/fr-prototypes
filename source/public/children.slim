@@ -58,6 +58,10 @@ javascript:
 
     if($('#kid-no').is(':checked')) {
       storeValue('public', 'children', 0);
+    } else {
+      if($('input#num-children').val() !== '') {
+        storeValue('public', 'children', parseInt($('input#num-children').val(), 10));
+      }
     }
   });
 

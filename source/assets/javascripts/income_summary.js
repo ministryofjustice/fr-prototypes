@@ -1,86 +1,37 @@
 "use strict";
 
 var incomeSummaryModule = {
-  sources: null,
-  prefixes: null,
-  isMarried: null,
-
   init: function() {
     var self = this;
 
     if($('.row#income-summary').length) {
-      self.prefixes = incomeSourcesModule.prefixes;
-      self.isMarried = getValue('public', 'married').toString();
-      self.sources = getValue('public', 'income-sources');
-      self.totals = self.getTotals();
-      self.showIncomeSummary();
+      self.writeIncomeToSummary();
     }
   },
 
-  showIncomeSummary: function() {
+  writeIncomeToSummary: function() {
     var self = this,
-        html = '';
+        $el = $('#income-summary #income-detail'),
+        text,
+        incomeBand = getValue('public', 'income-band'),
+        tFloor = getValue('public', 'incomeThresholdFloor') || 1085,
+        tCeil = getValue('public', 'incomeThresholdCeiling') || 5085;
 
-    $('.row.income-detail').remove();
 
-    html += '<div class="small-12 medium-4 columns">';
-    html += '<div class="subheader">Total income (monthly)</div>';
-    html += '</div>';
-    html += '<div class="small-12 medium-7 columns">';
-    html += '<strong>' + self.formatCurrency(self.totals[2]) + '</strong>';
-    html += '</div>';
-    html += '<div class="small-12 medium-1 large-1 columns">';
-    html += '<a href="income.html">Change</a>';
-    html += '</div>';
-
-    $('.row#income-summary').html(html).after(self.incomeSourcesRows());
-  },
-
-  incomeSourcesRows: function() {
-    var self = this,
-        html = '';
-
-    if(self.isMarried === 'true') {
-      html += '<div class="row">';
-      html += '<div class="small-4 small-offset-4 columns"><strong>You</strong></div>';
-      html += '<div class="small-4 columns"><strong>Your partner</strong></div>';
-      html += '</div>';
+    if(incomeBand === 'low') {
+      text = 'Less than ' + self.formatCurrency(tFloor, '0,0');
+    } else if(incomeBand === 'high') {
+      text = 'More than ' + self.formatCurrency(tCeil, '0,0');
+    } else {
+      text = self.formatCurrency(getValue('public', 'income-detail'));
     }
 
-    self.sources.forEach(function(source) {
-      html += '<div class="row">';
-      html += '<div class="small-4 columns"><div class="subheader">' + source.text + '</div></div>';
-      html += '<div class="small-4 columns">' + self.formatCurrency((source.userAmount ? source.userAmount : 0)) + '</div>';
-
-      html += '<div class="small-4 columns">' + (self.isMarried === 'true' ? self.formatCurrency(source.partnerAmount ? source.partnerAmount : 0) : '&nbsp;') + '</div>';
-
-      html += '</div>';
-    });
-
-    if(self.isMarried === 'true') {
-      html += '<div class="row">';
-      html += '<div class="small-4 small-offset-4 columns"><strong>' + self.formatCurrency(self.totals[0]) + '</strong></div>';
-      html += '<div class="small-4 columns"><strong>' + self.formatCurrency(self.totals[1]) + '</strong></div>';
-      html += '</div>';
-    }
-
-    return html;
+    $el.text(text);
   },
 
-  getTotals: function() {
-    var self = this,
-        userTotal = 0,
-        partnerTotal = 0;
+  formatCurrency: function(amount, format) {
+    var f = format || '0,0.00';
 
-    self.sources.forEach(function(source) {
-      userTotal += parseFloat((source.userAmount ? source.userAmount : 0), 10);
-      partnerTotal += parseFloat((source.partnerAmount ? source.partnerAmount : 0), 10);
-    });
-
-    return [userTotal, partnerTotal, (self.isMarried === 'true' ? userTotal + partnerTotal : userTotal)];
-  },
-
-  formatCurrency: function(amount) {
-    return '£' + numeral(amount).format('0,0.00');
+    return '£' + numeral(amount).format(f);
   }
 };

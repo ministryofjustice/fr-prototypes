@@ -128,3 +128,9 @@ function deselectRadio(els) {
     $(el).prop('checked', false).closest('label').removeClass('selected');
   });
 }
+
+function selectRadio(els) {
+  els.forEach(function(el) {
+    $(el).prop('checked', 'checked').closest('label').addClass('selected');
+  });
+}

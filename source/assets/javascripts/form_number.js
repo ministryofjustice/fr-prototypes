@@ -1,6 +1,10 @@
 "use strict";
 
 var formNumberModule = {
+  ETForms: [
+    'ET1',
+    'ET3'
+  ],
   init: function() {
     var self = this;
 
@@ -24,6 +28,16 @@ var formNumberModule = {
       e.preventDefault();
       self.collectFormName();
     });
+
+    $('#form-unknown').on('click', function(e) {
+      $('#form_number').val('').prop('disabled', $(e.target).is(':checked') ? 'disabled' : '');
+    });
+
+    $('#form_number').on('change', function() {
+      if(self.checkForETForm()) {
+        selectRadio([$('#et-case')]);
+      }
+    });
   },
 
   collectFormName: function() {
@@ -35,10 +49,11 @@ var formNumberModule = {
     if(!$('#form-unknown').prop('checked')) {
       if($('#form_number').val() !== '') {
         formNumber = $('#form_number').val();
-        // localStorage.setItem('form-number', JSON.stringify(formNumber));
         storeValue('public', 'form-number', formNumber);
       }
     }
+
+    storeValue('public', 'et-case', $('#et-case').is(':checked'));
 
     self.goNext();
   },
@@ -84,5 +99,21 @@ var formNumberModule = {
         $el.html('your ' + fStr + ' form');
       });
     }
+  },
+
+  checkForETForm: function() {
+    var self = this,
+        val = _.trim($('#form_number').val()).toLowerCase(),
+        match = false;
+
+    self.ETForms.forEach(function(form) {
+      var f = form.toLowerCase().toString();
+
+      if(val === f) {
+        match = true;
+      }
+    });
+
+    return match;
   }
 };

@@ -19,14 +19,14 @@ form
       .options.radio
         .option
           label for="form-unknown"
-            input id="form-unknown" type="checkbox"
+            input id="form-unknown" name="form-unknown" type="checkbox"
             | I don’t know the form name or number
       .options.radio
         .option
           label for="et-case"
-            input id="et-case" type="checkbox"
+            input id="et-case" name="et-case" type="checkbox"
             | I need help with an employment tribunal fee
-      
+
   br
   .row
     .small-12.medium-6.columns
@@ -52,7 +52,5 @@ form
 
 javascript:
   $(document).ready( function() {
-    buildNextUrl('refund.html');
-
     formNumberModule.init();
   });

@@ -46,7 +46,7 @@ var incomeSummaryModule = {
     var fname = getValue('public', 'first_name').toString();
     var lname = getValue('public', 'last_name').toString();
 
-    if(fname || lname) {
+    if(fname.toString() !== 'false' || lname.toString() !== 'false') {
       name += ((title && title !== 'false') ? title + ' ' : '');
       name += ((fname && fname !== 'false') ? fname + ' ' : '');
       name += ((lname && lname !== 'false') ? lname : '');

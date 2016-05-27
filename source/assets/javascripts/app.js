@@ -11,6 +11,7 @@ $(document).ready( function() {
   $('input:checked').parent().addClass('selected');
 
   listLocalStorage();
+  updateNumSteps();
 });
 
 function buildNextUrl(page) {
@@ -133,4 +134,10 @@ function selectRadio(els) {
   els.forEach(function(el) {
     $(el).prop('checked', 'checked').closest('label').addClass('selected');
   });
+}
+
+function updateNumSteps() {
+  // TODO: you are here
+  // dynamically make the number of steps in the public prototype 19 rather than 20
+  // only run this if public app
 }

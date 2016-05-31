@@ -15,11 +15,32 @@ form#summary
   .row#form-number
     .small-12.medium-5.large-4.columns
       .subheader Form name or number
-    .small-12.medium-6.large-7.columns.detail
+    .small-12.medium-6.large-7.columns.detail.upper
       | N244
     .small-12.medium-1.large-1.columns
       a href="form-number.html"
         | Change
+
+  .row.hide#et-case
+    hr
+    .small-12.medium-5.large-4.columns
+      .subheader Employment tribunal case
+    .small-12.medium-6.large-7.columns.detail
+      | Yes
+    .small-12.medium-1.large-1.columns
+      a href="form-number.html"
+        | Change
+
+  .row.hide#case-number
+    hr
+    .small-12.medium-5.large-4.columns
+      .subheader Case number
+    .small-12.medium-6.large-7.columns#case-detail.upper
+      | THX-1138
+    .small-12.medium-1.large-1.columns
+      a href="case-number.html"
+        | Change
+
   .row
     hr
     .small-12.medium-5.large-4.columns
@@ -127,6 +148,10 @@ form#summary
 
 javascript:
   $(document).ready( function() {
-    incomeSummaryModule.init();
+    summaryModule.init();
     formNumberModule.init();
+
+    if(getValue('public', 'et-case').toString() === 'true') {
+      $('#next-url').attr('href', 'confirmation-et.html');
+    }
   });

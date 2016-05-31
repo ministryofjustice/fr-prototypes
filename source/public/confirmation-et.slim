@@ -14,16 +14,16 @@ form
       h3 Your application for help with fees is not finished yet
       br
       ol
-        li You must email or post this reference number [ HWF-xxx-xxx ] along with your employment tribunal case number to the employment tribunal.
+        li You must email or post this reference number <strong class="hwf-number">HWF-KN1-6H7</strong> along with your employment tribunal case number to the employment tribunal.
         br
         li You can copy the letter below to email or print this page.
         br
           .row
             .small-12.medium-12.large-12.columns
               .panel
-                p Reference: <strong>HWF-xxx-xxx</strong>
+                p Reference: <strong class="hwf-number">HWF-KN1-6H7</strong>
                 p I have completed an online application for help with employment tribunal fees.
-                p My employment tribunal case number is: XXXX-XXXX.
+                p My employment tribunal case number is: <strong class="case-number">THX-1138</strong>.
                 p Yours sincerely,
                 p Mr Mark Morgan
 
@@ -78,5 +78,13 @@ form
           a href="#"Save or print this page
       br
 
-  br
-  br
+
+javascript:
+  $(document).ready( function() {
+    formNumberModule.init();
+
+    var caseNumber = getValue('public', 'case-number').toString()
+    if(caseNumber !== '') {
+      $('.case-number').text(caseNumber);
+    }
+  });

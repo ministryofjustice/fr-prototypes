@@ -96,7 +96,7 @@ var formNumberModule = {
         if($el.hasClass('strong')) {
           fStr = '<strong>' + fStr + '</strong>';
         }
-        $el.html('your ' + fStr + ' form');
+        $el.html('your <span class="upper">' + fStr + '</span> form');
       });
     }
   },

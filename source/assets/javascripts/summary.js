@@ -1,6 +1,6 @@
 "use strict";
 
-var incomeSummaryModule = {
+var summaryModule = {
   init: function() {
     var self = this;
 
@@ -54,10 +54,15 @@ var incomeSummaryModule = {
       $('#name-detail').text(name);
     }
 
-    // var email = getValue('public', 'email-address').toString();
-    // if((email && email !== 'false')) {
-    //   $('#email-detail').text(email);
-    // }
+    if(getValue('public', 'et-case').toString() === 'true') {
+      $('#et-case').show();
+    }
+
+    var caseNumber = getValue('public', 'case-number').toString();
+    if(caseNumber !== '') {
+      $('#case-number').show();
+      $('#case-detail').text(caseNumber)
+    }
   },
 
   writeIncomeToSummary: function() {

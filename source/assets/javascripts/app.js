@@ -11,6 +11,7 @@ $(document).ready( function() {
   $('input:checked').parent().addClass('selected');
 
   listLocalStorage();
+  updateNumSteps();
 });
 
 function buildNextUrl(page) {
@@ -45,7 +46,7 @@ function getUrlParameter(sParam) {
 
 function listLocalStorage() {
   var obj = {},
-      app = document.location.href.indexOf('/staff/') === -1 ? 'public' : 'staff';
+      app = whichApp();
 
   for (var i = 0; i < localStorage.length; i++) {
     if(localStorage.key(i).indexOf(app) === 0) {
@@ -54,6 +55,10 @@ function listLocalStorage() {
   }
 
   console.log(obj);
+}
+
+function whichApp() {
+  return document.location.href.indexOf('/staff/') === -1 ? 'public' : 'staff';
 }
 
 function storeValue(app, key, value) {
@@ -127,4 +132,21 @@ function deselectRadio(els) {
   els.forEach(function(el) {
     $(el).prop('checked', false).closest('label').removeClass('selected');
   });
+}
+
+function selectRadio(els) {
+  els.forEach(function(el) {
+    $(el).prop('checked', 'checked').closest('label').addClass('selected');
+  });
+}
+
+function updateNumSteps() {
+  if(whichApp() === 'public') {
+    var defaultSteps = 20,
+        etSteps = 19,
+        isET = getValue('public', 'et-case').toString() === 'true',
+        numSteps = (isET ? etSteps : defaultSteps);
+
+    $('span.total-steps').text(numSteps);
+  }
 }

@@ -7,7 +7,9 @@ form
   .row
     .small-12.medium-6.columns
       br
-      span.hint Step 1 of 20
+      span.hint
+        | Step 1 of&nbsp;
+        span.total-steps 20
       br
       h4 What court or tribunal fee do you need help with?
       p Enter the court or tribunal form number for the court business you need help with, for example ‘C100’, ‘D8’ or ‘notice to appeal’ form.
@@ -19,14 +21,14 @@ form
       .options.radio
         .option
           label for="form-unknown"
-            input id="form-unknown" type="checkbox"
+            input id="form-unknown" name="form-unknown" type="checkbox"
             | I don’t know the form name or number
       .options.radio
         .option
           label for="et-case"
-            input id="et-case" type="checkbox"
+            input id="et-case" name="et-case" type="checkbox"
             | I need help with an employment tribunal fee
-      
+
   br
   .row
     .small-12.medium-6.columns
@@ -52,7 +54,5 @@ form
 
 javascript:
   $(document).ready( function() {
-    buildNextUrl('refund.html');
-
     formNumberModule.init();
   });

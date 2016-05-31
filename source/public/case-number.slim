@@ -4,41 +4,71 @@ nav_title: 'GOV.UK'
 ---
 
 form
-  .row
-    .small-12.columns
-      br
-      span.hint Step 12 of 20
-      br
-      h4 Do you have a case, claim or ‘notice to pay’ number?
-      p Find this number on letters from the court or tribunal.
+  .regular-case
+    .row
+      .small-12.columns
+        br
+        span.hint
+          | Step 12 of&nbsp;
+          span.total-steps 20
+        br
+          h4 Do you have a case, claim or ‘notice to pay’ number?
+          p Find this number on letters from the court or tribunal.
 
-    .small-12.medium-6.columns.end
-      .options.radio
-        .option
-          label for="case-no"
-            input id="case-no" type="radio" name="case" value="true"
-            | No
-            .option
-          label for="case-yes"
-            input id="case-yes" type="radio" name="case" value="false"
-            | Yes
-  #case-number.hide
+      .small-12.medium-6.columns.end
+        .options.radio
+          .option
+            label for="case-no"
+              input id="case-no" type="radio" name="case" value="true"
+              | No
+              .option
+            label for="case-yes"
+              input id="case-yes" type="radio" name="case" value="false"
+              | Yes
+    #case-number.hide
+      .row
+        .small-12.medium-6.columns
+          .panel-indent
+            label for='case-number'
+              | The case, claim or ‘notice to pay’ number is
+              input name='case-number' id='case-number' type='text'
+
+    br
     .row
       .small-12.medium-6.columns
-        .panel-indent
-          label for='case-number'
-            | The case, claim or ‘notice to pay’ number is
-            input name='form_number' id='form_number' type='text'
+        details
+          summary Help with case number
+          .panel-indent
+            p The court or tribunal creates a reference number for every case. This is sometimes called a claim number, case number, or ‘notice to pay’ number.
+            p If your case is ongoing then you’ll find the reference number on letters from the court or tribunal.
+            p If you don’t have a reference number (this might be because your case hasn’t started yet) leave this question blank.
 
-  br
-  .row
-    .small-12.medium-6.columns
-      details
-        summary Help with case number
-        .panel-indent
-          p The court or tribunal creates a reference number for every case. This is sometimes called a claim number, case number, or ‘notice to pay’ number.
-          p If your case is ongoing then you’ll find the reference number on letters from the court or tribunal.
-          p If you don’t have a reference number (this might be because your case hasn’t started yet) leave this question blank.
+
+  .et-case
+    .row
+      .small-12.columns
+        br
+        span.hint
+          | Step 12 of&nbsp;
+          span.total-steps 20
+        br
+          h4 Enter your employment tribunal claim number
+          p Find this number on your digital submission or letters from the court or tribunal.
+
+    .row
+      .small-12.medium-6.columns
+        label for='case-number'
+          | Employment tribunal claim number
+          input name='case-number' id='case-number' type='text'
+
+    br
+    .row
+      .small-12.medium-6.columns
+        details
+          summary Help with employment tribunal claim number
+          .panel-indent
+            p Lorem ipsum dolor sit amet
+
 
   br
   .row
@@ -57,9 +87,23 @@ form
 
 javascript:
   $(document).ready( function() {
-    buildNextUrl('ni.html');
+    $(document).foundation();
+
+    if(getValue('public', 'et-case').toString() === 'true') {
+      $('.regular-case').remove();
+    } else {
+      $('.et-case').remove();
+    }
+
+
+    $("input[name='case']").on('change', function () {
+      $('#case-number').toggleClass('hide', $("input[name='case']:checked").val() == "true");
+    });
+
+    $('input[name="case-number"]').on('change', function(e) {
+      var $el = $(e.target);
+      storeValue('public', 'case-number', $el.val());
+    });
   });
 
-  $("input[name='case']").on('change', function () {
-    $('#case-number').toggleClass('hide', $("input[name='case']:checked").val() == "true");
-  });
+

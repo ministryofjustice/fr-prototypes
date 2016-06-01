@@ -56,6 +56,7 @@ var summaryModule = {
 
     if(getValue('public', 'et-case').toString() === 'true') {
       $('#et-case').show();
+      $('#case-heading .subheader').text('Claim number');
     }
 
     var caseNumber = getValue('public', 'case-number').toString();

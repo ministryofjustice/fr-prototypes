@@ -12,7 +12,11 @@ form
       br
       br
       .panel.callout.callout-part
-        h3 You should be eligible for help with fees but the court or tribunal needs to complete your application
+        h3
+          | You should be eligible for help with fees&nbsp;
+          span.part
+            | or money off&nbsp;
+          | but the court or tribunal needs to complete your application
       .panel
         h3 Your application for help with fees is not finished yet
         ol
@@ -44,5 +48,9 @@ form
 javascript:
   $(document).ready( function() {
     formNumberModule.init();
+
+    if(getValue('public', 'income-band') === 'mid' || getValue('public', 'savings-value') === 'between-3-16k') {
+      $('.part').show();
+    }
   });
 

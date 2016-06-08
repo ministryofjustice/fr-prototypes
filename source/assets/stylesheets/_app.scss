@@ -162,6 +162,7 @@ span.hint {
   h3 {
     color: $page-colour;
     margin: 0;
+    line-height: 1.3;
   }
   &.not-received {
     background-color: $error-colour;
@@ -192,7 +193,6 @@ span.hint {
     background: $error-colour;
 
     h3 {
-      line-height: 1.3;
       padding-left: 50px;
       position: relative;
 
@@ -205,9 +205,12 @@ span.hint {
       }
     }
   }
-  p
-  {
+  p {
     margin:0;
+  }
+
+  span.part {
+    display: none;
   }
 }
 

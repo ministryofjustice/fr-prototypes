@@ -60,7 +60,7 @@ var summaryModule = {
     }
 
     var caseNumber = getValue('public', 'case-number').toString();
-    if(caseNumber !== '') {
+    if(caseNumber !== '' && caseNumber !== 'false') {
       $('#case-number').show();
       $('#case-detail').text(caseNumber)
     }

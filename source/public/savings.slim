@@ -84,5 +84,6 @@ javascript:
     buildNextUrl($("input[name='savings-amount']:checked").data('next') + '.html');
 
     storeValue('public', 'savings', $("input[name='savings-amount']:checked").attr('title'));
+    storeValue('public', 'savings-value', $("input[name='savings-amount']:checked").val());
   });
 

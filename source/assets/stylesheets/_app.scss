@@ -188,6 +188,23 @@ span.hint {
   &.callout-part {
     background: $orange;
   }
+  &.callout-ineligible {
+    background: $error-colour;
+
+    h3 {
+      line-height: 1.3;
+      padding-left: 50px;
+      position: relative;
+
+      &:before {
+        content: '✗';
+        position: absolute;
+        left: 10px;
+        top: -10px;
+        font-size: 40px;
+      }
+    }
+  }
   p
   {
     margin:0;

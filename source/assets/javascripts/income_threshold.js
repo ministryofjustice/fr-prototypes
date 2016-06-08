@@ -25,10 +25,12 @@ var incomeThresholdModule = {
   bindEvents: function() {
     $('[name="income-amount"]').on('change', function(e) {
       var $el = $(e.target),
-          band = $el.val();
+          band = $el.val(),
+          next = $el.data('next');
 
       storeValue('public', 'income-band', band);
-      buildNextUrl(band === 'mid' ? 'income-detail.html' : 'probate.html');
+
+      buildNextUrl(next + '.html');
     });
   },
 

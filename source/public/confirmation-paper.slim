@@ -11,9 +11,14 @@ form
         span.total-steps 20
       br
       br
+      .panel.callout.callout-part
+        h3
+          | You should be eligible for help with fees&nbsp;
+          span.part
+            | or money off&nbsp;
+          | but the court or tribunal needs to complete your application
       .panel
         h3 Your application for help with fees is not finished yet
-        br
         ol
           li You must write this reference number <strong class="hwf-number upper">HWF-KN1-6H7</strong> on <span class="form-number strong">the court or tribunal form for which you need help with the fee</span>
           br
@@ -43,5 +48,9 @@ form
 javascript:
   $(document).ready( function() {
     formNumberModule.init();
+
+    if(getValue('public', 'income-band') === 'mid' || getValue('public', 'savings-value') === 'between-3-16k') {
+      $('.part').show();
+    }
   });
 

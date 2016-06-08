@@ -42,15 +42,15 @@ form#income-amount
       .options.radio
         .option
           label for="income-amount-low"
-            input id="income-amount-low" type="radio" name="income-amount" value="low"
+            input id="income-amount-low" type="radio" name="income-amount" value="low" data-next="probate"
             | Less than £<span class="threshold-lower">1,085</span>
         .option
           label for="income-amount-middle"
-            input id="income-amount-middle" type="radio" name="income-amount" value="mid"
+            input id="income-amount-middle" type="radio" name="income-amount" value="mid" data-next="income-detail"
             | Between £<span class="threshold-lower">1,085</span> and £<span class="threshold-upper">5,085</span>
         .option
           label for="income-amount-high"
-            input id="income-amount-high" type="radio" name="income-amount" value="high"
+            input id="income-amount-high" type="radio" name="income-amount" value="high" data-next="confirmation-income"
             | More than £<span class="threshold-upper">5,085</span>
 
 

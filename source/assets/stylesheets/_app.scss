@@ -163,6 +163,10 @@ span.hint {
     color: $page-colour;
     margin: 0;
     line-height: 1.3;
+
+    span {
+      display: none;
+    }
   }
   &.not-received {
     background-color: $error-colour;
@@ -207,10 +211,6 @@ span.hint {
   }
   p {
     margin:0;
-  }
-
-  span.part {
-    display: none;
   }
 }
 

@@ -13,10 +13,11 @@ form
       br
       .panel.callout.callout-part
         h3
-          | You should be eligible for full help with your fee.
+          span.full
+            | You should be eligible for full help with your fee.
           span.part
             | You should be eligible for money off your fee.
-          <br>
+          br
           | The court or tribunal will complete your application and confirm if it’s successful.
       .panel
         h3 Your application for help with fees is not finished yet
@@ -54,6 +55,8 @@ javascript:
 
     if(getValue('public', 'income-band') === 'mid' || getValue('public', 'savings-value') === 'between-3-16k') {
       $('.part').show();
+    } else {
+      $('.full').show();
     }
   });
 

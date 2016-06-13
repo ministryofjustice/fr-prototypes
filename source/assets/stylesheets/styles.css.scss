@@ -5,3 +5,20 @@
 @import 'app';
 
 @import 'foundation-error-overrides';
+
+
+a#back {
+  display: inline-block;
+  margin-top: 15px;
+  padding-left: 14px;
+  border-bottom: #0b0c0c 1px solid;
+  color: #0b0c0c;
+  text-decoration: none;
+  background: url("http://cl.ly/image/1L2z0O2w0Q14/icon-caret-left.png") no-repeat 0 4px;
+  font-family: "nta", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 400;
+  text-transform: none;
+}
+

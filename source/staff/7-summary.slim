@@ -183,5 +183,7 @@ javascript:
       }
     }
 
-    buildNextUrl('8-confirmation-success.html');
+    if (getValue('staff', 'outcome') === 'part') {
+      buildNextUrl('8-confirmation-part-payment.html');
+    }
   });

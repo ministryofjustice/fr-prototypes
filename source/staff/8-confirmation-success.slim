@@ -82,6 +82,7 @@ javascript:
     var to_pay = unescape(getValue('staff', 'to_pay'));
     if (to_pay && to_pay !== 'false' && to_pay !== 'undefined' && to_pay != '') {
       console.log(to_pay);
+      /*
       $('#result-display').text(to_pay);
       console.log(to_pay.indexOf("£"));
       console.log(to_pay.indexOf("£0"));
@@ -92,6 +93,7 @@ javascript:
       } else if (to_pay == "The applicant must pay the full fee") {
         $('#result-display').addClass('summary-result-failure');
       }
+      */
     }
 
     if(getValue('staff', 'calculator')=='true') {

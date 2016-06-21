@@ -10,7 +10,7 @@ form
 
   br
   .row
-    .small-12.medium-.large-8.columns
+    .small-12.medium-8.large-8.columns
       h4 Personal details
   .row
     .small-12.medium-5.large-4.columns
@@ -83,9 +83,9 @@ form
   .row
     .small-12.medium-5.large-4.columns
       .subheader Applicant has children
-    .small-12.medium-7.large-8.columns
+    .small-12.medium-7.large-8.columns#haschildren
       | Yes
-  .row
+  .row#numchildren
     .small-12.medium-5.large-4.columns
       .subheader Number of children
     .small-12.medium-7.large-8.columns#children
@@ -112,7 +112,7 @@ form
   .row
     .small-12.medium-5.large-4.columns
       .subheader Total monthly income from evidence
-    .small-12.medium-7.large-8.columns
+    .small-12.medium-7.large-8.columns#income-evidence
       | £1,050
   hr
 
@@ -124,25 +124,27 @@ form
 
 javascript:
   $(document).ready( function() {
-    $('#income').text('£' + getValue('staff', 'income'));
+    $('#income-evidence').text('£' + getValue('staff', 'income'));
+
+    // children
+    var c = getValue('staff', 'children');
+    if (c != '' && parseInt(c, 10) > 0) {
+      $('#children').text(c);
+    } else {
+      $('#haschildren').text('No');
+      $('#numchildren').hide();
+    }
+
+    console.log('OUTCOME: ' + getValue('staff', 'outcome'));
+
     switch (getValue('staff', 'outcome')) {
       case 'none':
-        $('#income-result-display')
-          .removeClass('summary-result-success')
-          .addClass('summary-result-failure')
-          .text('✗ Failed');
-        $('#remission-type').addClass('callout-none');
-        $('#remission-type h3').text('The applicant must pay the full fee');
-        buildNextUrl('evidence-check-7b.html');
+        buildNextUrl('evidence-check-7d.html');
         break;
       case 'part':
-        to_pay = getValue('staff', 'to_pay') || '0'
-        $('#remission-type').addClass('callout-part');
-      $('#remission-type h3').text('The applicant must pay ' + unescape(to_pay) + ' towards the fee');
         buildNextUrl('evidence-check-7c.html');
         break;
       default:
-        $('#remission-type').addClass('callout-full');
-        //do nothing to the text, full is the default
+        //do nothing, full is the default
     }
   });

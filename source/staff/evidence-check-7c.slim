@@ -4,6 +4,7 @@ nav_title: 'Help with fees'
 section_title: 'Process evidence'
 rh_help: true
 ---
+/ PART PAYMENT
 form
   br
   .row
@@ -21,7 +22,7 @@ form
         p We have assessed your application, and found that you will need to pay part of the fee in order to for you case to proceed.
         p
           |Please supply a cheque to the sum of&nbsp;
-          span#to_pay
+          strong#to_pay
           |&nbsp;payable to 'HM Courts &amp; Tribunal Service'
         p Please supply payment by 12 November 2015.
         p Yours sincerely,
@@ -33,7 +34,7 @@ form
 
 javascript:
   $(document).ready( function() {
-    $('#to_pay').text(unescape(getValue('staff', 'to_pay')));
+    $('#to_pay').text('£' + unescape(getValue('staff', 'to_pay')));
 
     $('a div.button.success').on('click', function() {
       $('#copied').fadeTo(1,1).fadeTo(2000, 0);

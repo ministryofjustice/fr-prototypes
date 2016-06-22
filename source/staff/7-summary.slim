@@ -76,10 +76,11 @@ form
           | Change savings and investments
   .row
     .small-12.medium-5.large-4.columns
-      .subheader Savings total eligible
+      .subheader Less than maximum savings
     .small-12.medium-7.large-8.columns#savings-toggle
       | Yes
   hr
+
   #benefits
     .row
       .small-12.medium-7.large-8.columns
@@ -90,12 +91,22 @@ form
             | Change benefits
     .row
       .small-12.medium-5.large-4.columns
-        .subheader Receiving eligible benefits
+        .subheader Applicant receiving benefits
       .small-12.medium-7.large-8.columns
-        | No
+        | Yes
+    .row
+      .small-12.medium-5.large-4.columns
+        .subheader Applicant provided paper evidence
+      .small-12.medium-7.large-8.columns#evidence-detail
+        | Yes
+    .row.hide#evidence-correct
+      .small-12.medium-5.large-4.columns
+        .subheader Benefits letter checked
+      .small-12.medium-7.large-8.columns#evidence-correct-detail
+        | Yes
     hr
-  #income-only
 
+  #income-only
     .row
       .small-12.medium-7.large-8.columns
         h4 Income
@@ -106,9 +117,9 @@ form
     .row
       .small-12.medium-5.large-4.columns
         .subheader Applicant has children
-      .small-12.medium-7.large-8.columns
+      .small-12.medium-7.large-8.columns#haschildren
         | Yes
-    .row
+    .row#numchildren
       .small-12.medium-5.large-4.columns
         .subheader Number of children
       .small-12.medium-7.large-8.columns#children
@@ -161,17 +172,26 @@ form
 javascript:
   $(document).ready( function() {
     $('#income-only').toggle(getValue('staff', 'benefits') == 'false');
-    $('#benefits').toggle(getValue('staff', 'benefits') == 'undefined');
+    $('#benefits').toggle(getValue('staff', 'benefits') == 'true');
     $('#dob').text(unescape(getValue('staff', 'dob')));
     $('#fee').text(unescape('£' + getValue('staff', 'fee')));
     $('#status').text(getValue('staff', 'couple') == 'false' ? 'Single' : 'Married or living with someone and sharing an income');
 
-    if (getValue('staff', 'children')!='') {
-      $('#children').text(getValue('staff', 'children'));
+    // children
+    var c = getValue('staff', 'children');
+    if (c != '' && parseInt(c, 10) > 0) {
+      $('#children').text(c);
+    } else {
+      $('#haschildren').text('No');
+      $('#numchildren').hide();
     }
+
+    // income
     if (getValue('staff', 'income')!='') {
       $('#income').text('£' + getValue('staff', 'income'));
     }
+
+    // savings
     if (getValue('staff', 'savings') === 'high') {
       $('#savings-toggle').text('No');
     }
@@ -183,5 +203,22 @@ javascript:
       }
     }
 
-    buildNextUrl('8-confirmation-success.html');
+    // benefits
+    if (getValue('staff', 'benefits') === 'true') {
+      $('#evidence-detail').text(getValue('staff', 'evidence') == 'true' ? 'Yes' : 'No');
+
+      if(getValue('staff', 'evidence') === 'true') {
+        $('#evidence-correct').show();
+        $('#evidence-correct-detail').text(getValue('staff', 'evidence-correct') == 'true' ? 'Yes' : 'No');
+      }
+    }
+
+    // change confirmation
+    if (getValue('staff', 'outcome') === 'part') {
+      // part payment
+      buildNextUrl('8-confirmation-part-payment.html');
+    } else if (getValue('staff', 'outcome') === 'none') {
+      // fail
+      buildNextUrl('8-confirmation-failed.html');
+    }
   });

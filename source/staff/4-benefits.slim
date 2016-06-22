@@ -4,24 +4,25 @@ nav_title: 'Help with fees'
 section_title: 'Process application'
 rh_help: true
 ---
-form
+form data-abide='ajax'
   br
   .row
     .small-12.medium-12.large-12.columns
       h2 Benefits
   br
   .row
-    .small-12.medium-12.large-12.columns
-      label In question 9, do they receive any of the benefits listed?
-    .small-12.medium-9.large-8.columns.end
+    .small-12.medium-9.columns
+      label
+        | In question 9, do they receive any of the benefits listed?
+        small.error Select the option which applies
       .options.radio
         .option
           label for="benefits-no"
-            input id="benefits-no" type="radio" name="benefits" value="false"
+            input id="benefits-no" type="radio" name="benefits" value="false" required=''
             | No
         .option
           label for="benefits-yes"
-            input id="benefits-yes" type="radio" name="benefits" value="true"
+            input id="benefits-yes" type="radio" name="benefits" value="true" required=''
             | Yes
 
   br
@@ -32,7 +33,9 @@ form
 
 javascript:
   $(document).ready(function () {
-    buildNextUrl('5-benefits-result.html');
+    $(document).foundation();
+
+    formValidationModule.init();
 
     $("input[name='benefits']").on('change', function () {
       if ($("input[name='benefits']:checked").val()=="false") {
@@ -43,14 +46,3 @@ javascript:
       storeValue('staff', 'benefits', $("input[name='benefits']:checked").val());
     });
   });
-
-  function setPassFail(ctrl, pass, fail) {
-    var result = false;
-    //result = !!Math.floor(Math.random() * 2);
-    if (result) {
-      $(ctrl).addClass('success').removeClass('alert').text(pass);
-    } else {
-      $(ctrl).addClass('alert').removeClass('success').text(fail);
-    }
-    return result;
-  }

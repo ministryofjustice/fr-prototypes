@@ -20,7 +20,7 @@ form data-abide='ajax'
     .small-12.medium-3.columns
       label for='postcode'
         | Postcode
-        input name='postcode' id='postcode' type='text' required='' 
+        input name='postcode' id='postcode' type='text' required=''
   .row
     .small-12.medium-9.large-8.columns
       label for='email'
@@ -37,42 +37,3 @@ form data-abide='ajax'
     .small-12.medium-6.large-5.columns
       a#next-url href='7-summary.html'
         .button.success Next
-
-javascript:
-  var monthNames = [
-    "Jan", "Feb", "Mar",
-    "Apr", "May", "Jun", "Jul",
-    "Aug", "Sep", "Oct",
-    "Nov", "Dec"
-  ];
-
-  var date = new Date();
-  var day = date.getDate();
-  var monthIndex = date.getMonth();
-  var year = date.getFullYear();
-
-  $(document).ready(function() {
-    $(document).foundation();
-
-    formValidationModule.init();
-
-    $("input[name='couple']").on('change', function() {
-      storeValue('staff', 'couple', $("input[name='couple']:checked").val());
-    });
-    $("input[type='number']").on('change', function() {
-      var day = parseInt($('#doa_day').val(), 10);
-      var month = parseInt($('#doa_month').val(), 10) - 1;
-      var year = parseInt($('#doa_year').val(), 10);
-
-      var d = new Date(year, month, day);
-      var dob = day + ' ' + monthNames[month] + ' ' + year;
-      storeValue('staff', 'dob',  dob);
-      storeValue('staff', 'age',  _calculateAge(d));
-    });
-  });
-
-  function _calculateAge(birthday) { // birthday is a date
-    var ageDifMs = Date.now() - birthday.getTime();
-    var ageDate = new Date(ageDifMs); // miliseconds from epoch
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
-  }

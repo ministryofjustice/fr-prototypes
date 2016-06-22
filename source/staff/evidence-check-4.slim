@@ -44,30 +44,31 @@ br
                 label.inline for='income' £
             .small-10.medium-9.large-9.columns
               input data-check='income' name="income" id="income" type="number"
-  br
-  .row
-    .small-12.medium-8.large-5.columns
-      button.button.primary.success#check_btn Next
-
-#r2_calculator_result
-  .row
-    .columns.small-12.medium-12.large-11
-      #calculator.callout
-        h3.bold#fee-remit
-
-  .row
-    .small-12.columns
-      a#next-url href="evidence-check-6a.html"
-        .button.success Next
+br
+.row
+  .small-12.columns
+    a#next-url href="evidence-check-6a.html"
+      .button.success Next
 
 javascript:
   $(document).ready(function () {
-    $('#fee').val('215');
-    $('#children').val('0');
-    $("input[name='couple'][value='false']").prop("checked", true)
-    buildNextUrl('evidence-check-6a.html');
+    var vals = {
+      fee: '500',
+      children: '0',
+      couple: 'false'
+    };
 
-    $('#check_btn').on('click', function() {
-      storeValue('staff', 'income', $('#income').val());
+    $('#fee').val(vals.fee);
+    $('#children').val(vals.children);
+    $("input[name='couple'][value='" + vals.couple + "']").prop("checked", true);
+    storeValue('staff', 'fee', vals.fee);
+    storeValue('staff', 'children', vals.children);
+    storeValue('staff', 'couple', vals.couple);
+
+    $('#income').on('change', function(e) {
+      var $el = $(e.target),
+          value =  $el.val();
+
+      storeValue('staff', 'income', value);
     });
   });

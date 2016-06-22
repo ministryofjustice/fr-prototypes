@@ -7,13 +7,10 @@ rh_help: true
 form
   br
   .row
-      .small-12.medium-12.large-12.columns
-        .panel.callout.dwp-error
-          p There’s a problem with the applicant’s surname, date of birth or National Insurance number. <a href="#personal details page">Check all details were entered correctly </a>
-
-  .row
     .small-12.medium-12.large-12.columns
       h2 Benefits
+      .panel.callout.dwp-error
+        p You will only be able to process this application if you have paper evidence that the applicant is receiving benefits
 
   .row
     .small-12.medium-12.large-12.columns
@@ -21,13 +18,13 @@ form
     .small-12.medium-9.large-8.columns.end
       .options.radio
         .option
-          label for="benefits-no"
-            input id="benefits-no" type="radio" name="benefits" value="true"
+          label for="evidence-no"
+            input id="evidence-no" type="radio" name="evidence" value="false"
             | No
         .option
-          label for="benefits-yes"
-            input id="benefits-yes" type="radio" name="benefits" value="false"
-            | Yes, the application has provided paper evidence
+          label for="evidence-yes"
+            input id="evidence-yes" type="radio" name="evidence" value="true"
+            | Yes, the applicant has provided paper evidence
 
 
   #evidence-check.hide
@@ -48,9 +45,9 @@ form
           #evidence-comment.hide
             .row
               .small-12.columns
-                  label for='evidence-comment'
+                  label for='evidence-comment-detail'
                     | Describe the problem with the evidence
-                    textarea rows="2" cols="50"
+                    textarea#evidence-comment-detail rows="2" cols="50"
 
   br
   .row
@@ -63,33 +60,28 @@ javascript:
   $(document).ready(function () {
     buildNextUrl('contact-details.html');
 
-    $("input[name='benefits']").on('change', function () {
-      if ($("input[name='benefits']:checked").val()=="false") {
+    $("input[name='evidence']").on('change', function () {
+      if ($("input[name='evidence']:checked").val()=="false") {
         buildNextUrl('contact-details.html');
       } else {
-        buildNextUrl('contact-details.html');
+        buildNextUrl('#');
+        deselectRadio([$('[name="evidence-correct"]')]);
+        $('#evidence-comment').addClass('hide');
+        $('#evidence-comment-detail').val('');
       }
-      storeValue('staff', 'benefits', $("input[name='benefits']:checked").val());
+      storeValue('staff', 'evidence', $("input[name='evidence']:checked").val());
+      $('#evidence-check').toggleClass('hide', $("input[name='evidence']:checked").val() == "false");
     });
   });
 
-  function setPassFail(ctrl, pass, fail) {
-    var result = false;
-    //result = !!Math.floor(Math.random() * 2);
-    if (result) {
-      $(ctrl).addClass('success').removeClass('alert').text(pass);
-    } else {
-      $(ctrl).addClass('alert').removeClass('success').text(fail);
-    }
-    return result;
-  }
-
   $("input[name='evidence-correct']").on('change', function () {
     $('#evidence-comment').toggleClass('hide', $("input[name='evidence-correct']:checked").val() == "true");
-    buildNextUrl($("input[name='evidence-correct']:checked").val() == "true" ? 'evidence-check-4.html' : 'evidence-check-6b.html');
+    storeValue('staff', 'evidence-correct', $("input[name='evidence-correct']:checked").val());
+    buildNextUrl('contact-details.html');
   });
 
-  $("input[name='benefits']").on('change', function () {
-    $('#evidence-check').toggleClass('hide', $("input[name='benefits']:checked").val() == "true");
-    buildNextUrl($("input[name='benefits']:checked").val() == "true" ? '7-summary.html' : '7-summary.html');
+  $('#evidence-comment-detail').on('change', function(e) {
+    var $el = $(e.target);
+
+    storeValue('staff', 'evidence-problem', $el.val());
   });

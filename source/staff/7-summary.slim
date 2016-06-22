@@ -213,8 +213,12 @@ javascript:
       }
     }
 
-    // part payment
+    // change confirmation
     if (getValue('staff', 'outcome') === 'part') {
+      // part payment
       buildNextUrl('8-confirmation-part-payment.html');
+    } else if (getValue('staff', 'outcome') === 'none') {
+      // fail
+      buildNextUrl('8-confirmation-failed.html');
     }
   });

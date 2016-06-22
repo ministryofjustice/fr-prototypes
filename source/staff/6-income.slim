@@ -68,15 +68,6 @@ br
             .small-10.medium-9.large-9.columns
               input data-check='income' name="income" id="income" type="number"
 br
-/ .row
-/   .small-12.medium-8.large-5.columns
-/     button.button.primary.success#check_btn Next
-
-/ #r2_calculator_result
-/   .row
-/     .columns.small-12.medium-12.large-11
-/       #calculator.callout
-/         h3.bold#fee-remit
 
 .row
   .small-12.columns
@@ -87,17 +78,8 @@ br
 javascript:
   $(document).ready(function () {
     $('#fee').val(getValue('staff', 'fee'));
-    $("input[name='couple'][value='" + getValue('staff', 'couple') + "']").prop("checked", true)
-    buildNextUrl('contact-details.html');
+    $("input[name='couple'][value='" + getValue('staff', 'couple') + "']").prop("checked", true);
     storeValue('staff', 'calculator', 'true');
-    //$("#next-url").hide();
-
-    /*
-    $('#next-url').on('click', function () {
-      var to_pay = escape($('#fee-remit').text());
-      storeValue('staff', 'to_pay', to_pay);
-    });
-    */
 
     $("input[name='any-kids']").on('change', function () {
       $('#income-block').show();
@@ -109,6 +91,7 @@ javascript:
       }
       $('#children').val(($("input[name='any-kids']:checked").val() == "false") ? '0' : '');
     });
+
     $('#children, #income').on('change', function(e) {
       var $el = $(e.target),
           key = $el.attr('id'),
@@ -116,6 +99,7 @@ javascript:
 
       storeValue('staff', key, value);
     });
+
     $('[name="any-kids"]').on('change', function(e) {
       var $el = $(e.target);
 

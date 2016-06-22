@@ -37,8 +37,6 @@ javascript:
 
     formValidationModule.init();
 
-    buildNextUrl('5-benefits-result.html');
-
     $("input[name='benefits']").on('change', function () {
       if ($("input[name='benefits']:checked").val()=="false") {
         buildNextUrl('6-income.html');
@@ -48,14 +46,3 @@ javascript:
       storeValue('staff', 'benefits', $("input[name='benefits']:checked").val());
     });
   });
-
-  function setPassFail(ctrl, pass, fail) {
-    var result = false;
-    //result = !!Math.floor(Math.random() * 2);
-    if (result) {
-      $(ctrl).addClass('success').removeClass('alert').text(pass);
-    } else {
-      $(ctrl).addClass('alert').removeClass('success').text(fail);
-    }
-    return result;
-  }

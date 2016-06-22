@@ -77,7 +77,7 @@ javascript:
   $("input[name='evidence-correct']").on('change', function () {
     $('#evidence-comment').toggleClass('hide', $("input[name='evidence-correct']:checked").val() == "true");
     storeValue('staff', 'evidence-correct', $("input[name='evidence-correct']:checked").val());
-    buildNextUrl('7-summary.html');
+    buildNextUrl('contact-details.html');
   });
 
   $('#evidence-comment-detail').on('change', function(e) {

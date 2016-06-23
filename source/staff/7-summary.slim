@@ -196,7 +196,7 @@ javascript:
       $('#savings-toggle').text('No');
     }
     if (getValue('staff', 'savings') === 'mid') {
-      if(parseInt(getValue('staff', 'savings-detail'), 10) > parseInt(getValue('staff', 'threshold'), 10)) {
+      if(parseInt(getValue('staff', 'savings-detail'), 10) > parseInt(getValue('staff', 'savings-threshold'), 10)) {
         if(getValue('staff', 'partnerOver61') !== 'true') {
           $('#savings-toggle').text('No');
         }

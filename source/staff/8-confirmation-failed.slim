@@ -25,13 +25,19 @@ form
     .small-12.medium-5.large-3.columns
       .subheader Savings and investments
     .small-12.medium-7.large-9.columns
-      #savings-result-display.summary-result-success &#10003; Passed
-  #results-income
+      #savings-result-display.result-display.summary-result-success ✗ Failed
+  #results-income.hide
     .row
       .small-12.medium-5.large-3.columns
         .subheader Income
       .small-12.medium-7.large-9.columns
-        #income-result-display.summary-result-failure.bold ✗ Failed
+        #income-result-display.result-display.summary-result-failure ✗ Failed
+  #results-benefits.hide
+    .row
+      .small-12.medium-5.large-3.columns
+        .subheader Benefits
+      .small-12.medium-7.large-9.columns
+        #benefits-result-display.result-display.summary-result-failure ✗ Failed
   br
   .row
     .small-12.columns
@@ -60,5 +66,30 @@ form
 
 
 javascript:
-  $(document).ready( function() {
+  $(document).ready(function() {
+    var text = {
+      fail: '✗ Failed',
+      pass: '✓ Passed'
+    };
+
+    // default view caters for failing on savings
+
+    if(getValue('staff', 'savings-exceeded') === 'false') {
+      // passed on savings
+      $('#savings-result-display').text(text.pass);
+      if(getValue('staff', 'benefits') === 'true') {
+        // benefits route
+        $('#results-benefits').show();
+        if(getValue('staff', 'evidence') === 'false') {
+          // didn't supply evidence
+          $('#benefits-result-display').text([text.fail, '(evidence not provided)'].join(' '));
+        } else if(getValue('staff', 'evidence-correct') === 'false') {
+          // evidence supplied but not valid
+          $('#benefits-result-display').text([text.fail, '(evidence incorrect)'].join(' '));
+        }
+      } else {
+        // failed on income
+        $('#results-income').show();
+      }
+    }
   });

@@ -193,12 +193,16 @@ javascript:
 
     // savings
     if (getValue('staff', 'savings') === 'high') {
+      // fail
       $('#savings-toggle').text('No');
+      buildNextUrl('8-confirmation-failed.html');
     }
     if (getValue('staff', 'savings') === 'mid') {
       if(parseInt(getValue('staff', 'savings-detail'), 10) > parseInt(getValue('staff', 'savings-threshold'), 10)) {
         if(getValue('staff', 'partnerOver61') !== 'true') {
+          // fail
           $('#savings-toggle').text('No');
+          buildNextUrl('8-confirmation-failed.html');
         }
       }
     }
@@ -210,6 +214,10 @@ javascript:
       if(getValue('staff', 'evidence') === 'true') {
         $('#evidence-correct').show();
         $('#evidence-correct-detail').text(getValue('staff', 'evidence-correct') == 'true' ? 'Yes' : 'No');
+      }
+
+      if(getValue('staff', 'evidence') === 'false' || getValue('staff', 'evidence-correct') === 'false') {
+        buildNextUrl('8-confirmation-failed.html');
       }
     }
 

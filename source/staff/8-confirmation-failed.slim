@@ -77,15 +77,15 @@ form
               .options.radio
                 .option
                   label for="override-reasons-paper"
-                    input id="override-reasons-paper" type="radio" name="override-reasons" value="received-paper-evidence"
+                    input id="override-reasons-paper" type="radio" name="override-reasons" value="Paper evidence received"
                     | You've received paper evidence that the applicant is receiving benefits
                 .option
                   label for="override-reasons-check"
-                    input id="override-reasons-check" type="radio" name="override-reasons" value="check-dwp"
+                    input id="override-reasons-check" type="radio" name="override-reasons" value="DWP Check"
                     | You want to check if the applicant is receiving benefits using the DWP checker (and it was unavailable when the application was first processed)
                 .option
                   label for="override-reasons-discretion"
-                    input id="override-reasons-discretion" type="radio" name="override-reasons" value="using-discretion"
+                    input id="override-reasons-discretion" type="radio" name="override-reasons" value="Discretion applied"
                     | You are exercising discretion with this application
                 .option
                   label for="override-reasons-other"
@@ -101,7 +101,7 @@ form
                 .small-6
                   input name="override-other-detail" id="override-other-detail" type="text"
 
-        a.button href='8-confirmation-expired.html' Update application
+        a#store-override.button href='8-confirmation-success.html' Update application
 
 
 javascript:
@@ -115,6 +115,24 @@ javascript:
       var $el = $(e.target);
 
       $('#override-other').toggle($el.attr('id') === 'override-reasons-other');
+    });
+
+    $('#store-override').on('click', function (e) {
+      var $el = $('[name="override-reasons"]:checked'),
+          reason = $el.val();
+
+      e.preventDefault();
+
+      if(reason !== undefined) {
+        if(reason === 'other') {
+          reason = $('#override-other-detail').val() || 'Other';
+        }
+
+        storeValue('staff', 'benefits-override', 'true');
+        storeValue('staff', 'benefits-override-reason', reason);
+
+        document.location = $('#store-override').attr('href');
+      }
     });
 
     // default view caters for failing on savings

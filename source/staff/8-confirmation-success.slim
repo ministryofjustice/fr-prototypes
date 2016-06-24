@@ -25,27 +25,30 @@ form
     .small-12.medium-5.large-3.columns
       .subheader Savings and investments
     .small-12.medium-7.large-9.columns
-      #savings-result-display.summary-result-success&#10003; Passed
+      #savings-result-display.summary-result-success ✓ Passed
   #results-benefits
     .row
       .small-12.medium-5.large-3.columns
         .subheader Benefits
       .small-12.medium-7.large-9.columns
-        .summary-result-success
+        #benefits-result-display.summary-result-success
           | &#10003; Passed
   #results-income
       .row
         .small-12.medium-5.large-3.columns
           .subheader Income
         .small-12.medium-7.large-9.columns
-          #income-result-display.summary-result-success.bold &#10003; Passed
+          #income-result-display.summary-result-success.bold ✓ Passed
   br
   .row
     .small-12.columns
       .panel.callout.received
         .row
           .small-12.columns
-            h3#result-display &#10003; Eligible for help with fees
+            h3#result-display
+              | ✓&nbsp;
+              span#eligibility Eligible for
+              | &nbsp;help with fees
 
 
   hr
@@ -82,18 +85,6 @@ javascript:
     var to_pay = unescape(getValue('staff', 'to_pay'));
     if (to_pay && to_pay !== 'false' && to_pay !== 'undefined' && to_pay != '') {
       console.log(to_pay);
-      /*
-      $('#result-display').text(to_pay);
-      console.log(to_pay.indexOf("£"));
-      console.log(to_pay.indexOf("£0"));
-      if ((to_pay.indexOf("£") >= 0) && (to_pay.indexOf("£0") == -1)) {
-        //part remission
-        $('#result-display').addClass('orange');
-        $('#income-result-display').removeClass('summary-result-success').addClass('orange').text('✓ Passed')
-      } else if (to_pay == "The applicant must pay the full fee") {
-        $('#result-display').addClass('summary-result-failure');
-      }
-      */
     }
 
     if(getValue('staff', 'calculator')=='true') {
@@ -102,41 +93,8 @@ javascript:
       }
     }
 
-    //var to_pay = unescape(getValue('staff', 'to_pay'));
-    //if (to_pay!='') {
-    //  //$('#outcome').text(to_pay);
-    //  console.log(to_pay.indexOf("£"));
-    //  console.log(to_pay.indexOf("£0"));
-    //  if ((to_pay.indexOf("£") >= 0) && (to_pay.indexOf("£0") == -1)) {
-    //    //part remission
-    //    $('#outcome').addClass('orange');
-    //  }
-    //}
-    //
-    //if(getValue('staff', 'benefits')=='true') {
-    //  $('#remission-type').addClass('callout-full');
-    //  buildNextUrl('8-confirmation-success.html');
-    //  $('#next-url div').text('Complete processing');
-    //} else if(getValue('staff', 'calculator')=='true') {
-    //  $('#remission-type').addClass('callout-part');
-    //  if(to_pay=='The applicant has £0 to pay') {
-    //    $('#remission-type h3').text('Evidence of income needs to be checked for this application');
-    //    buildNextUrl('8-confirmation-evidence.html');
-    //  } else {
-    //    $('#remission-type h3').text(to_pay);
-    //    buildNextUrl('8-confirmation-part-remission.html');
-    //  }
-    //}
-
-    //
-    //$('input[name="decision"]').on('change', function () {
-    //  $('#spot-check-manual').toggle($('input[name="decision"]:checked').val()!="none")
-    //  $("#next-url").attr("href", updateQueryStringParameter('decision', $('input[name="decision"]:checked').val()));
-    //});
-    //$('input[name="spot-check"]').on('change', function () {
-    //  $("#next-url").attr("href", updateQueryStringParameter('spotcheck', $('input[name="spot-check"]').is(':checked')));
-    //});
-    //$('#challenge').on('change', function () {
-    //  $('#override-decision').toggle($('#challenge').is(':checked'));
-    //});
+    if(getValue('staff', 'benefits-override') === 'true') {
+      $('#eligibility').text('Granted');
+      $('#benefits-result-display').text('✓ Passed (by manager\'s discretion)');
+    }
   });

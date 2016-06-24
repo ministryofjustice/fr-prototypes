@@ -167,6 +167,12 @@ span.hint {
     span {
       display: none;
     }
+
+    &#result-display {
+      span {
+        display: inline;
+      }
+    }
   }
   &.not-received {
     background-color: $error-colour;

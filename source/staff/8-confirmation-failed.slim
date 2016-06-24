@@ -12,10 +12,10 @@ form
         .confirm-box
           div.confirmation-two
             img src="../assets/images/confirmation-tick.png" width="27px" height="27px" style="margin-right:15px;"
-              |The reference number is
+              | The reference number is
 
           div.confirmation
-            |AT001-15-3
+            | AT001-15-3
 
   .row
     .small-12.medium-7.large-8.columns
@@ -64,6 +64,45 @@ form
     .small-12.columns
       a.button.success href='../index.html' Back to start
 
+  #override.hide
+    br
+    .panel
+      details
+        summary
+          | Grant help with fees
+        .row
+          .small-12.columns
+              br
+              p You can update details for this application if:
+              .options.radio
+                .option
+                  label for="override-reasons-paper"
+                    input id="override-reasons-paper" type="radio" name="override-reasons" value="received-paper-evidence"
+                    | You've received paper evidence that the applicant is receiving benefits
+                .option
+                  label for="override-reasons-check"
+                    input id="override-reasons-check" type="radio" name="override-reasons" value="check-dwp"
+                    | You want to check if the applicant is receiving benefits using the DWP checker (and it was unavailable when the application was first processed)
+                .option
+                  label for="override-reasons-discretion"
+                    input id="override-reasons-discretion" type="radio" name="override-reasons" value="using-discretion"
+                    | You are exercising discretion with this application
+                .option
+                  label for="override-reasons-other"
+                    input id="override-reasons-other" type="radio" name="override-reasons" value="other"
+                    | Other
+
+        #override-other.hide
+          .row
+            .small-12.columns
+              .panel-indent
+                label for="override-other-detail"
+                  | Other reason for granting help with fees
+                .small-6
+                  input name="override-other-detail" id="override-other-detail" type="text"
+
+        a.button href='8-confirmation-expired.html' Update application
+
 
 javascript:
   $(document).ready(function() {
@@ -72,6 +111,12 @@ javascript:
       pass: '✓ Passed'
     };
 
+    $('[name="override-reasons"]').on('change', function(e) {
+      var $el = $(e.target);
+
+      $('#override-other').toggle($el.attr('id') === 'override-reasons-other');
+    });
+
     // default view caters for failing on savings
 
     if(getValue('staff', 'savings-exceeded') === 'false') {
@@ -79,6 +124,7 @@ javascript:
       $('#savings-result-display').text(text.pass);
       if(getValue('staff', 'benefits') === 'true') {
         // benefits route
+        $('#override').show();
         $('#results-benefits').show();
         if(getValue('staff', 'evidence') === 'false') {
           // didn't supply evidence

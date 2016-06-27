@@ -80,57 +80,12 @@ form
     .small-12.medium-5.large-4.columns
       .subheader Receiving eligible benefits
     .small-12.medium-7.large-8.columns
+      | Yes
+  .row
+    .small-12.medium-5.large-4.columns
+      .subheader Evidence provided
+    .small-12.medium-7.large-8.columns
       | No
-  hr
-  .row
-    .small-12.medium-7.large-8.columns
-      h4 Income
-  .row
-    .small-12.medium-5.large-4.columns
-      .subheader Applicant has children
-    .small-12.medium-7.large-8.columns
-      | Yes
-  .row
-    .small-12.medium-5.large-4.columns
-      .subheader Number of children
-    .small-12.medium-7.large-8.columns
-      | None
-  .row
-    .small-12.medium-5.large-4.columns
-      .subheader Total monthly income
-    .small-12.medium-7.large-8.columns
-      | £1000
-    .small-12.columns
-
-  hr
-  .row
-    .small-12.medium-7.large-8.columns
-      h4 Evidence
-  .row
-    .small-12.medium-5.large-4.columns
-      .subheader Evidence processed
-    .small-12.medium-7.large-8.columns
-      | Yes
-  .row
-    .small-12.medium-5.large-4.columns
-      .subheader Total monthly income from evidence
-    .small-12.medium-7.large-8.columns
-      | £1,050
-
-  hr
-  .row
-    .small-12.medium-7.large-8.columns
-      h4 Part-payment
-  .row
-    .small-12.medium-5.large-4.columns
-      .subheader Payment processed
-    .small-12.medium-7.large-8.columns
-      | Yes
-  .row
-    .small-12.medium-5.large-4.columns
-      .subheader Total monthly income from evidence
-    .small-12.medium-7.large-8.columns
-      | £1,050
 
   hr
   .row
@@ -143,14 +98,14 @@ form
       #income-result-display.summary-result-success ✓ Passed
   .row
     .small-12.medium-5.large-4.columns
-      .subheader Income
-    .small-12.medium-7.large-8.columns.summary-result-success#outcome
-      | ✓ Passed
+      .subheader Benefits
+    .small-12.medium-7.large-8.columns.summary-result-failure#outcome
+      | ✗ Failed (no evidence provided)
   br
   .row
     .small-12.medium-12.large-12.columns
-      .panel.callout.received
-        h3 ✓ Eligible for help with fees
+      .panel.callout.callout-ineligible
+        h3 Not eligible for help with fees
 
   .row
     .small-12.columns
@@ -165,15 +120,48 @@ form
           th Evidence processed
           td 11 January 2016
           td Juliana Richardson
-          td Reason not processed: "The applicant did not provide one month of bank statements for any and all accounts as required."
-        tr
-          th Part-payment processed
-          td 14 January 2016
-          td Juliana Richardson
-          td Reason not processed: "The cheque is made out to Bristol City Council."
-
+          td Reason not processed: "The applicant did not provide the relevant paper evidence."
 
   br
+  #override
+    .panel
+      details
+        summary
+          | Grant help with fees
+        .row
+          .small-12.columns
+              br
+              p You can update details for this application if:
+              .options.radio
+                .option
+                  label for="override-reasons-paper"
+                    input id="override-reasons-paper" type="radio" name="override-reasons" value="Paper evidence received"
+                    | You've received paper evidence that the applicant is receiving benefits
+                .option
+                  label for="override-reasons-check"
+                    input id="override-reasons-check" type="radio" name="override-reasons" value="DWP Check"
+                    | You want to check if the applicant is receiving benefits using the DWP checker (and it was unavailable when the application was first processed)
+                .option
+                  label for="override-reasons-discretion"
+                    input id="override-reasons-discretion" type="radio" name="override-reasons" value="Discretion applied"
+                    | You are exercising discretion with this application
+                .option
+                  label for="override-reasons-other"
+                    input id="override-reasons-other" type="radio" name="override-reasons" value="other"
+                    | Other
+
+        #override-other.hide
+          .row
+            .small-12.columns
+              .panel-indent
+                label for="override-other-detail"
+                  | Other reason for granting help with fees
+                .small-6
+                  input name="override-other-detail" id="override-other-detail" type="text"
+
+        a#store-override.button href='application-granted.html' Update application
+
+
   .row
     .small-12.columns
       .panel

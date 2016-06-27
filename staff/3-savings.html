@@ -4,8 +4,14 @@
   formValidationModule.init();
 
   buildNextUrl('4-benefits.html');
+  /*
   storeValue('staff', 'savings',  'low');
-  storeValue('staff', 'threshold', 3000);
+  storeValue('staff', 'savings-threshold', 3000);
+  */
+
+  if(getValue('staff', 'couple') === 'false') {
+    storeValue('staff', 'savings-threshold', calcThreshold());
+  }
 
   if(parseInt(getValue('staff', 'age'), 10) > 60) {
     console.log('applicant 61+');
@@ -53,7 +59,7 @@ $(document).on('change', 'input[name="savings-amount"]', function() {
   $('#over3k').find('input:visible').attr('required', '');
 });
 
-$(document).on('change', 'input[name="partnerOver61"]', function () {
+$(document).on('change', 'input[name="partnerOver61"]', function() {
   var $opt = $("input[name='partnerOver61']:checked");
 
   clearValue('staff', 'savings-exceeded');
@@ -65,14 +71,14 @@ $(document).on('change', 'input[name="partnerOver61"]', function () {
     $('#over16k').hide().find('input').attr('required', false);
     clearValue('staff', 'over16k');
     $('#savings-detail').show().find('input').val('').attr('required', '');
-    storeValue('staff', 'threshold', calcThreshold());
+    storeValue('staff', 'savings-threshold', calcThreshold());
   } else {
     $('#savings-detail').hide().find('input').attr('required', false);
     clearValue('staff', 'savings-detail');
     $('#over16k').show().find('input').attr('required', '');
     deselectRadio([$('#over16k').find('input[type="radio"]')]);
 
-    storeValue('staff', 'threshold', 16000);
+    storeValue('staff', 'savings-threshold', 16000);
   }
 });
 
@@ -89,7 +95,7 @@ $(document).on('change', 'input#savings-detail-amount', function (e) {
   var $el = $(e.target);
 
   storeValue('staff', 'savings-detail', $el.val());
-  storeValue('staff', 'savings-exceeded', parseInt($el.val(), 10) > getValue('staff', 'threshold') ? 'true' : 'false' );
+  storeValue('staff', 'savings-exceeded', parseInt($el.val(), 10) > getValue('staff', 'savings-threshold') ? 'true' : 'false' );
   buildNextUrl(passOrFail());
 });
 

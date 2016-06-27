@@ -1,2 +1,52 @@
-<!DOCTYPE html><html><head><meta charset="utf-8" /><title>Help with fees</title><meta content="width=device-width" name="viewport" /><link href="../assets/stylesheets/styles.css" rel="stylesheet" /><link href="../assets/stylesheets/r2_calculator.css" rel="stylesheet" /><link href="../assets/stylesheets/r1calc.css" rel="stylesheet" /><script src="../assets/javascripts/jquery.min.js"></script></head><body><div class="contain-to-grid"><nav class="top-bar" data-topbar=""><div class="row"><div class="small-12 columns"><span class="title-area"><span class="name"><h1><a href="../">Help with fees</a></h1></span></span></div></div><div class="row"><div class="small-12 columns" style="margin-top:15px;"><span class="alpha-tag">ALPHA</span> &nbsp; Tell us what you <a href="feedback.html">think and help us improve</a> <hr /></div></div></nav></div><div class="row"><div class="large-12 columns"><form><br /><div class="row"><div class="small-12 columns"><div class="panel callout grey"><div class="confirm-box"><div class="confirmation-two"><img height="27px" src="../assets/images/confirmation-tick.png" style="margin-right:15px;" width="27px">The reference number is</img></div><div class="confirmation">AT001-15-3</div></div></div></div></div><div class="row"><div class="small-12 medium-7 large-8 columns"><h3>Result</h3></div></div><div class="row"><div class="small-12 medium-5 large-3 columns"><div class="subheader">Savings and investments</div></div><div class="small-12 medium-7 large-9 columns"><div class="summary-result-success" id="savings-result-display">&#10003; Passed</div></div></div><div id="results-income"><div class="row"><div class="small-12 medium-5 large-3 columns"><div class="subheader">Income</div></div><div class="small-12 medium-7 large-9 columns"><div class="summary-result-failure bold" id="income-result-display">✗ Failed</div></div></div></div><br /><div class="row"><div class="small-12 columns"><div class="panel callout callout-ineligible"><div class="row"><div class="small-12 columns"><h3>Not eligible for help with fees</h3></div></div></div></div></div><hr /><br /><h3>Next steps</h3><div class="row"><div class="small-12 columns"><ul><li>Write the reference number on the top right corner of the paper form</li><li>Copy the reference number into the case management system</li><li>Write to the applicant and send back all the documents</li></ul><p><a href="#">See the guides</a></p></div></div><br /><div class="row"><div class="small-12 columns"><a class="button success" href="../index.html">Back to start</a></div></div></form><script>$(document).ready( function() {
+<!DOCTYPE html><html><head><meta charset="utf-8" /><title>Help with fees</title><meta content="width=device-width" name="viewport" /><link href="../assets/stylesheets/styles.css" rel="stylesheet" /><link href="../assets/stylesheets/r2_calculator.css" rel="stylesheet" /><link href="../assets/stylesheets/r1calc.css" rel="stylesheet" /><script src="../assets/javascripts/jquery.min.js"></script></head><body><div class="contain-to-grid"><nav class="top-bar" data-topbar=""><div class="row"><div class="small-12 columns"><span class="title-area"><span class="name"><h1><a href="../">Help with fees</a></h1></span></span></div></div><div class="row"><div class="small-12 columns" style="margin-top:15px;"><span class="alpha-tag">ALPHA</span> &nbsp; Tell us what you <a href="feedback.html">think and help us improve</a> <hr /></div></div></nav></div><div class="row"><div class="large-12 columns"><form><br /><div class="row"><div class="small-12 columns"><div class="panel callout grey"><div class="confirm-box"><div class="confirmation-two"><img height="27px" src="../assets/images/confirmation-tick.png" style="margin-right:15px;" width="27px">The reference number is</img></div><div class="confirmation">AT001-15-3</div></div></div></div></div><div class="row"><div class="small-12 medium-7 large-8 columns"><h3>Result</h3></div></div><div class="row"><div class="small-12 medium-5 large-3 columns"><div class="subheader">Savings and investments</div></div><div class="small-12 medium-7 large-9 columns"><div class="result-display summary-result-success" id="savings-result-display">✗ Failed</div></div></div><div class="hide" id="results-income"><div class="row"><div class="small-12 medium-5 large-3 columns"><div class="subheader">Income</div></div><div class="small-12 medium-7 large-9 columns"><div class="result-display summary-result-failure" id="income-result-display">✗ Failed</div></div></div></div><div class="hide" id="results-benefits"><div class="row"><div class="small-12 medium-5 large-3 columns"><div class="subheader">Benefits</div></div><div class="small-12 medium-7 large-9 columns"><div class="result-display summary-result-failure" id="benefits-result-display">✗ Failed</div></div></div></div><br /><div class="row"><div class="small-12 columns"><div class="panel callout callout-ineligible"><div class="row"><div class="small-12 columns"><h3>Not eligible for help with fees</h3></div></div></div></div></div><div class="hide" id="override"><div class="panel"><details><summary>Grant help with fees</summary><div class="row"><div class="small-12 columns"><br /><p>You can update details for this application if:</p><div class="options radio"><div class="option"><label for="override-reasons-paper"><input id="override-reasons-paper" name="override-reasons" type="radio" value="Paper evidence received" />You've received paper evidence that the applicant is receiving benefits</label></div><div class="option"><label for="override-reasons-check"><input id="override-reasons-check" name="override-reasons" type="radio" value="DWP Check" />You want to check if the applicant is receiving benefits using the DWP checker (and it was unavailable when the application was first processed)</label></div><div class="option"><label for="override-reasons-discretion"><input id="override-reasons-discretion" name="override-reasons" type="radio" value="Discretion applied" />You are exercising discretion with this application</label></div><div class="option"><label for="override-reasons-other"><input id="override-reasons-other" name="override-reasons" type="radio" value="other" />Other</label></div></div></div></div><div class="hide" id="override-other"><div class="row"><div class="small-12 columns"><div class="panel-indent"><label for="override-other-detail">Other reason for granting help with fees</label><div class="small-6"><input id="override-other-detail" name="override-other-detail" type="text" /></div></div></div></div></div><a class="button" href="8-confirmation-success.html" id="store-override">Update application</a></details></div></div><br /><hr /><br /><h3>Next steps</h3><div class="row"><div class="small-12 columns"><ul><li>Write the reference number on the top right corner of the paper form</li><li>Copy the reference number into the case management system</li><li>Write to the applicant and send back all the documents</li></ul><p><a href="#">See the guides</a></p></div></div><br /><div class="row"><div class="small-12 columns"><a class="button success" href="../index.html">Back to start</a></div></div></form><script>$(document).ready(function() {
+  var text = {
+    fail: '✗ Failed',
+    pass: '✓ Passed'
+  };
+
+  $('[name="override-reasons"]').on('change', function(e) {
+    var $el = $(e.target);
+
+    $('#override-other').toggle($el.attr('id') === 'override-reasons-other');
+  });
+
+  $('#store-override').on('click', function (e) {
+    var $el = $('[name="override-reasons"]:checked'),
+        reason = $el.val();
+
+    e.preventDefault();
+
+    if(reason !== undefined) {
+      if(reason === 'other') {
+        reason = $('#override-other-detail').val() || 'Other';
+      }
+
+      storeValue('staff', 'benefits-override', 'true');
+      storeValue('staff', 'benefits-override-reason', reason);
+
+      document.location = $('#store-override').attr('href');
+    }
+  });
+
+  // default view caters for failing on savings
+
+  if(getValue('staff', 'savings-exceeded') === 'false') {
+    // passed on savings
+    $('#savings-result-display').text(text.pass);
+    if(getValue('staff', 'benefits') === 'true') {
+      // benefits route
+      $('#override').show();
+      $('#results-benefits').show();
+      if(getValue('staff', 'evidence') === 'false') {
+        // didn't supply evidence
+        $('#benefits-result-display').text([text.fail, '(evidence not provided)'].join(' '));
+      } else if(getValue('staff', 'evidence-correct') === 'false') {
+        // evidence supplied but not valid
+        $('#benefits-result-display').text([text.fail, '(evidence incorrect)'].join(' '));
+      }
+    } else {
+      // failed on income
+      $('#results-income').show();
+    }
+  }
 });</script></div><div class="row"><div class="small-12 columns"><br /><footer class="row page-footer"><div class="small-12 columns"><div class="row"><div class="small-12 medium-5 large-6 columns"><h4>Contact us</h4><hr style="color:bfc1c3;" /><div class="bold">Email us</div><p><a href="mailto:helpwithfees.support@digital.justice.gov.uk">helpwithfees.support@digital.justice.gov.uk</a></p><div class="bold">Give feedback</div><p><a href="#">Tell us what you think</a></p></div><div class="small-12 medium-7 large-6 columns"><h4>Staff guides</h4><hr style="color:bfc1c3;" /><div class="row"><div class="small-7 columns"><p>How to process an application, deal with spot checks, part payments, appeals, and fraud.</p><p><a target="_blank" href="guide-landing.html">See the guides</a></p></div><div class="small-4 columns end"><img src="../assets/images/icon-guide-home.png" /></div></div></div></div></div></footer></div></div><script src="../assets/javascripts/libs.js"></script><script src="../assets/javascripts/lodash.js"></script><script src="../assets/javascripts/numeral.min.js"></script><script src="../assets/javascripts/app.js"></script><script src="../assets/javascripts/details.polyfill.js"></script><script src="../assets/javascripts/income_sources.js"></script><script src="../assets/javascripts/income_threshold.js"></script><script src="../assets/javascripts/income_detail.js"></script><script src="../assets/javascripts/summary.js"></script><script src="../assets/javascripts/form_number.js"></script><script src="../assets/javascripts/form_validation.js"></script></div></body></html>

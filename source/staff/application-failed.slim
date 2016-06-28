@@ -177,4 +177,9 @@ form
 
 javascript:
   $(document).ready( function() {
+    $('[name="override-reasons"]').on('change', function(e) {
+      var $el = $(e.target);
+
+      $('#override-other').toggle($el.attr('id') === 'override-reasons-other');
+    });
   });

@@ -86,7 +86,9 @@ var incomeSourcesModule = {
         html = '';
 
     html += '<div class="small-12 medium-6 income-source-list columns user">';
-    html += '<h3>Your income</h3>';
+    if(self.isMarried === 'true') {
+      html += '<h3>Your income</h3>';
+    }
     self.sources.forEach(function(source) {
       html += '<div class="source-row" data-source="' + source.name + '" data-person="user">';
       html += self.compileSource(source.name, source.text, self.prefixes[0]);

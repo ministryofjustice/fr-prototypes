@@ -15,53 +15,16 @@ User testing prototypes for Fee Remission staff application.
 - [Foundation](http://foundation.zurb.com/docs/) *[sass helpers/mixins]*
 - [Middleman Deploy](https://github.com/karlfreeman/middleman-deploy) *[deployment/hosting]*
 
-## Getting Started
+## Getting started with Docker
+* Download and install [Docker for Mac](https://docs.docker.com/docker-for-mac/) following the instructions
+* Clone this project
+* Open a terminal window and navigate to your cloned project folder
+* Type $`bash start.sh` and press return
+* When the script has completed, you should be prompted to access the running prototype at http://localhost:4567
 
-Ensure you have at least [Ruby](https://www.ruby-lang.org/en/) 2.1.0 and [Node.js](http://nodejs.org/) 0.10.x installed and [Bower](http://bower.io/) installed globally (`npm install -g bower`).
+## Getting stopped with Docker
+* To stop docker running (and release the resources), open a terminal window and navigate to your cloned project folder
+* Type $`bash stop.sh` and press return
 
-Note: Because of OpenSSL incompatibilites on my machine with Ruby 2.1.0, I use ruby 2.1.5 and it appears to work fine.
-
-1. Install ruby dependencies
-  ```
-  bundle install
-  ```
-
-2. Install bower packages
-  ```
-  bower install
-  ```
-
-3. Build middleman
-  ```
-  middleman build
-  ```
-
-## Development environment
-
-To run the app locally and see changes as you make them:
-
-  ```
-  middleman server
-  ```
-
-Then view you site at the URL displayed. Normally [http://0.0.0.0:4567/](http://0.0.0.0:4567/).
-
-## Build
-
-To manually build the site:
-  ```
-  middleman build
-  ```
-
-## Deploy to GitHub pages
-
-On each commit to master a [Travis CI job](https://travis-ci.org/ministryofjustice/./) will run any tests. On success it will automagically deploy to the GitHub pages URL in the description. The deploy task will also run the `build` task before deploying.
-
-To deploy manually:
-  ```
-  middleman deploy
-  ```
-
-The changes will be deployes to http://ministryofjustice.github.io/fr-prototypes/
-
-
+## Archived readme
+[Original manual setup/config](/docs/manual_setup.md)

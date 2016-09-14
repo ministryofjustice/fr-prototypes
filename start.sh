@@ -1,16 +1,20 @@
 #!/bin/bash
 
-if service docker status | grep -q "Active: inactive";
-then
-	if [ $(id -u) != "0" ]; then
-		chmod +x "$0"
-	    sudo "$(pwd)/$0" "$@"
-	    exit $?
-	fi
-	sudo service docker start
+
+DOCKER_VERSION=$(docker info &> /dev/null)
+if [ $? -eq 1 ]
+then	
+	echo starting Docker
+	open -a Docker
+	until $(docker version &> /dev/null); [ $? -eq 0 ]
+	do
+	    printf '.'
+	    sleep 1
+	done
+	printf '\n'
 	echo Docker has been started
 else
-	echo Docker is Active
+	echo Docker is already running
 fi
 
 if [[ "$(docker images -q middleman 2> /dev/null)" == "" ]]
